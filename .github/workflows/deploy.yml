@@ -5,6 +5,9 @@ on:
     branches:
       - main  # change if your default branch is different
 
+permissions:
+  contents: write  # required for pushing to gh-pages branch
+
 jobs:
   build-deploy:
     runs-on: ubuntu-latest
@@ -26,7 +29,7 @@ jobs:
         run: npm run build
 
       - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v6
+        uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: dist
+          publish_dir: ./dist
