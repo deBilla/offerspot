@@ -1,28 +1,30 @@
 import React, { useState, useMemo } from 'react';
+// Assuming you have a data.json file in a folder structure like /src/api/data.json
+// If your structure is different, you may need to adjust the import path.
 import data from './api/data.json';
 
 // --- SVG Icons (as components for easy use) ---
 const MapPinIcon = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 mr-1.5 inline-block">
-    <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
-    <circle cx="12" cy="10" r="3" />
-  </svg>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 mr-1.5 inline-block">
+        <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+        <circle cx="12" cy="10" r="3" />
+    </svg>
 );
 
 const TagIcon = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 mr-1.5 inline-block">
-    <path d="M12 2H2v10l9.29 9.29c.94.94 2.48.94 3.42 0l6.58-6.58c.94-.94.94-2.48 0-3.42L12 2Z" />
-    <path d="M7 7h.01" />
-  </svg>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 mr-1.5 inline-block">
+        <path d="M12 2H2v10l9.29 9.29c.94.94 2.48.94 3.42 0l6.58-6.58c.94-.94.94-2.48 0-3.42L12 2Z" />
+        <path d="M7 7h.01" />
+    </svg>
 );
 
 const CalendarIcon = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 mr-1.5 inline-block">
-    <rect width="18" height="18" x="3" y="4" rx="2" ry="2" />
-    <line x1="16" x2="16" y1="2" y2="6" />
-    <line x1="8" x2="8" y1="2" y2="6" />
-    <line x1="3" x2="21" y1="10" y2="10" />
-  </svg>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 mr-1.5 inline-block">
+        <rect width="18" height="18" x="3" y="4" rx="2" ry="2" />
+        <line x1="16" x2="16" y1="2" y2="6" />
+        <line x1="8" x2="8" y1="2" y2="6" />
+        <line x1="3" x2="21" y1="10" y2="10" />
+    </svg>
 );
 
 const CreditCardIcon = () => (
@@ -34,9 +36,9 @@ const CreditCardIcon = () => (
 
 const WalletIcon = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5 mr-2">
-      <path d="M21 12V7H5a2 2 0 0 1 0-4h14v4" />
-      <path d="M3 5v14a2 2 0 0 0 2 2h16v-5" />
-      <path d="M18 12a2 2 0 0 0 0 4h4v-4h-4Z" />
+        <path d="M21 12V7H5a2 2 0 0 1 0-4h14v4" />
+        <path d="M3 5v14a2 2 0 0 0 2 2h16v-5" />
+        <path d="M18 12a2 2 0 0 0 0 4h4v-4h-4Z" />
     </svg>
 );
 
@@ -48,14 +50,14 @@ const XIcon = () => (
 );
 
 
-// --- Mock Data (using the improved JSON structure) ---
-console.log(data);
+// --- Data ---
 const mockOffers = data;
 
 const bankDetails = {
     "People's Bank": { color: 'from-blue-500 to-blue-700', textColor: 'text-white' },
     "Commercial Bank": { color: 'from-red-500 to-red-700', textColor: 'text-white' },
     "HNB": { color: 'from-yellow-400 to-yellow-600', textColor: 'text-gray-900' },
+    // Add other banks from your JSON here to give them custom colors
 };
 
 
@@ -70,6 +72,7 @@ const getBankBadgeColor = (bank) => {
 };
 
 const formatDate = (dateString) => {
+    if (!dateString) return 'N/A';
     return new Date(dateString).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
 };
 
@@ -79,6 +82,7 @@ const OfferCard = ({ offer }) => {
     const { bank, category, merchant, title, description, offer_details, validity, location } = offer;
 
     const renderDiscount = () => {
+        if (!offer_details) return null;
         if (offer_details.type === 'percentage') {
             return <span className="text-3xl font-bold text-emerald-600">{offer_details.value}% OFF</span>;
         }
@@ -86,12 +90,12 @@ const OfferCard = ({ offer }) => {
             return <span className="text-2xl font-bold text-emerald-600">BOGO</span>;
         }
         if (offer_details.type === 'fixed') {
-            return <span className="text-2xl font-bold text-emerald-600">Save {offer_details.currency} {offer_details.value.toLocaleString()}</span>
+            return <span className="text-2xl font-bold text-emerald-600">Save {offer_details.currency || 'LKR'} {offer_details.value?.toLocaleString()}</span>
         }
         return null;
     };
 
-    const googleMapsUrl = location?.latitude ? `https://www.google.com/maps?q=${location?.latitude},${location?.longitude}` : null;
+    const googleMapsUrl = location?.latitude ? `https://www.google.com/maps?q=${location.latitude},${location.longitude}` : null;
     
     return (
         <div className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 ease-in-out flex flex-col">
@@ -105,7 +109,7 @@ const OfferCard = ({ offer }) => {
                     </div>
                 </div>
                 <div className="mt-4">
-                    <p className="text-sm font-semibold text-gray-500">{merchant.name}</p>
+                    <p className="text-sm font-semibold text-gray-500">{merchant?.name || 'N/A'}</p>
                     <h3 className="text-xl font-bold text-gray-900 mt-1">{title}</h3>
                     <p className="text-gray-600 mt-2 text-sm">{description}</p>
                 </div>
@@ -118,14 +122,14 @@ const OfferCard = ({ offer }) => {
                      <div className="flex items-center">
                         <CalendarIcon /><span>Valid until: <span className="font-medium">{formatDate(validity?.end_date)}</span></span>
                     </div>
-                    {location?.address !== 'Online Booking' && googleMapsUrl ? (
+                    {location?.address && location.address !== 'Online Booking' && googleMapsUrl ? (
                          <a href={googleMapsUrl} target="_blank" rel="noopener noreferrer" className="flex items-center text-blue-600 hover:underline">
                             <MapPinIcon />
-                            <span>{location?.address}</span>
+                            <span>{location.address}</span>
                         </a>
                     ) : (
                          <div className="flex items-center">
-                            <MapPinIcon /><span>Online Booking</span>
+                            <MapPinIcon /><span>{location?.address || 'Online / Multiple Locations'}</span>
                         </div>
                     )}
                 </div>
@@ -195,8 +199,8 @@ export default function App() {
     const [selectedBanks, setSelectedBanks] = useState([]);
     const [selectedCategory, setSelectedCategory] = useState('All');
 
-    const banks = useMemo(() => [...new Set(mockOffers.map(o => o.bank))].map(b => ({ name: b })), []);
-    const categories = useMemo(() => ['All', ...new Set(mockOffers.map(o => o.category))], []);
+    const banks = useMemo(() => [...new Set(mockOffers.map(o => o.bank))].map(b => ({ name: b })), [mockOffers]);
+    const categories = useMemo(() => ['All', ...new Set(mockOffers.map(o => o.category))], [mockOffers]);
 
     const handleBankSelect = (bankName) => {
         setSelectedBanks(prev => 
@@ -212,7 +216,7 @@ export default function App() {
             const categoryMatch = selectedCategory === 'All' || offer.category === selectedCategory;
             return bankMatch && categoryMatch;
         });
-    }, [selectedBanks, selectedCategory]);
+    }, [selectedBanks, selectedCategory, mockOffers]);
 
     return (
         <div className="bg-gray-100 min-h-screen font-sans">
@@ -240,12 +244,14 @@ export default function App() {
                     </div>
                      <div className="border-t pt-4">
                         <label className="block text-sm font-medium text-gray-700 mb-2">Filter by Category</label>
-                         <div className="flex flex-wrap gap-2">
+                         {/* --- THIS IS THE UPDATED SCROLLING CONTAINER --- */}
+                         <div className="flex space-x-2 overflow-x-auto pb-2 -mb-2">
                             {categories.map(category => (
                                 <button
                                     key={category}
                                     onClick={() => setSelectedCategory(category)}
-                                    className={`px-4 py-2 text-sm font-medium rounded-full transition-colors duration-200 ${selectedCategory === category ? 'bg-indigo-600 text-white shadow' : 'bg-gray-200 text-gray-700 hover:bg-gray-300'}`}
+                                    // Added 'flex-shrink-0' to prevent buttons from shrinking
+                                    className={`flex-shrink-0 px-4 py-2 text-sm font-medium rounded-full transition-colors duration-200 ${selectedCategory === category ? 'bg-indigo-600 text-white shadow' : 'bg-gray-200 text-gray-700 hover:bg-gray-300'}`}
                                 >
                                     {category}
                                 </button>
@@ -282,4 +288,3 @@ export default function App() {
         </div>
     );
 }
-
