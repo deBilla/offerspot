@@ -1,0 +1,4619 @@
+[
+  {
+    "bank": "Commercial Bank",
+    "card_types": [
+      "Credit Card",
+      "Debit Card"
+    ],
+    "category": "Food & Restaurants",
+    "merchant": {
+      "name": "NH Collection Colombo"
+    },
+    "title": "20% off dining",
+    "description": "Enjoy the art of dining at NH Collection Colombo",
+    "offer_details": {
+      "type": "percentage",
+      "value": 20,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": null,
+      "end_date": "2025-09-30",
+      "days": []
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "Offer valid at NH Collection Colombo. Other terms and conditions may apply.",
+    "source_url": "https://www.combank.lk/rewards-promotions",
+    "id": "po-cb-001"
+  },
+  {
+    "bank": "Commercial Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Food & Restaurants",
+    "merchant": {
+      "name": "Cinnamon Red Colombo"
+    },
+    "title": "Up to 15% Off dining",
+    "description": null,
+    "offer_details": {
+      "type": "percentage",
+      "value": null,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": null,
+      "end_date": "2025-10-31",
+      "days": []
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "Offer valid at Cinnamon Red Colombo. Applicable with ComBank Credit Cards.",
+    "source_url": "https://www.combank.lk/rewards-promotions",
+    "id": "po-cb-002"
+  },
+  {
+    "bank": "Commercial Bank",
+    "card_types": [
+      "Credit Card",
+      "Debit Card"
+    ],
+    "category": "Food & Restaurants",
+    "merchant": {
+      "name": "Amari Colombo"
+    },
+    "title": "20% off dining",
+    "description": null,
+    "offer_details": {
+      "type": "percentage",
+      "value": 20,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": null,
+      "end_date": "2025-09-30",
+      "days": null
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": null,
+    "source_url": "https://www.combank.lk/rewards-promotions",
+    "id": "po-cb-003"
+  },
+  {
+    "bank": "Commercial Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Food & Restaurants",
+    "merchant": {
+      "name": "Blue Orbit by Citrus"
+    },
+    "title": "Up to 15% Off Dining",
+    "description": "Enjoy the art of dining at Blue Orbit by Citrus with ComBank Credit Cards",
+    "offer_details": {
+      "type": "percentage",
+      "value": 15
+    },
+    "validity": {
+      "start_date": null,
+      "end_date": "2025-10-31"
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "Offer valid till 31st October 2025",
+    "source_url": "https://www.combank.lk/rewards-promotions",
+    "id": "po-cb-004"
+  },
+  {
+    "bank": "Commercial Bank",
+    "card_types": [
+      "Credit Card",
+      "Debit Card"
+    ],
+    "category": "Food & Restaurants",
+    "merchant": {
+      "name": "Ramada",
+      "logo_url": null
+    },
+    "title": "20% off dining at Ramada",
+    "description": "Enjoy the art of dining at Ramada with ComBank Credit and Debit Cards",
+    "offer_details": {
+      "type": "percentage",
+      "value": 20,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": null,
+      "end_date": "2025-10-31",
+      "days": [],
+      "time": null
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "Offer valid for ComBank Credit and Debit Cardholders",
+    "source_url": "https://www.combank.lk/rewards-promotions",
+    "id": "po-cb-005"
+  },
+  {
+    "bank": "Commercial Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Food & Restaurants",
+    "merchant": {
+      "name": "Taj Samudra Colombo"
+    },
+    "title": "20% off dining",
+    "description": null,
+    "offer_details": {
+      "type": "percentage",
+      "value": 20
+    },
+    "validity": {
+      "start_date": null,
+      "end_date": "2025-10-31"
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "Offer valid at Taj Samudra Colombo",
+    "source_url": "https://www.combank.lk/rewards-promotions",
+    "id": "po-cb-006"
+  },
+  {
+    "bank": "Commercial Bank",
+    "card_types": [
+      "Debit Card"
+    ],
+    "category": "Food & Restaurants",
+    "merchant": {
+      "name": "Blue Orbit by Citrus"
+    },
+    "title": "Up to 10% Off dining at Blue Orbit by Citrus",
+    "description": "Enjoy the art of dining with ComBank Platinum Debit Cards",
+    "offer_details": {
+      "type": "percentage",
+      "value": null,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": null,
+      "end_date": "2025-10-31",
+      "days": []
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "Offer valid with ComBank Platinum Debit Cards",
+    "source_url": "https://www.combank.lk/rewards-promotions",
+    "id": "po-cb-007"
+  },
+  {
+    "bank": "Commercial Bank",
+    "card_types": [
+      "Debit Card"
+    ],
+    "category": "Food & Restaurants",
+    "merchant": {
+      "name": "Cinnamon Grand Colombo",
+      "logo_url": null
+    },
+    "title": "Up to 10% Off dining",
+    "description": "Enjoy the art of dining at Cinnamon Grand Colombo with ComBank Platinum Debit Cards",
+    "offer_details": {
+      "type": "percentage",
+      "value": null,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": null,
+      "end_date": "2025-09-30",
+      "days": []
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "Offer valid for ComBank Platinum Debit Card holders.",
+    "source_url": "https://www.combank.lk/rewards-promotions",
+    "id": "po-cb-008"
+  },
+  {
+    "bank": "Commercial Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Food & Restaurants",
+    "merchant": {
+      "name": "Cinnamon Grand Colombo",
+      "logo_url": null
+    },
+    "title": "Up to 20% Off dining",
+    "description": "Enjoy the art of dining at Cinnamon Grand Colombo with ComBank Credit Cards",
+    "offer_details": {
+      "type": "percentage",
+      "value": 20,
+      "max_discount_lkr": null,
+      "},{   ": "validity"
+    },
+    "start_date": "2025-09-01",
+    "end_date": "2025-09-30",
+    "days": [],
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "Offer valid till 30th September 2025",
+    "source_url": "https://www.combank.lk/rewards-promotions",
+    "id": "po-cb-009"
+  },
+  {
+    "bank": "Commercial Bank",
+    "card_types": [
+      "Credit Card",
+      "Debit Card"
+    ],
+    "category": "Food & Restaurants",
+    "merchant": {
+      "name": "Radisson Hotels"
+    },
+    "title": "20% off dining",
+    "description": "Enjoy the art of dining at Radisson Hotels",
+    "offer_details": {
+      "type": "percentage",
+      "value": 20
+    },
+    "validity": {
+      "start_date": null,
+      "end_date": "2025-10-31"
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "Offer valid at Radisson Hotels",
+    "source_url": "https://www.combank.lk/rewards-promotions",
+    "id": "po-cb-010"
+  },
+  {
+    "bank": "Commercial Bank",
+    "card_types": [
+      "Credit Card",
+      "Debit Card"
+    ],
+    "category": "Leisure",
+    "merchant": {
+      "name": "Not specified (assumed to be a holiday destination)",
+      "logo_url": null
+    },
+    "title": "Up to 45% Off",
+    "description": "Relax at your favourite holiday destination",
+    "offer_details": {
+      "type": "percentage",
+      "value": 45,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": null,
+      "end_date": "2025-12-31",
+      "days": []
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "Offer valid at participating holiday destinations. Terms and conditions apply.",
+    "source_url": "https://www.combank.lk/rewards-promotions",
+    "id": "po-cb-011"
+  },
+  {
+    "bank": "Commercial Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Leisure",
+    "merchant": {
+      "name": "Shangri-La Hambantota"
+    },
+    "title": "Up to 25% Off",
+    "description": "Enjoy your perfect getaway at Shangri-La Hambantota with ComBank Credit Cards",
+    "offer_details": {
+      "type": "percentage",
+      "value": 25,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": "2025-09-08",
+      "end_date": "2025-09-10",
+      "days": []
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "Offer details may vary. Check with the merchant for more information.",
+    "source_url": "https://www.combank.lk/rewards-promotions",
+    "id": "po-cb-012"
+  },
+  {
+    "bank": "Commercial Bank",
+    "card_types": [
+      "Credit Card",
+      "Debit Card"
+    ],
+    "category": "Leisure",
+    "merchant": {
+      "name": "Pearl Bay"
+    },
+    "title": "25% Off dining",
+    "description": "Step into a world of wonders and thrills with Pearl Bay using ComBank Credit and Debit Cards",
+    "offer_details": {
+      "type": "percentage",
+      "value": 25,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": "2025-06-01",
+      "end_date": "2025-09-30",
+      "days": null,
+      "time": null
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "Offer valid for ComBank Credit and Debit Card holders only. Terms and conditions apply.",
+    "source_url": "https://www.combank.lk/rewards-promotions",
+    "id": "po-cb-013"
+  },
+  {
+    "bank": "Commercial Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Leisure",
+    "merchant": {
+      "name": "Jetwing Premium Hotels"
+    },
+    "title": "Up to 40% Off Leisure",
+    "description": "Enjoy the perfect getaway at Jetwing Premium Hotels with ComBank Credit Cards",
+    "offer_details": {
+      "type": "percentage",
+      "value": null,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": null,
+      "end_date": "2025-09-30",
+      "days": null
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "Booking valid till 30th September 2025",
+    "source_url": "https://www.combank.lk/rewards-promotions",
+    "id": "po-cb-014"
+  },
+  {
+    "bank": "Commercial Bank",
+    "card_types": [
+      "Credit Card",
+      "Debit Card"
+    ],
+    "category": "Leisure",
+    "merchant": {
+      "name": "Shandaru Blue Bentota"
+    },
+    "title": "20% off Leisure",
+    "description": "Enjoy your perfect getaway at Shandaru Blue Bentota",
+    "offer_details": {
+      "type": "percentage",
+      "value": 20
+    },
+    "validity": {
+      "start_date": null,
+      "end_date": "2025-10-31"
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "Offer valid for Commercial Bank Credit and Debit Card holders",
+    "source_url": "https://www.combank.lk/rewards-promotions",
+    "id": "po-cb-015"
+  },
+  {
+    "bank": "Commercial Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Online Shopping",
+    "merchant": {
+      "name": "Daraz",
+      "logo_url": null
+    },
+    "title": "Up to 10% Off Online Shopping",
+    "description": "Great online deals at Daraz with ComBank Credit Cards",
+    "offer_details": {
+      "type": "percentage",
+      "value": null,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": "2025-09-01",
+      "end_date": "2025-09-27",
+      "days": [
+        "Saturday"
+      ]
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "Offer valid on every Saturday till 27th September 2025",
+    "source_url": "https://www.combank.lk/rewards-promotions",
+    "id": "po-cb-016"
+  },
+  {
+    "bank": "Commercial Bank",
+    "card_types": [
+      "Credit Card",
+      "Debit Card"
+    ],
+    "category": "Online Shopping",
+    "merchant": {
+      "name": "Hemas eStore"
+    },
+    "title": "Up to 20% Off Online Shopping",
+    "description": "Great online deals at Hemas eStore with ComBank Credit and Debit Cards",
+    "offer_details": {
+      "type": "percentage",
+      "value": 20,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": "2025-01-20",
+      "end_date": "2025-12-31",
+      "days": [
+        "every month"
+      ]
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "Offer valid for ComBank Credit and Debit Card holders. Offer subject to terms and conditions.",
+    "source_url": "https://www.combank.lk/rewards-promotions",
+    "id": "po-cb-017"
+  },
+  {
+    "bank": "Commercial Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Supermarket",
+    "merchant": {
+      "name": "Laugfs Super",
+      "logo_url": null
+    },
+    "title": "Up to 10% Off Supermarket",
+    "description": "Enjoy the best supermarket deals at Laugfs Super with ComBank Credit Cards",
+    "offer_details": {
+      "type": "percentage",
+      "value": null,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": "2025-09-01",
+      "end_date": "2025-09-28",
+      "days": [
+        "Sunday"
+      ]
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "Offer valid on every Sunday till 28th September 2025",
+    "source_url": "https://www.combank.lk/rewards-promotions",
+    "id": "po-cb-018"
+  },
+  {
+    "bank": "Commercial Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Supermarket",
+    "merchant": {
+      "name": "Arpico"
+    },
+    "title": "Up to 25% Off Supermarket",
+    "description": "Enjoy the best supermarket deals at Arpico with ComBank Credit Cards",
+    "offer_details": {
+      "type": "percentage",
+      "value": 25,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": "2025-09-09",
+      "end_date": "2025-09-23",
+      "days": [
+        "09th September",
+        "23rd September"
+      ],
+      "days_of_week": null
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "Offer valid for ComBank Credit Card holders. Total Bill applies.",
+    "source_url": "https://www.combank.lk/rewards-promotions",
+    "id": "po-cb-019"
+  },
+  {
+    "bank": "Commercial Bank",
+    "card_types": [
+      "Credit Card",
+      "Debit Card"
+    ],
+    "category": "Supermarket",
+    "merchant": {
+      "name": "Softlogic Glomark"
+    },
+    "title": "Up to 30% Off Supermarket",
+    "description": "Enjoy the best supermarket fresh deals at Softlogic Glomark with ComBank Credit and Debit Cards",
+    "offer_details": {
+      "type": "percentage",
+      "value": 30,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": null,
+      "end_date": "2025-09-24",
+      "days": [
+        "Wednesday"
+      ]
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "Offer valid on every Wednesday till 24th September 2025",
+    "source_url": "https://www.combank.lk/rewards-promotions",
+    "id": "po-cb-020"
+  },
+  {
+    "bank": "Commercial Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Supermarket",
+    "merchant": {
+      "name": "Keells",
+      "logo_url": null
+    },
+    "title": "Up to 25% Off Supermarket",
+    "description": "Enjoy the best supermarket deals at Keells with ComBank Credit Cards",
+    "offer_details": {
+      "type": "percentage",
+      "value": 25,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": "2025-09-01",
+      "end_date": "2025-09-27",
+      "days": [
+        "Saturday"
+      ]
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "Offer valid on every Saturday till 27th September 2025",
+    "source_url": "https://www.combank.lk/rewards-promotions",
+    "id": "po-cb-021"
+  },
+  {
+    "bank": "Commercial Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Healthcare",
+    "merchant": {
+      "name": "Quantum Fitness"
+    },
+    "title": "Up to 15% Off",
+    "description": "Transform your home workouts with Quantum Fitness and ComBank Credit Cards",
+    "offer_details": {
+      "type": "percentage",
+      "value": null,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": "2025-09-01",
+      "end_date": "2025-09-30"
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "Offer valid till 30th September 2025",
+    "source_url": "https://www.combank.lk/rewards-promotions",
+    "id": "po-cb-022"
+  },
+  {
+    "bank": "Commercial Bank",
+    "card_types": [
+      "Credit Card",
+      "Debit Card"
+    ],
+    "category": "Healthcare",
+    "merchant": {
+      "name": "George Gooneratne"
+    },
+    "title": "Up to 25% Off",
+    "description": "Smart savings for sharper vision",
+    "offer_details": {
+      "type": "percentage",
+      "value": 25,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": null,
+      "end_date": "2025-12-31",
+      "days": []
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "Offer valid at George Gooneratne",
+    "source_url": "https://www.combank.lk/rewards-promotions",
+    "id": "po-cb-023"
+  },
+  {
+    "bank": "Commercial Bank",
+    "card_types": [
+      "Credit Card",
+      "Debit Card"
+    ],
+    "category": "Healthcare",
+    "merchant": {
+      "name": "Nawaloka Hospital"
+    },
+    "title": "Up to 10% Off Healthcare",
+    "description": "See the world without spectacles with Nawaloka Hospital and ComBank Cards",
+    "offer_details": {
+      "type": "percentage",
+      "value": null,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": null,
+      "end_date": "2025-09-30",
+      "days": []
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "Not specified",
+    "source_url": "https://www.combank.lk/rewards-promotions",
+    "id": "po-cb-024"
+  },
+  {
+    "bank": "Commercial Bank",
+    "card_types": [
+      "Credit Card",
+      "Debit Card"
+    ],
+    "category": "Healthcare",
+    "merchant": {
+      "name": "Lush Skin Clinic"
+    },
+    "title": "Up to 60% Off at Lush Skin Clinic",
+    "description": "Get up to 60% off at Lush Skin Clinic with ComBank Credit and Debit Cards",
+    "offer_details": {
+      "type": "percentage",
+      "value": null,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": null,
+      "end_date": "2025-09-30",
+      "days": []
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "Offer valid till 30th September 2025",
+    "source_url": "https://www.combank.lk/rewards-promotions",
+    "id": "po-cb-025"
+  },
+  {
+    "bank": "Commercial Bank",
+    "card_types": [
+      "Credit Card",
+      "Mastercard"
+    ],
+    "category": "Healthcare",
+    "merchant": {
+      "name": "Maya Clinic"
+    },
+    "title": "Up to 20% Off at Maya Clinic",
+    "description": "Receive a discount on your dream beauty treatments at Maya Clinic with ComBank Mastercard Cards.",
+    "offer_details": {
+      "type": "percentage",
+      "value": 20,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": null,
+      "end_date": "2025-12-31",
+      "days": []
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "Terms and conditions apply.",
+    "source_url": "https://www.combank.lk/rewards-promotions",
+    "id": "po-cb-026"
+  },
+  {
+    "bank": "Commercial Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Travel",
+    "merchant": {
+      "name": "02nd Chance Travels"
+    },
+    "title": "Escape to Snowy Azerbaijan",
+    "description": null,
+    "offer_details": {
+      "type": "other",
+      "value": null,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": null,
+      "end_date": "2025-09-30",
+      "days": []
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "Offer valid till 30th September 2025",
+    "source_url": "https://www.combank.lk/rewards-promotions",
+    "id": "po-cb-027"
+  },
+  {
+    "bank": "Commercial Bank",
+    "card_types": [
+      "Credit Card",
+      "Debit Card"
+    ],
+    "category": "Auto",
+    "merchant": {
+      "name": "TOYOTSU Lanka"
+    },
+    "title": "Up to 40% Off from TOYOTSU Lanka",
+    "description": "Best care for your vehicle with ComBank Credit and Debit Cards",
+    "offer_details": {
+      "type": "percentage",
+      "value": null,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": null,
+      "end_date": "2025-10-31",
+      "days": []
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "Not specified",
+    "source_url": "https://www.combank.lk/rewards-promotions",
+    "id": "po-cb-028"
+  },
+  {
+    "bank": "Commercial Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Premium Card Offers",
+    "merchant": {
+      "name": "NH Collection Colombo"
+    },
+    "title": "25% off dining at NH Collection Colombo",
+    "description": null,
+    "offer_details": {
+      "type": "percentage",
+      "value": 25
+    },
+    "validity": {
+      "start_date": null,
+      "end_date": "2025-09-30",
+      "days": null
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": null,
+    "source_url": "https://www.combank.lk/rewards-promotions",
+    "id": "po-cb-029"
+  },
+  {
+    "bank": "Commercial Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Premium Card Offers",
+    "merchant": {
+      "name": "Arpico",
+      "logo_url": null
+    },
+    "title": "Up to 20% Off Premium Card Offers",
+    "description": "Enjoy exclusive supermarket deals at Arpico with ComBank Premium Credit Cards",
+    "offer_details": {
+      "type": "percentage",
+      "value": 20,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": "2025-09-06",
+      "end_date": "2025-09-20",
+      "days": [],
+      "time": null
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "Offer valid on specified dates only at Arpico",
+    "source_url": "https://www.combank.lk/rewards-promotions",
+    "id": "po-cb-030"
+  },
+  {
+    "bank": "Commercial Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Premium Card Offers",
+    "merchant": {
+      "name": "Chatham Luxury Watches"
+    },
+    "title": "Step into Luxury with Chatham Luxury Watches",
+    "description": null,
+    "offer_details": {
+      "type": "other",
+      "value": null,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": null,
+      "end_date": "2025-12-31",
+      "days": []
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "Terms and conditions apply.",
+    "source_url": "https://www.combank.lk/rewards-promotions",
+    "id": "po-cb-031"
+  },
+  {
+    "bank": "Commercial Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Premium Card Offers",
+    "merchant": {
+      "name": "Cinnamon Red Colombo",
+      "logo_url": null
+    },
+    "title": "20% off dining",
+    "description": "Enjoy the art of dining at Cinnamon Red Colombo with ComBank Premium Credit Cards",
+    "offer_details": {
+      "type": "percentage",
+      "value": 20,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": null,
+      "end_date": "2025-10-31",
+      "days": []
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "Offer valid for ComBank Premium Credit Card holders only.",
+    "source_url": "https://www.combank.lk/rewards-promotions",
+    "id": "po-cb-032"
+  },
+  {
+    "bank": "Commercial Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Premium Card Offers",
+    "merchant": {
+      "name": "Softlogic Glomark"
+    },
+    "title": "Up to 25% Off",
+    "description": "Exclusive supermarket deals at Softlogic Glomark with ComBank Premium Credit Cards",
+    "offer_details": {
+      "type": "percentage",
+      "value": 25
+    },
+    "validity": {
+      "start_date": "2025-09-06",
+      "end_date": "2025-09-20"
+    },
+    "location": null,
+    "terms": "Offer valid on specified dates only",
+    "source_url": "https://www.combank.lk/rewards-promotions",
+    "id": "po-cb-033"
+  },
+  {
+    "bank": "Commercial Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Premium Card Offers",
+    "merchant": {
+      "name": "Keells",
+      "logo_url": null
+    },
+    "title": "Up to 20% Off Premium Card Offers",
+    "description": "Enjoy exclusive supermarket deals at Keells with ComBank Premium Credit Cards",
+    "offer_details": {
+      "type": "percentage",
+      "value": null,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": "2025-09-02",
+      "end_date": "2025-09-16",
+      "days": []
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "Offer valid on specified dates only",
+    "source_url": "https://www.combank.lk/rewards-promotions",
+    "id": "po-cb-034"
+  },
+  {
+    "bank": "Commercial Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Premium Card Offers",
+    "merchant": {
+      "name": "Galle Face Hotel"
+    },
+    "title": "25% off dining",
+    "description": null,
+    "offer_details": {
+      "type": "percentage",
+      "value": 25
+    },
+    "validity": {
+      "start_date": null,
+      "end_date": "2025-09-30",
+      "days": null
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": null,
+    "source_url": "https://www.combank.lk/rewards-promotions",
+    "id": "po-cb-035"
+  },
+  {
+    "bank": "Commercial Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Premium Card Offers",
+    "merchant": {
+      "name": "Amari Colombo"
+    },
+    "title": "Up to 25% off dining at Amari Colombo",
+    "description": null,
+    "offer_details": {
+      "type": "percentage",
+      "value": 25,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": null,
+      "end_date": "2025-09-30",
+      "days": null
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": null,
+    "source_url": "https://www.combank.lk/rewards-promotions",
+    "id": "po-cb-036"
+  },
+  {
+    "bank": "Commercial Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Premium Card Offers",
+    "merchant": {
+      "name": "Ceylon Curry Club",
+      "logo_url": null
+    },
+    "title": "25% off dining at Ceylon Curry Club",
+    "description": null,
+    "offer_details": {
+      "type": "percentage",
+      "value": 25,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": null,
+      "end_date": "2025-10-31",
+      "days": null
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "Offer valid till 31st October 2025.",
+    "source_url": "https://www.combank.lk/rewards-promotions",
+    "id": "po-cb-037"
+  },
+  {
+    "bank": "Commercial Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Premium Card Offers",
+    "merchant": {
+      "name": "Blue Orbit by Citrus"
+    },
+    "title": "20% off dining at Blue Orbit by Citrus",
+    "description": null,
+    "offer_details": {
+      "type": "percentage",
+      "value": 20,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": null,
+      "end_date": "2025-10-31",
+      "days": []
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "Offer valid till 31st October 2025",
+    "source_url": "https://www.combank.lk/rewards-promotions",
+    "id": "po-cb-038"
+  },
+  {
+    "bank": "Commercial Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Premium Card Offers",
+    "merchant": {
+      "name": "Ramada",
+      "logo_url": null
+    },
+    "title": "25% off dining at Ramada",
+    "description": null,
+    "offer_details": {
+      "type": "percentage",
+      "value": 25,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": null,
+      "end_date": "2025-10-31",
+      "days": null
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "Offer valid till 31st October 2025.",
+    "source_url": "https://www.combank.lk/rewards-promotions",
+    "id": "po-cb-039"
+  },
+  {
+    "bank": "Commercial Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Premium Card Offers",
+    "merchant": {
+      "name": "Taj Samudra Colombo"
+    },
+    "title": "25% off dining at Taj Samudra Colombo",
+    "description": "Enjoy the art of dining with ComBank Premium Credit Cards.",
+    "offer_details": {
+      "type": "percentage",
+      "value": 25
+    },
+    "validity": {
+      "start_date": null,
+      "end_date": "2025-10-31"
+    },
+    "location": {},
+    "terms": "Offer valid till 31st October 2025.",
+    "source_url": "https://www.combank.lk/rewards-promotions",
+    "id": "po-cb-040"
+  },
+  {
+    "bank": "Commercial Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Premium Card Offers",
+    "merchant": {
+      "name": "Cinnamon Grand Hotel",
+      "logo_url": null
+    },
+    "title": "25% off dining at Cinnamon Grand Colombo",
+    "description": "Enjoy the art of dining with ComBank Premium Credit Cards",
+    "offer_details": {
+      "type": "percentage",
+      "value": 25,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": null,
+      "end_date": "2025-09-30",
+      "days": []
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "Offer valid till 30th September 2025",
+    "source_url": "https://www.combank.lk/rewards-promotions",
+    "id": "po-cb-041"
+  },
+  {
+    "bank": "Commercial Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Premium Card Offers",
+    "merchant": {
+      "name": "Jetwing Luxury Reserves"
+    },
+    "title": "Up to 60% Off Dining",
+    "description": "Escape to luxury with ComBank Premium Credit Cards.",
+    "offer_details": {
+      "type": "percentage",
+      "value": 60,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": null,
+      "end_date": "2025-09-30",
+      "days": null
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "Booking valid till 30th September 2025.",
+    "source_url": "https://www.combank.lk/rewards-promotions",
+    "id": "po-cb-042"
+  },
+  {
+    "bank": "Commercial Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Premium Card Offers",
+    "merchant": {
+      "name": "Aarunya Kandy"
+    },
+    "title": "Up to 35% Off",
+    "description": "Relax at Aarunya Kandy with ComBank Premium Credit Cards",
+    "offer_details": {
+      "type": "percentage",
+      "value": null,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": null,
+      "end_date": "2025-11-30",
+      "days": null
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "Offer valid till 30th November 2025",
+    "source_url": "https://www.combank.lk/rewards-promotions",
+    "id": "po-cb-043"
+  },
+  {
+    "bank": "Commercial Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Premium Card Offers",
+    "merchant": {
+      "name": "Classic Travel",
+      "logo_url": null
+    },
+    "title": "Travel to favourite holiday destination",
+    "description": "Use ComBank Premium Credit Cards for travel",
+    "offer_details": {
+      "type": "other",
+      "value": null,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": "2025-09-01",
+      "end_date": "2025-09-20",
+      "days": [],
+      "time": ""
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "Travel terms and conditions apply",
+    "source_url": "https://www.combank.lk/rewards-promotions",
+    "id": "po-cb-044"
+  },
+  {
+    "bank": "Commercial Bank",
+    "card_types": [
+      "Credit Card",
+      "Debit Card"
+    ],
+    "category": "Other Offers",
+    "merchant": {
+      "name": "Mc Currie"
+    },
+    "title": "Ignite your taste for authentic flavors",
+    "description": null,
+    "offer_details": {
+      "type": "percentage",
+      "value": 20,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": "2025-01-15",
+      "end_date": "2025-09-30",
+      "days": [
+        "every month"
+      ]
+    },
+    "location": null,
+    "terms": null,
+    "source_url": "https://www.combank.lk/rewards-promotions",
+    "id": "po-cb-045"
+  },
+  {
+    "bank": "Commercial Bank",
+    "card_types": [
+      "Credit Card",
+      "Visa"
+    ],
+    "category": "Other Offers",
+    "merchant": {
+      "name": "Taiwan",
+      "logo_url": null
+    },
+    "title": "Up to 35% Off",
+    "description": "Explore Taiwan with your ComBank Visa Cards",
+    "offer_details": {
+      "type": "percentage",
+      "value": null,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": null,
+      "end_date": "2025-12-31",
+      "days": []
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "Offer valid details may be found on ComBank's website",
+    "source_url": "https://www.combank.lk/rewards-promotions",
+    "id": "po-cb-046"
+  },
+  {
+    "bank": "Commercial Bank",
+    "card_types": [
+      "Credit Card",
+      "Visa"
+    ],
+    "category": "Other Offers",
+    "merchant": {
+      "name": "Explore Korea",
+      "logo_url": null
+    },
+    "title": "Up to 35% Off",
+    "description": "Explore Korea with your ComBank Visa Cards",
+    "offer_details": {
+      "type": "percentage",
+      "value": 35,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": null,
+      "end_date": "2025-12-31",
+      "days": [],
+      "time": null
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "Offer valid for ComBank Visa Card holders only.",
+    "source_url": "https://www.combank.lk/rewards-promotions",
+    "id": "po-cb-047"
+  },
+  {
+    "bank": "People's Bank",
+    "card_types": [
+      "Credit Card",
+      "Debit Card",
+      "Visa",
+      "Mastercard"
+    ],
+    "category": "Leisure",
+    "merchant": {
+      "name": "Uga Bay - Passikudah"
+    },
+    "title": "45% off Uga Bay - Passikudah",
+    "description": "Enjoy a 45% discount at Uga Bay - Passikudah.",
+    "offer_details": {
+      "type": "percentage",
+      "value": 45,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": "2025-09-01",
+      "end_date": "2026-01-31",
+      "days": null,
+      "time": null
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "Terms and conditions may apply. Please call the provided phone number for more details.",
+    "source_url": "https://www.peoplesbank.lk/roastoth/2025/09/Uga-Bay.pdf",
+    "id": "po-pb-001"
+  },
+  {
+    "bank": "People's Bank",
+    "card_types": [
+      "Credit Card",
+      "Debit Card",
+      "Visa",
+      "Mastercard"
+    ],
+    "category": "Leisure",
+    "merchant": {
+      "name": "Uga Jungle Beach - Trincomalee"
+    },
+    "title": "45% off Uga Jungle Beach - Trincomalee",
+    "description": null,
+    "offer_details": {
+      "type": "percentage",
+      "value": 45,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": "2025-09-01",
+      "end_date": "2025-09-30",
+      "days": null,
+      "time": null
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "Call the provided number for more details.",
+    "source_url": "https://www.peoplesbank.lk/roastoth/2025/09/Uga-Jungle-Beach.pdf",
+    "id": "po-pb-002"
+  },
+  {
+    "bank": "People's Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Leisure",
+    "merchant": {
+      "name": "Rajarata Hotel-Anuradhapura"
+    },
+    "title": "50% off",
+    "description": "Half price offer at Rajarata Hotel-Anuradhapura",
+    "offer_details": {
+      "type": "percentage",
+      "value": 50,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": "2025-09-01",
+      "end_date": "2025-10-31",
+      "days": null,
+      "time": null
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "Contact the hotel for more details.",
+    "source_url": "https://www.peoplesbank.lk/leisure-credit-card/",
+    "id": "po-pb-003"
+  },
+  {
+    "bank": "People's Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Leisure",
+    "merchant": {
+      "name": "The Other Corner - Habarana"
+    },
+    "title": "45% off",
+    "description": "2025 offer valid on BB, HB & FB basis",
+    "offer_details": {
+      "type": "percentage",
+      "value": 45
+    },
+    "validity": {
+      "start_date": "2025-10-01",
+      "end_date": "2025-10-31"
+    },
+    "location": null,
+    "terms": "Offer valid on BB, HB & FB basis. Contact for more details.",
+    "source_url": "https://www.peoplesbank.lk/leisure-credit-card/",
+    "id": "po-pb-004"
+  },
+  {
+    "bank": "People's Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Leisure",
+    "merchant": {
+      "name": "Akway Resort -Beragala"
+    },
+    "title": "38% off at Akway Resort -Beragala",
+    "description": "Enjoy a 38% discount at Akway Resort -Beragala",
+    "offer_details": {
+      "type": "percentage",
+      "value": 38
+    },
+    "validity": {
+      "start_date": "2025-06-01",
+      "end_date": "2025-10-31"
+    },
+    "location": null,
+    "terms": "Terms and conditions may apply. For more details, visit the source URL.",
+    "source_url": "https://www.peoplesbank.lk/leisure-credit-card/",
+    "id": "po-pb-005"
+  },
+  {
+    "bank": "People's Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Leisure",
+    "merchant": {
+      "name": "Thaala Bentota",
+      "logo_url": null
+    },
+    "title": "35% off Thaala Bentota",
+    "description": "Discount on booking from August 27th to October 31st, 2025. Online Booking Only.",
+    "offer_details": {
+      "type": "percentage",
+      "value": 35,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": "2025-08-27",
+      "end_date": "2025-10-31"
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "Promo Code: CARD35. Online Booking Only.",
+    "source_url": "https://www.peoplesbank.lk/leisure-credit-card/",
+    "id": "po-pb-006"
+  },
+  {
+    "bank": "People's Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Leisure",
+    "merchant": {
+      "name": "Club Hotel Dolphin -Negombo",
+      "logo_url": null
+    },
+    "title": "35% off at Club Hotel Dolphin -Negombo",
+    "description": "Book online for 35% discount",
+    "offer_details": {
+      "type": "percentage",
+      "value": 35,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": "2025-08-27",
+      "end_date": "2025-10-31",
+      "days": [],
+      "time": ""
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "Online Booking Only. Promo Code - CARD35 required.",
+    "source_url": "https://www.peoplesbank.lk/leisure-credit-card/",
+    "id": "po-pb-007"
+  },
+  {
+    "bank": "People's Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Leisure",
+    "merchant": {
+      "name": "The Calm Resort and Spa – Pasikudha",
+      "logo_url": null
+    },
+    "title": "35% off at The Calm Resort and Spa – Pasikudha",
+    "description": "Enjoy a 35% discount on your booking at The Calm Resort and Spa – Pasikudha.",
+    "offer_details": {
+      "type": "percentage",
+      "value": 35,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": "2025-08-27",
+      "end_date": "2025-10-31",
+      "days": null,
+      "time": null
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "Online Booking Only. Promo Code - CARD35 required.",
+    "source_url": "https://www.peoplesbank.lk/leisure-credit-card/",
+    "id": "po-pb-008"
+  },
+  {
+    "bank": "People's Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Leisure",
+    "merchant": {
+      "name": "Occidental Eden - Beruwala",
+      "logo_url": null
+    },
+    "title": "35% off at Occidental Eden - Beruwala",
+    "description": "Book online and get a 35% discount",
+    "offer_details": {
+      "type": "percentage",
+      "value": 35,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": "2025-08-27",
+      "end_date": "2025-10-31",
+      "days": [],
+      "time": ""
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "Online booking only. Use promo code CARD35.",
+    "source_url": "https://www.peoplesbank.lk/leisure-credit-card/",
+    "id": "po-pb-009"
+  },
+  {
+    "bank": "People's Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Leisure",
+    "merchant": {
+      "name": "Waters Edge"
+    },
+    "title": "30% off at Waters Edge",
+    "description": "Enjoy a 30% discount at Waters Edge until 30th September",
+    "offer_details": {
+      "type": "percentage",
+      "value": 30
+    },
+    "validity": {
+      "start_date": "2025-09-01",
+      "end_date": "2025-09-30"
+    },
+    "location": null,
+    "terms": "Only two rooms can be reserved by one credit card per day.",
+    "source_url": "https://www.peoplesbank.lk/leisure-credit-card/",
+    "id": "po-pb-010"
+  },
+  {
+    "bank": "People's Bank",
+    "card_types": [
+      "Credit Card",
+      "Debit Card",
+      "Visa",
+      "Mastercard"
+    ],
+    "category": "Leisure",
+    "merchant": {
+      "name": "Mirage Kandyan Heights-Kandy"
+    },
+    "title": "Up to 30% off Mirage Kandyan Heights-Kandy",
+    "description": "Offer for accommodation at Mirage Kandyan Heights-Kandy from 1st September to 30th November 2025.",
+    "offer_details": {
+      "type": "percentage",
+      "value": 30
+    },
+    "validity": {
+      "start_date": "2025-09-01",
+      "end_date": "2025-11-30"
+    },
+    "location": null,
+    "terms": "Terms and conditions may apply. Please contact the merchant for more details.",
+    "source_url": "https://www.peoplesbank.lk/roastoth/2025/08/Mirage-Kings-Cottage.pdf",
+    "id": "po-pb-011"
+  },
+  {
+    "bank": "People's Bank",
+    "card_types": [
+      "Credit Card",
+      "Debit Card",
+      "Visa",
+      "Mastercard"
+    ],
+    "category": "Leisure",
+    "merchant": {
+      "name": "Mirage Kings Cottage Nuwara Eliya",
+      "logo_url": null
+    },
+    "title": "Up to 30% off Mirage Kings Cottage",
+    "description": "Stay at Mirage Kings Cottage Nuwara Eliya for discounted rates",
+    "offer_details": {
+      "type": "percentage",
+      "value": 30,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": "2025-09-01",
+      "end_date": "2025-11-30"
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "Book through People's Bank to qualify for the discount",
+    "source_url": "https://www.peoplesbank.lk/roastoth/2025/08/Mirage-Kandyan-Heights.pdf",
+    "id": "po-pb-012"
+  },
+  {
+    "bank": "People's Bank",
+    "card_types": [
+      "Credit Card",
+      "Debit Card",
+      "Visa",
+      "Mastercard"
+    ],
+    "category": "Leisure",
+    "merchant": {
+      "name": "Mirage Colombo"
+    },
+    "title": "Up to 30% Mirage Colombo",
+    "description": "20% off dining at Mirage Colombo",
+    "offer_details": {
+      "type": "percentage",
+      "value": 30,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": "2025-09-01",
+      "end_date": "2025-11-30"
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "Call 0766736000 for more details.",
+    "source_url": "https://www.peoplesbank.lk/roastoth/2025/08/Mirage-Colombo.pdf",
+    "id": "po-pb-013"
+  },
+  {
+    "bank": "People's Bank",
+    "card_types": [
+      "Credit Card",
+      "Debit Card",
+      "Visa",
+      "Mastercard"
+    ],
+    "category": "Leisure",
+    "merchant": {
+      "name": "Amaara Sky Hotel – Kandy",
+      "logo_url": null
+    },
+    "title": "30% off Amaara Sky Hotel – Kandy",
+    "description": "Discount on booking at Amaara Sky Hotel in Kandy",
+    "offer_details": {
+      "type": "percentage",
+      "value": 30,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": "2025-09-01",
+      "end_date": "2025-10-30",
+      "days": null,
+      "time": null
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "Offer valid for bookings made during the promotional period. Other terms and conditions may apply.",
+    "source_url": "https://www.peoplesbank.lk/roastoth/2025/09/Amaara-Hotels-1.pdf",
+    "id": "po-pb-014"
+  },
+  {
+    "bank": "People's Bank",
+    "card_types": [
+      "Credit Card",
+      "Debit Card",
+      "Visa",
+      "Mastercard"
+    ],
+    "category": "Leisure",
+    "merchant": {
+      "name": "Amaara Forest Hotel- Sigiriya"
+    },
+    "title": "30% off Amaara Forest Hotel- Sigiriya",
+    "description": "Enjoy a 30% discount at Amaara Forest Hotel- Sigiriya",
+    "offer_details": {
+      "type": "percentage",
+      "value": 30,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": "2025-09-01",
+      "end_date": "2025-10-30"
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "Terms and conditions apply. Visit www.amaarahotels.com or call 0770038312 for more details.",
+    "source_url": "https://www.peoplesbank.lk/roastoth/2025/09/Amaara-Hotels-1.pdf",
+    "id": "po-pb-015"
+  },
+  {
+    "bank": "People's Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Leisure",
+    "merchant": {
+      "name": "Laya Beach- Wadduwa"
+    },
+    "title": "35% off at Laya Beach- Wadduwa",
+    "description": "Enjoy a 35% discount at Laya Beach- Wadduwa",
+    "offer_details": {
+      "type": "percentage",
+      "value": 35,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": "2025-09-01",
+      "end_date": "2025-09-30",
+      "days": null,
+      "time": null
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "Offer valid till 30th September 2025. Contact the provided numbers for reservations.",
+    "source_url": "https://www.peoplesbank.lk/leisure-credit-card/",
+    "id": "po-pb-016"
+  },
+  {
+    "bank": "People's Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Leisure",
+    "merchant": {
+      "name": "The Radh Kandy"
+    },
+    "title": "30% off at The Radh Kandy",
+    "description": "Enjoy a 30% discount on your booking at The Radh Kandy.",
+    "offer_details": {
+      "type": "percentage",
+      "value": 30,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": "2025-10-01",
+      "end_date": "2025-10-31"
+    },
+    "location": null,
+    "terms": "Offer valid for BB & HB bookings only. Contact the hotel directly for reservations.",
+    "source_url": "https://www.peoplesbank.lk/leisure-credit-card/",
+    "id": "po-pb-017"
+  },
+  {
+    "bank": "People's Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Leisure",
+    "merchant": {
+      "name": "Kalu's Hideaway Udawalawa"
+    },
+    "title": "25% off dining",
+    "description": "Offer valid on HB & FB basis",
+    "offer_details": {
+      "type": "percentage",
+      "value": 25
+    },
+    "validity": {
+      "start_date": "2025-10-01",
+      "end_date": "2025-10-31"
+    },
+    "location": null,
+    "terms": "Offer valid on HB & FB basis. Contact for more details.",
+    "source_url": "https://www.peoplesbank.lk/leisure-credit-card/",
+    "id": "po-pb-018"
+  },
+  {
+    "bank": "People's Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Leisure",
+    "merchant": {
+      "name": "Tropical Life Resort & Spa - Dambulla"
+    },
+    "title": "35% off at Tropical Life Resort & Spa - Dambulla",
+    "description": "Enjoy a 35% discount at Tropical Life Resort & Spa in Dambulla.",
+    "offer_details": {
+      "type": "percentage",
+      "value": 35,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": "2025-10-01",
+      "end_date": "2025-10-31"
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "Terms and conditions apply. Please visit the source link for details.",
+    "source_url": "https://www.peoplesbank.lk/leisure-credit-card/",
+    "id": "po-pb-019"
+  },
+  {
+    "bank": "People's Bank",
+    "card_types": [
+      "Credit Card",
+      "Debit Card",
+      "Visa",
+      "Mastercard"
+    ],
+    "category": "Leisure",
+    "merchant": {
+      "name": "Apa Villa (Thalpe)",
+      "logo_url": null
+    },
+    "title": "20% off dining at Apa Villa (Thalpe)",
+    "description": "Offer valid for BB, HB & FB packages.",
+    "offer_details": {
+      "type": "percentage",
+      "value": 20,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": "2025-09-XX",
+      "end_date": "2025-12-31",
+      "days": [],
+      "time": ""
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "Offer valid for BB, HB & FB packages. Contact details provided for more information.",
+    "source_url": "https://www.peoplesbank.lk/roastoth/2024/09/Joes-Resorts.pdf",
+    "id": "po-pb-020"
+  },
+  {
+    "bank": "People's Bank",
+    "card_types": [
+      "Credit Card",
+      "Debit Card",
+      "Visa",
+      "Mastercard"
+    ],
+    "category": "Leisure",
+    "merchant": {
+      "name": "Era Beach (Thalpe)",
+      "logo_url": null
+    },
+    "title": "20% off dining at Era Beach",
+    "description": "Enjoy a 20% discount on your stay at Era Beach (BB/HB /FB)",
+    "offer_details": {
+      "type": "percentage",
+      "value": 20,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": "2025-09-XX",
+      "end_date": "2025-12-31",
+      "days": null
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "Terms and conditions apply. For more details visit www.joesresorts.com",
+    "source_url": "https://www.peoplesbank.lk/roastoth/2024/09/Joes-Resorts.pdf",
+    "id": "po-pb-021"
+  },
+  {
+    "bank": "People's Bank",
+    "card_types": [
+      "Credit Card",
+      "Debit Card",
+      "Visa",
+      "Mastercard"
+    ],
+    "category": "Leisure",
+    "merchant": {
+      "name": "Joe's Resort ( Unawatuna )",
+      "logo_url": null
+    },
+    "title": "20% off dining at Joe's Resort",
+    "description": "Enjoy a 20% discount on BB/HB /FB packages.",
+    "offer_details": {
+      "type": "percentage",
+      "value": 20,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": "2025-09-XX",
+      "end_date": "2025-12-31",
+      "days": null
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "Applicable for BB/HB /FB packages. Call Joe's Resort for more details.",
+    "source_url": "https://www.peoplesbank.lk/roastoth/2024/09/Joes-Resorts.pdf",
+    "id": "po-pb-022"
+  },
+  {
+    "bank": "People's Bank",
+    "card_types": [
+      "Credit Card",
+      "Debit Card",
+      "Visa",
+      "Mastercard"
+    ],
+    "category": "Leisure",
+    "merchant": {
+      "name": "Joe's Resort (Bentota)",
+      "logo_url": null
+    },
+    "title": "20% off Joe's Resort",
+    "description": "Stay at Joe's Resort in Bentota with discounted rates.",
+    "offer_details": {
+      "type": "percentage",
+      "value": 20,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": "2025-09-XX",
+      "end_date": "2025-12-31",
+      "days": null
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "BB/HB /FB terms apply. Visit joesresorts.com for more information.",
+    "source_url": "https://www.peoplesbank.lk/roastoth/2024/09/Joes-Resorts.pdf",
+    "id": "po-pb-023"
+  },
+  {
+    "bank": "People's Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Leisure",
+    "merchant": {
+      "name": "Oak Ray Serene Garden - Kandy"
+    },
+    "title": "Up to 25% discount at Oak Ray Serene Garden - Kandy",
+    "description": "Discount offer for dining at Oak Ray Serene Garden - Kandy.",
+    "offer_details": {
+      "type": "percentage",
+      "value": 25,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": "2025-10-01",
+      "end_date": "2025-10-31"
+    },
+    "location": null,
+    "terms": "Offer valid for Diners' Club Bank (DBL) and Trade Promotions Limited (TPL) cardholders. Contact 0772208699 for more details.",
+    "source_url": "https://www.peoplesbank.lk/leisure-credit-card/",
+    "id": "po-pb-024"
+  },
+  {
+    "bank": "People's Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Leisure",
+    "merchant": {
+      "name": "Senani Hotel - Kandy"
+    },
+    "title": "Up to 25% off at Senani Hotel - Kandy",
+    "description": "Enjoy up to 25% discount on double room with breakfast and 20% discount on twin room with breakfast.",
+    "offer_details": {
+      "type": "percentage",
+      "value": 25,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": "2025-10-01",
+      "end_date": "2025-10-31"
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "Terms and conditions may apply. Contact the hotel for more details.",
+    "source_url": "https://www.peoplesbank.lk/leisure-credit-card/",
+    "id": "po-pb-025"
+  },
+  {
+    "bank": "People's Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Leisure",
+    "merchant": {
+      "name": "Oak Ray Summer Hill Breeze - Nuwara Eliya"
+    },
+    "title": "Up to 25% off at Oak Ray Summer Hill Breeze - Nuwara Eliya",
+    "description": "25% discount for DBL FB and 20% from TPL FB",
+    "offer_details": {
+      "type": "percentage",
+      "value": 25,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": "2025-10-01",
+      "end_date": "2025-10-31",
+      "days": null,
+      "time": null
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "Call 0772208699 for more details",
+    "source_url": "https://www.peoplesbank.lk/leisure-credit-card/",
+    "id": "po-pb-026"
+  },
+  {
+    "bank": "People's Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Leisure",
+    "merchant": {
+      "name": "Oak Ray Heritage - Kandy"
+    },
+    "title": "Up to 25% off at Oak Ray Heritage - Kandy",
+    "description": "Enjoy up to 25% discount at Oak Ray Heritage, Kandy.",
+    "offer_details": {
+      "type": "percentage",
+      "value": null,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": "2025-10-01",
+      "end_date": "2025-10-31"
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "Offer is valid for People's Bank Debit and FB cardholders. For details, call 0772208699.",
+    "source_url": "https://www.peoplesbank.lk/leisure-credit-card/",
+    "id": "po-pb-027"
+  },
+  {
+    "bank": "People's Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Leisure",
+    "merchant": {
+      "name": "Ella Deck Resort-Ella"
+    },
+    "title": "30% off dining",
+    "description": null,
+    "offer_details": {
+      "type": "percentage",
+      "value": 30
+    },
+    "validity": {
+      "start_date": "2025-10-XX",
+      "end_date": "2025-12-31",
+      "days": [
+        "Daily"
+      ]
+    },
+    "location": null,
+    "terms": null,
+    "source_url": "https://www.peoplesbank.lk/leisure-credit-card/",
+    "id": "po-pb-028"
+  },
+  {
+    "bank": "People's Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Leisure",
+    "merchant": {
+      "name": "Pelwehera Village Resort - Dambulla"
+    },
+    "title": "Up to 25% off at Pelwehera Village Resort - Dambulla",
+    "description": "Offer applicable for DBL FB and TPL FB rooms.",
+    "offer_details": {
+      "type": "percentage",
+      "value": 25,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": "2025-10-01",
+      "end_date": "2025-10-31"
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "Offer valid for bookings made before the respective dates. Call 0772208699 for more details.",
+    "source_url": "https://www.peoplesbank.lk/leisure-credit-card/",
+    "id": "po-pb-029"
+  },
+  {
+    "bank": "People's Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Leisure",
+    "merchant": {
+      "name": "Fresco Water Villa -Sigiriya"
+    },
+    "title": "Up to 25% off Fresco Water Villa -Sigiriya",
+    "description": "Discounted rates for Fresco Water Villa -Sigiriya",
+    "offer_details": {
+      "type": "percentage",
+      "value": 25,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": "2025-10-01",
+      "end_date": "2025-10-31"
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "Offer valid for Double Bed and Triple Bed rooms. Contact the hotel directly for booking.",
+    "source_url": "https://www.peoplesbank.lk/leisure-credit-card/",
+    "id": "po-pb-030"
+  },
+  {
+    "bank": "People's Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Leisure",
+    "merchant": {
+      "name": "Oak Ray Elephant Lake - Habarana"
+    },
+    "title": "Up to 25% off at Oak Ray Elephant Lake - Habarana",
+    "description": "Discount on bookings till 31st October 2025",
+    "offer_details": {
+      "type": "percentage",
+      "value": 25,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": "2025-10-01",
+      "end_date": "2025-10-31"
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "Discount applies to Double Room and Twin Room bookings made through Facebook. Contact provided for more information.",
+    "source_url": "https://www.peoplesbank.lk/leisure-credit-card/",
+    "id": "po-pb-031"
+  },
+  {
+    "bank": "People's Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Leisure",
+    "merchant": {
+      "name": "Oak Ray Ella Gap - Ella"
+    },
+    "title": "Up to 25% discount on Oak Ray Ella Gap",
+    "description": "Discounts varying for DBF and TPL Facebook followers",
+    "offer_details": {
+      "type": "percentage",
+      "value": 25,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": "2025-10-01",
+      "end_date": "2025-10-31"
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "Discounts vary for DBF and TPL Facebook followers. Contact number provided for more information.",
+    "source_url": "https://www.peoplesbank.lk/leisure-credit-card/",
+    "id": "po-pb-032"
+  },
+  {
+    "bank": "People's Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Leisure",
+    "merchant": {
+      "name": "Oak Ray Wild Yala - Thissamaramaya"
+    },
+    "title": "Up to 25% off at Oak Ray Wild Yala - Thissamaramaya",
+    "description": "25% discount for DBL FB and 20% from TPL FB.",
+    "offer_details": {
+      "type": "percentage",
+      "value": null,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": "2025-10-01",
+      "end_date": "2025-10-31"
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "Call the provided number for more details.",
+    "source_url": "https://www.peoplesbank.lk/leisure-credit-card/",
+    "id": "po-pb-033"
+  },
+  {
+    "bank": "People's Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Leisure",
+    "merchant": {
+      "name": "Rain Tree by Oak Ray - Thissamaramaya"
+    },
+    "title": "Up to 25% off at Rain Tree by Oak Ray",
+    "description": "25% discount for DBL FB and 20% from TPL FB",
+    "offer_details": {
+      "type": "percentage",
+      "value": 25,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": "2025-10-01",
+      "end_date": "2025-10-31"
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "Valid for DBL FB and TPL FB only. Contact the merchant for more details.",
+    "source_url": "https://www.peoplesbank.lk/leisure-credit-card/",
+    "id": "po-pb-034"
+  },
+  {
+    "bank": "People's Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Leisure",
+    "merchant": {
+      "name": "Kassapa Lions Rock-Sigiriya"
+    },
+    "title": "25% off Kassapa Lions Rock-Sigiriya",
+    "description": "Discount is applicable for a maximum of 4 rooms only",
+    "offer_details": {
+      "type": "percentage",
+      "value": 25,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": "2025-04-01",
+      "end_date": "2025-10-31"
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "Discount is applicable for a maximum of 4 rooms only",
+    "source_url": "https://www.peoplesbank.lk/leisure-credit-card/",
+    "id": "po-pb-035"
+  },
+  {
+    "bank": "People's Bank",
+    "card_types": [
+      "Credit Card",
+      "Debit Card",
+      "Visa",
+      "Mastercard"
+    ],
+    "category": "Leisure",
+    "merchant": {
+      "name": "Hunas Falls Hotel - Elkaduwa"
+    },
+    "title": "25% off dining",
+    "description": null,
+    "offer_details": {
+      "type": "percentage",
+      "value": 25
+    },
+    "validity": {
+      "start_date": "2025-09-01",
+      "end_date": "2025-09-30"
+    },
+    "location": null,
+    "terms": null,
+    "source_url": "https://hunasfalls.bookingeye.net//index/promo/code/PCO25/pr/1",
+    "id": "po-pb-036"
+  },
+  {
+    "bank": "People's Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Leisure",
+    "merchant": {
+      "name": "Hikkaduwa Beach Hotel",
+      "logo_url": null
+    },
+    "title": "20% off dining at Hikkaduwa Beach Hotel",
+    "description": "Enjoy a 20% discount on your dining bill at Hikkaduwa Beach Hotel.",
+    "offer_details": {
+      "type": "percentage",
+      "value": 20,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": "2025-04-01",
+      "end_date": "2025-10-31",
+      "days": [],
+      "time": ""
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "Offer valid for bookings made during the specified period. For reservations, please call the provided contact numbers.",
+    "source_url": "https://www.peoplesbank.lk/leisure-credit-card/",
+    "id": "po-pb-037"
+  },
+  {
+    "bank": "People's Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Leisure",
+    "merchant": {
+      "name": "Dream cliff Mountain Resort- Nikapotha"
+    },
+    "title": "20% off dining",
+    "description": "Discount at Dream cliff Mountain Resort- Nikapotha from 1st September to 30th November 2025",
+    "offer_details": {
+      "type": "percentage",
+      "value": 20
+    },
+    "validity": {
+      "start_date": "2025-09-01",
+      "end_date": "2025-11-30"
+    },
+    "location": null,
+    "terms": "Contact details provided for reservations",
+    "source_url": "https://www.peoplesbank.lk/leisure-credit-card/",
+    "id": "po-pb-038"
+  },
+  {
+    "bank": "People's Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Leisure",
+    "merchant": {
+      "name": "Lake Serenity Resort & Spa- Kuruvita"
+    },
+    "title": "30% off at Lake Serenity Resort & Spa- Kuruvita",
+    "description": "Enjoy a 30% discount at the beautiful Lake Serenity Resort & Spa, Kuruvita.",
+    "offer_details": {
+      "type": "percentage",
+      "value": 30
+    },
+    "validity": {
+      "start_date": "2025-04-01",
+      "end_date": "2025-10-31"
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "Offer valid for direct bookings only. Blackout dates may apply.",
+    "source_url": "https://www.peoplesbank.lk/leisure-credit-card/",
+    "id": "po-pb-039"
+  },
+  {
+    "bank": "People's Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Leisure",
+    "merchant": {
+      "name": "Hibiscus Beach Hotel & Villas - Waskaduwa"
+    },
+    "title": "25% off Hibiscus Beach Hotel & Villas",
+    "description": "Enjoy a 25% discount at Hibiscus Beach Hotel & Villas - Waskaduwa",
+    "offer_details": {
+      "type": "percentage",
+      "value": 25
+    },
+    "validity": {
+      "start_date": "2025-08-14",
+      "end_date": "2025-11-30"
+    },
+    "location": null,
+    "terms": "Discount applies to room rates only. Booking must be made in advance.",
+    "source_url": "https://www.peoplesbank.lk/leisure-credit-card/",
+    "id": "po-pb-040"
+  },
+  {
+    "bank": "People's Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Leisure",
+    "merchant": {
+      "name": "Athgira River Camp - Udawalawa"
+    },
+    "title": "25% off Athgira River Camp",
+    "description": "Enjoy a 25% discount at Athgira River Camp in Udawalawa",
+    "offer_details": {
+      "type": "percentage",
+      "value": 25
+    },
+    "validity": {
+      "start_date": "2025-09-01",
+      "end_date": "2025-10-31"
+    },
+    "location": null,
+    "terms": "Terms and conditions apply.",
+    "source_url": "https://www.peoplesbank.lk/leisure-credit-card/",
+    "id": "po-pb-041"
+  },
+  {
+    "bank": "People's Bank",
+    "card_types": [
+      "Credit Card",
+      "Debit Card"
+    ],
+    "category": "Leisure",
+    "merchant": {
+      "name": "Elysia Sigiriya"
+    },
+    "title": "Up to 25% off",
+    "description": "Discount on stay at Elysia Sigiriya",
+    "offer_details": {
+      "type": "percentage",
+      "value": 25,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": "2025-10-01",
+      "end_date": "2025-10-31"
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "Call for reservation: 0774508585 / 0763778485",
+    "source_url": "https://www.peoplesbank.lk/leisure-credit-card/",
+    "id": "po-pb-042"
+  },
+  {
+    "bank": "People's Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Leisure",
+    "merchant": {
+      "name": "Centauria Hill - Ratnapura"
+    },
+    "title": "10% off at Centauria Hill - Ratnapura",
+    "description": "Enjoy a 10% discount at Centauria Hill, Ratnapura.",
+    "offer_details": {
+      "type": "percentage",
+      "value": 10
+    },
+    "validity": {
+      "start_date": "2025-10-01",
+      "end_date": "2025-12-20"
+    },
+    "location": null,
+    "terms": "Terms and conditions may apply.",
+    "source_url": "https://www.peoplesbank.lk/leisure-credit-card/",
+    "id": "po-pb-043"
+  },
+  {
+    "bank": "People's Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Leisure",
+    "merchant": {
+      "name": "Grand Serendib - Kandy"
+    },
+    "title": null,
+    "description": "35% off at Grand Serendib - Kandy",
+    "offer_details": {
+      "type": "percentage",
+      "value": 35,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": null,
+      "end_date": "2025-10-31",
+      "days": []
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "Offer valid until 31st October 2025. Contact 0812244333 for more details.",
+    "source_url": "https://www.peoplesbank.lk/leisure-credit-card/",
+    "id": "po-pb-044"
+  },
+  {
+    "bank": "People's Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Leisure",
+    "merchant": {
+      "name": "Candella House Talpe"
+    },
+    "title": "20% Off for Room Rates, 10% off for food and Beverages, 15% off for Spa Treatments",
+    "description": "Discounts on room rates, food, beverages, and spa treatments at Candella House Talpe.",
+    "offer_details": {
+      "type": "percentage",
+      "value": 20
+    },
+    "validity": {
+      "start_date": "2025-09-01",
+      "end_date": "2025-11-30"
+    },
+    "location": null,
+    "terms": "Offer valid at Candella House Talpe. For room reservations and spa treatments, call 0705738349.",
+    "source_url": "https://www.peoplesbank.lk/leisure-credit-card/",
+    "id": "po-pb-045"
+  },
+  {
+    "bank": "People's Bank",
+    "card_types": [
+      "Credit Card",
+      "Debit Card",
+      "Visa",
+      "Mastercard"
+    ],
+    "category": "Leisure",
+    "merchant": {
+      "name": "Hotel Glendower - Nuwara Eliya"
+    },
+    "title": "15% off at Hotel Glendower",
+    "description": "Offer valid on BB & HB Basis.",
+    "offer_details": {
+      "type": "percentage",
+      "value": 15,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": "2025-09-XX",
+      "end_date": "2025-12-31",
+      "days": null,
+      "time": null
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "Offer valid on BB & HB Basis. Contact the hotel for more details.",
+    "source_url": "https://www.peoplesbank.lk/roastoth/2025/09/Hotel-Glendower.pdf",
+    "id": "po-pb-046"
+  },
+  {
+    "bank": "People's Bank",
+    "card_types": [
+      "Credit Card",
+      "Debit Card",
+      "Visa",
+      "Mastercard"
+    ],
+    "category": "Leisure",
+    "merchant": {
+      "name": "Pedro Barn - Nuwara Eliya",
+      "logo_url": null
+    },
+    "title": "15% off Pedro Barn - Nuwara Eliya",
+    "description": "Offer valid on BB & HB Basis",
+    "offer_details": {
+      "type": "percentage",
+      "value": 15,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": "2025-09-XX",
+      "end_date": "2025-12-31",
+      "days": null,
+      "time": null
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "Offer valid on BB & HB Basis. Contact number provided for more details.",
+    "source_url": "https://www.peoplesbank.lk/roastoth/2025/09/Pedro-Barn.pdf",
+    "id": "po-pb-047"
+  },
+  {
+    "bank": "People's Bank",
+    "card_types": [
+      "Credit Card",
+      "Debit Card",
+      "Visa",
+      "Mastercard"
+    ],
+    "category": "Leisure",
+    "merchant": {
+      "name": "Not specified in the text",
+      "logo_url": null
+    },
+    "title": "Terms & Conditions View Offer Details",
+    "description": "Details of the offer not specified in the text.",
+    "offer_details": {
+      "type": "other",
+      "value": null,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": "Not specified in the text",
+      "end_date": "Not specified in the text",
+      "days": []
+    },
+    "location": {
+      "address": "Not specified in the text",
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "Terms and conditions not specified in the text.",
+    "source_url": "https://www.peoplesbank.lk/roastoth/2024/10/Peoples-Bank-Credit-Card-Promotion-Terms-and-Conditions.pdf",
+    "id": "po-pb-048"
+  },
+  {
+    "bank": "People's Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Restaurants",
+    "merchant": {
+      "name": "Solo Bowl"
+    },
+    "title": "20% off dining",
+    "description": "20% discount on dining at Solo Bowl until 30th September 2025 (every Wednesday)",
+    "offer_details": {
+      "type": "percentage",
+      "value": 20,
+      "max_discount_lkr": 2000
+    },
+    "validity": {
+      "start_date": "2025-09-01",
+      "end_date": "2025-09-30",
+      "days": [
+        "Wednesday"
+      ]
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "Maximum discount is Rs.2,000/- and this offer excludes liquor & tobacco.",
+    "source_url": "https://www.peoplesbank.lk/restaurants-credit-card/",
+    "id": "po-pb-049"
+  },
+  {
+    "bank": "People's Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Restaurants",
+    "merchant": {
+      "name": "Chinese Dragon Cafe"
+    },
+    "title": "20% off dining",
+    "description": "Discount on A la carte menu only, excluding dragon pack category & new products.",
+    "offer_details": {
+      "type": "percentage",
+      "value": 20,
+      "max_discount_lkr": null,
+      "min_bill_value_lkr": 3000
+    },
+    "validity": {
+      "start_date": "2025-09-01",
+      "end_date": "2025-09-30",
+      "days": null
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "Not Applicable on Kandana and Kaduwela outlets. Minimum bill value of Rs. 3000 required.",
+    "source_url": "https://www.peoplesbank.lk/restaurants-credit-card/",
+    "id": "po-pb-050"
+  },
+  {
+    "bank": "People's Bank",
+    "card_types": [
+      "Credit Card",
+      "Debit Card",
+      "Visa",
+      "Mastercard"
+    ],
+    "category": "Restaurants",
+    "merchant": {
+      "name": "Cinnamon Grand Hotel",
+      "logo_url": null
+    },
+    "title": "30% off plates at Cinnamon Grand Colombo",
+    "description": "Offer valid for lunch & dinner buffet, excluding liquor & tobacco.",
+    "offer_details": {
+      "type": "percentage",
+      "value": 30,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": "2025-09-01",
+      "end_date": "2025-09-30",
+      "days": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+        "Sunday"
+      ]
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "Offer valid for lunch & dinner buffet, excluding liquor & tobacco.",
+    "source_url": "https://www.peoplesbank.lk/restaurants-credit-card/",
+    "id": "po-pb-051"
+  },
+  {
+    "bank": "People's Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Restaurants",
+    "merchant": {
+      "name": "Cinnamon Grand Hotel",
+      "logo_url": null
+    },
+    "title": "30% off dining at The Lagoon, Cinnamon Grand Colombo",
+    "description": "Offer valid for lunch and dinner buffet, excluding liquor and tobacco.",
+    "offer_details": {
+      "type": "percentage",
+      "value": 30,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": "2025-06-01",
+      "end_date": "2025-09-30",
+      "days": [],
+      "time": null
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "Offer valid for lunch and dinner buffet, excluding liquor and tobacco.",
+    "source_url": "https://www.peoplesbank.lk/restaurants-credit-card/",
+    "id": "po-pb-052"
+  },
+  {
+    "bank": "People's Bank",
+    "card_types": [
+      "Credit Card",
+      "Debit Card",
+      "Visa",
+      "Mastercard"
+    ],
+    "category": "Restaurants",
+    "merchant": {
+      "name": "Cinnamon Grand Hotel",
+      "logo_url": null
+    },
+    "title": "30% off Nuga Gama at Cinnamon Grand Colombo",
+    "description": "Enjoy a 30% discount at Nuga Gama temporarily relocated to Cedar (Old Cheers) from 16th August 2025.",
+    "offer_details": {
+      "type": "percentage",
+      "value": 30,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": "2025-08-16",
+      "end_date": "2025-09-30",
+      "days": null,
+      "specific_day": "Till 30th September 2025"
+    },
+    "location": {
+      "address": "Cinnamon Grand Hotel (Temporarily relocated to Cedar - Old Cheers)",
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "Offer valid only at the temporarily relocated location of Nuga Gama at Cedar - Old Cheers. Terms and conditions apply.",
+    "source_url": "https://www.peoplesbank.lk/restaurants-credit-card/",
+    "id": "po-pb-053"
+  },
+  {
+    "bank": "People's Bank",
+    "card_types": [
+      "Credit Card",
+      "Debit Card",
+      "Visa",
+      "Mastercard"
+    ],
+    "category": "Restaurants",
+    "merchant": {
+      "name": "Cinnamon Grand Hotel",
+      "logo_url": null
+    },
+    "title": "30% off Breeze Bar at Cinnamon Grand Colombo",
+    "description": "Offer valid for lunch & dinner buffet, excluding liquor & tobacco.",
+    "offer_details": {
+      "type": "percentage",
+      "value": 30,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": "2025-09-01",
+      "end_date": "2025-09-30",
+      "days": null,
+      "times": null
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "Offer valid for lunch & dinner buffet, excluding liquor & tobacco.",
+    "source_url": "https://www.peoplesbank.lk/restaurants-credit-card/",
+    "id": "po-pb-054"
+  },
+  {
+    "bank": "People's Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Restaurants",
+    "merchant": {
+      "name": "Blue Orbit By Citrus"
+    },
+    "title": "20% off dining",
+    "description": "Offer for Lunch & Dinner Buffet Food Only",
+    "offer_details": {
+      "type": "percentage",
+      "value": 20,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": "2025-09-01",
+      "end_date": "2025-09-30",
+      "days": null,
+      "time": null
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "Max. 06 guests are allowed per card.",
+    "source_url": "https://www.peoplesbank.lk/restaurants-credit-card/",
+    "id": "po-pb-055"
+  },
+  {
+    "bank": "People's Bank",
+    "card_types": [
+      "Credit Card",
+      "Debit Card",
+      "Visa",
+      "Mastercard"
+    ],
+    "category": "Restaurants",
+    "merchant": {
+      "name": "Mitsi's Delicacies by Arabian Vibes"
+    },
+    "title": "40% off Mitsi's Delicacies by Arabian Vibes",
+    "description": null,
+    "offer_details": {
+      "type": "percentage",
+      "value": 40,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": "2025-09-01",
+      "end_date": "2025-09-30"
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": null,
+    "source_url": "https://www.peoplesbank.lk/restaurants-credit-card/",
+    "id": "po-pb-056"
+  },
+  {
+    "bank": "People's Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Restaurants",
+    "merchant": {
+      "name": "Greatwall Restaurant"
+    },
+    "title": "30% off dining",
+    "description": "30% discount on your bill at Greatwall Restaurant",
+    "offer_details": {
+      "type": "percentage",
+      "value": 30,
+      "max_discount_lkr": 5000
+    },
+    "validity": {
+      "start_date": "2025-09-01",
+      "end_date": "2025-09-30"
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "Only valid on A La Carte, maximum discount of Rs. 5,000 per bill with a minimum bill value of Rs. 3,000. One transaction per day per card. Excludes alcohol and tobacco products.",
+    "source_url": "https://www.peoplesbank.lk/restaurants-credit-card/",
+    "id": "po-pb-057"
+  },
+  {
+    "bank": "People's Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Restaurants",
+    "merchant": {
+      "name": "Harbour Court(By The Kingsbury)"
+    },
+    "title": "30% off Harbour Court(By The Kingsbury)",
+    "description": "30% discount at Harbour Court(By The Kingsbury) till 30th September 2025. Excludes liquor & tobacco.",
+    "offer_details": {
+      "type": "percentage",
+      "value": 30,
+      "max_discount_lkr": 10000
+    },
+    "validity": {
+      "start_date": "2025-09-01",
+      "end_date": "2025-09-30"
+    },
+    "location": null,
+    "terms": "Maximum discount per transaction is Rs.10,000/-, excludes liquor & tobacco.",
+    "source_url": "https://www.peoplesbank.lk/restaurants-credit-card/",
+    "id": "po-pb-058"
+  },
+  {
+    "bank": "People's Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Restaurants",
+    "merchant": {
+      "name": "Ocean(By The Kingsbury)"
+    },
+    "title": "30% off dining at Ocean(By The Kingsbury)",
+    "description": "25% off food bill at Ocean(By The Kingsbury) till 30th September 2025, excluding liquor & tobacco. Maximum discount per transaction Rs.10,000/-",
+    "offer_details": {
+      "type": "percentage",
+      "value": 30,
+      "max_discount_lkr": 10000
+    },
+    "validity": {
+      "start_date": "2025-09-01",
+      "end_date": "2025-09-30"
+    },
+    "location": null,
+    "terms": "Excluding Liquor & Tobacco",
+    "source_url": "https://www.peoplesbank.lk/restaurants-credit-card/",
+    "id": "po-pb-059"
+  },
+  {
+    "bank": "People's Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Restaurants",
+    "merchant": {
+      "name": "The Kingsbury"
+    },
+    "title": "30% off TENKU (By The Kingsbury)",
+    "description": "Discounts applicable for food & non-alcoholic beverages",
+    "offer_details": {
+      "type": "percentage",
+      "value": 30,
+      "max_discount_lkr": 10000
+    },
+    "validity": {
+      "start_date": "2025-09-01",
+      "end_date": "2025-09-30"
+    },
+    "location": null,
+    "terms": "Discounts applicable for food & non-alcoholic beverages. Maximum Discount Per Transaction Rs.10,000/-",
+    "source_url": "https://www.peoplesbank.lk/restaurants-credit-card/",
+    "id": "po-pb-060"
+  },
+  {
+    "bank": "People's Bank",
+    "card_types": [
+      "Credit Card",
+      "Debit Card",
+      "Visa",
+      "Mastercard"
+    ],
+    "category": "Restaurants",
+    "merchant": {
+      "name": "Fish & Co (At Havelock City Mall)",
+      "logo_url": null
+    },
+    "title": "30% off dining at Fish & Co",
+    "description": "Discount excludes starters, beverages, liquor, and tobacco.",
+    "offer_details": {
+      "type": "percentage",
+      "value": 30,
+      "max_discount_lkr": 9000
+    },
+    "validity": {
+      "start_date": "2025-09-01",
+      "end_date": "2025-09-30",
+      "days": null
+    },
+    "location": {
+      "address": "Havelock City Mall",
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "Offer excludes starters, beverages, liquor, and tobacco. Applicable only for dine-in & takeaway. Contact 0777867878 for more details.",
+    "source_url": "https://www.peoplesbank.lk/restaurants-credit-card/",
+    "id": "po-pb-061"
+  },
+  {
+    "bank": "People's Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Restaurants",
+    "merchant": {
+      "name": "Ceylon Curry Club"
+    },
+    "title": "20% off dining",
+    "description": "Enjoy a 20% discount on food at Ceylon Curry Club.",
+    "offer_details": {
+      "type": "percentage",
+      "value": 20,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": "2025-09-01",
+      "end_date": "2025-09-30"
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "Offer valid for food purchases only. Not valid in conjunction with any other offer.",
+    "source_url": "https://www.peoplesbank.lk/restaurants-credit-card/",
+    "id": "po-pb-062"
+  },
+  {
+    "bank": "People's Bank",
+    "card_types": [
+      "Credit Card",
+      "Debit Card",
+      "Visa",
+      "Mastercard"
+    ],
+    "category": "Restaurants",
+    "merchant": {
+      "name": "Uyana Restaurant"
+    },
+    "title": "20% off Mahaweli Reach- Uyana Restaurant & the A la carte menu",
+    "description": "Offer valid till 31st December 2025 (Excluding 24th & 31st December)",
+    "offer_details": {
+      "type": "percentage",
+      "value": 20,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": "2025-04-20",
+      "end_date": "2025-12-31",
+      "days": [
+        "Wednesday",
+        "Saturday",
+        "Sunday"
+      ],
+      "exceptions": [
+        "24th December",
+        "31st December"
+      ]
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "Offer valid at Uyana Restaurant & the A la carte menu. Excludes 24th & 31st December.",
+    "source_url": "https://www.peoplesbank.lk/roastoth/2025/04/Mahaweli-Reach.pdf",
+    "id": "po-pb-063"
+  },
+  {
+    "bank": "People's Bank",
+    "card_types": [
+      "Credit Card",
+      "Debit Card",
+      "Visa",
+      "Mastercard"
+    ],
+    "category": "Restaurants",
+    "merchant": {
+      "name": "Lebanan Chef Arabic Food"
+    },
+    "title": "30% off dining",
+    "description": null,
+    "offer_details": {
+      "type": "percentage",
+      "value": 30
+    },
+    "validity": {
+      "start_date": "2025-09-01",
+      "end_date": "2025-09-30"
+    },
+    "location": null,
+    "terms": null,
+    "source_url": "https://www.peoplesbank.lk/restaurants-credit-card/",
+    "id": "po-pb-064"
+  },
+  {
+    "bank": "People's Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Restaurants",
+    "merchant": {
+      "name": "Grand Serendib Hotel- Kandy",
+      "logo_url": null
+    },
+    "title": "25% off dining at Grand Sky Lounge",
+    "description": "Offer valid only for Dine-in and applicable to food and all beverages, including alcoholic beverages.",
+    "offer_details": {
+      "type": "percentage",
+      "value": 25,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": "2025-08-15",
+      "end_date": "2025-11-15",
+      "days": null
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "Offer not applicable to tobacco products. Offer not valid for corporate events/functions or high tea.",
+    "source_url": "https://www.peoplesbank.lk/restaurants-credit-card/",
+    "id": "po-pb-065"
+  },
+  {
+    "bank": "People's Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Online Stores",
+    "merchant": {
+      "name": "dsifootcandy.lk"
+    },
+    "title": "20% off dsifootcandy.lk",
+    "description": "Discount of 20% on purchases at dsifootcandy.lk",
+    "offer_details": {
+      "type": "percentage",
+      "value": 20,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": "2025-10-01",
+      "end_date": "2025-10-31"
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "Excludes DSI Supersport, Waves, Sale items & Vouchers",
+    "source_url": "https://www.peoplesbank.lk/online-stores-credit-card/",
+    "id": "po-pb-066"
+  },
+  {
+    "bank": "People's Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Online Stores",
+    "merchant": {
+      "name": "scopecinemas.com",
+      "logo_url": null
+    },
+    "title": "25% off Movie tickets & Over the counter food orders",
+    "description": "Discount applicable for all screens, HCM, CCC, LCC & LCK",
+    "offer_details": {
+      "type": "percentage",
+      "value": 25,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": "2025-08-20",
+      "end_date": "2025-10-31",
+      "days": null,
+      "specific_dates": [
+        "20th August",
+        "31st October"
+      ]
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "Maximum 02 tickets can be purchased each month of the promotion",
+    "source_url": "https://www.peoplesbank.lk/online-stores-credit-card/",
+    "id": "po-pb-067"
+  },
+  {
+    "bank": "People's Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Online Stores",
+    "merchant": {
+      "name": "crocodilesrilanka.com",
+      "logo_url": null
+    },
+    "title": "20% off",
+    "description": "20% discount at crocodilesrilanka.com",
+    "offer_details": {
+      "type": "percentage",
+      "value": 20,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": "2025-07-23",
+      "end_date": "2025-10-31",
+      "days": null,
+      "specific_dates": [
+        "23rd July",
+        "31st October"
+      ]
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "Offer valid on select products at crocodilesrilanka.com",
+    "source_url": "https://www.peoplesbank.lk/online-stores-credit-card/",
+    "id": "po-pb-068"
+  },
+  {
+    "bank": "People's Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Online Stores",
+    "merchant": {
+      "name": "Not specified (assumed as glomark.lk)",
+      "logo_url": null
+    },
+    "title": "Till 30th September 2025",
+    "description": "Not specified",
+    "offer_details": {
+      "type": "Other",
+      "value": null,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": "2025-08-25",
+      "end_date": "2025-09-30",
+      "days": [
+        "Saturday",
+        "Tuesday"
+      ]
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "Not specified",
+    "source_url": "https://www.peoplesbank.lk/roastoth/2025/08/www.glomark.lk-Credit.pdf",
+    "id": "po-pb-069"
+  },
+  {
+    "bank": "People's Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Online Stores",
+    "merchant": {
+      "name": "Atlas Myshop",
+      "logo_url": null
+    },
+    "title": "20% off Atlas Myshop",
+    "description": "Get a 20% discount on your purchase at Atlas Myshop",
+    "offer_details": {
+      "type": "percentage",
+      "value": 20,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": "2025-09-01",
+      "end_date": "2025-09-30",
+      "days": [],
+      "time": null
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "Offer valid only on purchases made through the Atlas Myshop website",
+    "source_url": "https://www.peoplesbank.lk/online-stores-credit-card/",
+    "id": "po-pb-070"
+  },
+  {
+    "bank": "People's Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Online Stores",
+    "merchant": {
+      "name": "Wishque"
+    },
+    "title": "20% off Wishque for Cakes & Flowers",
+    "description": "Get a 20% discount on purchases from Wishque for Cakes & Flowers from July 23rd to October 31st, 2025.",
+    "offer_details": {
+      "type": "percentage",
+      "value": 20
+    },
+    "validity": {
+      "start_date": "2025-07-23",
+      "end_date": "2025-10-31"
+    },
+    "location": null,
+    "terms": "Offer valid only on purchases from Wishque for Cakes & Flowers during the specified period. See Wishque's website for more details.",
+    "source_url": "https://www.peoplesbank.lk/online-stores-credit-card/",
+    "id": "po-pb-071"
+  },
+  {
+    "bank": "People's Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Home Care & Electronics",
+    "merchant": {
+      "name": "Ceylon City Mart"
+    },
+    "title": "30% off various departments",
+    "description": "Offer applicable on specific dates for Apparel, Footwear, Household, Kitchenware, Electronics, Glassware, Cosmetics and Accessories.",
+    "offer_details": {
+      "type": "percentage",
+      "value": 30
+    },
+    "validity": {
+      "start_date": "2025-09-06",
+      "end_date": "2025-09-27"
+    },
+    "location": null,
+    "terms": "Offer applicable on specified dates and departments.",
+    "source_url": "https://www.peoplesbank.lk/electronics-credit-card/",
+    "id": "po-pb-072"
+  },
+  {
+    "bank": "People's Bank",
+    "card_types": [
+      "Credit Card",
+      "Debit Card",
+      "Visa",
+      "Mastercard"
+    ],
+    "category": "Supermarkets",
+    "merchant": {
+      "name": "Keells",
+      "logo_url": null
+    },
+    "title": "25% off on Fresh Vegetables, Fruits & Seafood",
+    "description": "Get a 25% discount on fresh vegetables, fruits, and seafood at Keells.",
+    "offer_details": {
+      "type": "percentage",
+      "value": 25,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": "2025-08-25",
+      "end_date": "2025-09-30",
+      "days": [
+        "Monday",
+        "Wednesday"
+      ]
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "Offer valid for fresh vegetables, fruits, and seafood only. Applicable every Monday and Wednesday.",
+    "source_url": "https://www.peoplesbank.lk/roastoth/2025/08/Keells.pdf",
+    "id": "po-pb-073"
+  },
+  {
+    "bank": "People's Bank",
+    "card_types": [
+      "Credit Card",
+      "Debit Card",
+      "Visa",
+      "Mastercard"
+    ],
+    "category": "Supermarkets",
+    "merchant": {
+      "name": "Laugfs Super",
+      "logo_url": null
+    },
+    "title": "10% off total bill",
+    "description": "Get a 10% discount on your total bill at Laugfs Super",
+    "offer_details": {
+      "type": "percentage",
+      "value": 10,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": "2025-08-01",
+      "end_date": "2025-09-30",
+      "days": [
+        "Sunday"
+      ]
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "Offer valid only on Sundays during the specified period.",
+    "source_url": "https://www.peoplesbank.lk/roastoth/2025/08/Laugfs-Super-2.pdf",
+    "id": "po-pb-074"
+  },
+  {
+    "bank": "People's Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Supermarkets",
+    "merchant": {
+      "name": "Cargills"
+    },
+    "title": "25% off dining",
+    "description": "25% OFF on Fresh Vegetables, Fruits & Seafood.",
+    "offer_details": {
+      "type": "percentage",
+      "value": 25,
+      "max_discount_lkr": 1000
+    },
+    "validity": {
+      "start_date": "2025-09-01",
+      "end_date": "2025-09-30",
+      "days": [
+        "Tuesday",
+        "Thursday"
+      ]
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "Minimum bill value- Rs.4,000/-. Maximum discount - Rs.1,000 per bill. Maximum quantity of 5kg/ units per item. One Transaction per card holder per Day.",
+    "source_url": "https://www.peoplesbank.lk/super-markets-credit-card/",
+    "id": "po-pb-075"
+  },
+  {
+    "bank": "People's Bank",
+    "card_types": [
+      "Credit Card",
+      "Debit Card",
+      "Visa",
+      "Mastercard"
+    ],
+    "category": "Supermarkets",
+    "merchant": {
+      "name": "Spar Supermarket"
+    },
+    "title": "25% off dining",
+    "description": null,
+    "offer_details": {
+      "type": "percentage",
+      "value": 25,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": "2025-09-26",
+      "end_date": "2025-12-31",
+      "days": []
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": null,
+    "source_url": "https://www.peoplesbank.lk/roastoth/2025/08/Spar-Supermarket.pdf",
+    "id": "po-pb-076"
+  },
+  {
+    "bank": "People's Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Jewellery",
+    "merchant": {
+      "name": "Ashadi Jewellers"
+    },
+    "title": "Up to 25% off on Jewellery",
+    "description": "Offer valid for bridal jewellery packages and select silver and gold jewelry.",
+    "offer_details": {
+      "type": "percentage",
+      "value": null,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": "2025-10-01",
+      "end_date": "2025-12-31"
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "Offer valid for bridal jewellery packages and select silver and gold jewelry. Other terms and conditions may apply.",
+    "source_url": "https://www.peoplesbank.lk/jewelry-credit-card/",
+    "id": "po-pb-077"
+  },
+  {
+    "bank": "People's Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Healthcare",
+    "merchant": {
+      "name": "Ruhunu Hospital"
+    },
+    "title": "10% off baby delivery hospital charges",
+    "description": "Discount on Kings Court & Presidential Suite at Ruhunu Hospital",
+    "offer_details": {
+      "type": "percentage",
+      "value": 10
+    },
+    "validity": {
+      "start_date": "2025-01-01",
+      "end_date": "2025-12-31"
+    },
+    "location": null,
+    "terms": "Discount valid on baby delivery hospital charges in Kings Court & Presidential Suite only.",
+    "source_url": "https://www.peoplesbank.lk/healthcare-credit-card/",
+    "id": "po-pb-078"
+  },
+  {
+    "bank": "People's Bank",
+    "card_types": [
+      "Credit Card",
+      "Debit Card",
+      "Visa",
+      "Mastercard"
+    ],
+    "category": "Car Care",
+    "merchant": {
+      "name": "Toyotsu Lanka"
+    },
+    "title": "Up to 40% PIT & DRIVE",
+    "description": null,
+    "offer_details": {
+      "type": "percentage",
+      "value": 40,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": "2025-05-20",
+      "end_date": "2025-09-30"
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": null,
+    "source_url": "https://www.peoplesbank.lk/roastoth/2025/05/Toyotsu-Lanka.pdf",
+    "id": "po-pb-079"
+  },
+  {
+    "bank": "People's Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Others",
+    "merchant": {
+      "name": "Pearl Bay - Leisure Park",
+      "logo_url": null
+    },
+    "title": "35% off at Pearl Bay - Leisure Park",
+    "description": "Enjoy a 35% discount at Pearl Bay - Leisure Park.",
+    "offer_details": {
+      "type": "percentage",
+      "value": 35,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": "2025-09-01",
+      "end_date": "2025-09-30",
+      "days": null,
+      "time": null
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "Terms and conditions apply.",
+    "source_url": "https://www.peoplesbank.lk/credit-card-others/",
+    "id": "po-pb-080"
+  },
+  {
+    "bank": "People's Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Others",
+    "merchant": {
+      "name": "Victory Travels"
+    },
+    "title": "10% off Tour Packages",
+    "description": "Discount on tour packages until 31st December 2025",
+    "offer_details": {
+      "type": "percentage",
+      "value": 10,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": "2025-10-DD",
+      "end_date": "2025-12-31",
+      "days": []
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "Discount applies to tour packages. Other terms and conditions may apply.",
+    "source_url": "https://www.peoplesbank.lk/credit-card-others/",
+    "id": "po-pb-081"
+  },
+  {
+    "bank": "People's Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Others",
+    "merchant": {
+      "name": "Quantum Fitness"
+    },
+    "title": "15% off at Quantum Fitness",
+    "description": "15% discount on bills from Rs. 30,000 during the specified period",
+    "offer_details": {
+      "type": "percentage",
+      "value": 15,
+      "max_discount_lkr": 4500
+    },
+    "validity": {
+      "start_date": "2025-09-01",
+      "end_date": "2025-09-15"
+    },
+    "location": null,
+    "terms": "Minimum bill value of Rs. 30,000 applies",
+    "source_url": "https://www.peoplesbank.lk/credit-card-others/",
+    "id": "po-pb-082"
+  },
+  {
+    "bank": "People's Bank",
+    "card_types": [
+      "Mastercard"
+    ],
+    "category": "Mastercard Offers",
+    "merchant": {
+      "name": "Maya Clinic"
+    },
+    "title": "20% off aesthetic, dental & plastic surgery services",
+    "description": null,
+    "offer_details": {
+      "type": "percentage",
+      "value": 20,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": "2025-05-20",
+      "end_date": "2025-12-31"
+    },
+    "location": null,
+    "terms": "Tel - 0702100023 View Offer Details",
+    "source_url": "https://www.peoplesbank.lk/roastoth/2025/05/Maya-Clinic-x-Mastercard.pdf",
+    "id": "po-pb-083"
+  },
+  {
+    "bank": "People's Bank",
+    "card_types": [
+      "Credit Card",
+      "Visa"
+    ],
+    "category": "Visa Offers",
+    "merchant": {
+      "name": "IHG Hotels & Resorts"
+    },
+    "title": "20% off stays at IHG properties",
+    "description": "Enjoy a 20% discount on your stay at IHG hotels and resorts.",
+    "offer_details": {
+      "type": "percentage",
+      "value": 20,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": "01-Jul-2023",
+      "end_date": "31-Dec-2025"
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "Offer applies only to bookings made with a People's Bank Visa card.",
+    "source_url": "https://www.peoplesbank.lk/visa-credit-card-offers/",
+    "id": "po-pb-084"
+  },
+  {
+    "bank": "People's Bank",
+    "card_types": [
+      "Visa"
+    ],
+    "category": "Visa Offers",
+    "merchant": {
+      "name": "Qatar Airways",
+      "logo_url": null
+    },
+    "title": "10% off QATAR AIRWAYS",
+    "description": "Enjoy up to 10% off flights when you pay with your Visa card and use the code ‘APVISA25’",
+    "offer_details": {
+      "type": "percentage",
+      "value": 10,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": "2025-01-01",
+      "end_date": "2025-12-31"
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "Terms and conditions apply.",
+    "source_url": "https://www.peoplesbank.lk/visa-credit-card-offers/",
+    "id": "po-pb-085"
+  },
+  {
+    "bank": "People's Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Visa Offers",
+    "merchant": {
+      "name": "Rakuten Travel",
+      "logo_url": null
+    },
+    "title": "10% Rakuten Travel",
+    "description": "Enjoy up to 10% off Japan hotels, ryokans resorts and more",
+    "offer_details": {
+      "type": "percentage",
+      "value": 10,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": "2024-12-20",
+      "end_date": "2025-12-01",
+      "days": null,
+      "time": null
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "Key terms and conditions may apply. Please visit the source URL for more details.",
+    "source_url": "https://www.peoplesbank.lk/visa-credit-card-offers/",
+    "id": "po-pb-086"
+  },
+  {
+    "bank": "People's Bank",
+    "card_types": [
+      "Visa"
+    ],
+    "category": "Visa Offers",
+    "merchant": {
+      "name": "Hertz",
+      "logo_url": null
+    },
+    "title": "10% off self-drive rentals with Hertz",
+    "description": "Enjoy additional privileges with Hertz when you pay with your Visa card.",
+    "offer_details": {
+      "type": "percentage",
+      "value": 10,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": "2024-01-01",
+      "end_date": "2025-12-31"
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "Terms and conditions apply.",
+    "source_url": "https://www.peoplesbank.lk/visa-credit-card-offers/",
+    "id": "po-pb-087"
+  },
+  {
+    "bank": "People's Bank",
+    "card_types": [
+      "Visa"
+    ],
+    "category": "Visa Offers",
+    "merchant": {
+      "name": "Avis",
+      "logo_url": null
+    },
+    "title": "35% off car rental bookings at Avis",
+    "description": "Enjoy up to 35% discount when you use your Visa card for car rentals at Avis",
+    "offer_details": {
+      "type": "percentage",
+      "value": 35,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": "2021-12-31",
+      "end_date": "2025-12-31",
+      "days": [],
+      "time": ""
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "Terms and conditions may apply. See People's Bank website for more details.",
+    "source_url": "https://www.peoplesbank.lk/visa-credit-card-offers/",
+    "id": "po-pb-088"
+  },
+  {
+    "bank": "People's Bank",
+    "card_types": [
+      "Visa"
+    ],
+    "category": "Visa Offers",
+    "merchant": {
+      "name": "Hotel.com",
+      "logo_url": null
+    },
+    "title": "8% off bookings at Hotel.com",
+    "description": "Enjoy up to 8% off when you pay with Visa at Hotels.com",
+    "offer_details": {
+      "type": "percentage",
+      "value": 8,
+      "max_discount_lkr": null,
+      "max_discount_currency": "$"
+    },
+    "validity": {
+      "start_date": "2024-07-01",
+      "end_date": "2026-01-01"
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "Terms and conditions apply.",
+    "source_url": "https://www.peoplesbank.lk/visa-credit-card-offers/",
+    "id": "po-pb-089"
+  },
+  {
+    "bank": "People's Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Visa Offers",
+    "merchant": {
+      "name": "ClassPass",
+      "logo_url": null
+    },
+    "title": "10% ClassPass Additional Credits",
+    "description": "Enjoy 10% additional credits when you subscribe for ClassPass with your eligible Visa Card",
+    "offer_details": {
+      "type": "percentage",
+      "value": 10,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": "2023-04-01",
+      "end_date": "2025-09-30"
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "Terms and conditions apply",
+    "source_url": "https://www.peoplesbank.lk/visa-credit-card-offers/",
+    "id": "po-pb-090"
+  },
+  {
+    "bank": "People's Bank",
+    "card_types": [
+      "Credit Card",
+      "Debit Card"
+    ],
+    "category": "Leisure",
+    "merchant": {
+      "name": "Sigiriya Kingdom Gate Hotel - Dambulla"
+    },
+    "title": null,
+    "description": "10% off at Sigiriya Kingdom Gate Hotel - Dambulla",
+    "offer_details": {
+      "type": "percentage",
+      "value": 10
+    },
+    "validity": {
+      "start_date": null,
+      "end_date": "2025-12-31",
+      "days": null
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "Terms and conditions may apply. Contact the merchant for details.",
+    "source_url": "https://www.peoplesbank.lk/leisure-debit-card/",
+    "id": "po-pb-091"
+  },
+  {
+    "bank": "People's Bank",
+    "card_types": [
+      "Credit Card",
+      "Debit Card",
+      "Visa",
+      "Mastercard"
+    ],
+    "category": "Leisure",
+    "merchant": {
+      "name": "Akway Resort - Beragala"
+    },
+    "title": "38% off at Akway Resort - Beragala",
+    "description": null,
+    "offer_details": {
+      "type": "percentage",
+      "value": 38,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": "2025-06-01",
+      "end_date": "2025-10-31",
+      "days": null,
+      "time": null
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "Tel: 0756400590 / 0572268521",
+    "source_url": "https://www.peoplesbank.lk/leisure-debit-card/",
+    "id": "po-pb-092"
+  },
+  {
+    "bank": "People's Bank",
+    "card_types": [
+      "Credit Card",
+      "Debit Card",
+      "Visa",
+      "Mastercard"
+    ],
+    "category": "Leisure",
+    "merchant": {
+      "name": "Amaara Forest Hotel - Sigiriya",
+      "logo_url": null
+    },
+    "title": "30% off Amaara Forest Hotel",
+    "description": "Enjoy a 30% discount at Amaara Forest Hotel in Sigiriya.",
+    "offer_details": {
+      "type": "percentage",
+      "value": 30,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": "2025-09-01",
+      "end_date": "2025-10-30",
+      "days": null,
+      "time": null
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "Offer valid until 30th October 2025. For more details, visit www.amaaraforest.com or call 0770038312.",
+    "source_url": "https://www.peoplesbank.lk/roastoth/2025/09/Amaara-Hotels-1.pdf",
+    "id": "po-pb-093"
+  },
+  {
+    "bank": "People's Bank",
+    "card_types": [
+      "Credit Card",
+      "Debit Card",
+      "Visa",
+      "Mastercard"
+    ],
+    "category": "Leisure",
+    "merchant": {
+      "name": "Amaara Sky Hotel - Kandy",
+      "logo_url": null
+    },
+    "title": "30% off Amaara Sky Hotel - Kandy",
+    "description": "Discount on stays at Amaara Sky Hotel, Kandy",
+    "offer_details": {
+      "type": "percentage",
+      "value": 30,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": "2025-09-XX",
+      "end_date": "2025-10-30",
+      "days": null,
+      "time": null
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "Terms and conditions apply.",
+    "source_url": "https://www.peoplesbank.lk/roastoth/2025/09/Amaara-Hotels-1.pdf",
+    "id": "po-pb-094"
+  },
+  {
+    "bank": "People's Bank",
+    "card_types": [
+      "Credit Card",
+      "Debit Card",
+      "Visa",
+      "Mastercard"
+    ],
+    "category": "Leisure",
+    "merchant": {
+      "name": "Sky Pavilion-Kandy"
+    },
+    "title": "20% off dining at Sky Pavilion-Kandy",
+    "description": "Enjoy a 20% discount on your bill at Sky Pavilion-Kandy. Applies only to BB Basis.",
+    "offer_details": {
+      "type": "percentage",
+      "value": 20,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": "2025-12-31",
+      "end_date": "2026-01-31",
+      "days": [],
+      "time": ""
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "Applies only to BB Basis. Offer valid till 31st of January 2026.",
+    "source_url": "https://www.peoplesbank.lk/leisure-debit-card/",
+    "id": "po-pb-095"
+  },
+  {
+    "bank": "People's Bank",
+    "card_types": [
+      "Credit Card",
+      "Debit Card",
+      "Visa",
+      "Mastercard"
+    ],
+    "category": "Leisure",
+    "merchant": {
+      "name": "Rajarata Hotel-Anuradhapura",
+      "logo_url": null
+    },
+    "title": "50% off at Rajarata Hotel-Anuradhapura",
+    "description": "Enjoy a 50% discount at Rajarata Hotel-Anuradhapura",
+    "offer_details": {
+      "type": "percentage",
+      "value": 50,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": "2025-09-01",
+      "end_date": "2025-10-31",
+      "days": null,
+      "time": null
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "Terms and conditions apply.",
+    "source_url": "https://www.peoplesbank.lk/leisure-debit-card/",
+    "id": "po-pb-096"
+  },
+  {
+    "bank": "People's Bank",
+    "card_types": [
+      "Credit Card",
+      "Debit Card",
+      "Visa",
+      "Mastercard"
+    ],
+    "category": "Leisure",
+    "merchant": {
+      "name": "Athgira River Camp Udawalawa"
+    },
+    "title": "25% off Athgira River Camp Udawalawa",
+    "description": null,
+    "offer_details": {
+      "type": "percentage",
+      "value": 25
+    },
+    "validity": {
+      "start_date": "2025-09-01",
+      "end_date": "2025-10-31"
+    },
+    "location": null,
+    "terms": null,
+    "source_url": "https://www.peoplesbank.lk/leisure-debit-card/",
+    "id": "po-pb-097"
+  },
+  {
+    "bank": "People's Bank",
+    "card_types": [
+      "Credit Card",
+      "Debit Card",
+      "Visa",
+      "Mastercard"
+    ],
+    "category": "Leisure",
+    "merchant": {
+      "name": "Elephant Trail- Udawalawa"
+    },
+    "title": "25% off Elephant Trail- Udawalawa",
+    "description": null,
+    "offer_details": {
+      "type": "percentage",
+      "value": 25
+    },
+    "validity": {
+      "start_date": "2025-09-01",
+      "end_date": "2025-10-31"
+    },
+    "location": null,
+    "terms": null,
+    "source_url": "https://www.peoplesbank.lk/leisure-debit-card/",
+    "id": "po-pb-098"
+  },
+  {
+    "bank": "People's Bank",
+    "card_types": [
+      "Credit Card",
+      "Debit Card",
+      "Visa",
+      "Mastercard"
+    ],
+    "category": "Leisure",
+    "merchant": {
+      "name": "Hotel Athgira - Udawalawa",
+      "logo_url": null
+    },
+    "title": "25% off Hotel Athgira - Udawalawa",
+    "description": null,
+    "offer_details": {
+      "type": "percentage",
+      "value": 25,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": "2025-09-01",
+      "end_date": "2025-10-31",
+      "days": [],
+      "time": ""
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "Call the given number for more details.",
+    "source_url": "https://www.peoplesbank.lk/leisure-debit-card/",
+    "id": "po-pb-099"
+  },
+  {
+    "bank": "People's Bank",
+    "card_types": [
+      "Credit Card",
+      "Debit Card",
+      "Visa",
+      "Mastercard"
+    ],
+    "category": "Leisure",
+    "merchant": {
+      "name": "Laya Beach - Wadduwa",
+      "logo_url": null
+    },
+    "title": "35% off for Room Bookings",
+    "description": "35% discount on room bookings at Laya Beach, Wadduwa",
+    "offer_details": {
+      "type": "percentage",
+      "value": 35,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": "2025-09-01",
+      "end_date": "2025-09-30",
+      "days": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday"
+      ],
+      "applicable_only_on_holidays": false
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "Applies to room bookings only, on a first-come, first-served basis. Valid for stays from Monday to Friday, excluding holidays.",
+    "source_url": "https://www.peoplesbank.lk/leisure-debit-card/",
+    "id": "po-pb-100"
+  },
+  {
+    "bank": "People's Bank",
+    "card_types": [
+      "Credit Card",
+      "Debit Card",
+      "Visa",
+      "Mastercard"
+    ],
+    "category": "Leisure",
+    "merchant": {
+      "name": "Dream cliff Mountain Resort-Haputale"
+    },
+    "title": "15% off Dream cliff Mountain Resort-Haputale",
+    "description": null,
+    "offer_details": {
+      "type": "percentage",
+      "value": 15,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": "2025-09-01",
+      "end_date": "2025-11-30",
+      "days": []
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": null,
+    "source_url": "https://www.peoplesbank.lk/leisure-debit-card/",
+    "id": "po-pb-101"
+  },
+  {
+    "bank": "People's Bank",
+    "card_types": [
+      "Credit Card",
+      "Debit Card",
+      "Visa",
+      "Mastercard"
+    ],
+    "category": "Leisure",
+    "merchant": {
+      "name": "Lake Serenity Resort & Spa- Kuruvita"
+    },
+    "title": "30% off at Lake Serenity Resort & Spa- Kuruvita",
+    "description": "Enjoy a 30% discount at Lake Serenity Resort & Spa- Kuruvita",
+    "offer_details": {
+      "type": "percentage",
+      "value": 30,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": "2025-04-01",
+      "end_date": "2025-10-31",
+      "days": null,
+      "time": null
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "Call 0452262199/0454928666/0777695710 for more details",
+    "source_url": "https://www.peoplesbank.lk/leisure-debit-card/",
+    "id": "po-pb-102"
+  },
+  {
+    "bank": "People's Bank",
+    "card_types": [
+      "Credit Card",
+      "Debit Card",
+      "Visa",
+      "Mastercard"
+    ],
+    "category": "Leisure",
+    "merchant": {
+      "name": "Kassapa Lions Rock - Sigiriya"
+    },
+    "title": "25% off at Kassapa Lions Rock - Sigiriya",
+    "description": "Discount is applicable for a maximum of 4 rooms only",
+    "offer_details": {
+      "type": "percentage",
+      "value": 25,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": "2025-04-01",
+      "end_date": "2025-10-31",
+      "days": null,
+      "time": null
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "Tell - 0772990875",
+    "source_url": "https://www.peoplesbank.lk/leisure-debit-card/",
+    "id": "po-pb-103"
+  },
+  {
+    "bank": "People's Bank",
+    "card_types": [
+      "Credit Card",
+      "Debit Card"
+    ],
+    "category": "Leisure",
+    "merchant": {
+      "name": "Anantaya Resort & Spa - Pasikudah"
+    },
+    "title": "Room Rate (Full Board) package starting from Rs.37,000/- per night",
+    "description": null,
+    "offer_details": {
+      "type": "other",
+      "value": null,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": "2025-10-01",
+      "end_date": "2025-10-31",
+      "days": null
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "Tel - 0117247365",
+    "source_url": "https://www.peoplesbank.lk/leisure-debit-card/",
+    "id": "po-pb-104"
+  }
+]
