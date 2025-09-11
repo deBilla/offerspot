@@ -1,6 +1,5 @@
 'use client';
-import React, { useState, useMemo, useEffect } from 'react';
-// Assuming you have a data.json file in a folder structure like /src/api/data.json
+import React, { useState, useMemo } from 'react';
 import data from '../../api/data.json';
 
 // --- Enhanced SVG Icons ---
@@ -12,14 +11,14 @@ const MapPinIcon = () => (
 );
 
 const TagIcon = () => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 mr-1.5 inline-block">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 mr-1.5 inline-block">
         <path d="M12 2H2v10l9.29 9.29c.94.94 2.48.94 3.42 0l6.58-6.58c.94-.94.94-2.48 0-3.42L12 2Z" />
         <path d="M7 7h.01" />
     </svg>
 );
 
 const CalendarIcon = () => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 mr-1.5 inline-block">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 mr-1.5 inline-block">
         <rect width="18" height="18" x="3" y="4" rx="2" ry="2" />
         <line x1="16" x2="16" y1="2" y2="6" />
         <line x1="8" x2="8" y1="2" y2="6" />
@@ -28,14 +27,14 @@ const CalendarIcon = () => (
 );
 
 const CreditCardIcon = () => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5 mr-2">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5 mr-2">
         <rect width="20" height="14" x="2" y="5" rx="2" />
         <line x1="2" x2="22" y1="10" y2="10" />
     </svg>
 );
 
 const WalletIcon = () => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5 mr-2">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5 mr-2">
         <path d="M21 12V7H5a2 2 0 0 1 0-4h14v4" />
         <path d="M3 5v14a2 2 0 0 0 2 2h16v-5" />
         <path d="M18 12a2 2 0 0 0 0 4h4v-4h-4Z" />
@@ -43,55 +42,58 @@ const WalletIcon = () => (
 );
 
 const XIcon = () => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6">
         <line x1="18" y1="6" x2="6" y2="18" />
         <line x1="6" y1="6" x2="18" y2="18" />
     </svg>
 );
 
 const SearchIcon = () => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5">
         <circle cx="11" cy="11" r="8" />
         <path d="m21 21-4.35-4.35" />
     </svg>
 );
 
 const FilterIcon = () => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5 mr-2">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5 mr-2">
         <polygon points="22,3 2,3 10,12.46 10,19 14,21 14,12.46" />
     </svg>
 );
 
 const ExternalLinkIcon = () => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 ml-1">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 ml-1">
         <path d="M7 17L17 7" />
         <path d="M7 7h10v10" />
     </svg>
 );
 
 const SparkleIcon = () => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 mr-1">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 mr-1">
         <path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.582a.5.5 0 0 1 0 .962L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z" />
     </svg>
 );
 
-// --- Data ---
 const mockOffers = data;
 
-// Enhanced bank details with modern gradients
 const bankDetails = {
-    "People's Bank": { 
-        color: 'from-blue-600 via-blue-700 to-indigo-800', 
+    "People's Bank": {
+        color: 'from-blue-600 via-blue-700 to-indigo-800',
         textColor: 'text-white',
         accent: 'bg-blue-50 border-blue-200 text-blue-800'
     },
-    "Commercial Bank": { 
-        color: 'from-red-600 via-rose-600 to-pink-700', 
+    "Commercial Bank": {
+        color: 'from-red-600 via-rose-600 to-pink-700',
         textColor: 'text-white',
         accent: 'bg-red-50 border-red-200 text-red-800'
     },
-    "HNB": { 
-        color: 'from-amber-500 via-yellow-500 to-orange-600', 
+    "HNB": {
+        color: 'from-amber-500 via-yellow-500 to-orange-600',
+        textColor: 'text-gray-900',
+        accent: 'bg-yellow-50 border-yellow-200 text-yellow-800'
+    },
+    "Bank of Ceylon": {
+        color: 'from-yellow-400 via-amber-400 to-yellow-500',
         textColor: 'text-gray-900',
         accent: 'bg-yellow-50 border-yellow-200 text-yellow-800'
     },
@@ -107,21 +109,14 @@ const bankDetails = {
     }
 };
 
-// --- Helper Functions ---
 const getBankBadgeColor = (bank) => {
-    const details = bankDetails[bank];
-    if (details) return details.accent;
-    return 'bg-gray-100 border-gray-200 text-gray-800';
+    return bankDetails[bank]?.accent || 'bg-gray-100 border-gray-200 text-gray-800';
 };
 
 const formatDate = (dateString) => {
     if (!dateString || dateString === 'Not specified in the text') return 'N/A';
     try {
-        return new Date(dateString).toLocaleDateString('en-GB', { 
-            day: 'numeric', 
-            month: 'short', 
-            year: 'numeric' 
-        });
+        return new Date(dateString).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
     } catch {
         return 'N/A';
     }
@@ -131,157 +126,65 @@ const getDaysUntilExpiry = (endDate) => {
     if (!endDate || endDate === 'Not specified in the text') return null;
     try {
         const today = new Date();
+        today.setHours(0, 0, 0, 0);
         const expiry = new Date(endDate);
         const diffTime = expiry - today;
         const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-        return diffDays > 0 ? diffDays : 0;
+        return diffDays >= 0 ? diffDays : 0;
     } catch {
         return null;
     }
 };
 
-// --- Enhanced Components ---
 const OfferCard = ({ offer, isExpanded, onExpand }) => {
     const { bank, category, merchant, title, description, offer_details, validity, location, terms, source_url } = offer;
     const daysLeft = getDaysUntilExpiry(validity?.end_date);
 
     const renderDiscount = () => {
         if (!offer_details) return null;
-        
-        if (offer_details.type === 'percentage') {
-            return (
-                <div className="text-right">
-                    <div className="text-3xl font-bold text-emerald-600">{offer_details.value}%</div>
-                    <div className="text-sm text-emerald-700 font-medium">OFF</div>
-                </div>
-            );
-        }
-        if (offer_details.type === 'bogo') {
-            return (
-                <div className="text-right">
-                    <div className="text-2xl font-bold text-emerald-600">BOGO</div>
-                    <div className="text-xs text-emerald-700">Buy One Get One</div>
-                </div>
-            );
-        }
-        if (offer_details.type === 'fixed') {
-            return (
-                <div className="text-right">
-                    <div className="text-lg font-bold text-emerald-600">
-                        Save {offer_details.currency || 'LKR'} {offer_details.value?.toLocaleString()}
-                    </div>
-                </div>
-            );
-        }
+        if (offer_details.type === 'percentage') return (<div className="text-right"><div className="text-3xl font-bold text-emerald-600">{offer_details.value}%</div><div className="text-sm text-emerald-700 font-medium">OFF</div></div>);
+        if (offer_details.type === 'bogo') return (<div className="text-right"><div className="text-2xl font-bold text-emerald-600">BOGO</div><div className="text-xs text-emerald-700">Buy One Get One</div></div>);
+        if (offer_details.type === 'fixed') return (<div className="text-right"><div className="text-lg font-bold text-emerald-600">Save {offer_details.currency || 'LKR'} {offer_details.value?.toLocaleString()}</div></div>);
         return null;
     };
 
-    const googleMapsUrl = location?.latitude ? 
-        `https://www.google.com/maps?q=${location.latitude},${location.longitude}` : null;
-    
+    const googleMapsUrl = location?.latitude ? `https://www.google.com/maps?q=${location.latitude},${location.longitude}` : null;
+
     return (
         <div className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 ease-out transform hover:-translate-y-1 overflow-hidden group border border-gray-100">
-            {/* Header with gradient background */}
             <div className="relative overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-br from-gray-50 to-gray-100 opacity-50"></div>
                 <div className="relative p-6">
                     <div className="flex justify-between items-start mb-4">
                         <div className="flex flex-col gap-2">
-                            <span className={`inline-flex items-center px-3 py-1.5 text-xs font-semibold rounded-full border ${getBankBadgeColor(bank)} transition-colors`}>
-                                <SparkleIcon />
-                                {bank}
-                            </span>
-                            {daysLeft !== null && daysLeft <= 30 && (
-                                <span className={`inline-flex items-center px-2 py-1 text-xs font-medium rounded-full ${
-                                    daysLeft <= 7 ? 'bg-red-100 text-red-700 border border-red-200' : 
-                                    'bg-amber-100 text-amber-700 border border-amber-200'
-                                }`}>
-                                    {daysLeft === 0 ? 'Expires today!' : `${daysLeft} days left`}
-                                </span>
-                            )}
+                            <span className={`inline-flex items-center px-3 py-1.5 text-xs font-semibold rounded-full border ${getBankBadgeColor(bank)} transition-colors`}><SparkleIcon />{bank}</span>
+                            {daysLeft !== null && daysLeft <= 30 && (<span className={`inline-flex items-center px-2 py-1 text-xs font-medium rounded-full ${daysLeft <= 7 ? 'bg-red-100 text-red-700 border border-red-200' : 'bg-amber-100 text-amber-700 border border-amber-200'}`}>{daysLeft === 0 ? 'Expires today!' : `${daysLeft} days left`}</span>)}
                         </div>
-                        <div className="text-center">
-                            {renderDiscount()}
-                        </div>
+                        <div className="text-center">{renderDiscount()}</div>
                     </div>
-                    
                     <div>
-                        <p className="text-sm font-semibold text-gray-500 uppercase tracking-wide">
-                            {merchant?.name || 'N/A'}
-                        </p>
-                        <h3 className="text-xl font-bold text-gray-900 mt-2 mb-3 line-clamp-2 group-hover:text-indigo-700 transition-colors">
-                            {title}
-                        </h3>
-                        <p className="text-gray-600 text-sm leading-relaxed line-clamp-2">
-                            {description}
-                        </p>
+                        <p className="text-sm font-semibold text-gray-500 uppercase tracking-wide">{merchant?.name || 'N/A'}</p>
+                        <h3 className="text-xl font-bold text-gray-900 mt-2 mb-3 line-clamp-2 group-hover:text-indigo-700 transition-colors">{title}</h3>
+                        <p className="text-gray-600 text-sm leading-relaxed line-clamp-2">{description}</p>
                     </div>
                 </div>
             </div>
-
-            {/* Details Section */}
             <div className="px-6 py-4 bg-gradient-to-br from-gray-50 to-white border-t border-gray-100">
                 <div className="space-y-3 text-sm">
-                    <div className="flex items-center text-gray-700">
-                        <TagIcon />
-                        <span className="font-medium">{category}</span>
-                    </div>
-                    
-                    <div className="flex items-center text-gray-700">
-                        <CalendarIcon />
-                        <span>Valid until: <span className="font-medium">{formatDate(validity?.end_date)}</span></span>
-                    </div>
-                    
-                    {location?.address && location.address !== 'Online Booking' && location.address !== 'Not specified in the text' ? (
-                        googleMapsUrl ? (
-                            <a href={googleMapsUrl} target="_blank" rel="noopener noreferrer" 
-                               className="flex items-center text-blue-600 hover:text-blue-800 hover:underline transition-colors">
-                                <MapPinIcon />
-                                <span className="line-clamp-1">{location.address}</span>
-                                <ExternalLinkIcon />
-                            </a>
-                        ) : (
-                            <div className="flex items-center text-gray-700">
-                                <MapPinIcon />
-                                <span className="line-clamp-1">{location.address}</span>
-                            </div>
-                        )
-                    ) : (
-                        <div className="flex items-center text-gray-700">
-                            <MapPinIcon />
-                            <span>Online / Multiple Locations</span>
-                        </div>
-                    )}
+                    <div className="flex items-center text-gray-700"><TagIcon /><span className="font-medium">{category}</span></div>
+                    <div className="flex items-center text-gray-700"><CalendarIcon /><span>Valid until: <span className="font-medium">{formatDate(validity?.end_date)}</span></span></div>
+                    {location?.address && location.address !== 'Online Booking' && location.address !== 'Not specified in the text' ? (googleMapsUrl ? (<a href={googleMapsUrl} target="_blank" rel="noopener noreferrer" className="flex items-center text-blue-600 hover:text-blue-800 hover:underline transition-colors"><MapPinIcon /><span className="line-clamp-1">{location.address}</span><ExternalLinkIcon /></a>) : (<div className="flex items-center text-gray-700"><MapPinIcon /><span className="line-clamp-1">{location.address}</span></div>)) : (<div className="flex items-center text-gray-700"><MapPinIcon /><span>Online / Multiple Locations</span></div>)}
                 </div>
-
-                {/* Expandable Terms Section */}
-                {(terms || source_url) && (
+                {(terms || (source_url && source_url !== '#')) && (
                     <div className="mt-4 pt-4 border-t border-gray-200">
-                        <button
-                            onClick={() => onExpand(offer.id)}
-                            className="text-indigo-600 hover:text-indigo-800 font-medium text-sm flex items-center transition-colors"
-                        >
+                        <button onClick={() => onExpand(offer.id)} className="text-indigo-600 hover:text-indigo-800 font-medium text-sm flex items-center transition-colors">
                             {isExpanded ? 'Hide Details' : 'Show Terms & Details'}
-                            <svg className={`ml-1 w-4 h-4 transition-transform ${isExpanded ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                            </svg>
+                            <svg className={`ml-1 w-4 h-4 transition-transform ${isExpanded ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
                         </button>
-                        
                         {isExpanded && (
                             <div className="mt-3 space-y-3 text-sm animate-in slide-in-from-top duration-200">
-                                {terms && (
-                                    <div className="bg-gray-50 rounded-lg p-3 border border-gray-200">
-                                        <h4 className="font-medium text-gray-900 mb-2">Terms & Conditions:</h4>
-                                        <p className="text-gray-700">{terms}</p>
-                                    </div>
-                                )}
-                                {source_url && source_url !== '#' && (
-                                    <a href={source_url} target="_blank" rel="noopener noreferrer"
-                                       className="inline-flex items-center px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-medium rounded-lg transition-colors">
-                                        Visit Offer Page
-                                        <ExternalLinkIcon />
-                                    </a>
-                                )}
+                                {terms && (<div className="bg-gray-50 rounded-lg p-3 border border-gray-200"><h4 className="font-medium text-gray-900 mb-2">Terms & Conditions:</h4><p className="text-gray-700">{terms}</p></div>)}
+                                {source_url && source_url !== '#' && (<a href={source_url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-medium rounded-lg transition-colors">Visit Offer Page<ExternalLinkIcon /></a>)}
                             </div>
                         )}
                     </div>
@@ -292,188 +195,63 @@ const OfferCard = ({ offer, isExpanded, onExpand }) => {
 };
 
 const BankCard = ({ bank, isSelected, onSelect }) => {
-    const details = bankDetails[bank.name] || { 
-        color: 'from-gray-500 to-gray-700', 
-        textColor: 'text-white' 
-    };
-    
+    const details = bankDetails[bank.name] || { color: 'from-gray-500 to-gray-700', textColor: 'text-white' };
     return (
-        <button
-            onClick={() => onSelect(bank.name)}
-            className={`w-full p-5 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 ${
-                isSelected ? 'ring-4 ring-offset-2 ring-indigo-500 scale-105' : 'hover:scale-102'
-            } bg-gradient-to-br ${details.color} ${details.textColor} relative overflow-hidden group`}
-        >
+        <button onClick={() => onSelect(bank.name)} className={`w-full p-5 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 ${isSelected ? 'ring-4 ring-offset-2 ring-indigo-500 scale-105' : 'hover:scale-102'} bg-gradient-to-br ${details.color} ${details.textColor} relative overflow-hidden group`}>
             <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-10 transition-opacity"></div>
-            <div className="relative flex justify-between items-center">
-                <div className="text-left">
-                    <h3 className="text-lg font-bold mb-1">{bank.name}</h3>
-                    <p className="text-sm opacity-90">
-                        {bank.count} {bank.count === 1 ? 'offer' : 'offers'}
-                    </p>
-                </div>
-                <CreditCardIcon />
-            </div>
-            {isSelected && (
-                <div className="absolute top-2 right-2 w-6 h-6 bg-white rounded-full flex items-center justify-center">
-                    <svg className="w-4 h-4 text-indigo-600" fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                    </svg>
-                </div>
-            )}
+            <div className="relative flex justify-between items-center"><div className="text-left"><h3 className="text-lg font-bold mb-1">{bank.name}</h3><p className="text-sm opacity-90">{bank.count} {bank.count === 1 ? 'offer' : 'offers'}</p></div><CreditCardIcon /></div>
+            {isSelected && (<div className="absolute top-2 right-2 w-6 h-6 bg-white rounded-full flex items-center justify-center"><svg className="w-4 h-4 text-indigo-600" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" /></svg></div>)}
         </button>
     );
 };
 
 const BankSelectionModal = ({ banks, selectedBanks, onSelect, onClose, onClear }) => {
     const [searchTerm, setSearchTerm] = useState('');
-    
-    const filteredBanks = useMemo(() => {
-        return banks.filter(bank => 
-            bank.name.toLowerCase().includes(searchTerm.toLowerCase())
-        );
-    }, [banks, searchTerm]);
+    const filteredBanks = useMemo(() => banks.filter(bank => bank.name.toLowerCase().includes(searchTerm.toLowerCase())), [banks, searchTerm]);
 
     return (
         <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex justify-center items-center p-4 backdrop-blur-sm">
             <div className="bg-white rounded-2xl shadow-2xl w-full max-w-4xl transform transition-all animate-in zoom-in duration-200">
-                {/* Header */}
                 <div className="p-6 border-b border-gray-200 bg-gradient-to-r from-indigo-50 to-purple-50 rounded-t-2xl">
-                    <div className="flex justify-between items-center mb-4">
-                        <h2 className="text-3xl font-bold text-gray-800">Select Your Banks</h2>
-                        <button 
-                            onClick={onClose} 
-                            className="text-gray-400 hover:text-gray-600 hover:bg-gray-100 p-2 rounded-full transition-colors"
-                        >
-                            <XIcon />
-                        </button>
-                    </div>
-                    
-                    {/* Search Bar */}
-                    <div className="relative">
-                        <SearchIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
-                        <input
-                            type="text"
-                            placeholder="Search banks..."
-                            value={searchTerm}
-                            onChange={(e) => setSearchTerm(e.target.value)}
-                            className="w-full pl-11 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all"
-                        />
-                    </div>
-                    
-                    {selectedBanks.length > 0 && (
-                        <div className="mt-4 text-sm text-gray-600">
-                            <span className="font-medium">{selectedBanks.length}</span> bank{selectedBanks.length !== 1 ? 's' : ''} selected
-                        </div>
-                    )}
+                    <div className="flex justify-between items-center mb-4"><h2 className="text-2xl sm:text-3xl font-bold text-gray-800">Select Your Banks</h2><button onClick={onClose} className="text-gray-400 hover:text-gray-600 hover:bg-gray-100 p-2 rounded-full transition-colors"><XIcon /></button></div>
+                    <div className="relative"><SearchIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" /><input type="text" placeholder="Search banks..." value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} className="w-full pl-11 pr-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all text-gray-900" /></div>
+                    {selectedBanks.length > 0 && (<div className="mt-4 text-sm text-gray-600"><span className="font-medium">{selectedBanks.length}</span> bank{selectedBanks.length !== 1 ? 's' : ''} selected</div>)}
                 </div>
-                
-                {/* Bank Grid */}
                 <div className="p-6 max-h-[60vh] overflow-y-auto">
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                        {filteredBanks.map(bank => (
-                            <BankCard 
-                                key={bank.name} 
-                                bank={bank} 
-                                isSelected={selectedBanks.includes(bank.name)}
-                                onSelect={onSelect}
-                            />
-                        ))}
+                    <div className="grid grid-cols-2 lg:grid-cols-3 gap-4">
+                        {filteredBanks.map(bank => (<BankCard key={bank.name} bank={bank} isSelected={selectedBanks.includes(bank.name)} onSelect={onSelect} />))}
                     </div>
-                    
-                    {filteredBanks.length === 0 && (
-                        <div className="text-center py-12">
-                            <div className="text-gray-400 mb-2">
-                                <SearchIcon className="w-12 h-12 mx-auto" />
-                            </div>
-                            <h3 className="text-lg font-medium text-gray-900 mb-1">No banks found</h3>
-                            <p className="text-gray-500">Try adjusting your search terms</p>
-                        </div>
-                    )}
+                    {filteredBanks.length === 0 && (<div className="text-center py-12"><div className="text-gray-400 mb-2"><SearchIcon className="w-12 h-12 mx-auto" /></div><h3 className="text-lg font-medium text-gray-900 mb-1">No banks found</h3><p className="text-gray-500">Try adjusting your search terms</p></div>)}
                 </div>
-                
-                {/* Footer */}
-                <div className="p-6 bg-gray-50 rounded-b-2xl border-t border-gray-200 flex justify-between items-center">
-                    <button 
-                        onClick={onClear} 
-                        className="text-sm font-semibold text-gray-600 hover:text-red-600 transition-colors px-4 py-2 rounded-lg hover:bg-red-50"
-                        disabled={selectedBanks.length === 0}
-                    >
-                        Clear All
-                    </button>
-                    <button 
-                        onClick={onClose}
-                        className="px-8 py-3 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-semibold rounded-xl shadow-md hover:shadow-lg transition-all transform hover:scale-105"
-                    >
-                        Show {selectedBanks.length > 0 ? `${selectedBanks.length} Bank's` : 'All'} Offers
-                    </button>
-                </div>
+                <div className="p-6 bg-gray-50 rounded-b-2xl border-t border-gray-200 flex flex-col sm:flex-row justify-between items-center gap-4"><button onClick={onClear} className="text-sm font-semibold text-gray-600 hover:text-red-600 transition-colors px-4 py-2 rounded-lg hover:bg-red-50" disabled={selectedBanks.length === 0}>Clear All</button><button onClick={onClose} className="w-full sm:w-auto px-8 py-3 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-semibold rounded-xl shadow-md hover:shadow-lg transition-all transform hover:scale-105">Show {selectedBanks.length > 0 ? `${selectedBanks.length} Bank's` : 'All'} Offers</button></div>
             </div>
         </div>
     );
 };
 
-const SearchAndFilters = ({ 
-    searchTerm, 
-    onSearchChange, 
-    selectedCategory, 
-    categories, 
-    onCategoryChange,
-    selectedBanks,
-    onOpenBankModal,
-    resultsCount 
-}) => {
+const SearchAndFilters = ({ searchTerm, onSearchChange, selectedCategory, categories, onCategoryChange, selectedBanks, onOpenBankModal, resultsCount }) => {
     return (
-        <div className="bg-white rounded-2xl shadow-lg border border-gray-200 p-6 mb-8 sticky top-4 z-20">
-            {/* Search Bar */}
+        <div className="bg-white rounded-2xl shadow-lg border border-gray-200 p-4 sm:p-6 mb-8 sticky top-4 z-20">
             <div className="relative mb-6">
-                <SearchIcon className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400" />
-                <input
-                    type="text"
-                    placeholder="Search offers, merchants, or locations..."
-                    value={searchTerm}
-                    onChange={(e) => onSearchChange(e.target.value)}
-                    className="w-full pl-12 pr-4 py-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all text-lg"
-                />
+                <input type="text" placeholder="Search offers, merchants..." value={searchTerm} onChange={(e) => onSearchChange(e.target.value)} className="w-full pl-12 pr-4 py-2 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all text-base text-gray-900" />
             </div>
-
-            {/* Bank Selection & Results Info */}
             <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center mb-6">
-                <button 
-                    onClick={onOpenBankModal}
-                    className="flex items-center px-6 py-3 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-semibold rounded-xl shadow-md hover:shadow-lg transition-all transform hover:scale-105"
-                >
+                <button onClick={onOpenBankModal} className="w-full sm:w-auto flex items-center justify-center px-4 py-3 sm:px-6 sm:py-3 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-semibold rounded-xl shadow-md hover:shadow-lg transition-all transform hover:scale-105">
                     <WalletIcon />
                     <span>My Banks ({selectedBanks.length})</span>
                 </button>
-                
                 <div className="flex-grow">
-                    <p className="text-gray-600">
-                        Showing <span className="font-bold text-indigo-600">{resultsCount}</span> offer{resultsCount !== 1 ? 's' : ''}
-                        {selectedBanks.length > 0 && (
-                            <span> for <span className="font-semibold">{selectedBanks.join(', ')}</span></span>
-                        )}
-                    </p>
+                    <p className="text-gray-600">Showing <span className="font-bold text-indigo-600">{resultsCount}</span> offer{resultsCount !== 1 ? 's' : ''}{selectedBanks.length > 0 && (<span> for <span className="font-semibold">{selectedBanks.join(', ')}</span></span>)}</p>
                 </div>
             </div>
-
-            {/* Category Filters */}
             <div className="border-t pt-6">
                 <div className="flex items-center mb-4">
                     <FilterIcon />
                     <label className="text-lg font-semibold text-gray-800">Categories</label>
                 </div>
-                <div className="flex flex-wrap gap-3">
+                <div className="flex gap-2 sm:gap-3 overflow-x-auto pb-3 -mb-3 hide-scrollbar">
                     {categories.map(category => (
-                        <button
-                            key={category}
-                            onClick={() => onCategoryChange(category)}
-                            className={`px-6 py-3 text-sm font-medium rounded-full transition-all duration-200 transform hover:scale-105 ${
-                                selectedCategory === category 
-                                    ? 'bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-lg' 
-                                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200 border border-gray-300'
-                            }`}
-                        >
+                        <button key={category} onClick={() => onCategoryChange(category)} className={`flex-shrink-0 px-4 py-2 sm:px-5 sm:py-2.5 text-sm font-medium rounded-full transition-all duration-200 transform hover:scale-105 ${selectedCategory === category ? 'bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-lg' : 'bg-gray-100 text-gray-700 hover:bg-gray-200 border border-gray-300'}`}>
                             {category}
                         </button>
                     ))}
@@ -491,312 +269,74 @@ export default function Home() {
     const [expandedCards, setExpandedCards] = useState(new Set());
 
     const banks = useMemo(() => {
-        const bankCounts = {};
-        mockOffers.forEach(offer => {
-            bankCounts[offer.bank] = (bankCounts[offer.bank] || 0) + 1;
-        });
-        
-        return Object.entries(bankCounts)
-            .map(([name, count]) => ({ name, count }))
-            .sort((a, b) => b.count - a.count);
+        const bankCounts = mockOffers.reduce((acc, offer) => {
+            acc[offer.bank] = (acc[offer.bank] || 0) + 1;
+            return acc;
+        }, {});
+        return Object.entries(bankCounts).map(([name, count]) => ({ name, count })).sort((a, b) => b.count - a.count);
     }, []);
 
-    const categories = useMemo(() => {
-        const cats = ['All', ...new Set(mockOffers.map(o => o.category))];
-        return cats.sort();
-    }, []);
+    const categories = useMemo(() => ['All', ...new Set(mockOffers.map(o => o.category))].sort(), []);
 
     const handleBankSelect = (bankName) => {
-        setSelectedBanks(prev => 
-            prev.includes(bankName) 
-                ? prev.filter(b => b !== bankName) 
-                : [...prev, bankName]
-        );
+        setSelectedBanks(prev => prev.includes(bankName) ? prev.filter(b => b !== bankName) : [...prev, bankName]);
     };
 
     const handleCardExpand = (offerId) => {
-        setExpandedCards(prev => {
-            const newSet = new Set(prev);
-            if (newSet.has(offerId)) {
-                newSet.delete(offerId);
-            } else {
-                newSet.add(offerId);
-            }
-            return newSet;
-        });
+        setExpandedCards(prev => { const newSet = new Set(prev); newSet.has(offerId) ? newSet.delete(offerId) : newSet.add(offerId); return newSet; });
     };
 
     const filteredOffers = useMemo(() => {
         return mockOffers.filter(offer => {
             const bankMatch = selectedBanks.length === 0 || selectedBanks.includes(offer.bank);
             const categoryMatch = selectedCategory === 'All' || offer.category === selectedCategory;
-            
-            const searchMatch = !searchTerm || 
-                offer.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                offer.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                offer.merchant?.name?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                offer.location?.address?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                offer.bank.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                offer.category.toLowerCase().includes(searchTerm.toLowerCase());
-            
+            const term = searchTerm.toLowerCase();
+            const searchMatch = !term || ['title', 'description', 'bank', 'category'].some(key => offer[key]?.toLowerCase().includes(term)) || offer.merchant?.name?.toLowerCase().includes(term) || offer.location?.address?.toLowerCase().includes(term);
             return bankMatch && categoryMatch && searchMatch;
         });
     }, [selectedBanks, selectedCategory, searchTerm]);
 
-    // Sort offers by expiry date and discount value
     const sortedOffers = useMemo(() => {
         return [...filteredOffers].sort((a, b) => {
-            // First, prioritize offers expiring soon
             const daysLeftA = getDaysUntilExpiry(a.validity?.end_date);
             const daysLeftB = getDaysUntilExpiry(b.validity?.end_date);
-            
             if (daysLeftA !== null && daysLeftB !== null) {
-                if (daysLeftA <= 7 && daysLeftB > 7) return -1;
-                if (daysLeftB <= 7 && daysLeftA > 7) return 1;
+                if (daysLeftA < daysLeftB) return -1;
+                if (daysLeftA > daysLeftB) return 1;
             }
-            
-            // Then by discount value (percentage offers first)
+            if (daysLeftA !== null && daysLeftB === null) return -1;
+            if (daysLeftA === null && daysLeftB !== null) return 1;
+
             const getDiscountWeight = (offer) => {
                 if (offer.offer_details?.type === 'percentage') return offer.offer_details.value || 0;
-                if (offer.offer_details?.type === 'bogo') return 50; // Treat BOGO as 50% off
-                if (offer.offer_details?.type === 'fixed') return (offer.offer_details.value || 0) / 1000; // Normalize fixed amounts
+                if (offer.offer_details?.type === 'bogo') return 50;
+                if (offer.offer_details?.type === 'fixed') return (offer.offer_details.value || 0) / 1000;
                 return 0;
             };
-            
             return getDiscountWeight(b) - getDiscountWeight(a);
         });
     }, [filteredOffers]);
 
     return (
         <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-blue-50">
-            {/* Hero Section */}
             <div className="relative overflow-hidden bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-800">
                 <div className="absolute inset-0 bg-black opacity-20"></div>
                 <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-purple-600/20"></div>
-                
-                {/* Animated background shapes */}
                 <div className="absolute top-0 left-0 w-72 h-72 bg-gradient-to-br from-blue-400 to-purple-600 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse"></div>
                 <div className="absolute top-0 right-0 w-72 h-72 bg-gradient-to-br from-purple-400 to-pink-600 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse animation-delay-2000"></div>
                 <div className="absolute -bottom-8 left-20 w-72 h-72 bg-gradient-to-br from-pink-400 to-red-600 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse animation-delay-4000"></div>
-                
-                <div className="relative container mx-auto px-4 py-20 text-center">
-                    <div className="max-w-4xl mx-auto">
-                        <h1 className="text-5xl md:text-7xl font-extrabold text-white mb-6 leading-tight">
-                            Card Promotions
-                            <span className="bg-gradient-to-r from-yellow-400 to-orange-500 bg-clip-text text-transparent block">
-                                Sri Lanka
-                            </span>
-                        </h1>
-                        <p className="text-xl md:text-2xl text-blue-100 mb-8 leading-relaxed">
-                            Discover the best credit & debit card offers across Sri Lanka. 
-                            Save more, spend smarter.
-                        </p>
-                        <div className="flex flex-wrap justify-center gap-4 text-sm text-blue-200">
-                            <div className="flex items-center">
-                                <SparkleIcon />
-                                <span>{mockOffers.length}+ Active Offers</span>
-                            </div>
-                            <div className="flex items-center">
-                                <CreditCardIcon />
-                                <span>{banks.length} Banks</span>
-                            </div>
-                            <div className="flex items-center">
-                                <TagIcon />
-                                <span>{categories.length - 1} Categories</span>
-                            </div>
-                        </div>
-                    </div>
+                <div className="relative container mx-auto px-4 py-16 sm:py-20 text-center">
+                    <div className="max-w-4xl mx-auto"><h1 className="text-4xl sm:text-5xl md:text-7xl font-extrabold text-white mb-6 leading-tight">Card Promotions<span className="bg-gradient-to-r from-yellow-400 to-orange-500 bg-clip-text text-transparent block">Sri Lanka</span></h1><p className="text-lg sm:text-xl md:text-2xl text-blue-100 mb-8 leading-relaxed">Discover the best credit & debit card offers across Sri Lanka. Save more, spend smarter.</p><div className="flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-6 text-sm text-blue-200"><div className="flex items-center"><SparkleIcon /><span>{mockOffers.length}+ Active Offers</span></div><div className="flex items-center"><CreditCardIcon /><span>{banks.length} Banks</span></div><div className="flex items-center"><TagIcon /><span>{categories.length - 1} Categories</span></div></div></div>
                 </div>
             </div>
-
             <div className="container mx-auto px-4 py-8">
-                {/* Search and Filters */}
-                <SearchAndFilters
-                    searchTerm={searchTerm}
-                    onSearchChange={setSearchTerm}
-                    selectedCategory={selectedCategory}
-                    categories={categories}
-                    onCategoryChange={setSelectedCategory}
-                    selectedBanks={selectedBanks}
-                    onOpenBankModal={() => setIsBankModalOpen(true)}
-                    resultsCount={sortedOffers.length}
-                />
-
-                {/* Bank Selection Modal */}
-                {isBankModalOpen && (
-                    <BankSelectionModal 
-                        banks={banks}
-                        selectedBanks={selectedBanks}
-                        onSelect={handleBankSelect}
-                        onClose={() => setIsBankModalOpen(false)}
-                        onClear={() => setSelectedBanks([])}
-                    />
-                )}
-
-                {/* Quick Stats */}
-                {(selectedBanks.length > 0 || selectedCategory !== 'All' || searchTerm) && (
-                    <div className="mb-8 p-6 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl border border-blue-200">
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                            <div className="text-center">
-                                <div className="text-3xl font-bold text-blue-600 mb-2">
-                                    {sortedOffers.length}
-                                </div>
-                                <div className="text-sm text-gray-600">Matching Offers</div>
-                            </div>
-                            <div className="text-center">
-                                <div className="text-3xl font-bold text-green-600 mb-2">
-                                    {sortedOffers.filter(o => getDaysUntilExpiry(o.validity?.end_date) <= 30).length}
-                                </div>
-                                <div className="text-sm text-gray-600">Expiring Soon</div>
-                            </div>
-                            <div className="text-center">
-                                <div className="text-3xl font-bold text-purple-600 mb-2">
-                                    {new Set(sortedOffers.map(o => o.merchant?.name)).size}
-                                </div>
-                                <div className="text-sm text-gray-600">Merchants</div>
-                            </div>
-                        </div>
-                    </div>
-                )}
-
-                {/* Offers Grid */}
-                {sortedOffers.length > 0 ? (
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        {sortedOffers.map(offer => (
-                            <OfferCard 
-                                key={offer.id} 
-                                offer={offer}
-                                isExpanded={expandedCards.has(offer.id)}
-                                onExpand={handleCardExpand}
-                            />
-                        ))}
-                    </div>
-                ) : (
-                    <div className="text-center py-20">
-                        <div className="max-w-md mx-auto">
-                            <div className="w-24 h-24 mx-auto mb-6 bg-gradient-to-br from-gray-100 to-gray-200 rounded-full flex items-center justify-center">
-                                <SearchIcon className="w-10 h-10 text-gray-400" />
-                            </div>
-                            <h3 className="text-2xl font-bold text-gray-800 mb-4">No offers found</h3>
-                            <p className="text-gray-600 mb-8 leading-relaxed">
-                                We couldn't find any offers matching your criteria. 
-                                Try adjusting your filters or search terms to discover more great deals.
-                            </p>
-                            <div className="space-y-3">
-                                <button 
-                                    onClick={() => {
-                                        setSearchTerm('');
-                                        setSelectedCategory('All');
-                                        setSelectedBanks([]);
-                                    }}
-                                    className="block w-full px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-xl transition-colors"
-                                >
-                                    Clear All Filters
-                                </button>
-                                <button 
-                                    onClick={() => setIsBankModalOpen(true)}
-                                    className="block w-full px-6 py-3 border-2 border-indigo-600 text-indigo-600 hover:bg-indigo-50 font-semibold rounded-xl transition-colors"
-                                >
-                                    Select Different Banks
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                )}
-                 
-                {/* Footer */}
-                <footer className="text-center mt-16 py-12 border-t border-gray-200">
-                    <div className="max-w-2xl mx-auto">
-                        <h3 className="text-xl font-bold text-gray-800 mb-3">
-                            🇱🇰 Built for Sri Lanka
-                        </h3>
-                        <p className="text-gray-600 mb-6 leading-relaxed">
-                            Your go-to platform for discovering the latest credit and debit card promotions 
-                            from all major banks in Sri Lanka. Save money, discover new places, and make 
-                            the most of your cards.
-                        </p>
-                        <div className="flex justify-center space-x-6 text-sm text-gray-500">
-                            <span>🏦 {banks.length}+ Banks</span>
-                            <span>🎯 {mockOffers.length}+ Offers</span>
-                            <span>🏪 {new Set(mockOffers.map(o => o.merchant?.name)).size}+ Merchants</span>
-                        </div>
-                        <p className="text-sm text-gray-500 mt-6">
-                            Happy saving! 💰
-                        </p>
-                    </div>
-                </footer>
+                <SearchAndFilters searchTerm={searchTerm} onSearchChange={setSearchTerm} selectedCategory={selectedCategory} categories={categories} onCategoryChange={setSelectedCategory} selectedBanks={selectedBanks} onOpenBankModal={() => setIsBankModalOpen(true)} resultsCount={sortedOffers.length} />
+                {isBankModalOpen && (<BankSelectionModal banks={banks} selectedBanks={selectedBanks} onSelect={handleBankSelect} onClose={() => setIsBankModalOpen(false)} onClear={() => setSelectedBanks([])} />)}
+                {(selectedBanks.length > 0 || selectedCategory !== 'All' || searchTerm) && (<div className="mb-8 p-6 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl border border-blue-200"><div className="grid grid-cols-1 md:grid-cols-3 gap-6"><div className="text-center"><div className="text-3xl font-bold text-blue-600 mb-2">{sortedOffers.length}</div><div className="text-sm text-gray-600">Matching Offers</div></div><div className="text-center"><div className="text-3xl font-bold text-green-600 mb-2">{sortedOffers.filter(o => getDaysUntilExpiry(o.validity?.end_date) <= 30).length}</div><div className="text-sm text-gray-600">Expiring Soon</div></div><div className="text-center"><div className="text-3xl font-bold text-purple-600 mb-2">{new Set(sortedOffers.map(o => o.merchant?.name)).size}</div><div className="text-sm text-gray-600">Merchants</div></div></div></div>)}
+                {sortedOffers.length > 0 ? (<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">{sortedOffers.map(offer => (<OfferCard key={offer.id} offer={offer} isExpanded={expandedCards.has(offer.id)} onExpand={handleCardExpand} />))}</div>) : (<div className="text-center py-12 sm:py-20"><div className="max-w-md mx-auto"><div className="w-24 h-24 mx-auto mb-6 bg-gradient-to-br from-gray-100 to-gray-200 rounded-full flex items-center justify-center"><SearchIcon className="w-10 h-10 text-gray-400" /></div><h3 className="text-2xl font-bold text-gray-800 mb-4">No offers found</h3><p className="text-gray-600 mb-8 leading-relaxed">We couldn't find any offers matching your criteria. Try adjusting your filters or search terms.</p><div className="space-y-3"><button onClick={() => { setSearchTerm(''); setSelectedCategory('All'); setSelectedBanks([]); }} className="block w-full px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-xl transition-colors">Clear All Filters</button><button onClick={() => setIsBankModalOpen(true)} className="block w-full px-6 py-3 border-2 border-indigo-600 text-indigo-600 hover:bg-indigo-50 font-semibold rounded-xl transition-colors">Select Different Banks</button></div></div></div>)}
+                <footer className="text-center mt-16 py-12 border-t border-gray-200"><div className="max-w-2xl mx-auto"><h3 className="text-xl font-bold text-gray-800 mb-3">🇱🇰 Built for Sri Lanka</h3><p className="text-gray-600 mb-6 leading-relaxed">Your go-to platform for discovering the latest credit and debit card promotions from all major banks in Sri Lanka. Save money, discover new places, and make the most of your cards.</p><div className="flex flex-col sm:flex-row justify-center items-center gap-2 sm:gap-6 text-sm text-gray-500"><span className="flex items-center">🏦 {banks.length}+ Banks</span><span className="flex items-center">🎯 {mockOffers.length}+ Offers</span><span className="flex items-center">🏪 {new Set(mockOffers.map(o => o.merchant?.name)).size}+ Merchants</span></div><p className="text-sm text-gray-500 mt-6">Happy saving! 💰</p></div></footer>
             </div>
-
-            <style jsx>{`
-                @keyframes pulse {
-                    0%, 100% { opacity: 0.2; }
-                    50% { opacity: 0.4; }
-                }
-                
-                .animate-pulse {
-                    animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-                }
-                
-                .animation-delay-2000 {
-                    animation-delay: 2s;
-                }
-                
-                .animation-delay-4000 {
-                    animation-delay: 4s;
-                }
-                
-                .line-clamp-1 {
-                    display: -webkit-box;
-                    -webkit-line-clamp: 1;
-                    -webkit-box-orient: vertical;
-                    overflow: hidden;
-                }
-                
-                .line-clamp-2 {
-                    display: -webkit-box;
-                    -webkit-line-clamp: 2;
-                    -webkit-box-orient: vertical;
-                    overflow: hidden;
-                }
-                
-                .animate-in {
-                    animation-fill-mode: both;
-                }
-                
-                .slide-in-from-top {
-                    animation-name: slideInFromTop;
-                }
-                
-                .zoom-in {
-                    animation-name: zoomIn;
-                }
-                
-                @keyframes slideInFromTop {
-                    from {
-                        opacity: 0;
-                        transform: translateY(-10px);
-                    }
-                    to {
-                        opacity: 1;
-                        transform: translateY(0);
-                    }
-                }
-                
-                @keyframes zoomIn {
-                    from {
-                        opacity: 0;
-                        transform: scale(0.95);
-                    }
-                    to {
-                        opacity: 1;
-                        transform: scale(1);
-                    }
-                }
-                
-                .duration-200 {
-                    animation-duration: 200ms;
-                }
-            `}</style>
+            <style jsx>{` @keyframes pulse { 0%, 100% { opacity: 0.2; } 50% { opacity: 0.4; } } .animate-pulse { animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite; } .animation-delay-2000 { animation-delay: 2s; } .animation-delay-4000 { animation-delay: 4s; } .line-clamp-1, .line-clamp-2 { display: -webkit-box; -webkit-box-orient: vertical; overflow: hidden; } .line-clamp-1 { -webkit-line-clamp: 1; } .line-clamp-2 { -webkit-line-clamp: 2; } .animate-in { animation-fill-mode: both; } .slide-in-from-top { animation-name: slideInFromTop; } .zoom-in { animation-name: zoomIn; } @keyframes slideInFromTop { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } } @keyframes zoomIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } } .duration-200 { animation-duration: 200ms; } .hide-scrollbar::-webkit-scrollbar { display: none; } .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; } `}</style>
         </div>
     );
 }
