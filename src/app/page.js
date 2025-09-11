@@ -240,15 +240,11 @@ const SearchAndFilters = ({ searchTerm, onSearchChange, selectedCategory, catego
                     <WalletIcon />
                     <span>My Banks ({selectedBanks.length})</span>
                 </button>
-                <div className="flex-grow">
+                <div className="flex-grow hidden sm:block">
                     <p className="text-gray-600">Showing <span className="font-bold text-indigo-600">{resultsCount}</span> offer{resultsCount !== 1 ? 's' : ''}{selectedBanks.length > 0 && (<span> for <span className="font-semibold">{selectedBanks.join(', ')}</span></span>)}</p>
                 </div>
             </div>
             <div className="border-t pt-6">
-                <div className="flex items-center mb-4">
-                    <FilterIcon />
-                    <label className="text-lg font-semibold text-gray-800">Categories</label>
-                </div>
                 <div className="flex gap-2 sm:gap-3 overflow-x-auto pb-3 -mb-3 hide-scrollbar">
                     {categories.map(category => (
                         <button key={category} onClick={() => onCategoryChange(category)} className={`flex-shrink-0 px-4 py-2 sm:px-5 sm:py-2.5 text-sm font-medium rounded-full transition-all duration-200 transform hover:scale-105 ${selectedCategory === category ? 'bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-lg' : 'bg-gray-100 text-gray-700 hover:bg-gray-200 border border-gray-300'}`}>
