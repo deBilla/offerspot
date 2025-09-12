@@ -3,97 +3,36 @@
 import React, { useState, useMemo, useEffect, useRef } from 'react';
 import Link from 'next/link';
 
-// --- Helper Hook for Mobile Detection ---
+const topBanks = [
+    { name: "Commercial Bank", url: "https://www.combank.lk/rewards-promotions" },
+    { name: "DFCC Bank", url: "https://www.dfcc.lk/promotions-categories/card-promotions/" },
+    { name: "People's Bank", url: "https://www.peoplesbank.lk/special-offers/" },
+    { name: "Bank of Ceylon", url: "https://www.boc.lk/personal-banking/card-offers" },
+    { name: "Seylan Bank", url: "https://www.seylan.lk/promotions/cards?type[]=credit_card" },
+];
+
 const useIsMobile = (breakpoint = 768) => {
-    // Initialize state to false to prevent SSR mismatch errors.
-    // The actual value will be set on the client side.
     const [isMobile, setIsMobile] = useState(false);
-
     useEffect(() => {
-        const checkScreenSize = () => {
-            setIsMobile(window.innerWidth < breakpoint);
-        };
-
-        // Check size on mount
+        const checkScreenSize = () => setIsMobile(window.innerWidth < breakpoint);
         checkScreenSize();
-
-        // Add event listener for resize
         window.addEventListener('resize', checkScreenSize);
-
-        // Cleanup listener on unmount
         return () => window.removeEventListener('resize', checkScreenSize);
     }, [breakpoint]);
-
     return isMobile;
 };
 
+const MapPinIcon = () => (<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 mr-1.5 inline-block"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" /><circle cx="12" cy="10" r="3" /></svg>);
+const TagIcon = () => (<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 mr-1.5 inline-block"><path d="M12 2H2v10l9.29 9.29c.94.94 2.48.94 3.42 0l6.58-6.58c.94-.94.94-2.48 0-3.42L12 2Z" /><path d="M7 7h.01" /></svg>);
+const CalendarIcon = () => (<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 mr-1.5 inline-block"><rect width="18" height="18" x="3" y="4" rx="2" ry="2" /><line x1="16" x2="16" y1="2" y2="6" /><line x1="8" x2="8" y1="2" y2="6" /><line x1="3" x2="21" y1="10" y2="10" /></svg>);
+const CreditCardIcon = () => (<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5 mr-2"><rect width="20" height="14" x="2" y="5" rx="2" /><line x1="2" x2="22" y1="10" y2="10" /></svg>);
+const WalletIcon = () => (<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5 mr-2"><path d="M21 12V7H5a2 2 0 0 1 0-4h14v4" /><path d="M3 5v14a2 2 0 0 0 2 2h16v-5" /><path d="M18 12a2 2 0 0 0 0 4h4v-4h-4Z" /></svg>);
+const XIcon = () => (<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6"><line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" /></svg>);
+const SearchIcon = () => (<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5"><circle cx="11" cy="11" r="8" /><path d="m21 21-4.35-4.35" /></svg>);
+const ExternalLinkIcon = () => (<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="inline-block w-4 h-4 ml-1 opacity-70 group-hover:opacity-100"><path d="M7 17L17 7" /><path d="M7 7h10v10" /></svg>);
+const SparkleIcon = () => (<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 mr-1"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.582a.5.5 0 0 1 0 .962L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z" /></svg>);
+const LoadingSpinnerIcon = () => (<svg className="animate-spin h-8 w-8 text-indigo-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle><path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>);
 
-// --- SVG Icons ---
-const MapPinIcon = () => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 mr-1.5 inline-block">
-        <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
-        <circle cx="12" cy="10" r="3" />
-    </svg>
-);
-const TagIcon = () => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 mr-1.5 inline-block">
-        <path d="M12 2H2v10l9.29 9.29c.94.94 2.48.94 3.42 0l6.58-6.58c.94-.94.94-2.48 0-3.42L12 2Z" />
-        <path d="M7 7h.01" />
-    </svg>
-);
-const CalendarIcon = () => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 mr-1.5 inline-block">
-        <rect width="18" height="18" x="3" y="4" rx="2" ry="2" />
-        <line x1="16" x2="16" y1="2" y2="6" />
-        <line x1="8" x2="8" y1="2" y2="6" />
-        <line x1="3" x2="21" y1="10" y2="10" />
-    </svg>
-);
-const CreditCardIcon = () => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5 mr-2">
-        <rect width="20" height="14" x="2" y="5" rx="2" />
-        <line x1="2" x2="22" y1="10" y2="10" />
-    </svg>
-);
-const WalletIcon = () => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5 mr-2">
-        <path d="M21 12V7H5a2 2 0 0 1 0-4h14v4" />
-        <path d="M3 5v14a2 2 0 0 0 2 2h16v-5" />
-        <path d="M18 12a2 2 0 0 0 0 4h4v-4h-4Z" />
-    </svg>
-);
-const XIcon = () => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6">
-        <line x1="18" y1="6" x2="6" y2="18" />
-        <line x1="6" y1="6" x2="18" y2="18" />
-    </svg>
-);
-const SearchIcon = () => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5">
-        <circle cx="11" cy="11" r="8" />
-        <path d="m21 21-4.35-4.35" />
-    </svg>
-);
-const ExternalLinkIcon = () => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 ml-1">
-        <path d="M7 17L17 7" />
-        <path d="M7 7h10v10" />
-    </svg>
-);
-const SparkleIcon = () => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 mr-1">
-        <path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.582a.5.5 0 0 1 0 .962L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z" />
-    </svg>
-);
-const LoadingSpinnerIcon = () => (
-    <svg className="animate-spin h-8 w-8 text-indigo-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-    </svg>
-);
-
-
-// --- Data & Helpers ---
 const bankDetails = {
     "People's Bank": { color: 'from-blue-600 via-blue-700 to-indigo-800', textColor: 'text-white', accent: 'bg-blue-50 border-blue-200 text-blue-800' },
     "Commercial Bank": { color: 'from-red-600 via-rose-600 to-pink-700', textColor: 'text-white', accent: 'bg-red-50 border-red-200 text-red-800' },
@@ -142,7 +81,6 @@ const generateOfferStructuredData = (offer) => {
     };
 };
 
-// --- Sub-Components ---
 const OfferCard = ({ offer, isExpanded, onExpand }) => {
     const [structuredData, setStructuredData] = useState(null);
     useEffect(() => {
@@ -205,7 +143,6 @@ const OfferCard = ({ offer, isExpanded, onExpand }) => {
                         {isExpanded && (
                             <div className="mt-3 space-y-3 text-sm animate-in slide-in-from-top duration-200">
                                 {terms && (<div className="bg-gray-50 rounded-lg p-3 border border-gray-200">
-                                    {/* FIX: Changed h4 to p to prevent duplicate heading warnings */}
                                     <p className="font-medium text-gray-900 mb-2">Terms & Conditions:</p>
                                     <p className="text-gray-700">{terms}</p>
                                 </div>)}
@@ -218,6 +155,7 @@ const OfferCard = ({ offer, isExpanded, onExpand }) => {
         </article>
     );
 };
+
 const BankCard = ({ bank, isSelected, onSelect }) => {
     const details = bankDetails[bank.name] || { color: 'from-gray-500 to-gray-700', textColor: 'text-white' };
     return (
@@ -228,6 +166,7 @@ const BankCard = ({ bank, isSelected, onSelect }) => {
         </button>
     );
 };
+
 const BankSelectionModal = ({ banks, selectedBanks, onSelect, onClose, onClear }) => {
     const [searchTerm, setSearchTerm] = useState('');
     const filteredBanks = useMemo(() => banks.filter(bank => bank.name.toLowerCase().includes(searchTerm.toLowerCase())), [banks, searchTerm]);
@@ -250,9 +189,10 @@ const BankSelectionModal = ({ banks, selectedBanks, onSelect, onClose, onClear }
         </div>
     );
 };
+
 const SearchAndFilters = ({ searchTerm, onSearchChange, selectedCategory, categories, onCategoryChange, selectedBanks, onOpenBankModal, resultsCount }) => {
     return (
-        <section className="bg-white rounded-2xl shadow-lg border border-gray-200 p-4 sm:p-6 mb-8 sticky top-4 z-20">
+        <section className="bg-white rounded-2xl shadow-lg border border-gray-200 p-4 sm:p-6 mb-8">
             <div className="relative mb-6">
                 <input type="text" placeholder="Search offers, merchants..." value={searchTerm} onChange={(e) => onSearchChange(e.target.value)} className="w-full pl-12 pr-4 py-2 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all text-base text-gray-900" aria-label="Search card offers and merchants" />
             </div>
@@ -277,6 +217,7 @@ const SearchAndFilters = ({ searchTerm, onSearchChange, selectedCategory, catego
         </section>
     );
 };
+
 const Pagination = ({ currentPage, totalPages, onPageChange }) => {
     if (totalPages <= 1) return null;
 
@@ -334,8 +275,6 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
     );
 };
 
-
-// --- Main Client Component ---
 export default function OfferBrowser({ initialOffers }) {
     const [isBankModalOpen, setIsBankModalOpen] = useState(false);
     const [selectedBanks, setSelectedBanks] = useState([]);
@@ -344,22 +283,64 @@ export default function OfferBrowser({ initialOffers }) {
     const [expandedCards, setExpandedCards] = useState(new Set());
     const [currentPage, setCurrentPage] = useState(1);
     const [offersPerPage] = useState(9);
-    const mockOffers = initialOffers;
-    const isMobile = useIsMobile(); // Check for mobile viewport
-    const loaderRef = useRef(null); // Ref for the loader element for intersection observer
+    const mockOffers = initialOffers || [];
+    const isMobile = useIsMobile();
+    const loaderRef = useRef(null);
 
-    const banks = useMemo(() => {
-        const bankCounts = mockOffers.filter(o => o && o.bank).reduce((acc, offer) => {
-            acc[offer.bank] = (acc[offer.bank] || 0) + 1;
+    const { banks, categories, filteredOffers, sortedOffers, totalPages, displayedOffers } = useMemo(() => {
+        const safeOffers = mockOffers.filter(Boolean);
+
+        const bankCounts = safeOffers.reduce((acc, offer) => {
+            if (offer.bank) {
+                acc[offer.bank] = (acc[offer.bank] || 0) + 1;
+            }
             return acc;
         }, {});
-        return Object.entries(bankCounts).map(([name, count]) => ({ name, count })).sort((a, b) => b.count - a.count);
-    }, [mockOffers]);
+        const banks = Object.entries(bankCounts).map(([name, count]) => ({ name, count })).sort((a, b) => b.count - a.count);
 
-    const categories = useMemo(() => {
-        const allCategories = mockOffers.filter(o => o && o.category).map(o => o.category);
-        return ['All', ...new Set(allCategories)].sort();
-    }, [mockOffers]);
+        const allCategories = safeOffers.map(o => o.category).filter(Boolean);
+        const categories = ['All', ...Array.from(new Set(allCategories)).sort()];
+
+        const filteredOffers = safeOffers.filter(offer => {
+            const bankMatch = selectedBanks.length === 0 || selectedBanks.includes(offer.bank);
+            const categoryMatch = selectedCategory === 'All' || offer.category === selectedCategory;
+            const term = searchTerm.toLowerCase();
+            const searchMatch = !term ||
+                Object.values(offer).some(val => typeof val === 'string' && val.toLowerCase().includes(term)) ||
+                offer.merchant?.name?.toLowerCase().includes(term) ||
+                offer.location?.address?.toLowerCase().includes(term);
+            return bankMatch && categoryMatch && searchMatch;
+        });
+
+        const getDiscountWeight = (offer) => {
+            const details = offer?.offer_details;
+            if (!details) return 0;
+            if (details.type === 'percentage') return details.value || 0;
+            if (details.type === 'bogo') return 50;
+            if (details.type === 'fixed') return (details.value || 0) / 1000;
+            return 0;
+        };
+        const sortedOffers = [...filteredOffers].sort((a, b) => {
+            const daysLeftA = getDaysUntilExpiry(a?.validity?.end_date);
+            const daysLeftB = getDaysUntilExpiry(b?.validity?.end_date);
+            if (daysLeftA !== null && daysLeftB !== null) {
+                if (daysLeftA < daysLeftB) return -1;
+                if (daysLeftA > daysLeftB) return 1;
+            }
+            if (daysLeftA !== null && daysLeftB === null) return -1;
+            if (daysLeftA === null && daysLeftB !== null) return 1;
+            return getDiscountWeight(b) - getDiscountWeight(a);
+        });
+
+        const totalPages = Math.ceil(sortedOffers.length / offersPerPage);
+
+        const indexOfLastOffer = currentPage * offersPerPage;
+        const displayedOffers = isMobile
+            ? sortedOffers.slice(0, indexOfLastOffer)
+            : sortedOffers.slice(indexOfLastOffer - offersPerPage, indexOfLastOffer);
+
+        return { banks, categories, filteredOffers, sortedOffers, totalPages, displayedOffers };
+    }, [mockOffers, selectedBanks, selectedCategory, searchTerm, currentPage, offersPerPage, isMobile]);
 
     const handleBankSelect = (bankName) => {
         setSelectedBanks(prev => prev.includes(bankName) ? prev.filter(b => b !== bankName) : [...prev, bankName]);
@@ -373,88 +354,31 @@ export default function OfferBrowser({ initialOffers }) {
         });
     };
 
-    const filteredOffers = useMemo(() => {
-        return mockOffers.filter(offer => {
-            if (!offer) return false;
-            const bankMatch = selectedBanks.length === 0 || selectedBanks.includes(offer?.bank);
-            const categoryMatch = selectedCategory === 'All' || offer?.category === selectedCategory;
-            const term = searchTerm.toLowerCase();
-            const searchMatch = !term ||
-                ['title', 'description', 'bank', 'category'].some(key => offer[key]?.toLowerCase().includes(term)) ||
-                offer?.merchant?.name?.toLowerCase().includes(term) ||
-                offer?.location?.address?.toLowerCase().includes(term);
-            return bankMatch && categoryMatch && searchMatch;
-        });
-    }, [mockOffers, selectedBanks, selectedCategory, searchTerm]);
-
-    const sortedOffers = useMemo(() => {
-        const getDiscountWeight = (offer) => {
-            const details = offer?.offer_details;
-            if (!details) return 0;
-            if (details.type === 'percentage') return details.value || 0;
-            if (details.type === 'bogo') return 50;
-            if (details.type === 'fixed') return (details.value || 0) / 1000;
-            return 0;
-        };
-        return [...filteredOffers].sort((a, b) => {
-            const daysLeftA = getDaysUntilExpiry(a?.validity?.end_date);
-            const daysLeftB = getDaysUntilExpiry(b?.validity?.end_date);
-            if (daysLeftA !== null && daysLeftB !== null) {
-                if (daysLeftA < daysLeftB) return -1;
-                if (daysLeftA > daysLeftB) return 1;
-            }
-            if (daysLeftA !== null && daysLeftB === null) return -1;
-            if (daysLeftA === null && daysLeftB !== null) return 1;
-            return getDiscountWeight(b) - getDiscountWeight(a);
-        });
-    }, [filteredOffers]);
-
-    const totalPages = Math.ceil(sortedOffers.length / offersPerPage);
-
-    // Reset to page 1 whenever filters or device type change
     useEffect(() => {
         setCurrentPage(1);
     }, [selectedBanks, selectedCategory, searchTerm, isMobile]);
 
-    // Infinite scroll effect for mobile
     useEffect(() => {
         if (!isMobile) return;
-
         const observer = new IntersectionObserver(
             entries => {
                 const firstEntry = entries[0];
-                // Check if the loader is visible and there are more pages to load
                 if (firstEntry.isIntersecting && currentPage < totalPages) {
                     setCurrentPage(prevPage => prevPage + 1);
                 }
             },
             { threshold: 1.0 }
         );
-
         const currentLoader = loaderRef.current;
         if (currentLoader) {
             observer.observe(currentLoader);
         }
-
         return () => {
             if (currentLoader) {
                 observer.unobserve(currentLoader);
             }
         };
     }, [isMobile, currentPage, totalPages]);
-
-    // Get offers to display based on device type and current page
-    const displayedOffers = useMemo(() => {
-        const indexOfLastOffer = currentPage * offersPerPage;
-        if (isMobile) {
-            // On mobile, show all offers up to the current page for infinite scroll
-            return sortedOffers.slice(0, indexOfLastOffer);
-        } else {
-            // On desktop, show only the offers for the current page
-            const indexOfFirstOffer = indexOfLastOffer - offersPerPage;
-            return sortedOffers.slice(indexOfFirstOffer, indexOfLastOffer);
-        }
-    }, [sortedOffers, currentPage, offersPerPage, isMobile]);
 
     return (
         <main className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-blue-50">
@@ -491,25 +415,23 @@ export default function OfferBrowser({ initialOffers }) {
                 </div>
             </header>
             <div className="container mx-auto px-4 py-8">
-                <SearchAndFilters searchTerm={searchTerm} onSearchChange={setSearchTerm} selectedCategory={selectedCategory} categories={categories} onCategoryChange={setSelectedCategory} selectedBanks={selectedBanks} onOpenBankModal={() => setIsBankModalOpen(true)} resultsCount={sortedOffers.length} />
-                {isBankModalOpen && (<BankSelectionModal banks={banks} selectedBanks={selectedBanks} onSelect={handleBankSelect} onClose={() => setIsBankModalOpen(false)} onClear={() => setSelectedBanks([])} />)}
-                {displayedOffers.length > 0 ? (
-                    <>
-                        <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8" aria-label="Card offers list">
-                            {displayedOffers.map(offer => (<OfferCard key={offer?.id} offer={offer} isExpanded={expandedCards.has(offer?.id)} onExpand={handleCardExpand} />))}
-                        </section>
+                <section aria-labelledby="filters-heading" className="sticky top-4 z-20 mb-8">
+                    <h2 id="filters-heading" className="sr-only">Offer Filters</h2>
+                    <SearchAndFilters searchTerm={searchTerm} onSearchChange={setSearchTerm} selectedCategory={selectedCategory} categories={categories} onCategoryChange={setSelectedCategory} selectedBanks={selectedBanks} onOpenBankModal={() => setIsBankModalOpen(true)} resultsCount={sortedOffers.length} />
+                </section>
 
-                        {/* Conditional Pagination or Loader */}
-                        {isMobile ? (
-                            currentPage < totalPages && (
-                                <div ref={loaderRef} className="flex justify-center items-center p-8">
-                                    <LoadingSpinnerIcon />
-                                </div>
-                            )
-                        ) : (
-                            <Pagination currentPage={currentPage} totalPages={totalPages} onPageChange={setCurrentPage} />
-                        )}
-                    </>
+                {isBankModalOpen && (<BankSelectionModal banks={banks} selectedBanks={selectedBanks} onSelect={handleBankSelect} onClose={() => setIsBankModalOpen(false)} onClear={() => setSelectedBanks([])} />)}
+
+                {displayedOffers.length > 0 ? (
+                    <section aria-labelledby="offers-heading">
+                        <h2 id="offers-heading" className="text-3xl font-bold text-gray-800 mb-8">
+                            {selectedCategory === 'All' ? 'Latest Offers' : `${selectedCategory} Offers`}
+                        </h2>
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+                            {displayedOffers.map(offer => (<OfferCard key={offer?.id} offer={offer} isExpanded={expandedCards.has(offer?.id)} onExpand={handleCardExpand} />))}
+                        </div>
+                        {isMobile ? (currentPage < totalPages && <div ref={loaderRef} className="flex justify-center items-center p-8"><LoadingSpinnerIcon /></div>) : (<Pagination currentPage={currentPage} totalPages={totalPages} onPageChange={setCurrentPage} />)}
+                    </section>
                 ) : (
                     <section className="text-center py-12 sm:py-20" aria-label="No offers found">
                         <div className="max-w-md mx-auto">
@@ -531,51 +453,42 @@ export default function OfferBrowser({ initialOffers }) {
                         </div>
                     </section>
                 )}
+
                 <footer className="text-center mt-16 py-12 border-t border-gray-200">
                     <div className="max-w-5xl mx-auto px-4">
-                        {/* Main call-to-action section */}
                         <div className="mb-10">
-                            <h3 className="text-xl font-bold text-gray-800 mb-3">🇱🇰 Built for Sri Lanka</h3>
+                            <h2 className="text-3xl font-bold text-gray-800 mb-4">Unlock Savings in Sri Lanka</h2>
                             <p className="max-w-2xl mx-auto text-gray-600 mb-6 leading-relaxed">
                                 Your go-to platform for discovering the latest credit and debit card promotions from all major banks in Sri Lanka.
-                                Save money, discover new places, and make the most of your cards.
                             </p>
                         </div>
 
-                        {/* Links and stats grid */}
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-sm">
-
-                            {/* Column 1: Quick Links */}
                             <div className="text-center md:text-left">
-                                {/* FIX: Changed p to h4 for semantic structure */}
-                                <h4 className="font-semibold text-gray-800 mb-3">Quick Links</h4>
+                                <h3 className="font-semibold text-gray-800 mb-3">Quick Links</h3>
                                 <ul className="space-y-2 text-gray-600">
                                     <li><a href="/offers" className="hover:text-blue-600 hover:underline">All Offers</a></li>
                                     <li><a href="/categories/dining" className="hover:text-blue-600 hover:underline">Dining Deals</a></li>
                                     <li><a href="/categories/shopping" className="hover:text-blue-600 hover:underline">Shopping Discounts</a></li>
-                                    <li><a href="/about" className="hover:text-blue-600 hover:underline">About Us</a></li>
-                                    <li><a href="/contact" className="hover:text-blue-600 hover:underline">Contact</a></li>
                                 </ul>
                             </div>
 
-                            {/* Column 2: Top Banks */}
                             <div className="text-center md:text-left">
-                                {/* FIX: Changed p to h4 for semantic structure */}
-                                <h4 className="font-semibold text-gray-800 mb-3">Top Banks</h4>
+                                <h3 className="font-semibold text-gray-800 mb-3">Top Bank Promotions</h3>
                                 <ul className="space-y-2 text-gray-600">
-                                    {/* Replace with your actual bank page links */}
-                                    <li><a href="/banks/commercial-bank" className="hover:text-blue-600 hover:underline">Commercial Bank</a></li>
-                                    <li><a href="/banks/hnb" className="hover:text-blue-600 hover:underline">HNB</a></li>
-                                    <li><a href="/banks/sampath-bank" className="hover:text-blue-600 hover:underline">Sampath Bank</a></li>
-                                    <li><a href="/banks/ntb" className="hover:text-blue-600 hover:underline">Nations Trust Bank</a></li>
-                                    <li><a href="/banks/seylan-bank" className="hover:text-blue-600 hover:underline">Seylan Bank</a></li>
+                                    {topBanks.map(bank => (
+                                        <li key={bank.name}>
+                                            <a href={bank.url} target="_blank" rel="noopener noreferrer" className="hover:text-blue-600 hover:underline inline-flex items-center group">
+                                                {bank.name}
+                                                <ExternalLinkIcon />
+                                            </a>
+                                        </li>
+                                    ))}
                                 </ul>
                             </div>
 
-                            {/* Column 3: Site Stats */}
                             <div className="text-center md:text-left">
-                                {/* FIX: Changed p to h4 for semantic structure */}
-                                <h4 className="font-semibold text-gray-800 mb-3">Our Platform</h4>
+                                <h3 className="font-semibold text-gray-800 mb-3">Our Platform</h3>
                                 <div className="flex flex-col items-center md:items-start gap-2 text-gray-600">
                                     <span className="flex items-center">🏦 {banks.length}+ Banks Covered</span>
                                     <span className="flex items-center">🎯 {mockOffers.length}+ Offers Live</span>
@@ -583,7 +496,6 @@ export default function OfferBrowser({ initialOffers }) {
                                 </div>
                                 <p className="text-sm text-gray-500 mt-4">Happy saving! 💰</p>
                             </div>
-
                         </div>
 
                         <div className="text-center text-xs text-gray-400 mt-12 border-t border-gray-200 pt-6">
@@ -596,6 +508,7 @@ export default function OfferBrowser({ initialOffers }) {
                 </footer>
             </div>
             <style jsx>{`
+                .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border-width: 0; }
                 @keyframes pulse { 0%, 100% { opacity: 0.2; } 50% { opacity: 0.4; } } 
                 .animate-pulse { animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite; } 
                 .animation-delay-2000 { animation-delay: 2s; } 
