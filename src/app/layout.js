@@ -1,8 +1,9 @@
-// app/layout.js (or app/layout.tsx)
+// app/layout.tsx (or app/layout.js)
 
 import { Geist, Geist_Mono } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
+import Head from "next/head";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -16,6 +17,7 @@ const geistMono = Geist_Mono({
 
 const websiteUrl = "https://www.cardpromotions.org";
 
+// ✅ Keep only valid metadata fields here
 export const metadata = {
   metadataBase: new URL(websiteUrl),
   title: {
@@ -86,9 +88,16 @@ export const metadata = {
     apple: "/apple-touch-icon.png",
   },
   manifest: `${websiteUrl}/site.webmanifest`,
-  themeColor: "#ffffff",
-  viewport: "width=device-width, initial-scale=1.0",
 };
+
+// ✅ Move viewport & themeColor here
+export function generateViewport() {
+  return {
+    themeColor: "#ffffff",
+    width: "device-width",
+    initialScale: 1,
+  };
+}
 
 export default function RootLayout({ children }) {
   const jsonLd = {
@@ -105,8 +114,9 @@ export default function RootLayout({ children }) {
 
   return (
     <html lang="en">
-      <head>
+      <Head>
         <link rel="manifest" href="/manifest.json" />
+
         {/* Google Analytics */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-4N0L6X203Z"
@@ -128,7 +138,7 @@ export default function RootLayout({ children }) {
           crossOrigin="anonymous"
           strategy="afterInteractive"
         />
-      </head>
+      </Head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         {/* Structured Data */}
         <Script
