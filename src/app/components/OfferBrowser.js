@@ -22,6 +22,7 @@ const useIsMobile = (breakpoint = 768) => {
     return isMobile;
 };
 
+// --- ICONS (Unchanged) ---
 const MapPinIcon = () => (<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 mr-1.5 inline-block"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" /><circle cx="12" cy="10" r="3" /></svg>);
 const TagIcon = () => (<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 mr-1.5 inline-block"><path d="M12 2H2v10l9.29 9.29c.94.94 2.48.94 3.42 0l6.58-6.58c.94-.94.94-2.48 0-3.42L12 2Z" /><path d="M7 7h.01" /></svg>);
 const CalendarIcon = () => (<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 mr-1.5 inline-block"><rect width="18" height="18" x="3" y="4" rx="2" ry="2" /><line x1="16" x2="16" y1="2" y2="6" /><line x1="8" x2="8" y1="2" y2="6" /><line x1="3" x2="21" y1="10" y2="10" /></svg>);
@@ -31,7 +32,8 @@ const XIcon = () => (<svg xmlns="http://www.w3.org/2000/svg" width="24" height="
 const SearchIcon = () => (<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5"><circle cx="11" cy="11" r="8" /><path d="m21 21-4.35-4.35" /></svg>);
 const ExternalLinkIcon = () => (<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="inline-block w-4 h-4 ml-1 opacity-70 group-hover:opacity-100"><path d="M7 17L17 7" /><path d="M7 7h10v10" /></svg>);
 const SparkleIcon = () => (<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 mr-1"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.582a.5.5 0 0 1 0 .962L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z" /></svg>);
-const LoadingSpinnerIcon = () => (<svg className="animate-spin h-8 w-8 text-indigo-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle><path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>);
+const LoadingSpinnerIcon = () => (<svg className="animate-spin h-8 w-8 text-teal-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle><path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>);
+
 
 const bankDetails = {
     "People's Bank": { color: 'from-blue-600 via-blue-700 to-indigo-800', textColor: 'text-white', accent: 'bg-blue-50 border-blue-200 text-blue-800' },
@@ -42,6 +44,7 @@ const bankDetails = {
     "DFCC Bank": { color: 'from-purple-600 via-violet-600 to-indigo-700', textColor: 'text-white', accent: 'bg-purple-50 border-purple-200 text-purple-800' }
 };
 
+// --- UTILITY FUNCTIONS (Unchanged) ---
 const getBankBadgeColor = (bank) => bankDetails[bank]?.accent || 'bg-gray-100 border-gray-200 text-gray-800';
 const formatDate = (dateString) => {
     if (!dateString || dateString === 'Not specified in the text') return 'N/A';
@@ -102,9 +105,9 @@ const OfferCard = ({ offer, isExpanded, onExpand }) => {
     const renderDiscount = () => {
         if (!offerDetails) return null;
         const { type, value, currency } = offerDetails;
-        if (type === 'percentage') return (<div className="text-right"><div className="text-3xl font-bold text-emerald-600">{value || 0}%</div><div className="text-sm text-emerald-700 font-medium">OFF</div></div>);
-        if (type === 'bogo') return (<div className="text-right"><div className="text-2xl font-bold text-emerald-600">BOGO</div><div className="text-xs text-emerald-700">Buy One Get One</div></div>);
-        if (type === 'fixed') return (<div className="text-right"><div className="text-lg font-bold text-emerald-600">Save {currency || 'LKR'} {(value || 0).toLocaleString()}</div></div>);
+        if (type === 'percentage') return (<div className="text-right"><div className="text-3xl font-bold text-green-600">{value || 0}%</div><div className="text-sm text-green-700 font-medium">OFF</div></div>);
+        if (type === 'bogo') return (<div className="text-right"><div className="text-2xl font-bold text-green-600">BOGO</div><div className="text-xs text-green-700">Buy One Get One</div></div>);
+        if (type === 'fixed') return (<div className="text-right"><div className="text-lg font-bold text-green-600">Save {currency || 'LKR'} {(value || 0).toLocaleString()}</div></div>);
         return null;
     };
     const googleMapsUrl = locationLat && locationLng ? `https://www.google.com/maps/search/?api=1&query=${locationLat},${locationLng}` : null;
@@ -123,7 +126,7 @@ const OfferCard = ({ offer, isExpanded, onExpand }) => {
                 <div>
                     <p className="text-sm font-semibold text-gray-500 uppercase tracking-wide">{merchantName}</p>
                     <Link href={`/offer/${id}`} className="block mt-2 group/link">
-                        <h3 className="text-xl font-bold text-gray-900 mb-3 line-clamp-2 group-hover/link:text-indigo-700 transition-colors">{title || 'Untitled Offer'}</h3>
+                        <h3 className="text-xl font-bold text-gray-900 mb-3 line-clamp-2 group-hover/link:text-teal-700 transition-colors">{title || 'Untitled Offer'}</h3>
                     </Link>
                     <p className="text-gray-600 text-sm leading-relaxed line-clamp-2">{description || 'No description available.'}</p>
                 </div>
@@ -136,7 +139,7 @@ const OfferCard = ({ offer, isExpanded, onExpand }) => {
                 </div>
                 {(terms || (source_url && source_url !== '#')) && (
                     <div className="mt-4 pt-4 border-t border-gray-200">
-                        <button onClick={() => onExpand(id)} className="text-indigo-600 hover:text-indigo-800 font-medium text-sm flex items-center transition-colors">
+                        <button onClick={() => onExpand(id)} className="text-teal-600 hover:text-teal-800 font-medium text-sm flex items-center transition-colors">
                             {isExpanded ? 'Hide Details' : 'Show Terms & Details'}
                             <svg className={`ml-1 w-4 h-4 transition-transform ${isExpanded ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
                         </button>
@@ -146,7 +149,7 @@ const OfferCard = ({ offer, isExpanded, onExpand }) => {
                                     <p className="font-medium text-gray-900 mb-2">Terms & Conditions:</p>
                                     <p className="text-gray-700">{terms}</p>
                                 </div>)}
-                                {source_url && source_url !== '#' && (<a href={source_url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-medium rounded-lg transition-colors">Visit Offer Page<ExternalLinkIcon /></a>)}
+                                {source_url && source_url !== '#' && (<a href={source_url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center px-4 py-2 bg-teal-600 hover:bg-teal-700 text-white font-medium rounded-lg transition-colors">Visit Offer Page<ExternalLinkIcon /></a>)}
                             </div>
                         )}
                     </div>
@@ -159,10 +162,10 @@ const OfferCard = ({ offer, isExpanded, onExpand }) => {
 const BankCard = ({ bank, isSelected, onSelect }) => {
     const details = bankDetails[bank.name] || { color: 'from-gray-500 to-gray-700', textColor: 'text-white' };
     return (
-        <button onClick={() => onSelect(bank.name)} className={`w-full p-5 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 ${isSelected ? 'ring-4 ring-offset-2 ring-indigo-500 scale-105' : 'hover:scale-102'} bg-gradient-to-br ${details.color} ${details.textColor} relative overflow-hidden group`}>
+        <button onClick={() => onSelect(bank.name)} className={`w-full p-5 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 ${isSelected ? 'ring-4 ring-offset-2 ring-teal-500 scale-105' : 'hover:scale-102'} bg-gradient-to-br ${details.color} ${details.textColor} relative overflow-hidden group`}>
             <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-10 transition-opacity"></div>
             <div className="relative flex justify-between items-center"><div className="text-left"><h3 className="text-lg font-bold mb-1">{bank.name}</h3><p className="text-sm opacity-90">{bank.count} {bank.count === 1 ? 'offer' : 'offers'}</p></div><CreditCardIcon /></div>
-            {isSelected && (<div className="absolute top-2 right-2 w-6 h-6 bg-white rounded-full flex items-center justify-center"><svg className="w-4 h-4 text-indigo-600" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" /></svg></div>)}
+            {isSelected && (<div className="absolute top-2 right-2 w-6 h-6 bg-white rounded-full flex items-center justify-center"><svg className="w-4 h-4 text-teal-600" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" /></svg></div>)}
         </button>
     );
 };
@@ -173,9 +176,9 @@ const BankSelectionModal = ({ banks, selectedBanks, onSelect, onClose, onClear }
     return (
         <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex justify-center items-center p-4 backdrop-blur-sm">
             <div className="bg-white rounded-2xl shadow-2xl w-full max-w-4xl transform transition-all animate-in zoom-in duration-200">
-                <div className="p-6 border-b border-gray-200 bg-gradient-to-r from-indigo-50 to-purple-50 rounded-t-2xl">
+                <div className="p-6 border-b border-gray-200 bg-gradient-to-r from-teal-50 to-green-50 rounded-t-2xl">
                     <div className="flex justify-between items-center mb-4"><h2 className="text-2xl sm:text-3xl font-bold text-gray-800">Select Your Banks</h2><button onClick={onClose} className="text-gray-400 hover:text-gray-600 hover:bg-gray-100 p-2 rounded-full transition-colors"><XIcon /></button></div>
-                    <div className="relative"><SearchIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" /><input type="text" placeholder="Search banks..." value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} className="w-full pl-11 pr-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all text-gray-900" /></div>
+                    <div className="relative"><SearchIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" /><input type="text" placeholder="Search banks..." value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} className="w-full pl-11 pr-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all text-gray-900" /></div>
                     {selectedBanks.length > 0 && (<div className="mt-4 text-sm text-gray-600"><span className="font-medium">{selectedBanks.length}</span> bank{selectedBanks.length !== 1 ? 's' : ''} selected</div>)}
                 </div>
                 <div className="p-6 max-h-[60vh] overflow-y-auto">
@@ -184,7 +187,7 @@ const BankSelectionModal = ({ banks, selectedBanks, onSelect, onClose, onClear }
                     </div>
                     {filteredBanks.length === 0 && (<div className="text-center py-12"><div className="text-gray-400 mb-2"><SearchIcon className="w-12 h-12 mx-auto" /></div><h3 className="text-lg font-medium text-gray-900 mb-1">No banks found</h3><p className="text-gray-500">Try adjusting your search terms</p></div>)}
                 </div>
-                <div className="p-6 bg-gray-50 rounded-b-2xl border-t border-gray-200 flex flex-col sm:flex-row justify-between items-center gap-4"><button onClick={onClear} className="text-sm font-semibold text-gray-600 hover:text-red-600 transition-colors px-4 py-2 rounded-lg hover:bg-red-50" disabled={selectedBanks.length === 0}>Clear All</button><button onClick={onClose} className="w-full sm:w-auto px-8 py-3 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-semibold rounded-xl shadow-md hover:shadow-lg transition-all transform hover:scale-105">Show {selectedBanks.length > 0 ? `${selectedBanks.length} Bank's` : 'All'} Offers</button></div>
+                <div className="p-6 bg-gray-50 rounded-b-2xl border-t border-gray-200 flex flex-col sm:flex-row justify-between items-center gap-4"><button onClick={onClear} className="text-sm font-semibold text-gray-600 hover:text-red-600 transition-colors px-4 py-2 rounded-lg hover:bg-red-50" disabled={selectedBanks.length === 0}>Clear All</button><button onClick={onClose} className="w-full sm:w-auto px-8 py-3 bg-gradient-to-r from-teal-500 to-blue-600 hover:from-teal-600 hover:to-blue-700 text-white font-semibold rounded-xl shadow-md hover:shadow-lg transition-all transform hover:scale-105">Show {selectedBanks.length > 0 ? `${selectedBanks.length} Bank's` : 'All'} Offers</button></div>
             </div>
         </div>
     );
@@ -192,24 +195,24 @@ const BankSelectionModal = ({ banks, selectedBanks, onSelect, onClose, onClear }
 
 const SearchAndFilters = ({ searchTerm, onSearchChange, selectedCategory, categories, onCategoryChange, selectedBanks, onOpenBankModal, resultsCount }) => {
     return (
-        <section className="bg-white rounded-2xl shadow-lg border border-gray-200 p-4 sm:p-6 mb-8">
+        <section className="bg-white rounded-2xl shadow-lg border border-gray-100 p-4 sm:p-6 mb-8">
             <div className="relative mb-6">
-                <input type="text" placeholder="Search offers, merchants..." value={searchTerm} onChange={(e) => onSearchChange(e.target.value)} className="w-full pl-12 pr-4 py-2 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all text-base text-gray-900" aria-label="Search card offers and merchants" />
+                <input type="text" placeholder="Search for dining, shopping, hotels..." value={searchTerm} onChange={(e) => onSearchChange(e.target.value)} className="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all text-base text-gray-900" aria-label="Search card offers and merchants" />
             </div>
             <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center mb-6">
-                <button onClick={onOpenBankModal} className="w-full sm:w-auto flex items-center justify-center px-4 py-3 sm:px-6 sm:py-3 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-semibold rounded-xl shadow-md hover:shadow-lg transition-all transform hover:scale-105" aria-label={`Filter by banks. Currently ${selectedBanks.length} banks selected`}>
+                <button onClick={onOpenBankModal} className="w-full sm:w-auto flex items-center justify-center px-4 py-3 sm:px-6 sm:py-3 bg-gradient-to-r from-teal-500 to-blue-600 hover:from-teal-600 hover:to-blue-700 text-white font-semibold rounded-xl shadow-md hover:shadow-lg transition-all transform hover:scale-105" aria-label={`Filter by banks. Currently ${selectedBanks.length} banks selected`}>
                     <WalletIcon />
                     <span>My Banks ({selectedBanks.length})</span>
                 </button>
                 <div className="flex-grow hidden sm:block">
-                    <p className="text-gray-600">Showing <span className="font-bold text-indigo-600">{resultsCount}</span> offer{resultsCount !== 1 ? 's' : ''}{selectedBanks.length > 0 && (<span> for <span className="font-semibold">{selectedBanks.join(', ')}</span></span>)}</p>
+                    <p className="text-gray-600">Showing <span className="font-bold text-teal-600">{resultsCount}</span> offer{resultsCount !== 1 ? 's' : ''}{selectedBanks.length > 0 && (<span> for <span className="font-semibold">{selectedBanks.join(', ')}</span></span>)}</p>
                 </div>
             </div>
             <div className="border-t pt-6">
                 <nav aria-label="Filter by category">
                     <div className="flex gap-2 sm:gap-3 overflow-x-auto pb-3 -mb-3 hide-scrollbar">
                         {categories.map(category => (
-                            <button key={category} onClick={() => onCategoryChange(category)} className={`flex-shrink-0 px-4 py-2 sm:px-5 sm:py-2.5 text-sm font-medium rounded-full transition-all duration-200 transform hover:scale-105 ${selectedCategory === category ? 'bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-lg' : 'bg-gray-100 text-gray-700 hover:bg-gray-200 border border-gray-300'}`} aria-pressed={selectedCategory === category} aria-label={`Filter by ${category} category`}>{category}</button>
+                            <button key={category} onClick={() => onCategoryChange(category)} className={`flex-shrink-0 px-4 py-2 sm:px-5 sm:py-2.5 text-sm font-medium rounded-full transition-all duration-200 transform hover:scale-105 ${selectedCategory === category ? 'bg-gradient-to-r from-teal-500 to-blue-600 text-white shadow-lg' : 'bg-slate-100 text-gray-700 hover:bg-slate-200 border border-slate-200'}`} aria-pressed={selectedCategory === category} aria-label={`Filter by ${category} category`}>{category}</button>
                         ))}
                     </div>
                 </nav>
@@ -259,7 +262,7 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
                         {page === '...' ? (
                             <span className="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300">...</span>
                         ) : (
-                            <button onClick={() => onPageChange(page)} className={`flex items-center justify-center px-4 h-10 leading-tight border transition-colors ${currentPage === page ? 'text-white bg-indigo-600 border-indigo-600 hover:bg-indigo-700' : 'text-gray-500 bg-white border-gray-300 hover:bg-gray-100 hover:text-gray-700'}`}>
+                            <button onClick={() => onPageChange(page)} className={`flex items-center justify-center px-4 h-10 leading-tight border transition-colors ${currentPage === page ? 'text-white bg-teal-600 border-teal-600 hover:bg-teal-700' : 'text-gray-500 bg-white border-gray-300 hover:bg-gray-100 hover:text-gray-700'}`}>
                                 {page}
                             </button>
                         )}
@@ -381,18 +384,17 @@ export default function OfferBrowser({ initialOffers }) {
     }, [isMobile, currentPage, totalPages]);
 
     return (
-        <main className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-blue-50">
-            <header className="relative overflow-hidden bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-800">
-                <div className="absolute inset-0 bg-black opacity-20"></div>
-                <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-purple-600/20"></div>
-                <div className="absolute top-0 left-0 w-72 h-72 bg-gradient-to-br from-blue-400 to-purple-600 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse"></div>
-                <div className="absolute top-0 right-0 w-72 h-72 bg-gradient-to-br from-purple-400 to-pink-600 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse animation-delay-2000"></div>
-                <div className="absolute -bottom-8 left-20 w-72 h-72 bg-gradient-to-br from-pink-400 to-red-600 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse animation-delay-4000"></div>
+        <main className="min-h-screen bg-slate-50">
+            <header className="relative overflow-hidden bg-gradient-to-br from-teal-700 to-blue-800">
+                <div className="absolute inset-0 bg-black opacity-10"></div>
+                <div className="absolute top-0 left-0 w-72 h-72 bg-gradient-to-br from-blue-400 to-teal-600 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse"></div>
+                <div className="absolute top-0 right-0 w-72 h-72 bg-gradient-to-br from-teal-400 to-green-600 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse animation-delay-2000"></div>
+                <div className="absolute -bottom-8 left-20 w-72 h-72 bg-gradient-to-br from-green-400 to-blue-600 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse animation-delay-4000"></div>
                 <div className="relative container mx-auto px-4 py-16 sm:py-20 text-center">
                     <div className="max-w-4xl mx-auto">
                         <h1 className="text-4xl sm:text-5xl md:text-7xl font-extrabold text-white mb-6 leading-tight">
                             Card Promotions
-                            <span className="bg-gradient-to-r from-yellow-400 to-orange-500 bg-clip-text text-transparent block">Sri Lanka</span>
+                            <span className="bg-gradient-to-r from-green-300 to-lime-300 bg-clip-text text-transparent block">Sri Lanka</span>
                         </h1>
                         <p className="text-lg sm:text-xl md:text-2xl text-blue-100 mb-8 leading-relaxed">
                             Discover the best credit & debit card offers across Sri Lanka. Save more, spend smarter.
@@ -443,10 +445,10 @@ export default function OfferBrowser({ initialOffers }) {
                                 We couldn't find any offers matching your criteria. Try adjusting your filters or search terms.
                             </p>
                             <div className="space-y-3">
-                                <button onClick={() => { setSearchTerm(''); setSelectedCategory('All'); setSelectedBanks([]); }} className="block w-full px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-xl transition-colors">
+                                <button onClick={() => { setSearchTerm(''); setSelectedCategory('All'); setSelectedBanks([]); }} className="block w-full px-6 py-3 bg-gradient-to-r from-teal-500 to-blue-600 hover:from-teal-600 hover:to-blue-700 text-white font-semibold rounded-xl transition-colors">
                                     Clear All Filters
                                 </button>
-                                <button onClick={() => setIsBankModalOpen(true)} className="block w-full px-6 py-3 border-2 border-indigo-600 text-indigo-600 hover:bg-indigo-50 font-semibold rounded-xl transition-colors">
+                                <button onClick={() => setIsBankModalOpen(true)} className="block w-full px-6 py-3 border-2 border-teal-500 text-teal-600 hover:bg-teal-50 font-semibold rounded-xl transition-colors">
                                     Select Different Banks
                                 </button>
                             </div>
@@ -467,9 +469,9 @@ export default function OfferBrowser({ initialOffers }) {
                             <div className="text-center md:text-left">
                                 <h3 className="font-semibold text-gray-800 mb-3">Quick Links</h3>
                                 <ul className="space-y-2 text-gray-600">
-                                    <li><a href="/offers" className="hover:text-blue-600 hover:underline">All Offers</a></li>
-                                    <li><a href="/categories/dining" className="hover:text-blue-600 hover:underline">Dining Deals</a></li>
-                                    <li><a href="/categories/shopping" className="hover:text-blue-600 hover:underline">Shopping Discounts</a></li>
+                                    <li><a href="/offers" className="hover:text-teal-600 hover:underline">All Offers</a></li>
+                                    <li><a href="/categories/dining" className="hover:text-teal-600 hover:underline">Dining Deals</a></li>
+                                    <li><a href="/categories/shopping" className="hover:text-teal-600 hover:underline">Shopping Discounts</a></li>
                                 </ul>
                             </div>
 
@@ -478,7 +480,7 @@ export default function OfferBrowser({ initialOffers }) {
                                 <ul className="space-y-2 text-gray-600">
                                     {topBanks.map(bank => (
                                         <li key={bank.name}>
-                                            <a href={bank.url} target="_blank" rel="noopener noreferrer" className="hover:text-blue-600 hover:underline inline-flex items-center group">
+                                            <a href={bank.url} target="_blank" rel="noopener noreferrer" className="hover:text-teal-600 hover:underline inline-flex items-center group">
                                                 {bank.name}
                                                 <ExternalLinkIcon />
                                             </a>
