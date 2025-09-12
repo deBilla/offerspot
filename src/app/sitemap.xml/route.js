@@ -1,6 +1,6 @@
 // app/sitemap.xml/route.js
 import { NextResponse } from 'next/server';
-import data from '../src/app/api/data.json';
+import data from '../api/data.json';
 
 export async function GET() {
   const baseUrl = 'https://www.cardpromotions.org';
