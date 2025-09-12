@@ -499,7 +499,7 @@ export default function OfferBrowser({ initialOffers }) {
                         </div>
 
                         <div className="text-center text-xs text-gray-400 mt-12 border-t border-gray-200 pt-6">
-                            <p>© {new Date().getFullYear()} Your Site Name. All Rights Reserved.</p>
+                            <p>© {new Date().getFullYear()} cardpromotions.org. All Rights Reserved.</p>
                             <p className="mt-1">
                                 <a href="/privacy-policy" className="hover:underline">Privacy Policy</a> · <a href="/terms-of-service" className="hover:underline">Terms of Service</a>
                             </p>
