@@ -1,10 +1,11 @@
 'use client';
-import React, { useState, useMemo } from 'react';
-import data from '../../api/data.json';
+import React, { useState, useMemo, useEffect } from 'react';
+import Head from 'next/head';
+import data from './api/data.json';
 
 // --- Enhanced SVG Icons ---
 const MapPinIcon = () => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 mr-1.5 inline-block">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 mr-1.5 inline-block">
         <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
         <circle cx="12" cy="10" r="3" />
     </svg>
@@ -136,61 +137,178 @@ const getDaysUntilExpiry = (endDate) => {
     }
 };
 
+const toSafeISOString = (dateString) => {
+    if (!dateString) return undefined;
+    const date = new Date(dateString);
+    // Check if the date is valid before calling toISOString()
+    if (!isNaN(date.getTime())) {
+        return date.toISOString();
+    }
+    return undefined;
+};
+
+// Generate structured data for offers
+const generateOfferStructuredData = (offer) => {
+    const baseUrl = 'https://www.cardpromotions.org';
+    
+    return {
+        "@context": "https://schema.org",
+        "@type": "Offer",
+        "@id": `${baseUrl}/offer/${offer?.id}`,
+        "name": offer?.title,
+        "description": offer?.description,
+        "url": offer?.source_url !== '#' ? offer?.source_url : `${baseUrl}/offer/${offer?.id}`,
+        "image": `${baseUrl}/api/og?title=${encodeURIComponent(offer?.title)}&bank=${encodeURIComponent(offer?.bank)}`,
+        "category": offer?.category,
+        "offeredBy": {
+            "@type": "Organization",
+            "name": offer?.bank,
+            "url": `${baseUrl}/bank/${encodeURIComponent(offer?.bank?.toLowerCase().replace(/\s+/g, '-'))}`
+        },
+        "seller": {
+            "@type": "Organization", 
+            "name": offer?.merchant?.name || offer?.bank,
+            "address": offer?.location?.address && offer?.location?.address !== 'Online Booking' && offer?.location?.address !== 'Not specified in the text' ? {
+                "@type": "PostalAddress",
+                "addressLocality": offer?.location?.address,
+                "addressCountry": "LK"
+            } : undefined
+        },
+        "validFrom": toSafeISOString(offer?.validity?.start_date),
+        "validThrough": toSafeISOString(offer?.validity?.end_date),
+        "availability": "https://schema.org/InStock",
+        "itemOffered": {
+            "@type": "Service",
+            "name": `${offer?.category} Service`,
+            "category": offer?.category
+        },
+        "priceSpecification": offer?.offer_details ? {
+            "@type": "PriceSpecification",
+            "priceCurrency": offer?.offer_details?.currency || "LKR",
+            "price": offer?.offer_details?.type === 'fixed' ? offer?.offer_details.value : 0,
+            "valueAddedTaxIncluded": true
+        } : undefined,
+        "discount": offer?.offer_details?.type === 'percentage' ? {
+            "@type": "QuantitativeValue",
+            "value": offer?.offer_details?.value,
+            "unitText": "PERCENT"
+        } : undefined,
+        "additionalProperty": [
+            {
+                "@type": "PropertyValue",
+                "name": "Card Type Required",
+                "value": "Credit Card or Debit Card"
+            },
+            {
+                "@type": "PropertyValue", 
+                "name": "Bank",
+                "value": offer?.bank
+            },
+            {
+                "@type": "PropertyValue",
+                "name": "Merchant",
+                "value": offer?.merchant?.name || "Various Merchants"
+            }
+        ],
+        "termsOfService": offer?.terms || `Terms and conditions apply. Valid until ${formatDate(offer?.validity?.end_date)}. Contact ${offer?.bank} for full details.`
+    };
+};
+
 const OfferCard = ({ offer, isExpanded, onExpand }) => {
-    const { bank, category, merchant, title, description, offer_details, validity, location, terms, source_url } = offer;
-    const daysLeft = getDaysUntilExpiry(validity?.end_date);
+    // State to hold the structured data JSON string
+    const [structuredData, setStructuredData] = useState(null);
+
+    useEffect(() => {
+        // Generate the data on the client side after the component mounts to avoid hydration errors
+        if (offer) {
+            setStructuredData(JSON.stringify(generateOfferStructuredData(offer)));
+        }
+    }, [offer]); // Rerun if the offer prop changes
+
+    // Guard Clause: If the offer object is missing or invalid, render nothing.
+    if (!offer || !offer.id) {
+        return null; 
+    }
+
+    // Access properties safely using optional chaining and provide fallbacks.
+    const { id, bank, category, title, description, terms, source_url } = offer;
+    const merchantName = offer.merchant?.name || 'N/A';
+    const endDate = offer.validity?.end_date;
+    const locationAddress = offer.location?.address;
+    const locationLat = offer.location?.latitude;
+    const locationLng = offer.location?.longitude;
+    const offerDetails = offer.offer_details;
+
+    const daysLeft = getDaysUntilExpiry(endDate);
 
     const renderDiscount = () => {
-        if (!offer_details) return null;
-        if (offer_details.type === 'percentage') return (<div className="text-right"><div className="text-3xl font-bold text-emerald-600">{offer_details.value}%</div><div className="text-sm text-emerald-700 font-medium">OFF</div></div>);
-        if (offer_details.type === 'bogo') return (<div className="text-right"><div className="text-2xl font-bold text-emerald-600">BOGO</div><div className="text-xs text-emerald-700">Buy One Get One</div></div>);
-        if (offer_details.type === 'fixed') return (<div className="text-right"><div className="text-lg font-bold text-emerald-600">Save {offer_details.currency || 'LKR'} {offer_details.value?.toLocaleString()}</div></div>);
+        if (!offerDetails) return null;
+        const { type, value, currency } = offerDetails;
+        if (type === 'percentage') return (<div className="text-right"><div className="text-3xl font-bold text-emerald-600">{value || 0}%</div><div className="text-sm text-emerald-700 font-medium">OFF</div></div>);
+        if (type === 'bogo') return (<div className="text-right"><div className="text-2xl font-bold text-emerald-600">BOGO</div><div className="text-xs text-emerald-700">Buy One Get One</div></div>);
+        if (type === 'fixed') return (<div className="text-right"><div className="text-lg font-bold text-emerald-600">Save {currency || 'LKR'} {(value || 0).toLocaleString()}</div></div>);
         return null;
     };
 
-    const googleMapsUrl = location?.latitude ? `https://www.google.com/maps?q=${location.latitude},${location.longitude}` : null;
+    const googleMapsUrl = locationLat && locationLng ? `http://googleusercontent.com/maps.google.com/3{locationLat},${locationLng}` : null;
 
     return (
-        <div className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 ease-out transform hover:-translate-y-1 overflow-hidden group border border-gray-100">
+        <article 
+            className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 ease-out transform hover:-translate-y-1 overflow-hidden group border border-gray-100"
+            itemScope 
+            itemType="https://schema.org/Offer"
+        >
+            {/* Conditionally render the script tag only on the client */}
+            {structuredData && (
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{ __html: structuredData }}
+                />
+            )}
             <div className="relative overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-br from-gray-50 to-gray-100 opacity-50"></div>
                 <div className="relative p-6">
                     <div className="flex justify-between items-start mb-4">
                         <div className="flex flex-col gap-2">
-                            <span className={`inline-flex items-center px-3 py-1.5 text-xs font-semibold rounded-full border ${getBankBadgeColor(bank)} transition-colors`}><SparkleIcon />{bank}</span>
+                            <span className={`inline-flex items-center px-3 py-1.5 text-xs font-semibold rounded-full border ${getBankBadgeColor(bank)} transition-colors`} itemProp="offeredBy"><SparkleIcon />{bank || 'Unknown Bank'}</span>
                             {daysLeft !== null && daysLeft <= 30 && (<span className={`inline-flex items-center px-2 py-1 text-xs font-medium rounded-full ${daysLeft <= 7 ? 'bg-red-100 text-red-700 border border-red-200' : 'bg-amber-100 text-amber-700 border border-amber-200'}`}>{daysLeft === 0 ? 'Expires today!' : `${daysLeft} days left`}</span>)}
                         </div>
                         <div className="text-center">{renderDiscount()}</div>
                     </div>
                     <div>
-                        <p className="text-sm font-semibold text-gray-500 uppercase tracking-wide">{merchant?.name || 'N/A'}</p>
-                        <h3 className="text-xl font-bold text-gray-900 mt-2 mb-3 line-clamp-2 group-hover:text-indigo-700 transition-colors">{title}</h3>
-                        <p className="text-gray-600 text-sm leading-relaxed line-clamp-2">{description}</p>
+                        <p className="text-sm font-semibold text-gray-500 uppercase tracking-wide" itemProp="category">{merchantName}</p>
+                        <h3 className="text-xl font-bold text-gray-900 mt-2 mb-3 line-clamp-2 group-hover:text-indigo-700 transition-colors" itemProp="name">{title || 'Untitled Offer'}</h3>
+                        <p className="text-gray-600 text-sm leading-relaxed line-clamp-2" itemProp="description">{description || 'No description available.'}</p>
+                        <meta itemProp="url" content={source_url && source_url !== '#' ? source_url : `https://www.cardpromotions.org/offer/${id}`} />
+                        <meta itemProp="availability" content="https://schema.org/InStock" />
+                        {endDate && endDate !== 'Not specified in the text' && (
+                            <meta itemProp="validThrough" content={toSafeISOString(endDate)} />
+                        )}
                     </div>
                 </div>
             </div>
             <div className="px-6 py-4 bg-gradient-to-br from-gray-50 to-white border-t border-gray-100">
                 <div className="space-y-3 text-sm">
-                    <div className="flex items-center text-gray-700"><TagIcon /><span className="font-medium">{category}</span></div>
-                    <div className="flex items-center text-gray-700"><CalendarIcon /><span>Valid until: <span className="font-medium">{formatDate(validity?.end_date)}</span></span></div>
-                    {location?.address && location.address !== 'Online Booking' && location.address !== 'Not specified in the text' ? (googleMapsUrl ? (<a href={googleMapsUrl} target="_blank" rel="noopener noreferrer" className="flex items-center text-blue-600 hover:text-blue-800 hover:underline transition-colors"><MapPinIcon /><span className="line-clamp-1">{location.address}</span><ExternalLinkIcon /></a>) : (<div className="flex items-center text-gray-700"><MapPinIcon /><span className="line-clamp-1">{location.address}</span></div>)) : (<div className="flex items-center text-gray-700"><MapPinIcon /><span>Online / Multiple Locations</span></div>)}
+                    <div className="flex items-center text-gray-700"><TagIcon /><span className="font-medium">{category || 'Uncategorized'}</span></div>
+                    <div className="flex items-center text-gray-700"><CalendarIcon /><span>Valid until: <span className="font-medium">{formatDate(endDate)}</span></span></div>
+                    {locationAddress && locationAddress !== 'Online Booking' && locationAddress !== 'Not specified in the text' ? (googleMapsUrl ? (<a href={googleMapsUrl} target="_blank" rel="noopener noreferrer" className="flex items-center text-blue-600 hover:text-blue-800 hover:underline transition-colors"><MapPinIcon /><span className="line-clamp-1">{locationAddress}</span><ExternalLinkIcon /></a>) : (<div className="flex items-center text-gray-700"><MapPinIcon /><span className="line-clamp-1">{locationAddress}</span></div>)) : (<div className="flex items-center text-gray-700"><MapPinIcon /><span>Online / Multiple Locations</span></div>)}
                 </div>
                 {(terms || (source_url && source_url !== '#')) && (
                     <div className="mt-4 pt-4 border-t border-gray-200">
-                        <button onClick={() => onExpand(offer.id)} className="text-indigo-600 hover:text-indigo-800 font-medium text-sm flex items-center transition-colors">
+                        <button onClick={() => onExpand(id)} className="text-indigo-600 hover:text-indigo-800 font-medium text-sm flex items-center transition-colors">
                             {isExpanded ? 'Hide Details' : 'Show Terms & Details'}
                             <svg className={`ml-1 w-4 h-4 transition-transform ${isExpanded ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
                         </button>
                         {isExpanded && (
                             <div className="mt-3 space-y-3 text-sm animate-in slide-in-from-top duration-200">
-                                {terms && (<div className="bg-gray-50 rounded-lg p-3 border border-gray-200"><h4 className="font-medium text-gray-900 mb-2">Terms & Conditions:</h4><p className="text-gray-700">{terms}</p></div>)}
+                                {terms && (<div className="bg-gray-50 rounded-lg p-3 border border-gray-200"><h4 className="font-medium text-gray-900 mb-2">Terms & Conditions:</h4><p className="text-gray-700" itemProp="termsOfService">{terms}</p></div>)}
                                 {source_url && source_url !== '#' && (<a href={source_url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-medium rounded-lg transition-colors">Visit Offer Page<ExternalLinkIcon /></a>)}
                             </div>
                         )}
                     </div>
                 )}
             </div>
-        </div>
+        </article>
     );
 };
 
@@ -231,12 +349,20 @@ const BankSelectionModal = ({ banks, selectedBanks, onSelect, onClose, onClear }
 
 const SearchAndFilters = ({ searchTerm, onSearchChange, selectedCategory, categories, onCategoryChange, selectedBanks, onOpenBankModal, resultsCount }) => {
     return (
-        <div className="bg-white rounded-2xl shadow-lg border border-gray-200 p-4 sm:p-6 mb-8 sticky top-4 z-20">
+        <section className="bg-white rounded-2xl shadow-lg border border-gray-200 p-4 sm:p-6 mb-8 sticky top-4 z-20">
             <div className="relative mb-6">
-                <input type="text" placeholder="Search offers, merchants..." value={searchTerm} onChange={(e) => onSearchChange(e.target.value)} className="w-full pl-12 pr-4 py-2 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all text-base text-gray-900" />
+                <SearchIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
+                <input 
+                    type="text" 
+                    placeholder="Search offers, merchants..." 
+                    value={searchTerm} 
+                    onChange={(e) => onSearchChange(e.target.value)} 
+                    className="w-full pl-12 pr-4 py-2 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all text-base text-gray-900"
+                    aria-label="Search card offers and merchants"
+                />
             </div>
             <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center mb-6">
-                <button onClick={onOpenBankModal} className="w-full sm:w-auto flex items-center justify-center px-4 py-3 sm:px-6 sm:py-3 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-semibold rounded-xl shadow-md hover:shadow-lg transition-all transform hover:scale-105">
+                <button onClick={onOpenBankModal} className="w-full sm:w-auto flex items-center justify-center px-4 py-3 sm:px-6 sm:py-3 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-semibold rounded-xl shadow-md hover:shadow-lg transition-all transform hover:scale-105" aria-label={`Filter by banks. Currently ${selectedBanks.length} banks selected`}>
                     <WalletIcon />
                     <span>My Banks ({selectedBanks.length})</span>
                 </button>
@@ -245,15 +371,23 @@ const SearchAndFilters = ({ searchTerm, onSearchChange, selectedCategory, catego
                 </div>
             </div>
             <div className="border-t pt-6">
-                <div className="flex gap-2 sm:gap-3 overflow-x-auto pb-3 -mb-3 hide-scrollbar">
-                    {categories.map(category => (
-                        <button key={category} onClick={() => onCategoryChange(category)} className={`flex-shrink-0 px-4 py-2 sm:px-5 sm:py-2.5 text-sm font-medium rounded-full transition-all duration-200 transform hover:scale-105 ${selectedCategory === category ? 'bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-lg' : 'bg-gray-100 text-gray-700 hover:bg-gray-200 border border-gray-300'}`}>
-                            {category}
-                        </button>
-                    ))}
-                </div>
+                <nav aria-label="Filter by category">
+                    <div className="flex gap-2 sm:gap-3 overflow-x-auto pb-3 -mb-3 hide-scrollbar">
+                        {categories.map(category => (
+                            <button 
+                                key={category} 
+                                onClick={() => onCategoryChange(category)} 
+                                className={`flex-shrink-0 px-4 py-2 sm:px-5 sm:py-2.5 text-sm font-medium rounded-full transition-all duration-200 transform hover:scale-105 ${selectedCategory === category ? 'bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-lg' : 'bg-gray-100 text-gray-700 hover:bg-gray-200 border border-gray-300'}`}
+                                aria-pressed={selectedCategory === category}
+                                aria-label={`Filter by ${category} category`}
+                            >
+                                {category}
+                            </button>
+                        ))}
+                    </div>
+                </nav>
             </div>
-        </div>
+        </section>
     );
 };
 
@@ -265,37 +399,62 @@ export default function Home() {
     const [expandedCards, setExpandedCards] = useState(new Set());
 
     const banks = useMemo(() => {
-        const bankCounts = mockOffers.reduce((acc, offer) => {
-            acc[offer.bank] = (acc[offer.bank] || 0) + 1;
-            return acc;
-        }, {});
+        const bankCounts = mockOffers
+            .filter(offer => offer && offer.bank) 
+            .reduce((acc, offer) => {
+                acc[offer.bank] = (acc[offer.bank] || 0) + 1;
+                return acc;
+            }, {});
         return Object.entries(bankCounts).map(([name, count]) => ({ name, count })).sort((a, b) => b.count - a.count);
     }, []);
 
-    const categories = useMemo(() => ['All', ...new Set(mockOffers.map(o => o.category))].sort(), []);
+    const categories = useMemo(() => {
+        const allCategories = mockOffers
+            .filter(offer => offer && offer.category) 
+            .map(offer => offer.category);
+        return ['All', ...new Set(allCategories)].sort();
+    }, []);
 
     const handleBankSelect = (bankName) => {
         setSelectedBanks(prev => prev.includes(bankName) ? prev.filter(b => b !== bankName) : [...prev, bankName]);
     };
 
     const handleCardExpand = (offerId) => {
-        setExpandedCards(prev => { const newSet = new Set(prev); newSet.has(offerId) ? newSet.delete(offerId) : newSet.add(offerId); return newSet; });
+        setExpandedCards(prev => { 
+            const newSet = new Set(prev); 
+            newSet.has(offerId) ? newSet.delete(offerId) : newSet.add(offerId); 
+            return newSet; 
+        });
     };
 
     const filteredOffers = useMemo(() => {
         return mockOffers.filter(offer => {
-            const bankMatch = selectedBanks.length === 0 || selectedBanks.includes(offer.bank);
-            const categoryMatch = selectedCategory === 'All' || offer.category === selectedCategory;
+            if (!offer) return false;
+            const bankMatch = selectedBanks.length === 0 || selectedBanks.includes(offer?.bank);
+            const categoryMatch = selectedCategory === 'All' || offer?.category === selectedCategory;
             const term = searchTerm.toLowerCase();
-            const searchMatch = !term || ['title', 'description', 'bank', 'category'].some(key => offer[key]?.toLowerCase().includes(term)) || offer.merchant?.name?.toLowerCase().includes(term) || offer.location?.address?.toLowerCase().includes(term);
+            const searchMatch = !term || 
+                                ['title', 'description', 'bank', 'category'].some(key => offer[key]?.toLowerCase().includes(term)) || 
+                                offer?.merchant?.name?.toLowerCase().includes(term) || 
+                                offer?.location?.address?.toLowerCase().includes(term);
             return bankMatch && categoryMatch && searchMatch;
         });
     }, [selectedBanks, selectedCategory, searchTerm]);
 
     const sortedOffers = useMemo(() => {
+        const getDiscountWeight = (offer) => {
+            const details = offer?.offer_details;
+            if (!details) return 0;
+            if (details.type === 'percentage') return details.value || 0;
+            if (details.type === 'bogo') return 50;
+            if (details.type === 'fixed') return (details.value || 0) / 1000;
+            return 0;
+        };
+
         return [...filteredOffers].sort((a, b) => {
-            const daysLeftA = getDaysUntilExpiry(a.validity?.end_date);
-            const daysLeftB = getDaysUntilExpiry(b.validity?.end_date);
+            const daysLeftA = getDaysUntilExpiry(a?.validity?.end_date);
+            const daysLeftB = getDaysUntilExpiry(b?.validity?.end_date);
+
             if (daysLeftA !== null && daysLeftB !== null) {
                 if (daysLeftA < daysLeftB) return -1;
                 if (daysLeftA > daysLeftB) return 1;
@@ -303,36 +462,301 @@ export default function Home() {
             if (daysLeftA !== null && daysLeftB === null) return -1;
             if (daysLeftA === null && daysLeftB !== null) return 1;
 
-            const getDiscountWeight = (offer) => {
-                if (offer.offer_details?.type === 'percentage') return offer.offer_details.value || 0;
-                if (offer.offer_details?.type === 'bogo') return 50;
-                if (offer.offer_details?.type === 'fixed') return (offer.offer_details.value || 0) / 1000;
-                return 0;
-            };
             return getDiscountWeight(b) - getDiscountWeight(a);
         });
     }, [filteredOffers]);
 
+    // Generate FAQ structured data
+    const faqStructuredData = {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "What are card promotions in Sri Lanka?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Card promotions in Sri Lanka are special offers and discounts provided by banks to credit and debit card holders. These include dining discounts, shopping deals, travel offers, and cashback promotions at various merchants across the country."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Which banks offer card promotions in Sri Lanka?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Major banks in Sri Lanka offering card promotions include Commercial Bank, People's Bank, HNB (Hatton National Bank), Bank of Ceylon, Sampath Bank, DFCC Bank, and many others. Each bank has exclusive deals with different merchants."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How do I find the best card offers?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "You can find the best card offers by browsing our comprehensive database of current promotions, filtering by your preferred banks and categories, and checking expiry dates to ensure offers are still valid."
+                }
+            }
+        ]
+    };
+
+    // Generate BreadcrumbList structured data
+    const breadcrumbStructuredData = {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://www.cardpromotions.org"
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Card Offers",
+                "item": "https://www.cardpromotions.org/offers"
+            }
+        ]
+    };
+
+    // Generate main page structured data
+    const pageStructuredData = {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "Card Promotions Sri Lanka - Best Credit & Debit Card Offers",
+        "description": "Find the latest credit and debit card promotions, offers, and discounts from all major banks in Sri Lanka. Save on dining, shopping, travel, and more.",
+        "url": "https://www.cardpromotions.org",
+        "inLanguage": "en-LK",
+        "isPartOf": {
+            "@type": "WebSite",
+            "name": "Card Promotions LK",
+            "url": "https://www.cardpromotions.org"
+        },
+        "about": {
+            "@type": "Thing",
+            "name": "Credit Card Offers Sri Lanka",
+            "description": "Credit and debit card promotions and offers in Sri Lanka"
+        },
+        "audience": {
+            "@type": "Audience",
+            "geographicArea": {
+                "@type": "Country",
+                "name": "Sri Lanka"
+            }
+        }
+    };
+
     return (
-        <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-blue-50">
-            <div className="relative overflow-hidden bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-800">
-                <div className="absolute inset-0 bg-black opacity-20"></div>
-                <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-purple-600/20"></div>
-                <div className="absolute top-0 left-0 w-72 h-72 bg-gradient-to-br from-blue-400 to-purple-600 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse"></div>
-                <div className="absolute top-0 right-0 w-72 h-72 bg-gradient-to-br from-purple-400 to-pink-600 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse animation-delay-2000"></div>
-                <div className="absolute -bottom-8 left-20 w-72 h-72 bg-gradient-to-br from-pink-400 to-red-600 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse animation-delay-4000"></div>
-                <div className="relative container mx-auto px-4 py-16 sm:py-20 text-center">
-                    <div className="max-w-4xl mx-auto"><h1 className="text-4xl sm:text-5xl md:text-7xl font-extrabold text-white mb-6 leading-tight">Card Promotions<span className="bg-gradient-to-r from-yellow-400 to-orange-500 bg-clip-text text-transparent block">Sri Lanka</span></h1><p className="text-lg sm:text-xl md:text-2xl text-blue-100 mb-8 leading-relaxed">Discover the best credit & debit card offers across Sri Lanka. Save more, spend smarter.</p><div className="flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-6 text-sm text-blue-200"><div className="flex items-center"><SparkleIcon /><span>{mockOffers.length}+ Active Offers</span></div><div className="flex items-center"><CreditCardIcon /><span>{banks.length} Banks</span></div><div className="flex items-center"><TagIcon /><span>{categories.length - 1} Categories</span></div></div></div>
+        <>
+            <Head>
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{
+                        __html: JSON.stringify([pageStructuredData, faqStructuredData, breadcrumbStructuredData])
+                    }}
+                />
+            </Head>
+            
+            <main className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-blue-50">
+                <header className="relative overflow-hidden bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-800">
+                    <div className="absolute inset-0 bg-black opacity-20"></div>
+                    <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-purple-600/20"></div>
+                    <div className="absolute top-0 left-0 w-72 h-72 bg-gradient-to-br from-blue-400 to-purple-600 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse"></div>
+                    <div className="absolute top-0 right-0 w-72 h-72 bg-gradient-to-br from-purple-400 to-pink-600 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse animation-delay-2000"></div>
+                    <div className="absolute -bottom-8 left-20 w-72 h-72 bg-gradient-to-br from-pink-400 to-red-600 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse animation-delay-4000"></div>
+                    <div className="relative container mx-auto px-4 py-16 sm:py-20 text-center">
+                        <div className="max-w-4xl mx-auto">
+                            <h1 className="text-4xl sm:text-5xl md:text-7xl font-extrabold text-white mb-6 leading-tight">
+                                Card Promotions
+                                <span className="bg-gradient-to-r from-yellow-400 to-orange-500 bg-clip-text text-transparent block">Sri Lanka</span>
+                            </h1>
+                            <p className="text-lg sm:text-xl md:text-2xl text-blue-100 mb-8 leading-relaxed">
+                                Discover the best credit & debit card offers across Sri Lanka. Save more, spend smarter.
+                            </p>
+                            <div className="flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-6 text-sm text-blue-200">
+                                <div className="flex items-center">
+                                    <SparkleIcon />
+                                    <span>{mockOffers.length}+ Active Offers</span>
+                                </div>
+                                <div className="flex items-center">
+                                    <CreditCardIcon />
+                                    <span>{banks.length} Banks</span>
+                                </div>
+                                <div className="flex items-center">
+                                    <TagIcon />
+                                    <span>{categories.length - 1} Categories</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </header>
+
+                <div className="container mx-auto px-4 py-8">
+                    <SearchAndFilters 
+                        searchTerm={searchTerm} 
+                        onSearchChange={setSearchTerm} 
+                        selectedCategory={selectedCategory} 
+                        categories={categories} 
+                        onCategoryChange={setSelectedCategory} 
+                        selectedBanks={selectedBanks} 
+                        onOpenBankModal={() => setIsBankModalOpen(true)} 
+                        resultsCount={sortedOffers.length} 
+                    />
+
+                    {isBankModalOpen && (
+                        <BankSelectionModal 
+                            banks={banks} 
+                            selectedBanks={selectedBanks} 
+                            onSelect={handleBankSelect} 
+                            onClose={() => setIsBankModalOpen(false)} 
+                            onClear={() => setSelectedBanks([])} 
+                        />
+                    )}
+
+                    {(selectedBanks.length > 0 || selectedCategory !== 'All' || searchTerm) && (
+                        <section className="mb-8 p-6 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl border border-blue-200" aria-label="Filtered results summary">
+                            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                                <div className="text-center">
+                                    <div className="text-3xl font-bold text-blue-600 mb-2">{sortedOffers.length}</div>
+                                    <div className="text-sm text-gray-600">Matching Offers</div>
+                                </div>
+                                <div className="text-center">
+                                    <div className="text-3xl font-bold text-green-600 mb-2">
+                                        {sortedOffers.filter(o => getDaysUntilExpiry(o?.validity?.end_date) <= 30).length}
+                                    </div>
+                                    <div className="text-sm text-gray-600">Expiring Soon</div>
+                                </div>
+                                <div className="text-center">
+                                    <div className="text-3xl font-bold text-purple-600 mb-2">
+                                        {new Set(sortedOffers.map(o => o?.merchant?.name).filter(Boolean)).size}
+                                    </div>
+                                    <div className="text-sm text-gray-600">Merchants</div>
+                                </div>
+                            </div>
+                        </section>
+                    )}
+
+                    {sortedOffers.length > 0 ? (
+                        <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8" aria-label="Card offers list">
+                            {sortedOffers.map(offer => (
+                                <OfferCard 
+                                    key={offer?.id} 
+                                    offer={offer} 
+                                    isExpanded={expandedCards.has(offer?.id)} 
+                                    onExpand={handleCardExpand} 
+                                />
+                            ))}
+                        </section>
+                    ) : (
+                        <section className="text-center py-12 sm:py-20" aria-label="No offers found">
+                            <div className="max-w-md mx-auto">
+                                <div className="w-24 h-24 mx-auto mb-6 bg-gradient-to-br from-gray-100 to-gray-200 rounded-full flex items-center justify-center">
+                                    <SearchIcon className="w-10 h-10 text-gray-400" />
+                                </div>
+                                <h2 className="text-2xl font-bold text-gray-800 mb-4">No offers found</h2>
+                                <p className="text-gray-600 mb-8 leading-relaxed">
+                                    We couldn't find any offers matching your criteria. Try adjusting your filters or search terms.
+                                </p>
+                                <div className="space-y-3">
+                                    <button 
+                                        onClick={() => { setSearchTerm(''); setSelectedCategory('All'); setSelectedBanks([]); }} 
+                                        className="block w-full px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-xl transition-colors"
+                                    >
+                                        Clear All Filters
+                                    </button>
+                                    <button 
+                                        onClick={() => setIsBankModalOpen(true)} 
+                                        className="block w-full px-6 py-3 border-2 border-indigo-600 text-indigo-600 hover:bg-indigo-50 font-semibold rounded-xl transition-colors"
+                                    >
+                                        Select Different Banks
+                                    </button>
+                                </div>
+                            </div>
+                        </section>
+                    )}
+
+                    <footer className="text-center mt-16 py-12 border-t border-gray-200">
+                        <div className="max-w-2xl mx-auto">
+                            <h2 className="text-xl font-bold text-gray-800 mb-3">🇱🇰 Built for Sri Lanka</h2>
+                            <p className="text-gray-600 mb-6 leading-relaxed">
+                                Your go-to platform for discovering the latest credit and debit card promotions from all major banks in Sri Lanka. 
+                                Save money, discover new places, and make the most of your cards.
+                            </p>
+                            <div className="flex flex-col sm:flex-row justify-center items-center gap-2 sm:gap-6 text-sm text-gray-500">
+                                <span className="flex items-center">🏦 {banks.length}+ Banks</span>
+                                <span className="flex items-center">🎯 {mockOffers.length}+ Offers</span>
+                                <span className="flex items-center">🏪 {new Set(mockOffers.map(o => o?.merchant?.name).filter(Boolean)).size}+ Merchants</span>
+                            </div>
+                            <p className="text-sm text-gray-500 mt-6">Happy saving! 💰</p>
+                        </div>
+                    </footer>
                 </div>
-            </div>
-            <div className="container mx-auto px-4 py-8">
-                <SearchAndFilters searchTerm={searchTerm} onSearchChange={setSearchTerm} selectedCategory={selectedCategory} categories={categories} onCategoryChange={setSelectedCategory} selectedBanks={selectedBanks} onOpenBankModal={() => setIsBankModalOpen(true)} resultsCount={sortedOffers.length} />
-                {isBankModalOpen && (<BankSelectionModal banks={banks} selectedBanks={selectedBanks} onSelect={handleBankSelect} onClose={() => setIsBankModalOpen(false)} onClear={() => setSelectedBanks([])} />)}
-                {(selectedBanks.length > 0 || selectedCategory !== 'All' || searchTerm) && (<div className="mb-8 p-6 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl border border-blue-200"><div className="grid grid-cols-1 md:grid-cols-3 gap-6"><div className="text-center"><div className="text-3xl font-bold text-blue-600 mb-2">{sortedOffers.length}</div><div className="text-sm text-gray-600">Matching Offers</div></div><div className="text-center"><div className="text-3xl font-bold text-green-600 mb-2">{sortedOffers.filter(o => getDaysUntilExpiry(o.validity?.end_date) <= 30).length}</div><div className="text-sm text-gray-600">Expiring Soon</div></div><div className="text-center"><div className="text-3xl font-bold text-purple-600 mb-2">{new Set(sortedOffers.map(o => o.merchant?.name)).size}</div><div className="text-sm text-gray-600">Merchants</div></div></div></div>)}
-                {sortedOffers.length > 0 ? (<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">{sortedOffers.map(offer => (<OfferCard key={offer.id} offer={offer} isExpanded={expandedCards.has(offer.id)} onExpand={handleCardExpand} />))}</div>) : (<div className="text-center py-12 sm:py-20"><div className="max-w-md mx-auto"><div className="w-24 h-24 mx-auto mb-6 bg-gradient-to-br from-gray-100 to-gray-200 rounded-full flex items-center justify-center"><SearchIcon className="w-10 h-10 text-gray-400" /></div><h3 className="text-2xl font-bold text-gray-800 mb-4">No offers found</h3><p className="text-gray-600 mb-8 leading-relaxed">We couldn't find any offers matching your criteria. Try adjusting your filters or search terms.</p><div className="space-y-3"><button onClick={() => { setSearchTerm(''); setSelectedCategory('All'); setSelectedBanks([]); }} className="block w-full px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-xl transition-colors">Clear All Filters</button><button onClick={() => setIsBankModalOpen(true)} className="block w-full px-6 py-3 border-2 border-indigo-600 text-indigo-600 hover:bg-indigo-50 font-semibold rounded-xl transition-colors">Select Different Banks</button></div></div></div>)}
-                <footer className="text-center mt-16 py-12 border-t border-gray-200"><div className="max-w-2xl mx-auto"><h3 className="text-xl font-bold text-gray-800 mb-3">🇱🇰 Built for Sri Lanka</h3><p className="text-gray-600 mb-6 leading-relaxed">Your go-to platform for discovering the latest credit and debit card promotions from all major banks in Sri Lanka. Save money, discover new places, and make the most of your cards.</p><div className="flex flex-col sm:flex-row justify-center items-center gap-2 sm:gap-6 text-sm text-gray-500"><span className="flex items-center">🏦 {banks.length}+ Banks</span><span className="flex items-center">🎯 {mockOffers.length}+ Offers</span><span className="flex items-center">🏪 {new Set(mockOffers.map(o => o.merchant?.name)).size}+ Merchants</span></div><p className="text-sm text-gray-500 mt-6">Happy saving! 💰</p></div></footer>
-            </div>
-            <style jsx>{` @keyframes pulse { 0%, 100% { opacity: 0.2; } 50% { opacity: 0.4; } } .animate-pulse { animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite; } .animation-delay-2000 { animation-delay: 2s; } .animation-delay-4000 { animation-delay: 4s; } .line-clamp-1, .line-clamp-2 { display: -webkit-box; -webkit-box-orient: vertical; overflow: hidden; } .line-clamp-1 { -webkit-line-clamp: 1; } .line-clamp-2 { -webkit-line-clamp: 2; } .animate-in { animation-fill-mode: both; } .slide-in-from-top { animation-name: slideInFromTop; } .zoom-in { animation-name: zoomIn; } @keyframes slideInFromTop { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } } @keyframes zoomIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } } .duration-200 { animation-duration: 200ms; } .hide-scrollbar::-webkit-scrollbar { display: none; } .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; } `}</style>
-        </div>
+
+                <style jsx>{`
+                    @keyframes pulse { 
+                        0%, 100% { opacity: 0.2; } 
+                        50% { opacity: 0.4; } 
+                    } 
+                    .animate-pulse { 
+                        animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite; 
+                    } 
+                    .animation-delay-2000 { 
+                        animation-delay: 2s; 
+                    } 
+                    .animation-delay-4000 { 
+                        animation-delay: 4s; 
+                    } 
+                    .line-clamp-1, .line-clamp-2 { 
+                        display: -webkit-box; 
+                        -webkit-box-orient: vertical; 
+                        overflow: hidden; 
+                    } 
+                    .line-clamp-1 { 
+                        -webkit-line-clamp: 1; 
+                    } 
+                    .line-clamp-2 { 
+                        -webkit-line-clamp: 2; 
+                    } 
+                    .animate-in { 
+                        animation-fill-mode: both; 
+                    } 
+                    .slide-in-from-top { 
+                        animation-name: slideInFromTop; 
+                    } 
+                    .zoom-in { 
+                        animation-name: zoomIn; 
+                    } 
+                    @keyframes slideInFromTop { 
+                        from { 
+                            opacity: 0; 
+                            transform: translateY(-10px); 
+                        } 
+                        to { 
+                            opacity: 1; 
+                            transform: translateY(0); 
+                        } 
+                    } 
+                    @keyframes zoomIn { 
+                        from { 
+                            opacity: 0; 
+                            transform: scale(0.95); 
+                        } 
+                        to { 
+                            opacity: 1; 
+                            transform: scale(1); 
+                        } 
+                    } 
+                    .duration-200 { 
+                        animation-duration: 200ms; 
+                    } 
+                    .hide-scrollbar::-webkit-scrollbar { 
+                        display: none; 
+                    } 
+                    .hide-scrollbar { 
+                        -ms-overflow-style: none; 
+                        scrollbar-width: none; 
+                    } 
+                `}</style>
+            </main>
+        </>
     );
 }

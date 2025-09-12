@@ -1,0 +1,60 @@
+{
+    "id": "/",
+    "name": "Card Promotions LK | Find the Best Card Offers in Sri Lanka",
+    "short_name": "Card Promotions LK",
+    "description": "Your ultimate guide to the latest credit and debit card promotions, offers, and discounts in Sri Lanka. Save on dining, shopping, travel, and more.",
+    "lang": "en-US",
+    "start_url": "/",
+    "scope": "/",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#ffffff",
+    "orientation": "portrait-primary",
+    "icons": [
+        {
+            "src": "/android-chrome-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/android-chrome-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        },
+        {
+            "src": "/apple-touch-icon.png",
+            "sizes": "180x180",
+            "type": "image/png"
+        }
+    ],
+    "screenshots": [
+        {
+            "src": "/screenshots/desktop-home.png",
+            "sizes": "1785x918",
+            "type": "image/png",
+            "form_factor": "wide",
+            "label": "Card Promotions LK Homepage (Desktop)"
+        },
+        {
+            "src": "/screenshots/mobile-home.png",
+            "sizes": "399x865",
+            "type": "image/png",
+            "form_factor": "narrow",
+            "label": "Card Promotions LK Homepage (Mobile)"
+        },
+        {
+            "src": "/screenshots/desktop-offers.png",
+            "sizes": "1785x918",
+            "type": "image/png",
+            "form_factor": "wide",
+            "label": "Filtering Offers (Desktop)"
+        },
+        {
+            "src": "/screenshots/mobile-offers.png",
+            "sizes":  "399x865",
+            "type": "image/png",
+            "form_factor": "narrow",
+            "label": "Filtering Offers (Mobile)"
+        }
+    ]
+}

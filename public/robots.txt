@@ -1,0 +1,28 @@
+User-agent: *
+Allow: /
+
+# Allow all search engines to crawl the site
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+# Sitemap location
+Sitemap: https://www.cardpromotions.org/sitemap.xml
+
+# Crawl-delay for polite crawling
+Crawl-delay: 1
+
+# Disallow certain paths if needed
+# Disallow: /admin/
+# Disallow: /api/
+
+# Allow important pages
+Allow: /offers/
+Allow: /banks/
+Allow: /categories/
+Allow: /search/
