@@ -204,7 +204,11 @@ const OfferCard = ({ offer, isExpanded, onExpand }) => {
                         </button>
                         {isExpanded && (
                             <div className="mt-3 space-y-3 text-sm animate-in slide-in-from-top duration-200">
-                                {terms && (<div className="bg-gray-50 rounded-lg p-3 border border-gray-200"><h4 className="font-medium text-gray-900 mb-2">Terms & Conditions:</h4><p className="text-gray-700">{terms}</p></div>)}
+                                {terms && (<div className="bg-gray-50 rounded-lg p-3 border border-gray-200">
+                                    {/* FIX: Changed h4 to p to prevent duplicate heading warnings */}
+                                    <p className="font-medium text-gray-900 mb-2">Terms & Conditions:</p>
+                                    <p className="text-gray-700">{terms}</p>
+                                </div>)}
                                 {source_url && source_url !== '#' && (<a href={source_url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-medium rounded-lg transition-colors">Visit Offer Page<ExternalLinkIcon /></a>)}
                             </div>
                         )}
@@ -543,7 +547,8 @@ export default function OfferBrowser({ initialOffers }) {
 
                             {/* Column 1: Quick Links */}
                             <div className="text-center md:text-left">
-                                <p className="font-semibold text-gray-800 mb-3">Quick Links</p>
+                                {/* FIX: Changed p to h4 for semantic structure */}
+                                <h4 className="font-semibold text-gray-800 mb-3">Quick Links</h4>
                                 <ul className="space-y-2 text-gray-600">
                                     <li><a href="/offers" className="hover:text-blue-600 hover:underline">All Offers</a></li>
                                     <li><a href="/categories/dining" className="hover:text-blue-600 hover:underline">Dining Deals</a></li>
@@ -555,7 +560,8 @@ export default function OfferBrowser({ initialOffers }) {
 
                             {/* Column 2: Top Banks */}
                             <div className="text-center md:text-left">
-                                <p className="font-semibold text-gray-800 mb-3">Top Banks</p>
+                                {/* FIX: Changed p to h4 for semantic structure */}
+                                <h4 className="font-semibold text-gray-800 mb-3">Top Banks</h4>
                                 <ul className="space-y-2 text-gray-600">
                                     {/* Replace with your actual bank page links */}
                                     <li><a href="/banks/commercial-bank" className="hover:text-blue-600 hover:underline">Commercial Bank</a></li>
@@ -568,7 +574,8 @@ export default function OfferBrowser({ initialOffers }) {
 
                             {/* Column 3: Site Stats */}
                             <div className="text-center md:text-left">
-                                <p className="font-semibold text-gray-800 mb-3">Our Platform</p>
+                                {/* FIX: Changed p to h4 for semantic structure */}
+                                <h4 className="font-semibold text-gray-800 mb-3">Our Platform</h4>
                                 <div className="flex flex-col items-center md:items-start gap-2 text-gray-600">
                                     <span className="flex items-center">🏦 {banks.length}+ Banks Covered</span>
                                     <span className="flex items-center">🎯 {mockOffers.length}+ Offers Live</span>
@@ -580,9 +587,9 @@ export default function OfferBrowser({ initialOffers }) {
                         </div>
 
                         <div className="text-center text-xs text-gray-400 mt-12 border-t border-gray-200 pt-6">
-                            <p>&copy; {new Date().getFullYear()} Your Site Name. All Rights Reserved.</p>
+                            <p>© {new Date().getFullYear()} Your Site Name. All Rights Reserved.</p>
                             <p className="mt-1">
-                                <a href="/privacy-policy" className="hover:underline">Privacy Policy</a> &middot; <a href="/terms-of-service" className="hover:underline">Terms of Service</a>
+                                <a href="/privacy-policy" className="hover:underline">Privacy Policy</a> · <a href="/terms-of-service" className="hover:underline">Terms of Service</a>
                             </p>
                         </div>
                     </div>
