@@ -351,7 +351,6 @@ const SearchAndFilters = ({ searchTerm, onSearchChange, selectedCategory, catego
     return (
         <section className="bg-white rounded-2xl shadow-lg border border-gray-200 p-4 sm:p-6 mb-8 sticky top-4 z-20">
             <div className="relative mb-6">
-                <SearchIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
                 <input 
                     type="text" 
                     placeholder="Search offers, merchants..." 
