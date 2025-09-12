@@ -1,4 +1,7 @@
+// app/layout.js (or app/layout.tsx)
+
 import { Geist, Geist_Mono } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -34,7 +37,6 @@ export const metadata = {
   authors: [{ name: "Card Promotions LK Team", url: websiteUrl }],
   creator: "Card Promotions LK Team",
   publisher: "Card Promotions LK",
-
   alternates: {
     canonical: "/",
     languages: {
@@ -42,7 +44,6 @@ export const metadata = {
     },
     "x-default": "/",
   },
-
   openGraph: {
     title: "Card Promotions LK | Find the Best Card Offers in Sri Lanka",
     description:
@@ -60,7 +61,6 @@ export const metadata = {
     locale: "en_US",
     type: "website",
   },
-
   twitter: {
     card: "summary_large_image",
     title: "Card Promotions LK | Find the Best Card Offers in Sri Lanka",
@@ -69,7 +69,6 @@ export const metadata = {
     images: ["/twitter-image.png"],
     creator: "@YourTwitterHandle",
   },
-
   robots: {
     index: true,
     follow: true,
@@ -81,14 +80,14 @@ export const metadata = {
       "max-snippet": -1,
     },
   },
-
   icons: {
     icon: "/favicon.ico",
     shortcut: "/favicon-16x16.png",
     apple: "/apple-touch-icon.png",
   },
-
   manifest: `${websiteUrl}/site.webmanifest`,
+  themeColor: "#ffffff",
+  viewport: "width=device-width, initial-scale=1.0",
 };
 
 export default function RootLayout({ children }) {
@@ -106,16 +105,38 @@ export default function RootLayout({ children }) {
 
   return (
     <html lang="en">
-      <link rel="manifest" href="/manifest.json" />
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        <script
+      <head>
+        <link rel="manifest" href="/manifest.json" />
+        {/* Google Analytics */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-4N0L6X203Z"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-4N0L6X203Z');
+          `}
+        </Script>
+
+        {/* Google AdSense */}
+        <Script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4067803003775557"
+          crossOrigin="anonymous"
+          strategy="afterInteractive"
+        />
+      </head>
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        {/* Structured Data */}
+        <Script
+          id="ld-json"
           type="application/ld+json"
+          strategy="afterInteractive"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4067803003775557"
-     crossorigin="anonymous"></script>
         {children}
       </body>
     </html>
