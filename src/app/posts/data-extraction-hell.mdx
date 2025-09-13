@@ -1,0 +1,88 @@
+---
+title: 'Data Extraction Journey: Building a Resilient Data Engine for the Real World'
+date: '2025-09-14'
+summary: 'The story of how a simple web scraping script evolved into a resilient, multi-strategy data extraction engine to tame a dozen inconsistent bank websites.'
+---
+
+Every data project is born naive. Mine was no different.
+
+When I started building `cardpromotions.org` as a side project, the goal was simple: aggregate credit card offers from Sri Lanka's top banks into one clean, searchable platform. "How hard could it be?" I thought. I’d write a Python script with Playwright, pipe the text through a local Mistral LLM for JSON extraction, and call it a day.
+
+That initial script worked for about 24 hours before it started to crumble.
+
+What followed was a challenging journey of debugging and re-architecting. I learned that building a tool for a single, well-behaved site is one thing. Building a resilient engine that can handle a multitude of inconsistent, JavaScript-heavy, and constantly changing targets is a different challenge entirely.
+
+This is the story of how my simple script evolved into a more robust data extraction engine. While the system I'll describe isn't perfect, its journey is a lesson in pragmatic engineering.
+
+### The Wall of Reality: Why Most Automated Data Projects Struggle
+
+My naive V1 script quickly ran into a wall, highlighting the gap between a simple script and a production-ready tool. I was facing four core challenges that will be familiar to anyone in the data space.
+
+#### Selector Rot
+The most common issue. One day my script was happily finding offers using a specific class name. The next day, a silent website update would be pushed, that class name would be gone, and my pipeline would go blind. Manually fixing these brittle selectors was a constant, reactive chore.
+
+#### The JavaScript Gauntlet
+Many bank sites were empty HTML shells on initial load. The actual offer data was pulled in dynamically via JavaScript. My script, moving at machine speed, would arrive, see an empty page, and leave before the content even had a chance to render.
+
+#### The Interactive Minefield
+Some sites required user interaction. One bank only displayed a handful of offers until a "Load More" button was clicked. Another used multi-page pagination. A data pipeline that can't *interact*—that can't click—was incomplete.
+
+#### The Bot-Like Behavior
+Some of the more advanced sites seemed to slow down or block my automated browser. It wasn't scrolling like a human, and its default user agent made it clear it was a script.
+
+My simple script wasn't enough. I had to build an engine.
+
+### The Evolution: From a Single Script to a Config-Driven Engine
+
+The key realization was that a one-size-fits-all approach was doomed to fail. I needed to build a system that assumed every website was a unique challenge requiring its own unique approach.
+
+#### The Brain: A `config.json` for Everything
+This was the most critical architectural decision I made. I moved all the bank-specific logic out of the Python code and into a master `config.json` file. This file became the brain of the operation, defining the "attack plan" for each bank. Now, if a selector changes, I update one line in the JSON file without redeploying the Python code.
+
+```json
+{
+    "name": "Bank of Ceylon",
+    "url": "[https://www.boc.lk/personal-banking/card-offers/](https://www.boc.lk/personal-banking/card-offers/)",
+    "crawl_strategy": "load_more_button",
+    "card_selector": "a.product.unique",
+    "load_more_selector": "button#moreCardOffers",
+    "pages": [
+        {"url": "[https://www.boc.lk/](https://www.boc.lk/)...", "category": "Travel & Lodging"}
+    ]
+}
+````
+
+#### The Arsenal: A Multi-Strategy Approach
+
+The config allows me to define different `crawl_strategy` values. The Python engine reads this strategy and deploys the right tool for the job: `static`, `category_discovery`, `load_more_button`, and `pagination`. This gave the tool the flexibility it needed to adapt to different site structures.
+
+#### The Precision Weapon: Hybrid Extraction
+
+Initially, I relied 100% on the local LLM to parse raw text. This failed with one bank whose offer format was too concise. The solution was a hybrid model, adding optional sub-selectors to the config to precisely extract structured data *before* sending it to the AI, making its job far more reliable.
+
+```json
+{
+    "name": "HSBC",
+    "crawl_strategy": "pagination",
+    "card_selector": "div.M-MASTERTILEITEM-DEV",
+    "merchant_selector": "h3.link",
+    "offer_text_selector": "div.rich-text"
+}
+```
+
+### The 80/20 Rule and The Path Forward
+
+Even with these upgrades, the engine doesn't capture 100% of the promotions 100% of the time. Chasing that last 10-20% is a lesson in diminishing returns. My goal was to build a valuable MVP, and the reality is that getting \~90% of the offers in one place is infinitely better than the alternative.
+
+This is a good starting point, not a finished masterpiece. The next logical step is to build a bridge for human intelligence. My plan is to add a simple "Missing an offer?" feedback button to the site, allowing users to easily submit promotions the engine may have missed.
+
+### The Conclusion: The Real Work is Resilience
+
+The key lesson for me was that building a data pipeline isn't about writing flawless code, but about architecting a system that expects to fail and can be easily adapted. The strength of this engine isn't any single feature, but its resilience and configurability.
+
+This entire engine was built to power my side project, with the goal of creating the most useful source of card promotions in Sri Lanka.
+
+You can see the results of this ongoing journey live at **[https://www.cardpromotions.org](https://www.cardpromotions.org)**.
+
+```
+```
