@@ -1,4 +1,5 @@
 import offers from "@/app/api/data.json";
+import { redirect } from "next/navigation";
 
 // --- Helper Functions & Icons ---
 
@@ -25,32 +26,18 @@ const ExternalLinkIcon = () => (<svg xmlns="http://www.w3.org/2000/svg" width="2
 // --- Page Component ---
 
 export default async function OfferPage({ params }) {
-  const { id } = params;
+  const { id } = await params;
 
   let offer;
   try {
     offer = offers.find((item) => item.id === id);
   } catch (error) {
     console.error("Error reading offers data:", error);
-    return (
-      <div className="flex items-center justify-center min-h-screen bg-slate-50 text-center p-4">
-        <div>
-          <h1 className="text-3xl font-bold text-red-600 mb-2">Error Loading Offer</h1>
-          <p className="text-gray-600">We couldn't load the offer data. Please try again later.</p>
-        </div>
-      </div>
-    );
+    redirect("/");
   }
 
   if (!offer) {
-    return (
-       <div className="flex items-center justify-center min-h-screen bg-slate-50 text-center p-4">
-        <div>
-          <h1 className="text-3xl font-bold text-red-600 mb-2">Offer Not Found</h1>
-          <p className="text-gray-600">The offer you are looking for might have expired or does not exist.</p>
-        </div>
-      </div>
-    );
+    redirect("/");
   }
 
   const {

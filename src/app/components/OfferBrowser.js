@@ -22,7 +22,6 @@ const useIsMobile = (breakpoint = 768) => {
     return isMobile;
 };
 
-// --- ICONS (Unchanged) ---
 const MapPinIcon = () => (<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 mr-1.5 inline-block"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" /><circle cx="12" cy="10" r="3" /></svg>);
 const TagIcon = () => (<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 mr-1.5 inline-block"><path d="M12 2H2v10l9.29 9.29c.94.94 2.48.94 3.42 0l6.58-6.58c.94-.94.94-2.48 0-3.42L12 2Z" /><path d="M7 7h.01" /></svg>);
 const CalendarIcon = () => (<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 mr-1.5 inline-block"><rect width="18" height="18" x="3" y="4" rx="2" ry="2" /><line x1="16" x2="16" y1="2" y2="6" /><line x1="8" x2="8" y1="2" y2="6" /><line x1="3" x2="21" y1="10" y2="10" /></svg>);
@@ -34,7 +33,6 @@ const ExternalLinkIcon = () => (<svg xmlns="http://www.w3.org/2000/svg" width="2
 const SparkleIcon = () => (<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 mr-1"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.582a.5.5 0 0 1 0 .962L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z" /></svg>);
 const LoadingSpinnerIcon = () => (<svg className="animate-spin h-8 w-8 text-teal-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle><path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>);
 
-
 const bankDetails = {
     "People's Bank": { color: 'from-blue-600 via-blue-700 to-indigo-800', textColor: 'text-white', accent: 'bg-blue-50 border-blue-200 text-blue-800' },
     "Commercial Bank": { color: 'from-red-600 via-rose-600 to-pink-700', textColor: 'text-white', accent: 'bg-red-50 border-red-200 text-red-800' },
@@ -44,7 +42,6 @@ const bankDetails = {
     "DFCC Bank": { color: 'from-purple-600 via-violet-600 to-indigo-700', textColor: 'text-white', accent: 'bg-purple-50 border-purple-200 text-purple-800' }
 };
 
-// --- UTILITY FUNCTIONS (Unchanged) ---
 const getBankBadgeColor = (bank) => bankDetails[bank]?.accent || 'bg-gray-100 border-gray-200 text-gray-800';
 const formatDate = (dateString) => {
     if (!dateString || dateString === 'Not specified in the text') return 'N/A';
@@ -291,9 +288,24 @@ export default function OfferBrowser({ initialOffers }) {
     const loaderRef = useRef(null);
 
     const { banks, categories, filteredOffers, sortedOffers, totalPages, displayedOffers } = useMemo(() => {
-        const safeOffers = mockOffers.filter(Boolean);
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
 
-        const bankCounts = safeOffers.reduce((acc, offer) => {
+        const activeOffers = mockOffers.filter(offer => {
+            if (!offer) return false;
+            const endDateString = offer.validity?.end_date;
+            if (!endDateString || endDateString === 'Not specified in the text') {
+                return true;
+            }
+            try {
+                const offerEndDate = new Date(endDateString);
+                return offerEndDate >= today;
+            } catch {
+                return true;
+            }
+        });
+
+        const bankCounts = activeOffers.reduce((acc, offer) => {
             if (offer.bank) {
                 acc[offer.bank] = (acc[offer.bank] || 0) + 1;
             }
@@ -301,10 +313,10 @@ export default function OfferBrowser({ initialOffers }) {
         }, {});
         const banks = Object.entries(bankCounts).map(([name, count]) => ({ name, count })).sort((a, b) => b.count - a.count);
 
-        const allCategories = safeOffers.map(o => o.category).filter(Boolean);
+        const allCategories = activeOffers.map(o => o.category).filter(Boolean);
         const categories = ['All', ...Array.from(new Set(allCategories)).sort()];
 
-        const filteredOffers = safeOffers.filter(offer => {
+        const filteredOffers = activeOffers.filter(offer => {
             const bankMatch = selectedBanks.length === 0 || selectedBanks.includes(offer.bank);
             const categoryMatch = selectedCategory === 'All' || offer.category === selectedCategory;
             const term = searchTerm.toLowerCase();
