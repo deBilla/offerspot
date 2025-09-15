@@ -25,7 +25,7 @@ export async function GET() {
 
   <!-- Main Pages -->
   <url>
-    <loc>${baseUrl}</loc>
+    <loc>${baseUrl}/</loc>
     <lastmod>${currentDate}</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
