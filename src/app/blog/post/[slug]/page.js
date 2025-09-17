@@ -3,6 +3,7 @@ import path from 'path';
 import matter from 'gray-matter';
 import { MDXRemote } from 'next-mdx-remote/rsc';
 import rehypePrettyCode from 'rehype-pretty-code';
+import AdSenseProvider from '@/app/components/AdsenseProvider';
 
 const postsDirectory = path.join(process.cwd(), 'src', 'app', 'posts');
 
@@ -46,6 +47,8 @@ export default async function PostPage({ params }) {
   const { frontMatter, content } = await getPost(slug);
   
   return (
+    <>
+    <AdSenseProvider />
     <div className="bg-white py-12">
       <article className="prose prose-lg lg:prose-xl prose-indigo mx-auto px-4">
         <header className="mb-8">
@@ -66,7 +69,7 @@ export default async function PostPage({ params }) {
           }}
         />
       </article>
-    </div>
+    </div></>
   );
 }
 

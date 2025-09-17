@@ -2,6 +2,7 @@
 
 import React, { useState, useMemo, useEffect, useRef } from 'react';
 import Link from 'next/link';
+import AdSenseProvider from './AdsenseProvider';
 
 const topBanks = [
     { name: "Commercial Bank", url: "https://www.combank.lk/rewards-promotions" },
@@ -396,132 +397,134 @@ export default function OfferBrowser({ initialOffers }) {
     }, [isMobile, currentPage, totalPages]);
 
     return (
-        <main className="min-h-screen bg-slate-50">
-            <header className="relative overflow-hidden bg-gradient-to-br from-teal-700 to-blue-800">
-                <div className="absolute inset-0 bg-black opacity-10"></div>
-                <div className="absolute top-0 left-0 w-72 h-72 bg-gradient-to-br from-blue-400 to-teal-600 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse"></div>
-                <div className="absolute top-0 right-0 w-72 h-72 bg-gradient-to-br from-teal-400 to-green-600 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse animation-delay-2000"></div>
-                <div className="absolute -bottom-8 left-20 w-72 h-72 bg-gradient-to-br from-green-400 to-blue-600 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse animation-delay-4000"></div>
-                <div className="relative container mx-auto px-4 py-16 sm:py-20 text-center">
-                    <div className="max-w-4xl mx-auto">
-                        <h1 className="text-4xl sm:text-5xl md:text-7xl font-extrabold text-white mb-6 leading-tight">
-                            Card Promotions
-                            <span className="bg-gradient-to-r from-green-300 to-lime-300 bg-clip-text text-transparent block">Sri Lanka</span>
-                        </h1>
-                        <p className="text-lg sm:text-xl md:text-2xl text-blue-100 mb-8 leading-relaxed">
-                            Discover the best credit & debit card offers across Sri Lanka. Save more, spend smarter.
-                        </p>
-                        <div className="flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-6 text-sm text-blue-200">
-                            <div className="flex items-center">
-                                <SparkleIcon />
-                                <span>{mockOffers.length}+ Active Offers</span>
-                            </div>
-                            <div className="flex items-center">
-                                <CreditCardIcon />
-                                <span>{banks.length} Banks</span>
-                            </div>
-                            <div className="flex items-center">
-                                <TagIcon />
-                                <span>{categories.length - 1} Categories</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </header>
-            <div className="container mx-auto px-4 py-8">
-                <section aria-labelledby="filters-heading" className="sticky top-4 z-20 mb-8">
-                    <h2 id="filters-heading" className="sr-only">Offer Filters</h2>
-                    <SearchAndFilters searchTerm={searchTerm} onSearchChange={setSearchTerm} selectedCategory={selectedCategory} categories={categories} onCategoryChange={setSelectedCategory} selectedBanks={selectedBanks} onOpenBankModal={() => setIsBankModalOpen(true)} resultsCount={sortedOffers.length} />
-                </section>
-
-                {isBankModalOpen && (<BankSelectionModal banks={banks} selectedBanks={selectedBanks} onSelect={handleBankSelect} onClose={() => setIsBankModalOpen(false)} onClear={() => setSelectedBanks([])} />)}
-
-                {displayedOffers.length > 0 ? (
-                    <section aria-labelledby="offers-heading">
-                        <h2 id="offers-heading" className="text-3xl font-bold text-gray-800 mb-8">
-                            {selectedCategory === 'All' ? 'Latest Offers' : `${selectedCategory} Offers`}
-                        </h2>
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-                            {displayedOffers.map(offer => (<OfferCard key={offer?.id} offer={offer} isExpanded={expandedCards.has(offer?.id)} onExpand={handleCardExpand} />))}
-                        </div>
-                        {isMobile ? (currentPage < totalPages && <div ref={loaderRef} className="flex justify-center items-center p-8"><LoadingSpinnerIcon /></div>) : (<Pagination currentPage={currentPage} totalPages={totalPages} onPageChange={setCurrentPage} />)}
-                    </section>
-                ) : (
-                    <section className="text-center py-12 sm:py-20" aria-label="No offers found">
-                        <div className="max-w-md mx-auto">
-                            <div className="w-24 h-24 mx-auto mb-6 bg-gradient-to-br from-gray-100 to-gray-200 rounded-full flex items-center justify-center">
-                                <SearchIcon className="w-10 h-10 text-gray-400" />
-                            </div>
-                            <h2 className="text-2xl font-bold text-gray-800 mb-4">No offers found</h2>
-                            <p className="text-gray-600 mb-8 leading-relaxed">
-                                We couldn't find any offers matching your criteria. Try adjusting your filters or search terms.
+        <>
+            <AdSenseProvider />
+            <main className="min-h-screen bg-slate-50">
+                <header className="relative overflow-hidden bg-gradient-to-br from-teal-700 to-blue-800">
+                    <div className="absolute inset-0 bg-black opacity-10"></div>
+                    <div className="absolute top-0 left-0 w-72 h-72 bg-gradient-to-br from-blue-400 to-teal-600 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse"></div>
+                    <div className="absolute top-0 right-0 w-72 h-72 bg-gradient-to-br from-teal-400 to-green-600 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse animation-delay-2000"></div>
+                    <div className="absolute -bottom-8 left-20 w-72 h-72 bg-gradient-to-br from-green-400 to-blue-600 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse animation-delay-4000"></div>
+                    <div className="relative container mx-auto px-4 py-16 sm:py-20 text-center">
+                        <div className="max-w-4xl mx-auto">
+                            <h1 className="text-4xl sm:text-5xl md:text-7xl font-extrabold text-white mb-6 leading-tight">
+                                Card Promotions
+                                <span className="bg-gradient-to-r from-green-300 to-lime-300 bg-clip-text text-transparent block">Sri Lanka</span>
+                            </h1>
+                            <p className="text-lg sm:text-xl md:text-2xl text-blue-100 mb-8 leading-relaxed">
+                                Discover the best credit & debit card offers across Sri Lanka. Save more, spend smarter.
                             </p>
-                            <div className="space-y-3">
-                                <button onClick={() => { setSearchTerm(''); setSelectedCategory('All'); setSelectedBanks([]); }} className="block w-full px-6 py-3 bg-gradient-to-r from-teal-500 to-blue-600 hover:from-teal-600 hover:to-blue-700 text-white font-semibold rounded-xl transition-colors">
-                                    Clear All Filters
-                                </button>
-                                <button onClick={() => setIsBankModalOpen(true)} className="block w-full px-6 py-3 border-2 border-teal-500 text-teal-600 hover:bg-teal-50 font-semibold rounded-xl transition-colors">
-                                    Select Different Banks
-                                </button>
-                            </div>
-                        </div>
-                    </section>
-                )}
-
-                <footer className="text-center mt-16 py-12 border-t border-gray-200">
-                    <div className="max-w-5xl mx-auto px-4">
-                        <div className="mb-10">
-                            <h2 className="text-3xl font-bold text-gray-800 mb-4">Unlock Savings in Sri Lanka</h2>
-                            <p className="max-w-2xl mx-auto text-gray-600 mb-6 leading-relaxed">
-                                Your go-to platform for discovering the latest credit and debit card promotions from all major banks in Sri Lanka.
-                            </p>
-                        </div>
-
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-sm">
-                            <div className="text-center md:text-left">
-                                <h3 className="font-semibold text-gray-800 mb-3">Quick Links</h3>
-                                <ul className="space-y-2 text-gray-600">
-                                    <li><a href="/offers" className="hover:text-teal-600 hover:underline">All Offers</a></li>
-                                    <li><a href="/categories/dining" className="hover:text-teal-600 hover:underline">Dining Deals</a></li>
-                                    <li><a href="/categories/shopping" className="hover:text-teal-600 hover:underline">Shopping Discounts</a></li>
-                                </ul>
-                            </div>
-
-                            <div className="text-center md:text-left">
-                                <h3 className="font-semibold text-gray-800 mb-3">Top Bank Promotions</h3>
-                                <ul className="space-y-2 text-gray-600">
-                                    {topBanks.map(bank => (
-                                        <li key={bank.name}>
-                                            <a href={bank.url} target="_blank" rel="noopener noreferrer" className="hover:text-teal-600 hover:underline inline-flex items-center group">
-                                                {bank.name}
-                                                <ExternalLinkIcon />
-                                            </a>
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
-
-                            <div className="text-center md:text-left">
-                                <h3 className="font-semibold text-gray-800 mb-3">Our Platform</h3>
-                                <div className="flex flex-col items-center md:items-start gap-2 text-gray-600">
-                                    <span className="flex items-center">🏦 {banks.length}+ Banks Covered</span>
-                                    <span className="flex items-center">🎯 {mockOffers.length}+ Offers Live</span>
-                                    <span className="flex items-center">🏪 {new Set(mockOffers.map(o => o?.merchant?.name).filter(Boolean)).size}+ Merchants</span>
+                            <div className="flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-6 text-sm text-blue-200">
+                                <div className="flex items-center">
+                                    <SparkleIcon />
+                                    <span>{mockOffers.length}+ Active Offers</span>
                                 </div>
-                                <p className="text-sm text-gray-500 mt-4">Happy saving! 💰</p>
+                                <div className="flex items-center">
+                                    <CreditCardIcon />
+                                    <span>{banks.length} Banks</span>
+                                </div>
+                                <div className="flex items-center">
+                                    <TagIcon />
+                                    <span>{categories.length - 1} Categories</span>
+                                </div>
                             </div>
                         </div>
-
-                        <div className="text-center text-xs text-gray-400 mt-12 border-t border-gray-200 pt-6">
-                            <p>© {new Date().getFullYear()} cardpromotions.org. All Rights Reserved.</p>
-                            <p className="mt-1">
-                                <a href="/privacy-policy" className="hover:underline">Privacy Policy</a> · <a href="/terms-of-service" className="hover:underline">Terms of Service</a>
-                            </p>
-                        </div>
                     </div>
-                </footer>
-            </div>
-            <style jsx>{`
+                </header>
+                <div className="container mx-auto px-4 py-8">
+                    <section aria-labelledby="filters-heading" className="sticky top-4 z-20 mb-8">
+                        <h2 id="filters-heading" className="sr-only">Offer Filters</h2>
+                        <SearchAndFilters searchTerm={searchTerm} onSearchChange={setSearchTerm} selectedCategory={selectedCategory} categories={categories} onCategoryChange={setSelectedCategory} selectedBanks={selectedBanks} onOpenBankModal={() => setIsBankModalOpen(true)} resultsCount={sortedOffers.length} />
+                    </section>
+
+                    {isBankModalOpen && (<BankSelectionModal banks={banks} selectedBanks={selectedBanks} onSelect={handleBankSelect} onClose={() => setIsBankModalOpen(false)} onClear={() => setSelectedBanks([])} />)}
+
+                    {displayedOffers.length > 0 ? (
+                        <section aria-labelledby="offers-heading">
+                            <h2 id="offers-heading" className="text-3xl font-bold text-gray-800 mb-8">
+                                {selectedCategory === 'All' ? 'Latest Offers' : `${selectedCategory} Offers`}
+                            </h2>
+                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+                                {displayedOffers.map(offer => (<OfferCard key={offer?.id} offer={offer} isExpanded={expandedCards.has(offer?.id)} onExpand={handleCardExpand} />))}
+                            </div>
+                            {isMobile ? (currentPage < totalPages && <div ref={loaderRef} className="flex justify-center items-center p-8"><LoadingSpinnerIcon /></div>) : (<Pagination currentPage={currentPage} totalPages={totalPages} onPageChange={setCurrentPage} />)}
+                        </section>
+                    ) : (
+                        <section className="text-center py-12 sm:py-20" aria-label="No offers found">
+                            <div className="max-w-md mx-auto">
+                                <div className="w-24 h-24 mx-auto mb-6 bg-gradient-to-br from-gray-100 to-gray-200 rounded-full flex items-center justify-center">
+                                    <SearchIcon className="w-10 h-10 text-gray-400" />
+                                </div>
+                                <h2 className="text-2xl font-bold text-gray-800 mb-4">No offers found</h2>
+                                <p className="text-gray-600 mb-8 leading-relaxed">
+                                    We couldn't find any offers matching your criteria. Try adjusting your filters or search terms.
+                                </p>
+                                <div className="space-y-3">
+                                    <button onClick={() => { setSearchTerm(''); setSelectedCategory('All'); setSelectedBanks([]); }} className="block w-full px-6 py-3 bg-gradient-to-r from-teal-500 to-blue-600 hover:from-teal-600 hover:to-blue-700 text-white font-semibold rounded-xl transition-colors">
+                                        Clear All Filters
+                                    </button>
+                                    <button onClick={() => setIsBankModalOpen(true)} className="block w-full px-6 py-3 border-2 border-teal-500 text-teal-600 hover:bg-teal-50 font-semibold rounded-xl transition-colors">
+                                        Select Different Banks
+                                    </button>
+                                </div>
+                            </div>
+                        </section>
+                    )}
+
+                    <footer className="text-center mt-16 py-12 border-t border-gray-200">
+                        <div className="max-w-5xl mx-auto px-4">
+                            <div className="mb-10">
+                                <h2 className="text-3xl font-bold text-gray-800 mb-4">Unlock Savings in Sri Lanka</h2>
+                                <p className="max-w-2xl mx-auto text-gray-600 mb-6 leading-relaxed">
+                                    Your go-to platform for discovering the latest credit and debit card promotions from all major banks in Sri Lanka.
+                                </p>
+                            </div>
+
+                            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-sm">
+                                <div className="text-center md:text-left">
+                                    <h3 className="font-semibold text-gray-800 mb-3">Quick Links</h3>
+                                    <ul className="space-y-2 text-gray-600">
+                                        <li><a href="/offers" className="hover:text-teal-600 hover:underline">All Offers</a></li>
+                                        <li><a href="/categories/dining" className="hover:text-teal-600 hover:underline">Dining Deals</a></li>
+                                        <li><a href="/categories/shopping" className="hover:text-teal-600 hover:underline">Shopping Discounts</a></li>
+                                    </ul>
+                                </div>
+
+                                <div className="text-center md:text-left">
+                                    <h3 className="font-semibold text-gray-800 mb-3">Top Bank Promotions</h3>
+                                    <ul className="space-y-2 text-gray-600">
+                                        {topBanks.map(bank => (
+                                            <li key={bank.name}>
+                                                <a href={bank.url} target="_blank" rel="noopener noreferrer" className="hover:text-teal-600 hover:underline inline-flex items-center group">
+                                                    {bank.name}
+                                                    <ExternalLinkIcon />
+                                                </a>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+
+                                <div className="text-center md:text-left">
+                                    <h3 className="font-semibold text-gray-800 mb-3">Our Platform</h3>
+                                    <div className="flex flex-col items-center md:items-start gap-2 text-gray-600">
+                                        <span className="flex items-center">🏦 {banks.length}+ Banks Covered</span>
+                                        <span className="flex items-center">🎯 {mockOffers.length}+ Offers Live</span>
+                                        <span className="flex items-center">🏪 {new Set(mockOffers.map(o => o?.merchant?.name).filter(Boolean)).size}+ Merchants</span>
+                                    </div>
+                                    <p className="text-sm text-gray-500 mt-4">Happy saving! 💰</p>
+                                </div>
+                            </div>
+
+                            <div className="text-center text-xs text-gray-400 mt-12 border-t border-gray-200 pt-6">
+                                <p>© {new Date().getFullYear()} cardpromotions.org. All Rights Reserved.</p>
+                                <p className="mt-1">
+                                    <a href="/privacy-policy" className="hover:underline">Privacy Policy</a> · <a href="/terms-of-service" className="hover:underline">Terms of Service</a>
+                                </p>
+                            </div>
+                        </div>
+                    </footer>
+                </div>
+                <style jsx>{`
                 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border-width: 0; }
                 @keyframes pulse { 0%, 100% { opacity: 0.2; } 50% { opacity: 0.4; } } 
                 .animate-pulse { animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite; } 
@@ -539,6 +542,7 @@ export default function OfferBrowser({ initialOffers }) {
                 .hide-scrollbar::-webkit-scrollbar { display: none; } 
                 .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; } 
             `}</style>
-        </main>
+            </main>
+        </>
     );
 }
