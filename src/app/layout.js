@@ -1,9 +1,6 @@
-// app/layout.tsx (or app/layout.js)
-
 import { Geist, Geist_Mono } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
-import Head from "next/head";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -17,12 +14,11 @@ const geistMono = Geist_Mono({
 
 const websiteUrl = "https://www.cardpromotions.org";
 
-// ✅ Keep only valid metadata fields here
 export const metadata = {
   metadataBase: new URL(websiteUrl),
   title: {
     default: "Card Promotions LK | Find the Best Card Offers in Sri Lanka",
-    template: `%s | Card Promotions LK`,
+    template: "%s | Card Promotions LK",
   },
   description:
     "Your ultimate guide to the latest credit and debit card promotions, offers, and discounts in Sri Lanka. Save on dining, shopping, travel, and more.",
@@ -90,7 +86,6 @@ export const metadata = {
   manifest: `${websiteUrl}/site.webmanifest`,
 };
 
-// ✅ Move viewport & themeColor here
 export function generateViewport() {
   return {
     themeColor: "#ffffff",
@@ -114,29 +109,22 @@ export default function RootLayout({ children }) {
 
   return (
     <html lang="en">
-      <Head>
+      <head>
         <link rel="manifest" href="/manifest.json" />
-        <Script></Script>
-
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-4N0L6X203Z"></script>
-        <script>
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments)}
-          gtag('js', new Date());
-
-          gtag('config', 'G-4N0L6X203Z');
-        </script>
-
-        {/* Google AdSense */}
         <Script
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4067803003775557"
-          crossOrigin="anonymous"
+          src="https://www.googletagmanager.com/gtag/js?id=G-4N0L6X203Z"
           strategy="afterInteractive"
         />
-      </Head>
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-4N0L6X203Z');
+          `}
+        </Script>
+      </head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        {/* Structured Data */}
         <Script
           id="ld-json"
           type="application/ld+json"
