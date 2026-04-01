@@ -1,6 +1,8 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
+import Navbar from "./components/Navbar";
+import { FilterProvider } from "./context/FilterContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -94,7 +96,11 @@ export function generateViewport() {
   };
 }
 
-export default function RootLayout({ children }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "WebSite",
@@ -131,7 +137,10 @@ export default function RootLayout({ children }) {
           strategy="afterInteractive"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-        {children}
+        <FilterProvider>
+          <Navbar />
+          {children}
+        </FilterProvider>
       </body>
     </html>
   );

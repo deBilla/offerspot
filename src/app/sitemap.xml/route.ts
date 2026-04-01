@@ -1,8 +1,8 @@
-// app/sitemap.xml/route.js
+// app/sitemap.xml/route.ts
 import { NextResponse } from "next/server";
 import data from "../api/data.json";
 
-function escapeXml(unsafe) {
+function escapeXml(unsafe: string): string {
   return unsafe
     .replace(/&/g, "&amp;")
     .replace(/</g, "&lt;")
@@ -16,8 +16,8 @@ export async function GET() {
   const currentDate = new Date().toISOString();
 
   // Get unique banks and categories
-  const banks = [...new Set(data.map((offer) => offer.bank))];
-  const categories = [...new Set(data.map((offer) => offer.category))];
+  const banks = Array.from(new Set(data.map((offer) => offer.bank)));
+  const categories = Array.from(new Set(data.map((offer) => offer.category)));
 
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"

@@ -1,10 +1,10 @@
-// app/api/og/route.js
+// app/api/og/route.ts
 import { ImageResponse } from 'next/og';
 import { NextRequest } from 'next/server';
 
 export const runtime = 'edge';
 
-const bankColors = {
+const bankColors: Record<string, string> = {
   "People's Bank": '#1e40af',
   "Commercial Bank": '#dc2626', 
   "HNB": '#f59e0b',
@@ -13,7 +13,7 @@ const bankColors = {
   "DFCC Bank": '#7c3aed'
 };
 
-export async function GET(request) {
+export async function GET(request: NextRequest) {
   try {
     const { searchParams } = new URL(request.url);
     const title = searchParams.get('title') || 'Card Promotion';

@@ -3,6 +3,8 @@
 import React, { useState, useMemo, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import AdSenseProvider from './AdsenseProvider';
+import type { Offer } from '@/types/offer';
+import { useFilterContext } from '@/app/context/FilterContext';
 
 const topBanks = [
     { name: "Commercial Bank", url: "https://www.combank.lk/rewards-promotions" },
@@ -12,7 +14,7 @@ const topBanks = [
     { name: "Seylan Bank", url: "https://www.seylan.lk/promotions/cards?type[]=credit_card" },
 ];
 
-const useIsMobile = (breakpoint = 768) => {
+const useIsMobile = (breakpoint = 768): boolean => {
     const [isMobile, setIsMobile] = useState(false);
     useEffect(() => {
         const checkScreenSize = () => setIsMobile(window.innerWidth < breakpoint);
@@ -34,7 +36,7 @@ const ExternalLinkIcon = () => (<svg xmlns="http://www.w3.org/2000/svg" width="2
 const SparkleIcon = () => (<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 mr-1"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.582a.5.5 0 0 1 0 .962L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z" /></svg>);
 const LoadingSpinnerIcon = () => (<svg className="animate-spin h-8 w-8 text-teal-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle><path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>);
 
-const bankDetails = {
+const bankDetails: Record<string, { color: string; textColor: string; accent: string }> = {
     "People's Bank": { color: 'from-blue-600 via-blue-700 to-indigo-800', textColor: 'text-white', accent: 'bg-blue-50 border-blue-200 text-blue-800' },
     "Commercial Bank": { color: 'from-red-600 via-rose-600 to-pink-700', textColor: 'text-white', accent: 'bg-red-50 border-red-200 text-red-800' },
     "HNB": { color: 'from-amber-500 via-yellow-500 to-orange-600', textColor: 'text-gray-900', accent: 'bg-yellow-50 border-yellow-200 text-yellow-800' },
@@ -43,25 +45,25 @@ const bankDetails = {
     "DFCC Bank": { color: 'from-purple-600 via-violet-600 to-indigo-700', textColor: 'text-white', accent: 'bg-purple-50 border-purple-200 text-purple-800' }
 };
 
-const getBankBadgeColor = (bank) => bankDetails[bank]?.accent || 'bg-gray-100 border-gray-200 text-gray-800';
-const formatDate = (dateString) => {
+const getBankBadgeColor = (bank: string): string => bankDetails[bank]?.accent || 'bg-gray-100 border-gray-200 text-gray-800';
+const formatDate = (dateString?: string | null): string => {
     if (!dateString || dateString === 'Not specified in the text') return 'N/A';
     try {
         return new Date(dateString).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
     } catch { return 'N/A'; }
 };
-const getDaysUntilExpiry = (endDate) => {
+const getDaysUntilExpiry = (endDate?: string | null): number | null => {
     if (!endDate || endDate === 'Not specified in the text') return null;
     try {
         const today = new Date();
         today.setHours(0, 0, 0, 0);
         const expiry = new Date(endDate);
-        const diffTime = expiry - today;
+        const diffTime = expiry.getTime() - today.getTime();
         const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
         return diffDays >= 0 ? diffDays : 0;
     } catch { return null; }
 };
-const toSafeISOString = (dateString) => {
+const toSafeISOString = (dateString?: string | null): string | undefined => {
     if (!dateString) return undefined;
     const date = new Date(dateString);
     if (!isNaN(date.getTime())) {
@@ -69,7 +71,7 @@ const toSafeISOString = (dateString) => {
     }
     return undefined;
 };
-const generateOfferStructuredData = (offer) => {
+const generateOfferStructuredData = (offer: Offer) => {
     const baseUrl = 'https://www.cardpromotions.org';
     return {
         "@context": "https://schema.org", "@type": "Offer", "@id": `${baseUrl}/offer/${offer?.id}`,
@@ -82,8 +84,40 @@ const generateOfferStructuredData = (offer) => {
     };
 };
 
-const OfferCard = ({ offer, isExpanded, onExpand }) => {
-    const [structuredData, setStructuredData] = useState(null);
+interface BankInfo {
+    name: string;
+    count: number;
+}
+
+interface OfferCardProps {
+    offer: Offer;
+    isExpanded: boolean;
+    onExpand: (id: string) => void;
+}
+
+interface BankCardProps {
+    bank: BankInfo;
+    isSelected: boolean;
+    onSelect: (name: string) => void;
+}
+
+interface BankSelectionModalProps {
+    banks: BankInfo[];
+    selectedBanks: string[];
+    onSelect: (name: string) => void;
+    onClose: () => void;
+    onClear: () => void;
+}
+
+
+interface PaginationProps {
+    currentPage: number;
+    totalPages: number;
+    onPageChange: (page: number) => void;
+}
+
+const OfferCard = ({ offer, isExpanded, onExpand }: OfferCardProps) => {
+    const [structuredData, setStructuredData] = useState<string | null>(null);
     useEffect(() => {
         if (offer) {
             setStructuredData(JSON.stringify(generateOfferStructuredData(offer)));
@@ -157,7 +191,7 @@ const OfferCard = ({ offer, isExpanded, onExpand }) => {
     );
 };
 
-const BankCard = ({ bank, isSelected, onSelect }) => {
+const BankCard = ({ bank, isSelected, onSelect }: BankCardProps) => {
     const details = bankDetails[bank.name] || { color: 'from-gray-500 to-gray-700', textColor: 'text-white' };
     return (
         <button onClick={() => onSelect(bank.name)} className={`w-full p-5 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 ${isSelected ? 'ring-4 ring-offset-2 ring-teal-500 scale-105' : 'hover:scale-102'} bg-gradient-to-br ${details.color} ${details.textColor} relative overflow-hidden group`}>
@@ -168,7 +202,7 @@ const BankCard = ({ bank, isSelected, onSelect }) => {
     );
 };
 
-const BankSelectionModal = ({ banks, selectedBanks, onSelect, onClose, onClear }) => {
+const BankSelectionModal = ({ banks, selectedBanks, onSelect, onClose, onClear }: BankSelectionModalProps) => {
     const [searchTerm, setSearchTerm] = useState('');
     const filteredBanks = useMemo(() => banks.filter(bank => bank.name.toLowerCase().includes(searchTerm.toLowerCase())), [banks, searchTerm]);
     return (
@@ -176,14 +210,14 @@ const BankSelectionModal = ({ banks, selectedBanks, onSelect, onClose, onClear }
             <div className="bg-white rounded-2xl shadow-2xl w-full max-w-4xl transform transition-all animate-in zoom-in duration-200">
                 <div className="p-6 border-b border-gray-200 bg-gradient-to-r from-teal-50 to-green-50 rounded-t-2xl">
                     <div className="flex justify-between items-center mb-4"><h2 className="text-2xl sm:text-3xl font-bold text-gray-800">Select Your Banks</h2><button onClick={onClose} className="text-gray-400 hover:text-gray-600 hover:bg-gray-100 p-2 rounded-full transition-colors"><XIcon /></button></div>
-                    <div className="relative"><SearchIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" /><input type="text" placeholder="Search banks..." value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} className="w-full pl-11 pr-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all text-gray-900" /></div>
+                    <div className="relative"><span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none"><SearchIcon /></span><input type="text" placeholder="Search banks..." value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} className="w-full pl-11 pr-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all text-gray-900" /></div>
                     {selectedBanks.length > 0 && (<div className="mt-4 text-sm text-gray-600"><span className="font-medium">{selectedBanks.length}</span> bank{selectedBanks.length !== 1 ? 's' : ''} selected</div>)}
                 </div>
                 <div className="p-6 max-h-[60vh] overflow-y-auto">
                     <div className="grid grid-cols-2 lg:grid-cols-3 gap-4">
                         {filteredBanks.map(bank => (<BankCard key={bank.name} bank={bank} isSelected={selectedBanks.includes(bank.name)} onSelect={onSelect} />))}
                     </div>
-                    {filteredBanks.length === 0 && (<div className="text-center py-12"><div className="text-gray-400 mb-2"><SearchIcon className="w-12 h-12 mx-auto" /></div><h3 className="text-lg font-medium text-gray-900 mb-1">No banks found</h3><p className="text-gray-500">Try adjusting your search terms</p></div>)}
+                    {filteredBanks.length === 0 && (<div className="text-center py-12"><div className="text-gray-400 mb-2 flex justify-center"><SearchIcon /></div><h3 className="text-lg font-medium text-gray-900 mb-1">No banks found</h3><p className="text-gray-500">Try adjusting your search terms</p></div>)}
                 </div>
                 <div className="p-6 bg-gray-50 rounded-b-2xl border-t border-gray-200 flex flex-col sm:flex-row justify-between items-center gap-4"><button onClick={onClear} className="text-sm font-semibold text-gray-600 hover:text-red-600 transition-colors px-4 py-2 rounded-lg hover:bg-red-50" disabled={selectedBanks.length === 0}>Clear All</button><button onClick={onClose} className="w-full sm:w-auto px-8 py-3 bg-gradient-to-r from-teal-500 to-blue-600 hover:from-teal-600 hover:to-blue-700 text-white font-semibold rounded-xl shadow-md hover:shadow-lg transition-all transform hover:scale-105">Show {selectedBanks.length > 0 ? `${selectedBanks.length} Bank's` : 'All'} Offers</button></div>
             </div>
@@ -191,42 +225,15 @@ const BankSelectionModal = ({ banks, selectedBanks, onSelect, onClose, onClear }
     );
 };
 
-const SearchAndFilters = ({ searchTerm, onSearchChange, selectedCategory, categories, onCategoryChange, selectedBanks, onOpenBankModal, resultsCount }) => {
-    return (
-        <section className="bg-white rounded-2xl shadow-lg border border-gray-100 p-4 sm:p-6 mb-8">
-            <div className="relative mb-6">
-                <input type="text" placeholder="Search for dining, shopping, hotels..." value={searchTerm} onChange={(e) => onSearchChange(e.target.value)} className="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all text-base text-gray-900" aria-label="Search card offers and merchants" />
-            </div>
-            <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center mb-6">
-                <button onClick={onOpenBankModal} className="w-full sm:w-auto flex items-center justify-center px-4 py-3 sm:px-6 sm:py-3 bg-gradient-to-r from-teal-500 to-blue-600 hover:from-teal-600 hover:to-blue-700 text-white font-semibold rounded-xl shadow-md hover:shadow-lg transition-all transform hover:scale-105" aria-label={`Filter by banks. Currently ${selectedBanks.length} banks selected`}>
-                    <WalletIcon />
-                    <span>My Banks ({selectedBanks.length})</span>
-                </button>
-                <div className="flex-grow hidden sm:block">
-                    <p className="text-gray-600">Showing <span className="font-bold text-teal-600">{resultsCount}</span> offer{resultsCount !== 1 ? 's' : ''}{selectedBanks.length > 0 && (<span> for <span className="font-semibold">{selectedBanks.join(', ')}</span></span>)}</p>
-                </div>
-            </div>
-            <div className="border-t pt-6">
-                <nav aria-label="Filter by category">
-                    <div className="flex gap-2 sm:gap-3 overflow-x-auto pb-3 -mb-3 hide-scrollbar">
-                        {categories.map(category => (
-                            <button key={category} onClick={() => onCategoryChange(category)} className={`flex-shrink-0 px-4 py-2 sm:px-5 sm:py-2.5 text-sm font-medium rounded-full transition-all duration-200 transform hover:scale-105 ${selectedCategory === category ? 'bg-gradient-to-r from-teal-500 to-blue-600 text-white shadow-lg' : 'bg-slate-100 text-gray-700 hover:bg-slate-200 border border-slate-200'}`} aria-pressed={selectedCategory === category} aria-label={`Filter by ${category} category`}>{category}</button>
-                        ))}
-                    </div>
-                </nav>
-            </div>
-        </section>
-    );
-};
 
-const Pagination = ({ currentPage, totalPages, onPageChange }) => {
+const Pagination = ({ currentPage, totalPages, onPageChange }: PaginationProps) => {
     if (totalPages <= 1) return null;
 
     const handlePrevious = () => onPageChange(Math.max(1, currentPage - 1));
     const handleNext = () => onPageChange(Math.min(totalPages, currentPage + 1));
 
-    const getPageNumbers = () => {
-        const pages = new Set();
+    const getPageNumbers = (): (number | string)[] => {
+        const pages = new Set<number>();
         pages.add(1);
         pages.add(totalPages);
         pages.add(currentPage);
@@ -234,7 +241,7 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
         if (currentPage < totalPages) pages.add(currentPage + 1);
 
         const pageList = Array.from(pages).sort((a, b) => a - b);
-        const finalPages = [];
+        const finalPages: (number | string)[] = [];
         let lastPage = 0;
 
         for (const page of pageList) {
@@ -260,7 +267,7 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
                         {page === '...' ? (
                             <span className="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300">...</span>
                         ) : (
-                            <button onClick={() => onPageChange(page)} className={`flex items-center justify-center px-4 h-10 leading-tight border transition-colors ${currentPage === page ? 'text-white bg-teal-600 border-teal-600 hover:bg-teal-700' : 'text-gray-500 bg-white border-gray-300 hover:bg-gray-100 hover:text-gray-700'}`}>
+                            <button onClick={() => onPageChange(page as number)} className={`flex items-center justify-center px-4 h-10 leading-tight border transition-colors ${currentPage === page ? 'text-white bg-teal-600 border-teal-600 hover:bg-teal-700' : 'text-gray-500 bg-white border-gray-300 hover:bg-gray-100 hover:text-gray-700'}`}>
                                 {page}
                             </button>
                         )}
@@ -276,17 +283,14 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
     );
 };
 
-export default function OfferBrowser({ initialOffers }) {
-    const [isBankModalOpen, setIsBankModalOpen] = useState(false);
-    const [selectedBanks, setSelectedBanks] = useState([]);
-    const [selectedCategory, setSelectedCategory] = useState('All');
-    const [searchTerm, setSearchTerm] = useState('');
-    const [expandedCards, setExpandedCards] = useState(new Set());
+export default function OfferBrowser({ initialOffers }: { initialOffers: Offer[] }) {
+    const { searchTerm, setSearchTerm, selectedCategory, setSelectedCategory, selectedBanks, setSelectedBanks, isBankModalOpen, setIsBankModalOpen, setMeta } = useFilterContext();
+    const [expandedCards, setExpandedCards] = useState<Set<string>>(new Set());
     const [currentPage, setCurrentPage] = useState(1);
     const [offersPerPage] = useState(9);
     const mockOffers = initialOffers || [];
     const isMobile = useIsMobile();
-    const loaderRef = useRef(null);
+    const loaderRef = useRef<HTMLDivElement>(null);
 
     const { banks, categories, filteredOffers, sortedOffers, totalPages, displayedOffers } = useMemo(() => {
         const today = new Date();
@@ -306,15 +310,15 @@ export default function OfferBrowser({ initialOffers }) {
             }
         });
 
-        const bankCounts = activeOffers.reduce((acc, offer) => {
+        const bankCounts = activeOffers.reduce<Record<string, number>>((acc, offer) => {
             if (offer.bank) {
                 acc[offer.bank] = (acc[offer.bank] || 0) + 1;
             }
             return acc;
         }, {});
-        const banks = Object.entries(bankCounts).map(([name, count]) => ({ name, count })).sort((a, b) => b.count - a.count);
+        const banks: BankInfo[] = Object.entries(bankCounts).map(([name, count]) => ({ name, count })).sort((a, b) => b.count - a.count);
 
-        const allCategories = activeOffers.map(o => o.category).filter(Boolean);
+        const allCategories = activeOffers.map(o => o.category).filter((c): c is string => Boolean(c));
         const categories = ['All', ...Array.from(new Set(allCategories)).sort()];
 
         const filteredOffers = activeOffers.filter(offer => {
@@ -328,7 +332,7 @@ export default function OfferBrowser({ initialOffers }) {
             return bankMatch && categoryMatch && searchMatch;
         });
 
-        const getDiscountWeight = (offer) => {
+        const getDiscountWeight = (offer: Offer): number => {
             const details = offer?.offer_details;
             if (!details) return 0;
             if (details.type === 'percentage') return details.value || 0;
@@ -358,17 +362,21 @@ export default function OfferBrowser({ initialOffers }) {
         return { banks, categories, filteredOffers, sortedOffers, totalPages, displayedOffers };
     }, [mockOffers, selectedBanks, selectedCategory, searchTerm, currentPage, offersPerPage, isMobile]);
 
-    const handleBankSelect = (bankName) => {
+    const handleBankSelect = (bankName: string) => {
         setSelectedBanks(prev => prev.includes(bankName) ? prev.filter(b => b !== bankName) : [...prev, bankName]);
     };
 
-    const handleCardExpand = (offerId) => {
+    const handleCardExpand = (offerId: string) => {
         setExpandedCards(prev => {
             const newSet = new Set(prev);
             newSet.has(offerId) ? newSet.delete(offerId) : newSet.add(offerId);
             return newSet;
         });
     };
+
+    useEffect(() => {
+        setMeta({ categories, banks, resultsCount: sortedOffers.length });
+    }, [categories, banks, sortedOffers.length, setMeta]);
 
     useEffect(() => {
         setCurrentPage(1);
@@ -400,73 +408,67 @@ export default function OfferBrowser({ initialOffers }) {
         <>
             <AdSenseProvider />
             <main className="min-h-screen bg-slate-50">
-                <header className="relative overflow-hidden bg-gradient-to-br from-teal-700 to-blue-800">
-                    <div className="absolute inset-0 bg-black opacity-10"></div>
-                    <div className="absolute top-0 left-0 w-72 h-72 bg-gradient-to-br from-blue-400 to-teal-600 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse"></div>
-                    <div className="absolute top-0 right-0 w-72 h-72 bg-gradient-to-br from-teal-400 to-green-600 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse animation-delay-2000"></div>
-                    <div className="absolute -bottom-8 left-20 w-72 h-72 bg-gradient-to-br from-green-400 to-blue-600 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse animation-delay-4000"></div>
-                    <div className="relative container mx-auto px-4 py-16 sm:py-20 text-center">
-                        <div className="max-w-4xl mx-auto">
-                            <h1 className="text-4xl sm:text-5xl md:text-7xl font-extrabold text-white mb-6 leading-tight">
-                                Card Promotions
-                                <span className="bg-gradient-to-r from-green-300 to-lime-300 bg-clip-text text-transparent block">Sri Lanka</span>
-                            </h1>
-                            <p className="text-lg sm:text-xl md:text-2xl text-blue-100 mb-8 leading-relaxed">
-                                Discover the best credit & debit card offers across Sri Lanka. Save more, spend smarter.
-                            </p>
-                            <div className="flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-6 text-sm text-blue-200">
-                                <div className="flex items-center">
-                                    <SparkleIcon />
-                                    <span>{mockOffers.length}+ Active Offers</span>
-                                </div>
-                                <div className="flex items-center">
-                                    <CreditCardIcon />
-                                    <span>{banks.length} Banks</span>
-                                </div>
-                                <div className="flex items-center">
-                                    <TagIcon />
-                                    <span>{categories.length - 1} Categories</span>
-                                </div>
-                            </div>
+                <div className="bg-gradient-to-r from-teal-700 to-blue-800 py-2.5">
+                    <div className="container mx-auto px-4 flex flex-wrap items-center justify-center gap-4 sm:gap-8 text-sm text-white">
+                        <div className="flex items-center gap-1.5">
+                            <SparkleIcon />
+                            <span className="font-semibold">{sortedOffers.length}</span>
+                            <span className="text-blue-200">Offers</span>
                         </div>
+                        <div className="w-px h-4 bg-white/30"></div>
+                        <div className="flex items-center gap-1.5">
+                            <CreditCardIcon />
+                            <span className="font-semibold">{banks.length}</span>
+                            <span className="text-blue-200">Banks</span>
+                        </div>
+                        <div className="w-px h-4 bg-white/30"></div>
+                        <div className="flex items-center gap-1.5">
+                            <TagIcon />
+                            <span className="font-semibold">{categories.length - 1}</span>
+                            <span className="text-blue-200">Categories</span>
+                        </div>
+                        {(searchTerm || selectedCategory !== 'All' || selectedBanks.length > 0) && (
+                            <>
+                                <div className="w-px h-4 bg-white/30"></div>
+                                <button
+                                    onClick={() => { setSearchTerm(''); setSelectedCategory('All'); setSelectedBanks([]); }}
+                                    className="text-blue-200 hover:text-white transition-colors text-xs flex items-center gap-1"
+                                >
+                                    <XIcon /> Clear filters
+                                </button>
+                            </>
+                        )}
                     </div>
-                </header>
-                <div className="container mx-auto px-4 py-8">
-                    <section aria-labelledby="filters-heading" className="sticky top-4 z-20 mb-8">
-                        <h2 id="filters-heading" className="sr-only">Offer Filters</h2>
-                        <SearchAndFilters searchTerm={searchTerm} onSearchChange={setSearchTerm} selectedCategory={selectedCategory} categories={categories} onCategoryChange={setSelectedCategory} selectedBanks={selectedBanks} onOpenBankModal={() => setIsBankModalOpen(true)} resultsCount={sortedOffers.length} />
-                    </section>
-
+                </div>
+                <div className="container mx-auto px-4 py-6 sm:py-8">
                     {isBankModalOpen && (<BankSelectionModal banks={banks} selectedBanks={selectedBanks} onSelect={handleBankSelect} onClose={() => setIsBankModalOpen(false)} onClear={() => setSelectedBanks([])} />)}
 
                     {displayedOffers.length > 0 ? (
                         <section aria-labelledby="offers-heading">
-                            <h2 id="offers-heading" className="text-3xl font-bold text-gray-800 mb-8">
+                            <h2 id="offers-heading" className="text-xl sm:text-2xl font-bold text-gray-800 mb-5 sm:mb-7">
                                 {selectedCategory === 'All' ? 'Latest Offers' : `${selectedCategory} Offers`}
                             </h2>
-                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
                                 {displayedOffers.map(offer => (<OfferCard key={offer?.id} offer={offer} isExpanded={expandedCards.has(offer?.id)} onExpand={handleCardExpand} />))}
                             </div>
                             {isMobile ? (currentPage < totalPages && <div ref={loaderRef} className="flex justify-center items-center p-8"><LoadingSpinnerIcon /></div>) : (<Pagination currentPage={currentPage} totalPages={totalPages} onPageChange={setCurrentPage} />)}
                         </section>
                     ) : (
-                        <section className="text-center py-12 sm:py-20" aria-label="No offers found">
-                            <div className="max-w-md mx-auto">
-                                <div className="w-24 h-24 mx-auto mb-6 bg-gradient-to-br from-gray-100 to-gray-200 rounded-full flex items-center justify-center">
-                                    <SearchIcon className="w-10 h-10 text-gray-400" />
+                        <section className="text-center py-16 sm:py-24" aria-label="No offers found">
+                            <div className="max-w-sm mx-auto">
+                                <div className="w-16 h-16 mx-auto mb-5 bg-gray-100 rounded-full flex items-center justify-center text-gray-400">
+                                    <SearchIcon />
                                 </div>
-                                <h2 className="text-2xl font-bold text-gray-800 mb-4">No offers found</h2>
-                                <p className="text-gray-600 mb-8 leading-relaxed">
-                                    We couldn't find any offers matching your criteria. Try adjusting your filters or search terms.
+                                <h2 className="text-xl font-bold text-gray-800 mb-2">No offers found</h2>
+                                <p className="text-gray-500 text-sm mb-6">
+                                    Try adjusting your filters or search terms.
                                 </p>
-                                <div className="space-y-3">
-                                    <button onClick={() => { setSearchTerm(''); setSelectedCategory('All'); setSelectedBanks([]); }} className="block w-full px-6 py-3 bg-gradient-to-r from-teal-500 to-blue-600 hover:from-teal-600 hover:to-blue-700 text-white font-semibold rounded-xl transition-colors">
-                                        Clear All Filters
-                                    </button>
-                                    <button onClick={() => setIsBankModalOpen(true)} className="block w-full px-6 py-3 border-2 border-teal-500 text-teal-600 hover:bg-teal-50 font-semibold rounded-xl transition-colors">
-                                        Select Different Banks
-                                    </button>
-                                </div>
+                                <button
+                                    onClick={() => { setSearchTerm(''); setSelectedCategory('All'); setSelectedBanks([]); }}
+                                    className="inline-flex items-center px-5 py-2.5 bg-teal-600 hover:bg-teal-700 text-white font-semibold rounded-xl transition-colors text-sm"
+                                >
+                                    Clear all filters
+                                </button>
                             </div>
                         </section>
                     )}
@@ -524,23 +526,15 @@ export default function OfferBrowser({ initialOffers }) {
                         </div>
                     </footer>
                 </div>
-                <style jsx>{`
-                .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border-width: 0; }
-                @keyframes pulse { 0%, 100% { opacity: 0.2; } 50% { opacity: 0.4; } } 
-                .animate-pulse { animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite; } 
-                .animation-delay-2000 { animation-delay: 2s; } 
-                .animation-delay-4000 { animation-delay: 4s; } 
-                .line-clamp-1, .line-clamp-2 { display: -webkit-box; -webkit-box-orient: vertical; overflow: hidden; } 
-                .line-clamp-1 { -webkit-line-clamp: 1; } 
-                .line-clamp-2 { -webkit-line-clamp: 2; } 
-                .animate-in { animation-fill-mode: both; } 
-                .slide-in-from-top { animation-name: slideInFromTop; } 
-                .zoom-in { animation-name: zoomIn; } 
-                @keyframes slideInFromTop { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } } 
-                @keyframes zoomIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } } 
-                .duration-200 { animation-duration: 200ms; } 
-                .hide-scrollbar::-webkit-scrollbar { display: none; } 
-                .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; } 
+                <style>{`
+                .animation-delay-2000 { animation-delay: 2s; }
+                .hide-scrollbar::-webkit-scrollbar { display: none; }
+                .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+                @keyframes slideInFromTop { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+                @keyframes zoomIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
+                .animate-in { animation-fill-mode: both; }
+                .slide-in-from-top { animation-name: slideInFromTop; animation-duration: 200ms; }
+                .zoom-in { animation-name: zoomIn; animation-duration: 200ms; }
             `}</style>
             </main>
         </>

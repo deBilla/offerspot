@@ -1,8 +1,8 @@
 import OfferBrowser from './components/OfferBrowser';
 import data from './api/data.json';
+import type { Offer } from '@/types/offer';
 
-// This is a Server Component. It runs on the server to fetch data.
 export default async function Home() {
-  const allOffers = data;
+  const allOffers = data as unknown as Offer[];
   return <OfferBrowser initialOffers={allOffers} />;
 }

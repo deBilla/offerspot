@@ -1,10 +1,12 @@
 import offers from "@/app/api/data.json";
 import AdSenseProvider from "@/app/components/AdsenseProvider";
 import { redirect } from "next/navigation";
+import Link from "next/link";
+import type { Offer } from "@/types/offer";
 
 // --- Helper Functions & Icons ---
 
-const formatDate = (dateString) => {
+const formatDate = (dateString?: string | null): string => {
     if (!dateString) return 'N/A';
     try {
         return new Date(dateString).toLocaleDateString('en-GB', {
@@ -26,12 +28,12 @@ const ExternalLinkIcon = () => (<svg xmlns="http://www.w3.org/2000/svg" width="2
 
 // --- Page Component ---
 
-export default async function OfferPage({ params }) {
+export default async function OfferPage({ params }: { params: Promise<{ id: string }> }) {
     const { id } = await params;
 
-    let offer;
+    let offer: Offer | undefined;
     try {
-        offer = offers.find((item) => item.id === id);
+        offer = (offers as unknown as Offer[]).find((item) => item.id === id);
     } catch (error) {
         console.error("Error reading offers data:", error);
         redirect("/");
@@ -65,8 +67,13 @@ export default async function OfferPage({ params }) {
     return (
         <>
             <AdSenseProvider />
-            <div className="min-h-screen bg-slate-50 flex items-center justify-center p-4 sm:p-6 lg:p-8">
-                <div className="max-w-2xl w-full bg-white shadow-xl rounded-2xl overflow-hidden transition hover:shadow-2xl duration-300 border border-gray-100">
+            <div className="min-h-screen bg-slate-50">
+                <div className="container mx-auto px-4 py-6 sm:py-8 max-w-2xl">
+                    <Link href="/" className="inline-flex items-center gap-1.5 text-sm text-gray-500 hover:text-teal-700 transition-colors mb-5">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+                        Back to offers
+                    </Link>
+                <div className="bg-white shadow-xl rounded-2xl overflow-hidden border border-gray-100">
                     <div className="p-6 sm:p-8">
                         {/* Header */}
                         <div className="flex flex-col sm:flex-row justify-between sm:items-center mb-6 pb-6 border-b">
@@ -140,6 +147,7 @@ export default async function OfferPage({ params }) {
                             </a>
                         </div>
                     )}
+                </div>
                 </div>
             </div>
         </>

@@ -8,7 +8,7 @@ import AdSenseProvider from '@/app/components/AdsenseProvider';
 const postsDirectory = path.join(process.cwd(), 'src', 'app', 'posts');
 
 // --- THIS FUNCTION IS NOW ASYNC ---
-async function getPost(slug) {
+async function getPost(slug: string) {
   // We now use the asynchronous version of readFile
   const markdownWithMeta = await fs.promises.readFile(
     path.join(postsDirectory, `${slug}.mdx`),
@@ -20,9 +20,8 @@ async function getPost(slug) {
 }
 
 // Generates page title and metadata for SEO
-export async function generateMetadata({ params }) {
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  // We now `await` the result of our async function
   const { frontMatter } = await getPost(slug);
   return {
     title: `${frontMatter.title} | CardPromotions.org Blog`,
@@ -33,7 +32,8 @@ export async function generateMetadata({ params }) {
 // Options for the code syntax highlighter
 const rehypePrettyCodeOptions = {
   theme: 'one-dark-pro',
-  onVisitLine(node) {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  onVisitLine(node: any) {
     if (node.children.length === 0) {
       node.children = [{ type: 'text', value: ' ' }];
     }
@@ -41,9 +41,8 @@ const rehypePrettyCodeOptions = {
 };
 
 // The main page component is now explicitly async
-export default async function PostPage({ params }) {
-  const { slug } = await params
-  // We `await` the result here as well
+export default async function PostPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
   const { frontMatter, content } = await getPost(slug);
   
   return (
