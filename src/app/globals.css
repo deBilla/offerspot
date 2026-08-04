@@ -4,17 +4,93 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  /* Latin default. Sinhala/Tamil faces are layered in per locale below. */
+  --font-body: var(--font-geist-sans), ui-sans-serif, system-ui, "Segoe UI", Arial, sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/*
+ * Geist has no Sinhala or Tamil glyphs, so those locales lead with the matching
+ * Noto face and keep Geist as the fallback for Latin runs (bank names, "20%",
+ * merchant names) that stay in the source script.
+ */
+html[data-locale="si"] {
+  --font-body: var(--font-sinhala), var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+}
+
+html[data-locale="ta"] {
+  --font-body: var(--font-tamil), var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-body);
+}
+
+/*
+ * Offer titles, descriptions and terms are republished verbatim from the banks
+ * and are English regardless of the page locale. They carry lang="en" so screen
+ * readers switch voice and search engines do not read them as Sinhala/Tamil.
+ */
+[lang="en"] {
+  font-family: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+}
+
+/* Sinhala and Tamil sit taller than Latin; give them room to breathe. */
+html[data-locale="si"] body,
+html[data-locale="ta"] body {
+  line-height: 1.7;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+@keyframes slideInFromTop {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes zoomIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-in {
+  animation-fill-mode: both;
+}
+
+.slide-in-from-top {
+  animation-name: slideInFromTop;
+  animation-duration: 200ms;
+}
+
+.zoom-in {
+  animation-name: zoomIn;
+  animation-duration: 200ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-in,
+  .slide-in-from-top,
+  .zoom-in {
+    animation: none;
+  }
 }
