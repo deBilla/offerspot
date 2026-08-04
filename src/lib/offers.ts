@@ -2,6 +2,9 @@ import rawOffers from '@/app/api/data.json';
 import type { Offer } from '@/types/offer';
 import type { Locale } from '@/i18n/config';
 import { getDictionary, translateBank, translateCardType, translateCategory } from '@/i18n/dictionaries';
+import { isPlaceholderOffer, resolveEndDate } from './offer-quality';
+
+export { isPlaceholderOffer } from './offer-quality';
 
 export const allOffers = rawOffers as unknown as Offer[];
 
@@ -72,19 +75,33 @@ function startOfToday(): Date {
  * banks publish open-ended promotions.
  */
 export function isExpired(offer: Offer, now: Date = startOfToday()): boolean {
-  const end = parseDate(offer.validity?.end_date);
+  const end = resolveEndDate(offer, now, parseDate).date;
   return end !== null && end < now;
 }
 
+/**
+ * The end date to display, which may have been recovered from the offer copy
+ * when the extractor left the field null. Null means the bank never published
+ * one, and the UI says so rather than implying the offer is current.
+ */
+export function endDateOf(offer: Offer, now: Date = startOfToday()): Date | null {
+  return resolveEndDate(offer, now, parseDate).date;
+}
+
 export function daysUntilExpiry(offer: Offer, now: Date = startOfToday()): number | null {
-  const end = parseDate(offer.validity?.end_date);
+  const end = endDateOf(offer, now);
   if (!end) return null;
   const diff = Math.ceil((end.getTime() - now.getTime()) / 86_400_000);
   return diff >= 0 ? diff : 0;
 }
 
+/**
+ * Live offers: real promotions that have not lapsed. Placeholder rows the
+ * crawler mistook for offers are dropped here so they cannot reach any page,
+ * listing, sitemap or count.
+ */
 export function getActiveOffers(now: Date = startOfToday()): Offer[] {
-  return allOffers.filter((offer) => offer?.id && !isExpired(offer, now));
+  return allOffers.filter((offer) => offer?.id && !isPlaceholderOffer(offer) && !isExpired(offer, now));
 }
 
 export function getOfferById(id: string): Offer | undefined {
@@ -131,15 +148,28 @@ export function sortOffers(offers: Offer[]): Offer[] {
 
 const localeTags: Record<Locale, string> = { en: 'en-GB', si: 'si-LK', ta: 'ta-LK' };
 
-export function formatDate(locale: Locale, value?: string | null, style: 'long' | 'short' = 'long'): string | null {
-  const date = parseDate(value);
-  if (!date) return null;
+function formatDateObject(locale: Locale, date: Date, style: 'long' | 'short'): string {
   return new Intl.DateTimeFormat(localeTags[locale], {
     day: 'numeric',
     month: style === 'long' ? 'long' : 'short',
     year: 'numeric',
     timeZone: 'UTC',
   }).format(date);
+}
+
+export function formatDate(locale: Locale, value?: string | null, style: 'long' | 'short' = 'long'): string | null {
+  const date = parseDate(value);
+  return date ? formatDateObject(locale, date, style) : null;
+}
+
+/**
+ * The offer's end date, including one recovered from its copy. Prefer this over
+ * formatDate(locale, offer.validity?.end_date) — the raw field is null on offers
+ * whose end date the extractor missed but the description states plainly.
+ */
+export function formatEndDate(locale: Locale, offer: Offer, style: 'long' | 'short' = 'long'): string | null {
+  const end = endDateOf(offer);
+  return end ? formatDateObject(locale, end, style) : null;
 }
 
 export function formatNumber(locale: Locale, value: number): string {
@@ -193,7 +223,7 @@ export function offerMetaTitle(locale: Locale, offer: Offer): string {
 export function offerMetaDescription(locale: Locale, offer: Offer): string {
   const dict = getDictionary(locale);
   const discount = formatDiscount(locale, offer) ?? offer.title;
-  const until = formatDate(locale, offer.validity?.end_date) ?? dict.offer.validityNotSpecified;
+  const until = formatEndDate(locale, offer) ?? dict.offer.validityNotSpecified;
   return dict.offer.metaDescription({
     merchant: merchantName(locale, offer),
     discount,
