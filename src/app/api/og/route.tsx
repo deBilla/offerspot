@@ -1,198 +1,259 @@
-// app/api/og/route.ts
+import fs from 'fs';
+import path from 'path';
 import { ImageResponse } from 'next/og';
-import { NextRequest } from 'next/server';
+import type { NextRequest } from 'next/server';
+import { resolveLocale, type Locale } from '@/i18n/config';
+import { getDictionary } from '@/i18n/dictionaries';
 
-export const runtime = 'edge';
+/**
+ * Social preview image generator (1200x630).
+ *
+ * Runs on the Node runtime rather than the edge so the Noto font binaries can
+ * be read from disk. Sinhala and Tamil have no glyphs in the default Satori
+ * font, so without loading the matching Noto face every localized preview
+ * renders as a row of tofu boxes.
+ */
+export const runtime = 'nodejs';
 
-const bankColors: Record<string, string> = {
-  "People's Bank": '#1e40af',
-  "Commercial Bank": '#dc2626', 
-  "HNB": '#f59e0b',
-  "Bank of Ceylon": '#eab308',
-  "Sampath Bank": '#059669',
-  "DFCC Bank": '#7c3aed'
+const FONT_DIR = path.join(process.cwd(), 'src', 'assets', 'fonts');
+const fontCache = new Map<string, Buffer>();
+
+function loadFont(file: string): Buffer {
+  const cached = fontCache.get(file);
+  if (cached) return cached;
+  const buffer = fs.readFileSync(path.join(FONT_DIR, file));
+  fontCache.set(file, buffer);
+  return buffer;
+}
+
+/** Latin always loads; the Indic face is added only for the locale that needs it. */
+function fontsFor(locale: Locale) {
+  const fonts = [
+    { name: 'Noto Sans', data: loadFont('NotoSans-400.ttf'), weight: 400 as const, style: 'normal' as const },
+    { name: 'Noto Sans', data: loadFont('NotoSans-700.ttf'), weight: 700 as const, style: 'normal' as const },
+  ];
+
+  if (locale === 'si') {
+    fonts.push(
+      { name: 'Noto Sans Sinhala', data: loadFont('NotoSansSinhala-400.ttf'), weight: 400, style: 'normal' },
+      { name: 'Noto Sans Sinhala', data: loadFont('NotoSansSinhala-700.ttf'), weight: 700, style: 'normal' },
+    );
+  }
+
+  if (locale === 'ta') {
+    fonts.push(
+      { name: 'Noto Sans Tamil', data: loadFont('NotoSansTamil-400.ttf'), weight: 400, style: 'normal' },
+      { name: 'Noto Sans Tamil', data: loadFont('NotoSansTamil-700.ttf'), weight: 700, style: 'normal' },
+    );
+  }
+
+  return fonts;
+}
+
+/*
+ * Latin face first in every stack. Satori resolves fallbacks per glyph, so the
+ * Indic face still supplies its own script while Latin runs (bank names, "20%",
+ * merchant names) keep Noto Sans' metrics. With the Indic face first, Satori
+ * measured Latin against it and produced visibly stretched letter-spacing.
+ */
+const fontFamily: Record<Locale, string> = {
+  en: '"Noto Sans"',
+  si: '"Noto Sans", "Noto Sans Sinhala"',
+  ta: '"Noto Sans", "Noto Sans Tamil"',
 };
+
+const bankAccents: Record<string, string> = {
+  "People's Bank": '#2563eb',
+  'Commercial Bank': '#dc2626',
+  HNB: '#f59e0b',
+  'Bank of Ceylon': '#ca8a04',
+  'Sampath Bank': '#059669',
+  'DFCC Bank': '#7c3aed',
+  HSBC: '#e11d48',
+  'Seylan Bank': '#0891b2',
+};
+
+function truncate(value: string, max: number): string {
+  const clean = value.replace(/\s+/g, ' ').trim();
+  if (clean.length <= max) return clean;
+  const cut = clean.slice(0, max);
+  const lastSpace = cut.lastIndexOf(' ');
+  return `${(lastSpace > max * 0.6 ? cut.slice(0, lastSpace) : cut).trimEnd()}…`;
+}
 
 export async function GET(request: NextRequest) {
   try {
     const { searchParams } = new URL(request.url);
-    const title = searchParams.get('title') || 'Card Promotion';
-    const bank = searchParams.get('bank') || 'Sri Lanka';
-    const discount = searchParams.get('discount') || '';
-    const category = searchParams.get('category') || '';
-    
-    const bankColor = bankColors[bank] || '#6366f1';
-    
+    const locale = resolveLocale(searchParams.get('lang') ?? undefined);
+    const dict = getDictionary(locale);
+
+    const title = truncate(searchParams.get('title') || dict.pages.homeTitle, 110);
+    const subtitle = searchParams.get('subtitle') ? truncate(searchParams.get('subtitle')!, 60) : null;
+    const badge = searchParams.get('badge') ? truncate(searchParams.get('badge')!, 32) : null;
+    // Pre-formatted and already localized by the caller ("20% OFF", "20% වට්ටමක්").
+    const discount = searchParams.get('discount') ? truncate(searchParams.get('discount')!, 28) : null;
+    const bank = searchParams.get('bank') ? truncate(searchParams.get('bank')!, 32) : null;
+
+    const accent = (bank && bankAccents[bank]) || '#14b8a6';
+    // Long titles need a smaller face to stay inside three lines.
+    const titleSize = title.length > 78 ? 46 : title.length > 48 ? 56 : 66;
+    const family = fontFamily[locale];
+
     return new ImageResponse(
       (
         <div
           style={{
-            height: '100%',
-            width: '100%',
             display: 'flex',
             flexDirection: 'column',
-            alignItems: 'center',
-            justifyContent: 'center',
-            backgroundColor: 'white',
-            backgroundImage: `linear-gradient(135deg, ${bankColor}15 0%, ${bankColor}25 100%)`,
-            fontFamily: 'system-ui',
+            justifyContent: 'space-between',
+            width: '100%',
+            height: '100%',
+            padding: '56px 64px',
+            backgroundColor: '#0b1120',
+            backgroundImage: `radial-gradient(1000px 520px at 88% -10%, ${accent}55 0%, transparent 62%), radial-gradient(760px 460px at -8% 108%, #1d4ed855 0%, transparent 60%)`,
+            fontFamily: family,
+            color: '#f8fafc',
           }}
         >
-          {/* Header with logo area */}
-          <div
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              marginBottom: '40px',
-            }}
-          >
-            <div
-              style={{
-                fontSize: '36px',
-                fontWeight: 'bold',
-                color: bankColor,
-                display: 'flex',
-                alignItems: 'center',
-              }}
-            >
-              💳 Card Promotions LK
+          {/* Header: brand mark on the left, bank pill on the right */}
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%' }}>
+            <div style={{ display: 'flex', alignItems: 'center' }}>
+              <div
+                style={{
+                  display: 'flex',
+                  width: 56,
+                  height: 40,
+                  borderRadius: 10,
+                  background: 'linear-gradient(135deg, #2dd4bf 0%, #3b82f6 100%)',
+                  marginRight: 18,
+                  alignItems: 'flex-end',
+                }}
+              >
+                <div style={{ display: 'flex', width: '100%', height: 9, backgroundColor: 'rgba(15,23,42,0.55)' }} />
+              </div>
+              <div style={{ display: 'flex', fontSize: 30, fontWeight: 700, letterSpacing: -0.5 }}>{dict.siteName}</div>
             </div>
+
+            {bank && (
+              <div
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  fontSize: 24,
+                  fontWeight: 700,
+                  color: '#f8fafc',
+                  backgroundColor: accent,
+                  padding: '10px 26px',
+                  borderRadius: 999,
+                }}
+              >
+                {bank}
+              </div>
+            )}
           </div>
 
-          {/* Main content */}
-          <div
-            style={{
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-              justifyContent: 'center',
-              maxWidth: '900px',
-              textAlign: 'center',
-              padding: '0 60px',
-            }}
-          >
-            {/* Bank name */}
-            <div
-              style={{
-                fontSize: '24px',
-                fontWeight: '600',
-                color: bankColor,
-                marginBottom: '20px',
-                backgroundColor: `${bankColor}15`,
-                padding: '8px 24px',
-                borderRadius: '25px',
-                border: `2px solid ${bankColor}30`,
-              }}
-            >
-              {bank}
-            </div>
+          {/* Body: the offer itself */}
+          <div style={{ display: 'flex', flexDirection: 'column', width: '100%' }}>
+            {subtitle && (
+              <div
+                style={{
+                  display: 'flex',
+                  fontSize: 26,
+                  fontWeight: 700,
+                  color: '#5eead4',
+                  textTransform: 'uppercase',
+                  letterSpacing: 1.5,
+                  marginBottom: 16,
+                }}
+              >
+                {subtitle}
+              </div>
+            )}
 
-            {/* Title */}
-            <div
-              style={{
-                fontSize: '48px',
-                fontWeight: 'bold',
-                color: '#1f2937',
-                lineHeight: '1.2',
-                marginBottom: '20px',
-                textAlign: 'center',
-              }}
-            >
-              {title.length > 80 ? title.substring(0, 80) + '...' : title}
-            </div>
-
-            {/* Category and Discount */}
             <div
               style={{
                 display: 'flex',
-                alignItems: 'center',
-                gap: '20px',
-                marginBottom: '30px',
+                fontSize: titleSize,
+                fontWeight: 700,
+                lineHeight: 1.18,
+                letterSpacing: -1,
+                maxWidth: 1010,
               }}
             >
-              {category && (
-                <div
-                  style={{
-                    fontSize: '20px',
-                    color: '#6b7280',
-                    backgroundColor: '#f3f4f6',
-                    padding: '6px 18px',
-                    borderRadius: '15px',
-                  }}
-                >
-                  📂 {category}
-                </div>
-              )}
-              {discount && (
-                <div
-                  style={{
-                    fontSize: '24px',
-                    fontWeight: 'bold',
-                    color: '#059669',
-                    backgroundColor: '#10b98115',
-                    padding: '8px 20px',
-                    borderRadius: '15px',
-                    border: '2px solid #10b98130',
-                  }}
-                >
-                  {discount}% OFF
-                </div>
-              )}
+              {title}
             </div>
 
-            {/* Footer */}
-            <div
-              style={{
-                fontSize: '18px',
-                color: '#6b7280',
-                display: 'flex',
-                alignItems: 'center',
-                gap: '15px',
-              }}
-            >
-              <span>🇱🇰 Sri Lanka's Best Card Offers</span>
-              <span>•</span>
-              <span>💰 Save More Today</span>
-            </div>
+            {discount && (
+              <div style={{ display: 'flex', marginTop: 30 }}>
+                <div
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    fontSize: 44,
+                    fontWeight: 700,
+                    color: '#052e16',
+                    backgroundColor: '#4ade80',
+                    padding: '12px 34px',
+                    borderRadius: 16,
+                  }}
+                >
+                  {discount}
+                </div>
+              </div>
+            )}
           </div>
 
-          {/* Decorative elements */}
-          <div
-            style={{
-              position: 'absolute',
-              top: '20px',
-              right: '20px',
-              width: '120px',
-              height: '120px',
-              borderRadius: '50%',
-              backgroundColor: `${bankColor}10`,
-              border: `3px solid ${bankColor}20`,
-            }}
-          />
-          <div
-            style={{
-              position: 'absolute',
-              bottom: '20px',
-              left: '20px',
-              width: '80px',
-              height: '80px',
-              borderRadius: '50%',
-              backgroundColor: `${bankColor}15`,
-              border: `2px solid ${bankColor}25`,
-            }}
-          />
+          {/* Footer: category badge and the domain */}
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%' }}>
+            {/* minWidth:0 lets this side shrink instead of overrunning the domain. */}
+            <div style={{ display: 'flex', alignItems: 'center', minWidth: 0, marginRight: 24 }}>
+              {badge && (
+                <div
+                  style={{
+                    display: 'flex',
+                    flexShrink: 0,
+                    fontSize: 22,
+                    color: '#e2e8f0',
+                    backgroundColor: 'rgba(248,250,252,0.12)',
+                    border: '1px solid rgba(248,250,252,0.22)',
+                    padding: '8px 22px',
+                    borderRadius: 999,
+                    marginRight: 16,
+                  }}
+                >
+                  {badge}
+                </div>
+              )}
+              {/*
+               * Only shown when there is no category badge. Satori does not
+               * reliably clip an overflowing nowrap text node, and Tamil glyphs
+               * are wide enough that badge + tagline + domain ran past the right
+               * padding. Dropping the tagline is deterministic; truncating by
+               * character count is not, because character width varies by script.
+               */}
+              {!badge && subtitle !== dict.tagline && (
+                <div style={{ display: 'flex', fontSize: 22, color: '#94a3b8' }}>{truncate(dict.tagline, 64)}</div>
+              )}
+            </div>
+            <div style={{ display: 'flex', flexShrink: 0, fontSize: 22, fontWeight: 700, color: '#5eead4' }}>
+              cardpromotions.org
+            </div>
+          </div>
         </div>
       ),
       {
         width: 1200,
         height: 630,
-      }
+        fonts: fontsFor(locale),
+        headers: {
+          // Previews are pure functions of the query string; let the CDN and the
+          // social scrapers hold on to them.
+          'Cache-Control': 'public, immutable, no-transform, max-age=31536000',
+        },
+      },
     );
-  } catch (e) {
-    console.log('Error generating OG image:', e);
-    return new Response('Failed to generate image', {
-      status: 500,
-    });
+  } catch (error) {
+    console.error('Failed to generate OG image:', error);
+    return new Response('Failed to generate image', { status: 500 });
   }
 }

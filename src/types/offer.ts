@@ -8,6 +8,8 @@ export interface OfferDetails {
 export interface Validity {
   start_date?: string | null;
   end_date?: string | null;
+  /** Weekday names the offer applies to, e.g. ["Monday"]. */
+  days?: string[] | null;
 }
 
 export interface Location {
