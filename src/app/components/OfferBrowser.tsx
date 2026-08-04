@@ -9,8 +9,8 @@ import { getDictionary, translateBank, translateCategory } from '@/i18n/dictiona
 import {
   daysUntilExpiry,
   discountWeight,
-  formatDate,
   formatDiscount,
+  formatEndDate,
   isMeaningful,
   merchantName,
 } from '@/lib/offers';
@@ -228,14 +228,13 @@ const OfferCard = ({
 
   const { id, bank, category, title, description, terms, source_url } = offer;
   const merchant = merchantName(locale, offer);
-  const endDate = offer.validity?.end_date;
   const address = offer.location?.address;
   const hasAddress = isMeaningful(address) && address !== 'Online Booking';
   const lat = offer.location?.latitude;
   const lng = offer.location?.longitude;
   const daysLeft = daysUntilExpiry(offer);
   const discount = formatDiscount(locale, offer);
-  const validUntil = formatDate(locale, endDate, 'short');
+  const validUntil = formatEndDate(locale, offer, 'short');
   const googleMapsUrl = lat && lng ? `https://www.google.com/maps/search/?api=1&query=${lat},${lng}` : null;
 
   return (

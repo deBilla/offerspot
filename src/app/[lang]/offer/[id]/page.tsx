@@ -9,14 +9,17 @@ import { getDictionary, translateBank, translateCardType, translateCategory } fr
 import { absoluteUrl, breadcrumbJsonLd, buildMetadata, ogImageUrl, ogTextLocale, siteUrl } from '@/lib/seo';
 import {
   clamp,
+  endDateOf,
   formatDate,
   formatDiscount,
+  formatEndDate,
   formatNumber,
   getActiveOffers,
   getOfferById,
   getRelatedOffers,
   isExpired,
   isMeaningful,
+  isPlaceholderOffer,
   merchantName,
   offerMetaDescription,
   offerMetaTitle,
@@ -86,7 +89,7 @@ export async function generateMetadata({
     noIndex: true,
     type: 'article',
     publishedTime: parseDate(offer.validity?.start_date)?.toISOString(),
-    modifiedTime: parseDate(offer.validity?.end_date)?.toISOString(),
+    modifiedTime: endDateOf(offer)?.toISOString(),
   });
 }
 
@@ -150,7 +153,9 @@ export default async function OfferPage({ params }: { params: Promise<{ lang: st
   const offer = getOfferById(id);
   // A missing offer must return a real 404, not a redirect to the homepage —
   // a 307 to "/" is a soft 404 and gets the URL treated as a duplicate of home.
-  if (!offer) notFound();
+  // Placeholder rows ("No Offers Available", bare "View details" stubs) are not
+  // promotions and have nothing to render, so they 404 too.
+  if (!offer || isPlaceholderOffer(offer)) notFound();
 
   const dict = getDictionary(locale);
   const imageLocale = ogTextLocale(locale);
@@ -160,9 +165,9 @@ export default async function OfferPage({ params }: { params: Promise<{ lang: st
   const bankLabel = translateBank(locale, offer.bank);
   const categoryLabel = translateCategory(locale, offer.category);
   const startDate = formatDate(locale, offer.validity?.start_date);
-  const endDate = formatDate(locale, offer.validity?.end_date);
+  const endDate = formatEndDate(locale, offer);
   const startIso = parseDate(offer.validity?.start_date)?.toISOString();
-  const endIso = parseDate(offer.validity?.end_date)?.toISOString();
+  const endIso = endDateOf(offer)?.toISOString();
   const address = offer.location?.address;
   const hasAddress = isMeaningful(address) && address !== 'Online Booking';
   const maxDiscount = offer.offer_details?.max_discount_lkr;
