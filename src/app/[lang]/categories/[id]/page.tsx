@@ -5,9 +5,12 @@ import Breadcrumbs from '@/app/components/Breadcrumbs';
 import JsonLd from '@/app/components/JsonLd';
 import OfferBrowser from '@/app/components/OfferBrowser';
 import OfferIndexList from '@/app/components/OfferIndexList';
+import HubContent from '@/app/components/HubContent';
 import { isLocale, localeHtmlLang, localizedPath, locales, type Locale } from '@/i18n/config';
 import { getDictionary, translateBank, translateCategory } from '@/i18n/dictionaries';
 import { absoluteUrl, breadcrumbJsonLd, buildMetadata, ogImageUrl, ogTextLocale } from '@/lib/seo';
+import { buildHubStats } from '@/lib/hub-stats';
+import { categoryHubCopy } from '@/i18n/hub-copy';
 import {
   categoryFromSlug,
   categorySlugList,
@@ -44,7 +47,10 @@ export async function generateMetadata({
     .map((bank) => translateBank(lang, bank))
     .join(', ');
 
-  const title = dict.pages.categoryPageTitle(categoryLabel);
+  const stats = buildHubStats(lang, offers);
+  // Month and live count in the title: a dated, quantified title signals
+  // freshness for a listing whose whole value is being current.
+  const title = `${dict.pages.categoryPageTitle(categoryLabel)} — ${stats.monthYear}`;
   const description = clamp(
     dict.pages.categoryPageDescription({ category: categoryLabel, count: offers.length, banks }),
     300,
@@ -126,6 +132,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ lang:
 
         <div className="container mx-auto px-4 pb-12">
           <OfferIndexList offers={offers} locale={locale} heading={dict.browse.categoryOffers(categoryLabel)} />
+          <HubContent locale={locale} copy={categoryHubCopy(locale, categoryLabel, buildHubStats(locale, offers))} />
         </div>
       </main>
     </>

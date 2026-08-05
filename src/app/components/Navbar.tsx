@@ -5,6 +5,8 @@ import { useFilterContext } from '@/app/context/FilterContext';
 import { localizedPath, type Locale } from '@/i18n/config';
 import { getDictionary, translateCategory } from '@/i18n/dictionaries';
 import LanguageSwitcher from './LanguageSwitcher';
+import { getWalletCopy } from '@/i18n/wallet-copy';
+import { useWallet } from '@/app/context/WalletContext';
 
 const CreditCardIcon = () => (
   <svg
@@ -75,10 +77,30 @@ const WalletIcon = () => (
   </svg>
 );
 
+const CardStackIcon = () => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className="h-4 w-4"
+    aria-hidden="true"
+  >
+    <rect width="18" height="12" x="3" y="8" rx="2" />
+    <path d="M6 8V6a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v6" />
+    <path d="M3 13h18" />
+  </svg>
+);
+
 export default function Navbar({ locale }: { locale: Locale }) {
   const { searchTerm, setSearchTerm, selectedCategory, setSelectedCategory, selectedBanks, setIsBankModalOpen, meta } =
     useFilterContext();
   const dict = getDictionary(locale);
+  const walletCopy = getWalletCopy(locale);
+  const { wallet, ready, hasSelection } = useWallet();
   const hasFilters = meta.categories.length > 1;
 
   return (
@@ -141,6 +163,23 @@ export default function Navbar({ locale }: { locale: Locale }) {
               </button>
             </>
           )}
+
+          <Link
+            href={localizedPath(locale, hasSelection ? '/my-offers' : '/my-cards')}
+            className={`flex shrink-0 items-center gap-1.5 rounded-xl border px-2.5 py-2 text-sm font-medium transition-colors ${
+              ready && hasSelection
+                ? 'border-teal-600 bg-teal-50 text-teal-700'
+                : 'border-gray-200 bg-white text-gray-700 hover:bg-gray-50'
+            }`}
+          >
+            <CardStackIcon />
+            <span className="hidden md:inline">{walletCopy.navLabel}</span>
+            {ready && hasSelection && (
+              <span className="rounded-md bg-teal-600 px-1.5 py-0.5 text-xs font-bold text-white">
+                {wallet.banks.length}
+              </span>
+            )}
+          </Link>
 
           <LanguageSwitcher locale={locale} />
         </div>
