@@ -7,6 +7,7 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import JsonLd from '../components/JsonLd';
 import { FilterProvider } from '../context/FilterContext';
+import { WalletProvider } from '../context/WalletContext';
 import { isLocale, localeHtmlLang, localeOgLocale, locales, localizedPath, type Locale } from '@/i18n/config';
 import { getDictionary } from '@/i18n/dictionaries';
 import { absoluteUrl, alternatesFor, ogImageUrl, ogTextLocale, siteUrl } from '@/lib/seo';
@@ -178,11 +179,13 @@ export default async function RootLayout({
         >
           {dict.nav.skipToContent}
         </a>
-        <FilterProvider>
-          <Navbar locale={locale} />
-          {children}
-          <Footer locale={locale} />
-        </FilterProvider>
+        <WalletProvider>
+          <FilterProvider>
+            <Navbar locale={locale} />
+            {children}
+            <Footer locale={locale} />
+          </FilterProvider>
+        </WalletProvider>
 
         <Script src="https://www.googletagmanager.com/gtag/js?id=G-4N0L6X203Z" strategy="afterInteractive" />
         <Script id="google-analytics" strategy="afterInteractive">

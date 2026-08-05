@@ -8,11 +8,19 @@ export { isPlaceholderOffer } from './offer-quality';
 
 export const allOffers = rawOffers as unknown as Offer[];
 
-/** Values the source feed uses to mean "no data". */
-const NULLISH_TEXT = new Set(['', 'n/a', 'not specified', 'not specified in the text', 'unknown', 'null']);
+/**
+ * Values the source feed uses to mean "no data".
+ *
+ * Anchored at the start rather than matched exactly, because the extractor
+ * emits qualified variants — "Not specified (Japan)", "Not provided in the
+ * text" — which an exact-match set lets through, and they then render as if
+ * they were a real merchant name.
+ */
+const NULLISH_TEXT =
+  /^\s*(?:n\/?a|none|null|-+|unknown|unspecified|tbd|tba|not\s+(?:specified|provided|mentioned|available|stated|given)\b.*)\s*$/i;
 
 export function isMeaningful(value?: string | null): value is string {
-  return !!value && !NULLISH_TEXT.has(value.trim().toLowerCase());
+  return !!value && !NULLISH_TEXT.test(value.trim());
 }
 
 /** URL-safe slug: "Dining & Restaurants" -> "dining-restaurants". */

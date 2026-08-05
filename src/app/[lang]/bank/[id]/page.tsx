@@ -5,9 +5,12 @@ import Breadcrumbs from '@/app/components/Breadcrumbs';
 import JsonLd from '@/app/components/JsonLd';
 import OfferBrowser from '@/app/components/OfferBrowser';
 import OfferIndexList from '@/app/components/OfferIndexList';
+import HubContent from '@/app/components/HubContent';
 import { isLocale, localeHtmlLang, localizedPath, locales, type Locale } from '@/i18n/config';
 import { getDictionary, translateBank, translateCategory } from '@/i18n/dictionaries';
 import { absoluteUrl, breadcrumbJsonLd, buildMetadata, ogImageUrl, ogTextLocale } from '@/lib/seo';
+import { buildHubStats } from '@/lib/hub-stats';
+import { bankHubCopy } from '@/i18n/hub-copy';
 import {
   bankFromSlug,
   bankSlugList,
@@ -44,7 +47,8 @@ export async function generateMetadata({
     .map((category) => translateCategory(lang, category))
     .join(', ');
 
-  const title = dict.pages.bankPageTitle(bankLabel);
+  const stats = buildHubStats(lang, offers);
+  const title = `${dict.pages.bankPageTitle(bankLabel)} — ${stats.monthYear}`;
   const description = clamp(
     dict.pages.bankPageDescription({ bank: bankLabel, count: offers.length, categories }),
     300,
@@ -125,6 +129,7 @@ export default async function BankPage({ params }: { params: Promise<{ lang: str
 
         <div className="container mx-auto px-4 pb-12">
           <OfferIndexList offers={offers} locale={locale} heading={dict.browse.bankOffers(bankLabel)} />
+          <HubContent locale={locale} copy={bankHubCopy(locale, bankLabel, buildHubStats(locale, offers))} />
         </div>
       </main>
     </>

@@ -3,10 +3,14 @@ import { notFound } from 'next/navigation';
 import AdSenseProvider from '@/app/components/AdsenseProvider';
 import JsonLd from '@/app/components/JsonLd';
 import OfferBrowser from '@/app/components/OfferBrowser';
+import HubContent from '@/app/components/HubContent';
 import { isLocale, localeHtmlLang, localizedPath, type Locale } from '@/i18n/config';
 import { getDictionary } from '@/i18n/dictionaries';
 import { absoluteUrl, buildMetadata, ogImageUrl, ogTextLocale } from '@/lib/seo';
 import { getActiveOffers, merchantName, sortOffers } from '@/lib/offers';
+import { buildHubStats } from '@/lib/hub-stats';
+import { homeHubCopy } from '@/i18n/hub-copy';
+import { translateBank } from '@/i18n/dictionaries';
 
 export const revalidate = 86400;
 
@@ -39,6 +43,16 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
   const locale: Locale = lang;
   const dict = getDictionary(locale);
   const offers = sortOffers(getActiveOffers());
+  const stats = buildHubStats(locale, offers);
+
+  const bankCounts = new Map<string, number>();
+  for (const offer of offers) bankCounts.set(offer.bank, (bankCounts.get(offer.bank) ?? 0) + 1);
+  const leader = [...bankCounts.entries()].sort((a, b) => b[1] - a[1])[0];
+  const copy = homeHubCopy(
+    locale,
+    stats,
+    leader ? { name: translateBank(locale, leader[0]), count: leader[1] } : undefined,
+  );
 
   const itemListJsonLd = {
     '@context': 'https://schema.org',
@@ -65,6 +79,9 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
           {dict.siteName} — {dict.pages.homeTitle}
         </h1>
         <OfferBrowser offers={offers} locale={locale} heading={dict.browse.latestOffers} />
+        <div className="container mx-auto px-4 pb-12">
+          <HubContent locale={locale} copy={copy} />
+        </div>
       </main>
     </>
   );
