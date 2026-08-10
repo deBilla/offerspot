@@ -1,5 +1,3 @@
-import fs from 'fs';
-import path from 'path';
 import type { MetadataRoute } from 'next';
 import { defaultLocale, localeHtmlLang, locales, localizedPath } from '@/i18n/config';
 import { absoluteUrl } from '@/lib/seo';
@@ -11,6 +9,8 @@ import {
   getOffersByCategory,
   slugify,
 } from '@/lib/offers';
+import { bankCategoryRoutes, cardTypeHubs, getOffersByCardType } from '@/lib/hub-routes';
+import { getAllPosts } from '@/lib/posts';
 
 export const revalidate = 86400;
 
@@ -63,9 +63,28 @@ export default function sitemap(): MetadataRoute.Sitemap {
     entry('/', { lastModified: now, changeFrequency: 'daily', priority: 1 }),
     entry('/banks', { lastModified: now, changeFrequency: 'weekly', priority: 0.8 }),
     entry('/categories', { lastModified: now, changeFrequency: 'weekly', priority: 0.8 }),
+    // English-only, like the posts it lists.
+    entry('/blog', { lastModified: now, changeFrequency: 'monthly', priority: 0.4, localized: false }),
     entry('/privacy-policy', { lastModified: now, changeFrequency: 'yearly', priority: 0.2 }),
     entry('/terms-of-service', { lastModified: now, changeFrequency: 'yearly', priority: 0.2 }),
   ];
+
+  // Card-type hubs, listed only while they actually have offers — an empty one
+  // is noindex on the page itself.
+  const cardTypeEntries: MetadataRoute.Sitemap = cardTypeHubs
+    .filter((hub) => getOffersByCardType(hub.cardType, offers).length > 0)
+    .map((hub) =>
+      entry(`/${hub.slug}`, { lastModified: now, changeFrequency: 'daily', priority: 0.9 }),
+    );
+
+  // Bank x category intersections that cleared the offer-count threshold.
+  const bankCategoryEntries: MetadataRoute.Sitemap = bankCategoryRoutes(offers).map((route) =>
+    entry(`/bank/${route.bankSlug}/${route.categorySlug}`, {
+      lastModified: now,
+      changeFrequency: 'daily',
+      priority: 0.7,
+    }),
+  );
 
   const bankEntries: MetadataRoute.Sitemap = allBanks
     .filter((bank) => getOffersByBank(bank, offers).length > 0)
@@ -87,21 +106,23 @@ export default function sitemap(): MetadataRoute.Sitemap {
       }),
     );
 
-  const postsDirectory = path.join(process.cwd(), 'src', 'app', 'posts');
-  const blogEntries: MetadataRoute.Sitemap = (
-    fs.existsSync(postsDirectory) ? fs.readdirSync(postsDirectory) : []
-  )
-    .filter((name) => name.endsWith('.mdx'))
-    .map((name) =>
-      entry(`/blog/post/${name.replace(/\.mdx$/, '')}`, {
-        lastModified: fs.statSync(path.join(postsDirectory, name)).mtime,
-        changeFrequency: 'monthly',
-        priority: 0.5,
-        // Posts are written in English only; the /si and /ta variants serve the
-        // same English article, so they are noindex and not advertised here.
-        localized: false,
-      }),
-    );
+  const blogEntries: MetadataRoute.Sitemap = getAllPosts().map((post) =>
+    entry(`/blog/post/${post.slug}`, {
+      lastModified: post.modified,
+      changeFrequency: 'monthly',
+      priority: 0.5,
+      // Posts are written in English only; the /si and /ta variants serve the
+      // same English article, so they are noindex and not advertised here.
+      localized: false,
+    }),
+  );
 
-  return [...staticEntries, ...categoryEntries, ...bankEntries, ...blogEntries];
+  return [
+    ...staticEntries,
+    ...cardTypeEntries,
+    ...categoryEntries,
+    ...bankEntries,
+    ...bankCategoryEntries,
+    ...blogEntries,
+  ];
 }

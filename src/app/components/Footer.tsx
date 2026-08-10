@@ -1,7 +1,8 @@
 import Link from 'next/link';
 import { localizedPath, type Locale } from '@/i18n/config';
-import { getDictionary, translateBank, translateCategory } from '@/i18n/dictionaries';
+import { getDictionary, translateBank, translateCardType, translateCategory } from '@/i18n/dictionaries';
 import { allBanks, allCategories, getActiveOffers, getOffersByBank, isMeaningful, slugify } from '@/lib/offers';
+import { cardTypeHubs } from '@/lib/hub-routes';
 
 const ChevronIcon = () => (
   <svg
@@ -55,11 +56,20 @@ export default function Footer({ locale }: { locale: Locale }) {
           <div>
             <h3 className="mb-3 font-semibold text-gray-800">{dict.footer.quickLinks}</h3>
             <ul className="space-y-2 text-gray-600">
+              {/* Points at "/" directly: /offers is a 308 to the homepage, and
+                  linking a redirect from every page wastes the crawl. */}
               <li>
-                <Link href={localizedPath(locale, '/offers')} className="hover:text-teal-600 hover:underline">
+                <Link href={localizedPath(locale, '/')} className="hover:text-teal-600 hover:underline">
                   {dict.footer.allOffers}
                 </Link>
               </li>
+              {cardTypeHubs.map((hub) => (
+                <li key={hub.slug}>
+                  <Link href={localizedPath(locale, `/${hub.slug}`)} className="hover:text-teal-600 hover:underline">
+                    {dict.pages.cardTypePageTitle(translateCardType(locale, hub.cardType))}
+                  </Link>
+                </li>
+              ))}
               <li>
                 <Link href={localizedPath(locale, '/banks')} className="hover:text-teal-600 hover:underline">
                   {dict.pages.banksTitle}
@@ -71,10 +81,12 @@ export default function Footer({ locale }: { locale: Locale }) {
                 </Link>
               </li>
               <li>
-                <Link href={localizedPath(locale, '/search')} className="hover:text-teal-600 hover:underline">
-                  {dict.pages.searchTitle}
+                <Link href={localizedPath(locale, '/blog')} className="hover:text-teal-600 hover:underline">
+                  {dict.pages.blogTitle}
                 </Link>
               </li>
+              {/* /search is disallowed in robots.txt, so it is deliberately not
+                  linked here — the nav search box is how people reach it. */}
             </ul>
           </div>
 

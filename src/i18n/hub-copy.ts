@@ -53,6 +53,17 @@ interface Phrases {
   bankBest: (a: { bank: string; percentage: string; merchant: string }) => string;
   bankCards: (a: { bank: string; cardTypes: string }) => string;
 
+  // Card-type hub
+  cardTypeIntro: (a: { cardType: string; count: string; monthYear: string; banks: string }) => string;
+  cardTypeCategories: (a: { cardType: string; categories: string }) => string;
+  qCardTypeBanks: (cardType: string) => string;
+  aCardTypeBanks: (a: { cardType: string; count: string; banks: string; monthYear: string }) => string;
+
+  // Bank x category hub
+  bankCatIntro: (a: { bank: string; category: string; count: string; monthYear: string }) => string;
+  qBankCatCount: (a: { bank: string; category: string }) => string;
+  aBankCatCount: (a: { bank: string; category: string; count: string; monthYear: string }) => string;
+
   // Home
   homeIntro: (a: { count: string; bankCount: string; categoryCount: string; monthYear: string }) => string;
   homeBanks: (a: { banks: string }) => string;
@@ -110,6 +121,20 @@ const en: Phrases = {
   bankBest: ({ bank, percentage, merchant }) =>
     `The largest ${bank} discount currently listed is ${percentage}% at ${merchant}.`,
   bankCards: ({ bank, cardTypes }) => `${bank} promotions here apply to ${cardTypes}.`,
+
+  cardTypeIntro: ({ cardType, count, monthYear, banks }) =>
+    `${count} ${cardType.toLowerCase()} promotions are running in Sri Lanka in ${monthYear}, from ${banks}. Card type matters at the till: an offer listed for one will not be honoured on the other, even on cards from the same bank.`,
+  cardTypeCategories: ({ cardType, categories }) =>
+    `${cardType} promotions here cover ${categories}.`,
+  qCardTypeBanks: (t) => `Which Sri Lankan banks have ${t.toLowerCase()} promotions right now?`,
+  aCardTypeBanks: ({ cardType, count, banks, monthYear }) =>
+    `In ${monthYear} there are ${count} ${cardType.toLowerCase()} promotions listed, from ${banks}.`,
+
+  bankCatIntro: ({ bank, category, count, monthYear }) =>
+    `${bank} has ${count} ${category.toLowerCase()} card promotions running in ${monthYear}. Each is listed below with the card types it applies to and the dates the bank published.`,
+  qBankCatCount: ({ bank, category }) => `How many ${category.toLowerCase()} offers does ${bank} have?`,
+  aBankCatCount: ({ bank, category, count, monthYear }) =>
+    `${count} ${bank} ${category.toLowerCase()} promotions are listed for ${monthYear}.`,
 
   homeIntro: ({ count, bankCount, categoryCount, monthYear }) =>
     `${count} credit and debit card promotions are running across ${bankCount} Sri Lankan banks in ${monthYear}, spanning ${categoryCount} categories. Offers are gathered from each bank's own promotions pages and refreshed daily.`,
@@ -176,6 +201,19 @@ const si: Phrases = {
     `දැනට ලැයිස්තුගත විශාලතම ${bank} වට්ටම ${merchant} හි ${percentage}% කි.`,
   bankCards: ({ bank, cardTypes }) => `මෙහි ඇති ${bank} ප්‍රවර්ධන ${cardTypes} සඳහා අදාළ වේ.`,
 
+  cardTypeIntro: ({ cardType, count, monthYear, banks }) =>
+    `${monthYear} හි ශ්‍රී ලංකාවේ ${cardType} ප්‍රවර්ධන ${count}ක් ක්‍රියාත්මක වේ, ${banks} වෙතින්. කාඩ්පත් වර්ගය වැදගත් වේ: එක් වර්ගයක් සඳහා ලැයිස්තුගත දීමනාවක් අනෙක් වර්ගය සඳහා — එකම බැංකුවේ කාඩ්පතක් වුවද — පිළිගනු නොලැබේ.`,
+  cardTypeCategories: ({ cardType, categories }) => `මෙහි ඇති ${cardType} ප්‍රවර්ධන ${categories} ආවරණය කරයි.`,
+  qCardTypeBanks: (t) => `දැනට ${t} ප්‍රවර්ධන ඇත්තේ ශ්‍රී ලංකාවේ කුමන බැංකු වලද?`,
+  aCardTypeBanks: ({ cardType, count, banks, monthYear }) =>
+    `${monthYear} හි ${banks} වෙතින් ${cardType} ප්‍රවර්ධන ${count}ක් ලැයිස්තුගත කර ඇත.`,
+
+  bankCatIntro: ({ bank, category, count, monthYear }) =>
+    `${monthYear} හි ${bank} ${category} කාඩ්පත් ප්‍රවර්ධන ${count}ක් ක්‍රියාත්මක වේ. පහත සෑම එකක්ම අදාළ කාඩ්පත් වර්ග සහ බැංකුව ප්‍රකාශ කළ දින සමඟ ලැයිස්තුගත කර ඇත.`,
+  qBankCatCount: ({ bank, category }) => `${bank} සතුව ${category} දීමනා කීයක් තිබේද?`,
+  aBankCatCount: ({ bank, category, count, monthYear }) =>
+    `${monthYear} සඳහා ${bank} ${category} ප්‍රවර්ධන ${count}ක් ලැයිස්තුගත කර ඇත.`,
+
   homeIntro: ({ count, bankCount, categoryCount, monthYear }) =>
     `${monthYear} හි ශ්‍රී ලංකාවේ බැංකු ${bankCount}ක් හරහා ක්‍රෙඩිට් සහ ඩෙබිට් කාඩ්පත් ප්‍රවර්ධන ${count}ක් ක්‍රියාත්මක වන අතර ප්‍රවර්ග ${categoryCount}ක් ආවරණය කරයි. දීමනා එක් එක් බැංකුවේම ප්‍රවර්ධන පිටු වලින් රැස් කර දිනපතා යාවත්කාලීන කෙරේ.`,
   homeBanks: ({ banks }) => `දැනට වැඩිම සක්‍රීය දීමනා ඇති බැංකු වන්නේ ${banks} ය.`,
@@ -240,6 +278,19 @@ const ta: Phrases = {
   bankBest: ({ bank, percentage, merchant }) =>
     `தற்போது பட்டியலிடப்பட்ட அதிகபட்ச ${bank} தள்ளுபடி ${merchant} இல் ${percentage}% ஆகும்.`,
   bankCards: ({ bank, cardTypes }) => `இங்குள்ள ${bank} சலுகைகள் ${cardTypes} க்குப் பொருந்தும்.`,
+
+  cardTypeIntro: ({ cardType, count, monthYear, banks }) =>
+    `${monthYear} இல் இலங்கையில் ${cardType} சலுகைகள் ${count} செயல்பாட்டில் உள்ளன, ${banks} வழங்குகின்றன. கார்டு வகை முக்கியம்: ஒரு வகைக்குப் பட்டியலிடப்பட்ட சலுகை, அதே வங்கியின் கார்டாக இருந்தாலும், மற்ற வகையில் ஏற்றுக்கொள்ளப்படாது.`,
+  cardTypeCategories: ({ cardType, categories }) => `இங்குள்ள ${cardType} சலுகைகள் ${categories} உள்ளடக்குகின்றன.`,
+  qCardTypeBanks: (t) => `தற்போது இலங்கையில் எந்த வங்கிகளில் ${t} சலுகைகள் உள்ளன?`,
+  aCardTypeBanks: ({ cardType, count, banks, monthYear }) =>
+    `${monthYear} இல் ${banks} வழங்கும் ${cardType} சலுகைகள் ${count} பட்டியலிடப்பட்டுள்ளன.`,
+
+  bankCatIntro: ({ bank, category, count, monthYear }) =>
+    `${monthYear} இல் ${bank} ${category} கார்டு சலுகைகள் ${count} செயல்பாட்டில் உள்ளன. கீழே உள்ள ஒவ்வொன்றும் பொருந்தக்கூடிய கார்டு வகைகள் மற்றும் வங்கி வெளியிட்ட தேதிகளுடன் பட்டியலிடப்பட்டுள்ளது.`,
+  qBankCatCount: ({ bank, category }) => `${bank} இல் எத்தனை ${category} சலுகைகள் உள்ளன?`,
+  aBankCatCount: ({ bank, category, count, monthYear }) =>
+    `${monthYear} க்கு ${bank} ${category} சலுகைகள் ${count} பட்டியலிடப்பட்டுள்ளன.`,
 
   homeIntro: ({ count, bankCount, categoryCount, monthYear }) =>
     `${monthYear} இல் இலங்கையின் ${bankCount} வங்கிகளில் ${count} கிரெடிட் மற்றும் டெபிட் கார்டு சலுகைகள் செயல்பாட்டில் உள்ளன, ${categoryCount} பிரிவுகளை உள்ளடக்கியது. சலுகைகள் ஒவ்வொரு வங்கியின் சொந்தச் சலுகைப் பக்கங்களிலிருந்து சேகரிக்கப்பட்டு தினமும் புதுப்பிக்கப்படுகின்றன.`,
@@ -409,6 +460,114 @@ export function bankHubCopy(locale: Locale, bankLabel: string, stats: HubStats):
       : p.aBiggestNone,
   });
   faqs.push(...commonFaqs({ locale, stats }));
+
+  return { intro, faqs };
+}
+
+export function cardTypeHubCopy(locale: Locale, cardTypeLabel: string, stats: HubStats): HubCopy {
+  const p = getPhrases(locale);
+  const banks = listJoin(locale, stats.topBanks);
+  const categories = listJoin(locale, stats.topCategories);
+  const intro: string[] = [];
+
+  if (stats.count > 0 && banks) {
+    intro.push(
+      p.cardTypeIntro({ cardType: cardTypeLabel, count: String(stats.count), monthYear: stats.monthYear, banks }),
+    );
+  }
+  if (categories) intro.push(p.cardTypeCategories({ cardType: cardTypeLabel, categories }));
+  if (stats.best) {
+    intro.push(
+      p.catBest({
+        percentage: String(stats.best.percentage),
+        merchant: stats.best.merchant,
+        bank: stats.best.bank,
+      }),
+    );
+  }
+  if (stats.undated > 0) intro.push(p.catUndated({ count: String(stats.undated) }));
+
+  const faqs: Faq[] = [];
+  if (banks) {
+    faqs.push({
+      question: p.qCardTypeBanks(cardTypeLabel),
+      answer: p.aCardTypeBanks({
+        cardType: cardTypeLabel,
+        count: String(stats.count),
+        banks,
+        monthYear: stats.monthYear,
+      }),
+    });
+  }
+  faqs.push({
+    question: p.qBiggest(cardTypeLabel.toLowerCase()),
+    answer: stats.best
+      ? p.aBiggest({
+          percentage: String(stats.best.percentage),
+          merchant: stats.best.merchant,
+          bank: stats.best.bank,
+        })
+      : p.aBiggestNone,
+  });
+  faqs.push(...commonFaqs({ locale, stats }));
+
+  return { intro, faqs };
+}
+
+export function bankCategoryHubCopy(
+  locale: Locale,
+  bankLabel: string,
+  categoryLabel: string,
+  stats: HubStats,
+): HubCopy {
+  const p = getPhrases(locale);
+  const intro: string[] = [];
+
+  if (stats.count > 0) {
+    intro.push(
+      p.bankCatIntro({
+        bank: bankLabel,
+        category: categoryLabel,
+        count: String(stats.count),
+        monthYear: stats.monthYear,
+      }),
+    );
+  }
+  if (stats.best) {
+    intro.push(
+      p.bankBest({ bank: bankLabel, percentage: String(stats.best.percentage), merchant: stats.best.merchant }),
+    );
+  }
+  if (stats.cardTypes.length > 0) {
+    intro.push(p.bankCards({ bank: bankLabel, cardTypes: listJoin(locale, stats.cardTypes) }));
+  }
+  if (stats.expiringSoon > 0) {
+    intro.push(p.catExpiring({ count: String(stats.expiringSoon), category: categoryLabel }));
+  }
+  if (stats.undated > 0) intro.push(p.catUndated({ count: String(stats.undated) }));
+
+  const faqs: Faq[] = [
+    {
+      question: p.qBankCatCount({ bank: bankLabel, category: categoryLabel }),
+      answer: p.aBankCatCount({
+        bank: bankLabel,
+        category: categoryLabel,
+        count: String(stats.count),
+        monthYear: stats.monthYear,
+      }),
+    },
+    {
+      question: p.qBiggest(`${bankLabel} ${categoryLabel.toLowerCase()}`),
+      answer: stats.best
+        ? p.aBiggest({
+            percentage: String(stats.best.percentage),
+            merchant: stats.best.merchant,
+            bank: stats.best.bank,
+          })
+        : p.aBiggestNone,
+    },
+    ...commonFaqs({ locale, stats }),
+  ];
 
   return { intro, faqs };
 }

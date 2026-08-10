@@ -4,9 +4,12 @@ import { notFound } from 'next/navigation';
 import AdSenseProvider from '@/app/components/AdsenseProvider';
 import Breadcrumbs from '@/app/components/Breadcrumbs';
 import JsonLd from '@/app/components/JsonLd';
+import HubContent from '@/app/components/HubContent';
 import { isLocale, localeHtmlLang, localizedPath, type Locale } from '@/i18n/config';
 import { getDictionary, translateBank, translateCategory } from '@/i18n/dictionaries';
 import { absoluteUrl, breadcrumbJsonLd, buildMetadata, ogImageUrl, ogTextLocale } from '@/lib/seo';
+import { buildHubStats } from '@/lib/hub-stats';
+import { homeHubCopy } from '@/i18n/hub-copy';
 import { allBanks, getActiveOffers, getOffersByBank, slugify } from '@/lib/offers';
 
 export const revalidate = 86400;
@@ -45,6 +48,9 @@ export default async function BanksPage({ params }: { params: Promise<{ lang: st
     })
     .filter((entry) => entry.count > 0)
     .sort((a, b) => b.count - a.count);
+
+  const leader = banks[0];
+  const topBank = leader ? { name: translateBank(locale, leader.bank), count: leader.count } : undefined;
 
   const crumbs = [
     { name: dict.breadcrumb.home, path: '/' },
@@ -100,6 +106,8 @@ export default async function BanksPage({ params }: { params: Promise<{ lang: st
               </li>
             ))}
           </ul>
+
+          <HubContent locale={locale} copy={homeHubCopy(locale, buildHubStats(locale, active), topBank)} />
         </div>
       </main>
     </>

@@ -4,9 +4,12 @@ import { notFound } from 'next/navigation';
 import AdSenseProvider from '@/app/components/AdsenseProvider';
 import Breadcrumbs from '@/app/components/Breadcrumbs';
 import JsonLd from '@/app/components/JsonLd';
+import HubContent from '@/app/components/HubContent';
 import { isLocale, localeHtmlLang, localizedPath, type Locale } from '@/i18n/config';
 import { getDictionary, translateBank, translateCategory } from '@/i18n/dictionaries';
 import { absoluteUrl, breadcrumbJsonLd, buildMetadata, ogImageUrl, ogTextLocale } from '@/lib/seo';
+import { buildHubStats } from '@/lib/hub-stats';
+import { homeHubCopy } from '@/i18n/hub-copy';
 import { allCategories, getActiveOffers, getOffersByCategory, slugify } from '@/lib/offers';
 
 export const revalidate = 86400;
@@ -97,6 +100,8 @@ export default async function CategoriesPage({ params }: { params: Promise<{ lan
               </li>
             ))}
           </ul>
+
+          <HubContent locale={locale} copy={homeHubCopy(locale, buildHubStats(locale, active))} />
         </div>
       </main>
     </>

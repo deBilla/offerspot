@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import AdSenseProvider from '@/app/components/AdsenseProvider';
 import Breadcrumbs from '@/app/components/Breadcrumbs';
@@ -11,6 +12,7 @@ import { getDictionary, translateBank, translateCategory } from '@/i18n/dictiona
 import { absoluteUrl, breadcrumbJsonLd, buildMetadata, ogImageUrl, ogTextLocale } from '@/lib/seo';
 import { buildHubStats } from '@/lib/hub-stats';
 import { bankHubCopy } from '@/i18n/hub-copy';
+import { bankCategoryRoutesForBank } from '@/lib/hub-routes';
 import {
   bankFromSlug,
   bankSlugList,
@@ -82,6 +84,7 @@ export default async function BankPage({ params }: { params: Promise<{ lang: str
   const dict = getDictionary(locale);
   const offers = sortOffers(getOffersByBank(bank, getActiveOffers()));
   const bankLabel = translateBank(locale, bank);
+  const categoryRoutes = bankCategoryRoutesForBank(bank);
 
   const crumbs = [
     { name: dict.breadcrumb.home, path: '/' },
@@ -128,6 +131,25 @@ export default async function BankPage({ params }: { params: Promise<{ lang: str
         <OfferBrowser offers={offers} locale={locale} heading={dict.browse.bankOffers(bankLabel)} />
 
         <div className="container mx-auto px-4 pb-12">
+          {categoryRoutes.length > 0 && (
+            <nav aria-label={dict.pages.categoriesTitle} className="mt-8">
+              <h2 className="mb-3 text-lg font-bold text-gray-800">{dict.pages.categoriesTitle}</h2>
+              <ul className="flex flex-wrap gap-2">
+                {categoryRoutes.map((route) => (
+                  <li key={route.categorySlug}>
+                    <Link
+                      href={localizedPath(locale, `/bank/${route.bankSlug}/${route.categorySlug}`)}
+                      className="inline-flex items-center gap-1.5 rounded-full border border-teal-200 bg-teal-50 px-3 py-1.5 text-sm font-medium text-teal-800 transition-colors hover:bg-teal-100"
+                    >
+                      {translateCategory(locale, route.category)}
+                      <span className="text-xs text-teal-600">({route.count})</span>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          )}
+
           <OfferIndexList offers={offers} locale={locale} heading={dict.browse.bankOffers(bankLabel)} />
           <HubContent locale={locale} copy={bankHubCopy(locale, bankLabel, buildHubStats(locale, offers))} />
         </div>

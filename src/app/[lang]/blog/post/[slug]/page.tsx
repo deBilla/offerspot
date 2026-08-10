@@ -1,8 +1,5 @@
-import fs from 'fs';
-import path from 'path';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import matter from 'gray-matter';
 import { MDXRemote } from 'next-mdx-remote/rsc';
 import rehypePrettyCode from 'rehype-pretty-code';
 import AdSenseProvider from '@/app/components/AdsenseProvider';
@@ -12,31 +9,10 @@ import { isLocale, localeHtmlLang, localizedPath, locales, type Locale } from '@
 import { getDictionary } from '@/i18n/dictionaries';
 import { absoluteUrl, breadcrumbJsonLd, buildMetadata, ogImageUrl, ogTextLocale, siteUrl } from '@/lib/seo';
 import { clamp, formatDate } from '@/lib/offers';
-
-const postsDirectory = path.join(process.cwd(), 'src', 'app', 'posts');
-
-interface PostFrontMatter {
-  title: string;
-  date: string;
-  summary: string;
-}
-
-async function getPost(slug: string) {
-  // Reject anything that could climb out of the posts directory.
-  if (!/^[a-z0-9-]+$/i.test(slug)) return null;
-  try {
-    const raw = await fs.promises.readFile(path.join(postsDirectory, `${slug}.mdx`), 'utf-8');
-    const { data, content } = matter(raw);
-    return { frontMatter: data as PostFrontMatter, content };
-  } catch {
-    return null;
-  }
-}
+import { getPost, postSlugs } from '@/lib/posts';
 
 export function generateStaticParams() {
-  const filenames = fs.existsSync(postsDirectory) ? fs.readdirSync(postsDirectory) : [];
-  const slugs = filenames.filter((name) => name.endsWith('.mdx')).map((name) => name.replace(/\.mdx$/, ''));
-  return locales.flatMap((lang) => slugs.map((slug) => ({ lang, slug })));
+  return locales.flatMap((lang) => postSlugs().map((slug) => ({ lang, slug })));
 }
 
 export async function generateMetadata({
@@ -97,7 +73,8 @@ export default async function PostPage({ params }: { params: Promise<{ lang: str
 
   const crumbs = [
     { name: dict.breadcrumb.home, path: '/' },
-    { name: 'Blog', path: `/blog/post/${slug}` },
+    { name: dict.breadcrumb.blog, path: '/blog' },
+    { name: frontMatter.title, path: `/blog/post/${slug}` },
   ];
 
   const articleJsonLd = {

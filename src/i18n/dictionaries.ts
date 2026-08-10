@@ -133,6 +133,12 @@ export interface Dictionary {
     bankPageDescription: (args: { bank: string; count: number; categories: string }) => string;
     categoryPageTitle: (category: string) => string;
     categoryPageDescription: (args: { category: string; count: number; banks: string }) => string;
+    cardTypePageTitle: (cardType: string) => string;
+    cardTypePageDescription: (args: { cardType: string; count: number; banks: string }) => string;
+    bankCategoryPageTitle: (args: { bank: string; category: string }) => string;
+    bankCategoryPageDescription: (args: { bank: string; category: string; count: number }) => string;
+    blogTitle: string;
+    blogDescription: string;
   };
 
   notFound: {
@@ -152,6 +158,7 @@ export interface Dictionary {
     offers: string;
     banks: string;
     categories: string;
+    blog: string;
   };
 
   /** Category names as they appear in the source data. */
@@ -292,6 +299,15 @@ const en: Dictionary = {
     categoryPageTitle: (category) => `${category} Card Offers in Sri Lanka`,
     categoryPageDescription: ({ category, count, banks }) =>
       `${count} current ${category.toLowerCase()} card promotions in Sri Lanka from ${banks}. Updated daily.`,
+    cardTypePageTitle: (cardType) => `${cardType} Offers in Sri Lanka`,
+    cardTypePageDescription: ({ cardType, count, banks }) =>
+      `${count} current ${cardType.toLowerCase()} promotions in Sri Lanka from ${banks}. Compare discounts by merchant and category, updated daily.`,
+    bankCategoryPageTitle: ({ bank, category }) => `${bank} ${category} Offers in Sri Lanka`,
+    bankCategoryPageDescription: ({ bank, category, count }) =>
+      `${count} current ${bank} ${category.toLowerCase()} card promotions in Sri Lanka, with the card types and dates the bank published. Updated daily.`,
+    blogTitle: 'Blog',
+    blogDescription:
+      'Notes on how this site is built — collecting, cleaning and comparing card promotions from Sri Lankan bank websites.',
   },
   notFound: {
     title: 'Page not found',
@@ -308,6 +324,7 @@ const en: Dictionary = {
     offers: 'Offers',
     banks: 'Banks',
     categories: 'Categories',
+    blog: 'Blog',
   },
   categories: {
     'Travel & Lodging': 'Travel & Lodging',
@@ -467,6 +484,15 @@ const si: Dictionary = {
     categoryPageTitle: (category) => `ශ්‍රී ලංකාවේ ${category} කාඩ්පත් දීමනා`,
     categoryPageDescription: ({ category, count, banks }) =>
       `${banks} වෙතින් ශ්‍රී ලංකාවේ වත්මන් ${category} කාඩ්පත් ප්‍රවර්ධන ${count}ක්. දිනපතා යාවත්කාලීන වේ.`,
+    cardTypePageTitle: (cardType) => `ශ්‍රී ලංකාවේ ${cardType} දීමනා`,
+    cardTypePageDescription: ({ cardType, count, banks }) =>
+      `${banks} වෙතින් ශ්‍රී ලංකාවේ වත්මන් ${cardType} ප්‍රවර්ධන ${count}ක්. වෙළෙන්දා සහ ප්‍රවර්ගය අනුව වට්ටම් සසඳන්න, දිනපතා යාවත්කාලීන වේ.`,
+    bankCategoryPageTitle: ({ bank, category }) => `ශ්‍රී ලංකාවේ ${bank} ${category} දීමනා`,
+    bankCategoryPageDescription: ({ bank, category, count }) =>
+      `ශ්‍රී ලංකාවේ වත්මන් ${bank} ${category} කාඩ්පත් ප්‍රවර්ධන ${count}ක්, බැංකුව ප්‍රකාශ කළ කාඩ්පත් වර්ග සහ දින සමඟ. දිනපතා යාවත්කාලීන වේ.`,
+    blogTitle: 'බ්ලොග්',
+    blogDescription:
+      'මෙම වෙබ් අඩවිය ගොඩනඟන ආකාරය පිළිබඳ සටහන් — ශ්‍රී ලංකාවේ බැංකු වෙබ් අඩවි වලින් කාඩ්පත් ප්‍රවර්ධන රැස් කිරීම, පිරිසිදු කිරීම සහ සැසඳීම.',
   },
   notFound: {
     title: 'පිටුව හමු නොවීය',
@@ -483,6 +509,7 @@ const si: Dictionary = {
     offers: 'දීමනා',
     banks: 'බැංකු',
     categories: 'ප්‍රවර්ග',
+    blog: 'බ්ලොග්',
   },
   categories: {
     'Travel & Lodging': 'ගමන් හා නවාතැන්',
@@ -642,6 +669,15 @@ const ta: Dictionary = {
     categoryPageTitle: (category) => `இலங்கையில் ${category} கார்டு சலுகைகள்`,
     categoryPageDescription: ({ category, count, banks }) =>
       `${banks} வழங்கும் இலங்கையின் தற்போதைய ${category} கார்டு சலுகைகள் ${count}. தினமும் புதுப்பிக்கப்படுகிறது.`,
+    cardTypePageTitle: (cardType) => `இலங்கையில் ${cardType} சலுகைகள்`,
+    cardTypePageDescription: ({ cardType, count, banks }) =>
+      `${banks} வழங்கும் இலங்கையின் தற்போதைய ${cardType} சலுகைகள் ${count}. வணிகர் மற்றும் பிரிவு வாரியாகத் தள்ளுபடிகளை ஒப்பிடுங்கள், தினமும் புதுப்பிக்கப்படுகிறது.`,
+    bankCategoryPageTitle: ({ bank, category }) => `இலங்கையில் ${bank} ${category} சலுகைகள்`,
+    bankCategoryPageDescription: ({ bank, category, count }) =>
+      `இலங்கையில் தற்போதைய ${bank} ${category} கார்டு சலுகைகள் ${count}, வங்கி வெளியிட்ட கார்டு வகைகள் மற்றும் தேதிகளுடன். தினமும் புதுப்பிக்கப்படுகிறது.`,
+    blogTitle: 'வலைப்பதிவு',
+    blogDescription:
+      'இந்தத் தளம் எவ்வாறு உருவாக்கப்பட்டது என்பது பற்றிய குறிப்புகள் — இலங்கை வங்கி இணையதளங்களிலிருந்து கார்டு சலுகைகளைச் சேகரித்தல், சுத்தம் செய்தல் மற்றும் ஒப்பிடுதல்.',
   },
   notFound: {
     title: 'பக்கம் கிடைக்கவில்லை',
@@ -658,6 +694,7 @@ const ta: Dictionary = {
     offers: 'சலுகைகள்',
     banks: 'வங்கிகள்',
     categories: 'பிரிவுகள்',
+    blog: 'வலைப்பதிவு',
   },
   categories: {
     'Travel & Lodging': 'பயணம் & தங்குமிடம்',
