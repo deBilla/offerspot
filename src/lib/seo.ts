@@ -49,17 +49,25 @@ export interface OgImageParams {
   badge?: string;
   discount?: string;
   bank?: string;
+  /** Localized deadline text, e.g. "3 days left" or "Expires today!". */
+  expiry?: string;
+  /** Days until expiry. Styles the deadline; the wording comes from `expiry`. */
+  days?: number;
   locale: Locale;
 }
 
 /** URL of the dynamically generated 1200x630 social preview image. */
-export function ogImageUrl({ title, subtitle, badge, discount, bank, locale }: OgImageParams): string {
+export function ogImageUrl({
+  title, subtitle, badge, discount, bank, expiry, days, locale,
+}: OgImageParams): string {
   const params = new URLSearchParams();
   params.set('title', title);
   if (subtitle) params.set('subtitle', subtitle);
   if (badge) params.set('badge', badge);
   if (discount) params.set('discount', discount);
   if (bank) params.set('bank', bank);
+  if (expiry) params.set('expiry', expiry);
+  if (days !== undefined) params.set('days', String(days));
   params.set('lang', locale);
   return absoluteUrl(`/api/og?${params.toString()}`);
 }

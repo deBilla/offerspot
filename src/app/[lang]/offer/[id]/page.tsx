@@ -9,6 +9,7 @@ import { getDictionary, translateBank, translateCardType, translateCategory } fr
 import { absoluteUrl, breadcrumbJsonLd, buildMetadata, ogImageUrl, ogTextLocale, siteUrl } from '@/lib/seo';
 import {
   clamp,
+  daysUntilExpiry,
   endDateOf,
   formatDate,
   formatDiscount,
@@ -26,6 +27,38 @@ import {
   parseDate,
   slugify,
 } from '@/lib/offers';
+import type { Offer } from '@/types/offer';
+
+/**
+ * The social card for an offer, built once so the metadata tag and the
+ * schema.org image cannot drift apart.
+ *
+ * `imageLocale` is deliberately the caller's — see ogTextLocale(): the Sinhala
+ * card is drawn in Latin, so its deadline has to be too.
+ */
+function offerOgImage(offer: Offer, imageLocale: Locale): string {
+  const dict = getDictionary(imageLocale);
+  const days = daysUntilExpiry(offer);
+  // An expired offer gets no countdown: "0 days left" reads as "today", and
+  // the page already says it has ended.
+  const expired = isExpired(offer);
+
+  return ogImageUrl({
+    title: offer.title,
+    subtitle: merchantName(imageLocale, offer),
+    badge: translateCategory(imageLocale, offer.category),
+    discount: formatDiscount(imageLocale, offer) ?? undefined,
+    bank: offer.bank,
+    expiry:
+      days === null || expired
+        ? undefined
+        : days === 0
+          ? dict.browse.expiresToday
+          : dict.browse.daysLeft(days),
+    days: days === null || expired ? undefined : days,
+    locale: imageLocale,
+  });
+}
 
 // Offer data is a build-time JSON snapshot refreshed by the crawler pipeline;
 // re-render daily so "days left" badges and expiry states do not go stale.
@@ -61,14 +94,7 @@ export async function generateMetadata({
     path: `/offer/${offer.id}`,
     title,
     description,
-    image: ogImageUrl({
-      title: offer.title,
-      subtitle: merchantName(imageLocale, offer),
-      badge: translateCategory(imageLocale, offer.category),
-      discount: formatDiscount(imageLocale, offer) ?? undefined,
-      bank: offer.bank,
-      locale: imageLocale,
-    }),
+    image: offerOgImage(offer, imageLocale),
     imageAlt: title,
     /*
      * Offer pages are noindex, follow — deliberately, in all three locales.
@@ -189,14 +215,7 @@ export default async function OfferPage({ params }: { params: Promise<{ lang: st
     description: offer.description,
     url: canonical,
     inLanguage: localeHtmlLang[locale],
-    image: ogImageUrl({
-      title: offer.title,
-      subtitle: merchantName(imageLocale, offer),
-      badge: translateCategory(imageLocale, offer.category),
-      discount: formatDiscount(imageLocale, offer) ?? undefined,
-      bank: offer.bank,
-      locale: imageLocale,
-    }),
+    image: offerOgImage(offer, imageLocale),
     category: offer.category,
     availability: expired ? 'https://schema.org/Discontinued' : 'https://schema.org/InStock',
     ...(offer.offer_details?.value
