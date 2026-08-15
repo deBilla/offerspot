@@ -3,6 +3,7 @@ import type { Offer } from '@/types/offer';
 import type { Locale } from '@/i18n/config';
 import { getDictionary, translateBank, translateCardType, translateCategory } from '@/i18n/dictionaries';
 import { isPlaceholderOffer, resolveEndDate } from './offer-quality';
+import { isDefunctBank } from './bank-status';
 
 export { isPlaceholderOffer } from './offer-quality';
 
@@ -109,7 +110,17 @@ export function daysUntilExpiry(offer: Offer, now: Date = startOfToday()): numbe
  * listing, sitemap or count.
  */
 export function getActiveOffers(now: Date = startOfToday()): Offer[] {
-  return allOffers.filter((offer) => offer?.id && !isPlaceholderOffer(offer) && !isExpired(offer, now));
+  return allOffers.filter(
+    (offer) =>
+      offer?.id &&
+      !isPlaceholderOffer(offer) &&
+      !isExpired(offer, now) &&
+      // A bank that has left the market has no live promotions, whatever its
+      // undated offers imply. Without this, offers on cards that no longer
+      // exist survive the open-ended window and get counted, listed and
+      // advertised as current.
+      !isDefunctBank(offer.bank),
+  );
 }
 
 export function getOfferById(id: string): Offer | undefined {

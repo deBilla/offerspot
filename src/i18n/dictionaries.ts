@@ -131,6 +131,12 @@ export interface Dictionary {
     homeTitle: string;
     bankPageTitle: (bank: string) => string;
     bankPageDescription: (args: { bank: string; count: number; categories: string }) => string;
+    /** Shown on the hub of a bank that has left the consumer market. */
+    bankClosedHeading: (bank: string) => string;
+    bankClosedBody: (args: { bank: string; successor: string; date: string }) => string;
+    bankClosedCta: (successor: string) => string;
+    bankClosedTitle: (bank: string) => string;
+    bankClosedDescription: (args: { bank: string; successor: string }) => string;
     categoryPageTitle: (category: string) => string;
     categoryPageDescription: (args: { category: string; count: number; banks: string }) => string;
     cardTypePageTitle: (cardType: string) => string;
@@ -296,6 +302,13 @@ const en: Dictionary = {
     bankPageTitle: (bank) => `${bank} Card Offers & Promotions`,
     bankPageDescription: ({ bank, count, categories }) =>
       `${count} current ${bank} credit and debit card offers in Sri Lanka, covering ${categories}. Updated daily.`,
+    bankClosedHeading: (bank) => `${bank} no longer issues personal cards in Sri Lanka`,
+    bankClosedBody: ({ bank, successor, date }) =>
+      `${bank} sold its Sri Lankan retail banking business to ${successor} on ${date}. Personal accounts and credit cards — around 200,000 of them — moved across, so cards that were ${bank} branded are now serviced by ${successor}. ${bank} still operates in Sri Lanka for business and corporate banking only.`,
+    bankClosedCta: (successor) => `See current ${successor} card offers`,
+    bankClosedTitle: (bank) => `${bank} Credit Card Offers in Sri Lanka — What Happened`,
+    bankClosedDescription: ({ bank, successor }) =>
+      `${bank} has stopped issuing personal credit and debit cards in Sri Lanka. Its retail banking business, including all card accounts, transferred to ${successor}. Here is what that means for cardholders and where to find current offers.`,
     categoryPageTitle: (category) => `${category} Card Offers in Sri Lanka`,
     categoryPageDescription: ({ category, count, banks }) =>
       `${count} current ${category.toLowerCase()} card promotions in Sri Lanka from ${banks}. Updated daily.`,
@@ -481,6 +494,13 @@ const si: Dictionary = {
     bankPageTitle: (bank) => `${bank} කාඩ්පත් දීමනා සහ ප්‍රවර්ධන`,
     bankPageDescription: ({ bank, count, categories }) =>
       `ශ්‍රී ලංකාවේ වත්මන් ${bank} ක්‍රෙඩිට් සහ ඩෙබිට් කාඩ්පත් දීමනා ${count}ක්, ${categories} ආවරණය කරමින්. දිනපතා යාවත්කාලීන වේ.`,
+    bankClosedHeading: (bank) => `${bank} තවදුරටත් ශ්‍රී ලංකාවේ පුද්ගලික කාඩ්පත් නිකුත් නොකරයි`,
+    bankClosedBody: ({ bank, successor, date }) =>
+      `${bank} සිය ශ්‍රී ලංකා සිල්ලර බැංකු ව්‍යාපාරය ${date} දින ${successor} වෙත විකුණා ඇත. පුද්ගලික ගිණුම් සහ ක්‍රෙඩිට් කාඩ්පත් — දළ වශයෙන් 200,000ක් — එයට මාරු වූ අතර, ${bank} කාඩ්පත් දැන් ${successor} විසින් සේවා සපයනු ලැබේ. ${bank} ශ්‍රී ලංකාවේ ව්‍යාපාරික බැංකුකරණය සඳහා පමණක් ක්‍රියාත්මක වේ.`,
+    bankClosedCta: (successor) => `වත්මන් ${successor} කාඩ්පත් දීමනා බලන්න`,
+    bankClosedTitle: (bank) => `${bank} ක්‍රෙඩිට් කාඩ් දීමනා — සිදු වූයේ කුමක්ද`,
+    bankClosedDescription: ({ bank, successor }) =>
+      `${bank} ශ්‍රී ලංකාවේ පුද්ගලික කාඩ්පත් නිකුත් කිරීම නවතා ඇත. එහි සිල්ලර බැංකු ව්‍යාපාරය ${successor} වෙත මාරු කර ඇත.`,
     categoryPageTitle: (category) => `ශ්‍රී ලංකාවේ ${category} කාඩ්පත් දීමනා`,
     categoryPageDescription: ({ category, count, banks }) =>
       `${banks} වෙතින් ශ්‍රී ලංකාවේ වත්මන් ${category} කාඩ්පත් ප්‍රවර්ධන ${count}ක්. දිනපතා යාවත්කාලීන වේ.`,
@@ -666,6 +686,13 @@ const ta: Dictionary = {
     bankPageTitle: (bank) => `${bank} கார்டு சலுகைகள்`,
     bankPageDescription: ({ bank, count, categories }) =>
       `இலங்கையில் தற்போதைய ${bank} கிரெடிட் மற்றும் டெபிட் கார்டு சலுகைகள் ${count}, ${categories} உள்ளடக்கியது. தினமும் புதுப்பிக்கப்படுகிறது.`,
+    bankClosedHeading: (bank) => `${bank} இலங்கையில் தனிநபர் அட்டைகளை வழங்குவதில்லை`,
+    bankClosedBody: ({ bank, successor, date }) =>
+      `${bank} தனது இலங்கை சில்லறை வங்கி வணிகத்தை ${date} அன்று ${successor} இற்கு விற்றது. தனிநபர் கணக்குகள் மற்றும் கடன் அட்டைகள் — சுமார் 200,000 — மாற்றப்பட்டன, எனவே ${bank} அட்டைகள் இப்போது ${successor} ஆல் சேவை வழங்கப்படுகின்றன. ${bank} இலங்கையில் வணிக வங்கிச் சேவைக்காக மட்டுமே செயல்படுகிறது.`,
+    bankClosedCta: (successor) => `தற்போதைய ${successor} அட்டை சலுகைகளைப் பார்க்கவும்`,
+    bankClosedTitle: (bank) => `${bank} கடன் அட்டை சலுகைகள் — என்ன நடந்தது`,
+    bankClosedDescription: ({ bank, successor }) =>
+      `${bank} இலங்கையில் தனிநபர் அட்டைகளை வழங்குவதை நிறுத்தியுள்ளது. அதன் சில்லறை வங்கி வணிகம் ${successor} இற்கு மாற்றப்பட்டது.`,
     categoryPageTitle: (category) => `இலங்கையில் ${category} கார்டு சலுகைகள்`,
     categoryPageDescription: ({ category, count, banks }) =>
       `${banks} வழங்கும் இலங்கையின் தற்போதைய ${category} கார்டு சலுகைகள் ${count}. தினமும் புதுப்பிக்கப்படுகிறது.`,
