@@ -76,8 +76,9 @@ export async function GET() {
     '',
     '## Languages',
     '',
-    '- English (default, no prefix), Sinhala under `/si/`, Tamil under `/ta/`.',
-    '- Every page declares its alternates via hreflang.',
+    '- English only. Sinhala and Tamil editions were retired in August 2026 after',
+    '  three months of search data showed no demand; `/si/` and `/ta/` URLs',
+    '  redirect permanently to their English equivalents.',
     '',
   ];
 

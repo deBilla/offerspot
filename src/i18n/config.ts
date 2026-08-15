@@ -1,6 +1,27 @@
-export const locales = ['en', 'si', 'ta'] as const;
+/**
+ * Locales that are built, linked, advertised in hreflang and served.
+ *
+ * Sinhala and Tamil were dropped in August 2026 after three months of Search
+ * Console data: across 235 queries, not one was in Sinhala script, Tamil
+ * script, or transliterated Sinhala, and the /si and /ta pages drew 1
+ * impression between them against 3,507 for English. They were verified
+ * indexable first — 200, index,follow, self-canonical, correct hreflang — so
+ * that is absence of demand, not a crawl problem. It matches the market
+ * reality that English dominates financial queries in Sri Lanka.
+ *
+ * The translations remain in dictionaries.ts and hub-copy.ts, and `Locale`
+ * still spans all three, so restoring them is this one line. Anything that
+ * varies by locale must therefore keep handling si and ta rather than assume
+ * English.
+ */
+export const locales = ['en'] as const satisfies readonly SupportedLocale[];
 
-export type Locale = (typeof locales)[number];
+/** Every locale the translations cover, whether or not it is currently built. */
+export const allLocales = ['en', 'si', 'ta'] as const;
+
+type SupportedLocale = (typeof allLocales)[number];
+
+export type Locale = SupportedLocale;
 
 export const defaultLocale: Locale = 'en';
 

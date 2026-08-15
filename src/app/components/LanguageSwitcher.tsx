@@ -38,6 +38,11 @@ export default function LanguageSwitcher({ locale }: { locale: Locale }) {
   const [open, setOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
+  // Hooks must run unconditionally, so this bails after them: with a single
+  // built locale the control is a dropdown offering the page you are already
+  // on. It returns on its own if a locale is restored in i18n/config.
+  const multilingual = locales.length > 1;
+
   // The pathname the router reports already contains the /en prefix injected by
   // the proxy rewrite, so strip whatever prefix is there to get the canonical path.
   const { path } = stripLocale(pathname);
@@ -57,6 +62,8 @@ export default function LanguageSwitcher({ locale }: { locale: Locale }) {
       document.removeEventListener('keydown', onKeyDown);
     };
   }, [open]);
+
+  if (!multilingual) return null;
 
   return (
     <div className="relative shrink-0" ref={containerRef}>

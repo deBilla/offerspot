@@ -1,5 +1,10 @@
 import { NextResponse, type NextRequest } from 'next/server';
-import { defaultLocale, isLocale } from '@/i18n/config';
+import { allLocales, defaultLocale, isLocale, locales } from '@/i18n/config';
+
+/** Locale prefixes that were once served and now redirect to English. */
+const retiredLocalePrefixes: string[] = allLocales.filter(
+  (locale) => !(locales as readonly string[]).includes(locale),
+);
 
 /**
  * English is served without a URL prefix so every already-indexed URL
@@ -14,6 +19,19 @@ import { defaultLocale, isLocale } from '@/i18n/config';
 export default function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
   const firstSegment = pathname.split('/')[1];
+
+  /*
+   * Retired locales. Sinhala and Tamil are no longer built (see i18n/config),
+   * but their URLs were indexed, so they redirect permanently to the English
+   * equivalent rather than 404 — that keeps whatever equity they hold and
+   * spares anyone with a bookmark. Kept separate from the isLocale branch
+   * because these prefixes are deliberately no longer locales.
+   */
+  if (retiredLocalePrefixes.includes(firstSegment)) {
+    const url = request.nextUrl.clone();
+    url.pathname = pathname.slice(firstSegment.length + 1) || '/';
+    return NextResponse.redirect(url, 308);
+  }
 
   if (isLocale(firstSegment)) {
     // A prefixed URL for the default locale duplicates the prefix-free one.
