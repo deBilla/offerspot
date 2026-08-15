@@ -27,6 +27,12 @@ export interface Offer {
   id: string;
   bank: string;
   card_types: string[];
+  /**
+   * The bank's own product name for the card ("Platinum Mastercard"), when its
+   * promotion page stated one. Present on offers crawled from August 2026 and
+   * null on everything imported before that, so treat it as optional.
+   */
+  card_name?: string | null;
   merchant: Merchant;
   title: string;
   description: string;
