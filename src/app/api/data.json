@@ -36371,5 +36371,2879 @@
     },
     "terms": "The promotion is open to all Credit and Debit Cards issued by Commercial Bank of Ceylon PLC. The offer is valid for Sri Lankan citizens and expatriates holding valid ComBank Cards. All payments must be fully settled using Commercial Bank Credit or Debit Cards to qualify for the offer. The offer cannot be exchanged for cash and cannot be used in conjunction with any other discounts, promotional programs, or offers organized by the Bank or the partnering merchant. The general terms and conditions applicable to Commercial Bank Credit and Debit Cards will continue to apply. The offer is subject to the terms and conditions of both the partnering merchant and Commercial Bank of Ceylon PLC. Commercial Bank of Ceylon PLC reserves the right to amend, change, or withdraw any or all of these terms and conditions, or to cancel the promotion at any time, with or without prior notice to Cardholders. The Bank shall not be held responsible for the quality, merchantability, or fitness for purpose of goods and/or services offered by the partnering merchants under this promotion. The offer is not applicable for commercial transactions, cash advances. All transactions are subject to authorization by the Bank, and only successful and eligible transactions will qualify for the promotional offer.",
     "source_url": "https://www.combank.lk/rewards-promotion/leisure/relax-at-your-favourite-holiday-destination-with-combank-credit-and-debit-cards"
+  },
+  {
+    "id": "po-ntb-0001",
+    "bank": "Nations Trust Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Groceries & Supermarkets",
+    "merchant": {
+      "name": "Cargills Food City",
+      "logo_url": null
+    },
+    "title": "Cargills Food City 30% off",
+    "description": "30% off with Mastercard Credit Cards at Cargills Food City.",
+    "offer_details": {
+      "type": "percentage",
+      "value": 30.0,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": null,
+      "end_date": "2026-08-31",
+      "days": null
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": null,
+    "source_url": "https://www.nationstrust.com/promotions"
+  },
+  {
+    "id": "po-ntb-0002",
+    "bank": "Nations Trust Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Groceries & Supermarkets",
+    "merchant": {
+      "name": "Laugfs Super",
+      "logo_url": null
+    },
+    "title": "Laugfs Super 25% off",
+    "description": "25% off with Mastercard Credit Cards at Laugfs Super.",
+    "offer_details": {
+      "type": "percentage",
+      "value": 25.0,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": null,
+      "end_date": "2026-08-31",
+      "days": null
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": null,
+    "source_url": "https://www.nationstrust.com/promotions"
+  },
+  {
+    "id": "po-ntb-0003",
+    "bank": "Nations Trust Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Groceries & Supermarkets",
+    "merchant": {
+      "name": "Keells",
+      "logo_url": null
+    },
+    "title": "Keells 25% off",
+    "description": "25% off with Mastercard Credit Cards at Keells, valid every Sunday.",
+    "offer_details": {
+      "type": "percentage",
+      "value": 25.0,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": null,
+      "end_date": "2026-08-31",
+      "days": null
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "Valid every Sunday till 31st August 2026",
+    "source_url": "https://www.nationstrust.com/promotions"
+  },
+  {
+    "id": "po-ntb-0004",
+    "bank": "Nations Trust Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Groceries & Supermarkets",
+    "merchant": {
+      "name": "Cargills Online",
+      "logo_url": null
+    },
+    "title": "Cargills Online 15% off",
+    "description": "15% off with Mastercard Credit Cards at Cargills Online.",
+    "offer_details": {
+      "type": "percentage",
+      "value": 15.0,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": "2026-08-25",
+      "end_date": "2026-08-30",
+      "days": null
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": null,
+    "source_url": "https://www.nationstrust.com/promotions"
+  },
+  {
+    "id": "po-ntb-0005",
+    "bank": "Nations Trust Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Groceries & Supermarkets",
+    "merchant": {
+      "name": "Ceylon City Mart",
+      "logo_url": null
+    },
+    "title": "Ceylon City Mart up to 20% off",
+    "description": "Up to 20% off with Mastercard Credit Cards at Ceylon City Mart.",
+    "offer_details": {
+      "type": "percentage",
+      "value": 20.0,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": "2026-08-15",
+      "end_date": "2026-08-16",
+      "days": null
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": null,
+    "source_url": "https://www.nationstrust.com/promotions"
+  },
+  {
+    "id": "po-ntb-0006",
+    "bank": "Nations Trust Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Dining & Restaurants",
+    "merchant": {
+      "name": "Domino's",
+      "logo_url": null
+    },
+    "title": "Domino's 25% off",
+    "description": "25% off with Mastercard Credit Cards at Domino's.",
+    "offer_details": {
+      "type": "percentage",
+      "value": 25.0,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": null,
+      "end_date": "2026-08-31",
+      "days": null
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": null,
+    "source_url": "https://www.nationstrust.com/promotions"
+  },
+  {
+    "id": "po-ntb-0007",
+    "bank": "Nations Trust Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Dining & Restaurants",
+    "merchant": {
+      "name": "Cinnamon Lakeside Colombo – Long Feng",
+      "logo_url": null
+    },
+    "title": "Cinnamon Lakeside Colombo – Long Feng 30% off",
+    "description": "30% off with Mastercard Credit Cards at Long Feng, Cinnamon Lakeside Colombo.",
+    "offer_details": {
+      "type": "percentage",
+      "value": 30.0,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": null,
+      "end_date": "2026-08-31",
+      "days": null
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": null,
+    "source_url": "https://www.nationstrust.com/promotions"
+  },
+  {
+    "id": "po-ntb-0008",
+    "bank": "Nations Trust Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Dining & Restaurants",
+    "merchant": {
+      "name": "KFC",
+      "logo_url": null
+    },
+    "title": "KFC 30% off",
+    "description": "30% off with Mastercard Credit Cards at KFC, valid every Saturday.",
+    "offer_details": {
+      "type": "percentage",
+      "value": 30.0,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": null,
+      "end_date": "2026-08-31",
+      "days": null
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "Valid every Saturday till 31st August 2026",
+    "source_url": "https://www.nationstrust.com/promotions"
+  },
+  {
+    "id": "po-ntb-0009",
+    "bank": "Nations Trust Bank",
+    "card_types": [
+      "Credit Card",
+      "Debit Card"
+    ],
+    "category": "Dining & Restaurants",
+    "merchant": {
+      "name": "Baskin Robins",
+      "logo_url": null
+    },
+    "title": "Baskin Robins 20% off",
+    "description": "20% off with Mastercard Credit Cards & 10% off with Mastercard Debit Cards at Baskin Robins, valid every Sunday.",
+    "offer_details": {
+      "type": "percentage",
+      "value": 20.0,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": null,
+      "end_date": "2026-08-31",
+      "days": null
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "20% off Credit Cards, 10% off Debit Cards. Valid every Sunday till 31st August 2026",
+    "source_url": "https://www.nationstrust.com/promotions"
+  },
+  {
+    "id": "po-ntb-0010",
+    "bank": "Nations Trust Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Dining & Restaurants",
+    "merchant": {
+      "name": "ITC - Ratnadipa",
+      "logo_url": null
+    },
+    "title": "ITC - Ratnadipa 20% off",
+    "description": "20% off with Mastercard Credit Cards at ITC - Ratnadipa.",
+    "offer_details": {
+      "type": "percentage",
+      "value": 20.0,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": null,
+      "end_date": "2026-08-31",
+      "days": null
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": null,
+    "source_url": "https://www.nationstrust.com/promotions"
+  },
+  {
+    "id": "po-ntb-0011",
+    "bank": "Nations Trust Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Dining & Restaurants",
+    "merchant": {
+      "name": "Treehouse Rooftop Bar by Morven Colombo",
+      "logo_url": null
+    },
+    "title": "Treehouse Rooftop Bar by Morven Colombo 15% off",
+    "description": "15% off with Mastercard Credit Cards at Treehouse Rooftop Bar by Morven Colombo.",
+    "offer_details": {
+      "type": "percentage",
+      "value": 15.0,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": null,
+      "end_date": "2026-10-31",
+      "days": null
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": null,
+    "source_url": "https://www.nationstrust.com/promotions"
+  },
+  {
+    "id": "po-ntb-0012",
+    "bank": "Nations Trust Bank",
+    "card_types": [
+      "Credit Card",
+      "Debit Card"
+    ],
+    "category": "Dining & Restaurants",
+    "merchant": {
+      "name": "Burger King",
+      "logo_url": null
+    },
+    "title": "Burger King 20% off",
+    "description": "20% off with Mastercard Credit Cards & 10% off with Mastercard Debit Cards at Burger King.",
+    "offer_details": {
+      "type": "percentage",
+      "value": 20.0,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": null,
+      "end_date": "2026-08-31",
+      "days": null
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "20% off Credit Cards, 10% off Debit Cards",
+    "source_url": "https://www.nationstrust.com/promotions"
+  },
+  {
+    "id": "po-ntb-0013",
+    "bank": "Nations Trust Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Dining & Restaurants",
+    "merchant": {
+      "name": "Best Western Elyon Colombo - Vu Resto-Bar",
+      "logo_url": null
+    },
+    "title": "Best Western Elyon Colombo - Vu Resto-Bar 20% off",
+    "description": "20% off with Mastercard Credit Cards at Vu Resto-Bar, Best Western Elyon Colombo.",
+    "offer_details": {
+      "type": "percentage",
+      "value": 20.0,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": null,
+      "end_date": "2026-11-30",
+      "days": null
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": null,
+    "source_url": "https://www.nationstrust.com/promotions"
+  },
+  {
+    "id": "po-ntb-0014",
+    "bank": "Nations Trust Bank",
+    "card_types": [
+      "Credit Card",
+      "Debit Card"
+    ],
+    "category": "Dining & Restaurants",
+    "merchant": {
+      "name": "Great Wall Restaurant",
+      "logo_url": null
+    },
+    "title": "Great Wall Restaurant 20% off",
+    "description": "20% off with Mastercard Credit Cards and 15% with Debit Cards at Great Wall Restaurant.",
+    "offer_details": {
+      "type": "percentage",
+      "value": 20.0,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": null,
+      "end_date": "2026-08-31",
+      "days": null
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "20% off Credit Cards, 15% off Debit Cards",
+    "source_url": "https://www.nationstrust.com/promotions"
+  },
+  {
+    "id": "po-ntb-0015",
+    "bank": "Nations Trust Bank",
+    "card_types": [
+      "Credit Card",
+      "Debit Card"
+    ],
+    "category": "Dining & Restaurants",
+    "merchant": {
+      "name": "Crystal Jade",
+      "logo_url": null
+    },
+    "title": "Crystal Jade 25% off",
+    "description": "25% off with Mastercard Credit Cards & 10% off with Mastercard Debit Cards at Crystal Jade.",
+    "offer_details": {
+      "type": "percentage",
+      "value": 25.0,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": null,
+      "end_date": "2026-08-31",
+      "days": null
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "25% off Credit Cards, 10% off Debit Cards",
+    "source_url": "https://www.nationstrust.com/promotions"
+  },
+  {
+    "id": "po-ntb-0016",
+    "bank": "Nations Trust Bank",
+    "card_types": [
+      "Credit Card",
+      "Debit Card"
+    ],
+    "category": "Dining & Restaurants",
+    "merchant": {
+      "name": "Delifrance",
+      "logo_url": null
+    },
+    "title": "Delifrance 20% off",
+    "description": "20% off with Mastercard Credit Cards & 10% off with Debit Cards on total bills at Delifrance.",
+    "offer_details": {
+      "type": "percentage",
+      "value": 20.0,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": null,
+      "end_date": "2026-08-31",
+      "days": null
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "20% off Credit Cards, 10% off Debit Cards on total bills",
+    "source_url": "https://www.nationstrust.com/promotions"
+  },
+  {
+    "id": "po-ntb-0017",
+    "bank": "Nations Trust Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Dining & Restaurants",
+    "merchant": {
+      "name": "The Joint Pub and Grill",
+      "logo_url": null
+    },
+    "title": "The Joint Pub and Grill 15% off",
+    "description": "15% off with Mastercard Credit Cards at The Joint Pub and Grill.",
+    "offer_details": {
+      "type": "percentage",
+      "value": 15.0,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": null,
+      "end_date": "2026-10-31",
+      "days": null
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": null,
+    "source_url": "https://www.nationstrust.com/promotions"
+  },
+  {
+    "id": "po-ntb-0018",
+    "bank": "Nations Trust Bank",
+    "card_types": [
+      "Credit Card",
+      "Debit Card"
+    ],
+    "category": "Dining & Restaurants",
+    "merchant": {
+      "name": "Popeyes",
+      "logo_url": null
+    },
+    "title": "Popeyes 20% off",
+    "description": "20% off with Mastercard Credit Cards & 10% off with Mastercard Debit Cards at Popeyes.",
+    "offer_details": {
+      "type": "percentage",
+      "value": 20.0,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": null,
+      "end_date": "2026-08-31",
+      "days": null
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "20% off Credit Cards, 10% off Debit Cards",
+    "source_url": "https://www.nationstrust.com/promotions"
+  },
+  {
+    "id": "po-ntb-0019",
+    "bank": "Nations Trust Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Dining & Restaurants",
+    "merchant": {
+      "name": "Chinese Dragon Cafe",
+      "logo_url": null
+    },
+    "title": "Chinese Dragon Cafe 20% off",
+    "description": "20% off with Mastercard Credit Cards at Chinese Dragon Cafe.",
+    "offer_details": {
+      "type": "percentage",
+      "value": 20.0,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": null,
+      "end_date": "2026-09-30",
+      "days": null
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": null,
+    "source_url": "https://www.nationstrust.com/promotions"
+  },
+  {
+    "id": "po-ntb-0020",
+    "bank": "Nations Trust Bank",
+    "card_types": [
+      "Credit Card",
+      "Debit Card"
+    ],
+    "category": "Dining & Restaurants",
+    "merchant": {
+      "name": "Subway",
+      "logo_url": null
+    },
+    "title": "Subway 20% off",
+    "description": "20% off with Mastercard Credit Cards & 10% off with Debit Cards on total bills at Subway.",
+    "offer_details": {
+      "type": "percentage",
+      "value": 20.0,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": null,
+      "end_date": "2026-08-31",
+      "days": null
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "20% off Credit Cards, 10% off Debit Cards on total bills",
+    "source_url": "https://www.nationstrust.com/promotions"
+  },
+  {
+    "id": "po-ntb-0021",
+    "bank": "Nations Trust Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Dining & Restaurants",
+    "merchant": {
+      "name": "Galle Face Hotel",
+      "logo_url": null
+    },
+    "title": "Galle Face Hotel 20% off",
+    "description": "20% off with Mastercard Credit Cards at Galle Face Hotel.",
+    "offer_details": {
+      "type": "percentage",
+      "value": 20.0,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": null,
+      "end_date": "2026-08-31",
+      "days": null
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": null,
+    "source_url": "https://www.nationstrust.com/promotions"
+  },
+  {
+    "id": "po-ntb-0022",
+    "bank": "Nations Trust Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Dining & Restaurants",
+    "merchant": {
+      "name": "Cuisine Colombo",
+      "logo_url": null
+    },
+    "title": "Cuisine Colombo 15% off",
+    "description": "15% off with Mastercard Credit Cards at Cuisine Colombo.",
+    "offer_details": {
+      "type": "percentage",
+      "value": 15.0,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": null,
+      "end_date": "2026-08-31",
+      "days": null
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": null,
+    "source_url": "https://www.nationstrust.com/promotions"
+  },
+  {
+    "id": "po-ntb-0023",
+    "bank": "Nations Trust Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Dining & Restaurants",
+    "merchant": {
+      "name": "Sheraton Colombo Hotel – Bayu",
+      "logo_url": null
+    },
+    "title": "Sheraton Colombo Hotel – Bayu 20% off",
+    "description": "20% off with Mastercard Credit Cards at Bayu, Sheraton Colombo Hotel.",
+    "offer_details": {
+      "type": "percentage",
+      "value": 20.0,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": null,
+      "end_date": "2026-08-31",
+      "days": null
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": null,
+    "source_url": "https://www.nationstrust.com/promotions"
+  },
+  {
+    "id": "po-ntb-0024",
+    "bank": "Nations Trust Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Dining & Restaurants",
+    "merchant": {
+      "name": "Via Torino Restaurant",
+      "logo_url": null
+    },
+    "title": "Via Torino Restaurant 15% off",
+    "description": "15% off with Mastercard Credit Cards at Via Torino Restaurant.",
+    "offer_details": {
+      "type": "percentage",
+      "value": 15.0,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": null,
+      "end_date": "2026-10-31",
+      "days": null
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": null,
+    "source_url": "https://www.nationstrust.com/promotions"
+  },
+  {
+    "id": "po-ntb-0025",
+    "bank": "Nations Trust Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Dining & Restaurants",
+    "merchant": {
+      "name": "Tenkai (Ambrosia) Restaurant",
+      "logo_url": null
+    },
+    "title": "Tenkai (Ambrosia) Restaurant 15% off",
+    "description": "15% off with Mastercard Credit Cards at Tenkai (Ambrosia) Restaurant.",
+    "offer_details": {
+      "type": "percentage",
+      "value": 15.0,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": null,
+      "end_date": "2026-09-30",
+      "days": null
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": null,
+    "source_url": "https://www.nationstrust.com/promotions"
+  },
+  {
+    "id": "po-ntb-0026",
+    "bank": "Nations Trust Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Dining & Restaurants",
+    "merchant": {
+      "name": "The Eatery at Barnhouse Studio Hotel",
+      "logo_url": null
+    },
+    "title": "The Eatery at Barnhouse Studio Hotel 30% off",
+    "description": "30% off with Mastercard Credit Cards at The Eatery, Barnhouse Studio Hotel.",
+    "offer_details": {
+      "type": "percentage",
+      "value": 30.0,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": null,
+      "end_date": "2026-10-31",
+      "days": null
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": null,
+    "source_url": "https://www.nationstrust.com/promotions"
+  },
+  {
+    "id": "po-ntb-0027",
+    "bank": "Nations Trust Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Dining & Restaurants",
+    "merchant": {
+      "name": "Blooming Breakfast Resto Bar & Cafe",
+      "logo_url": null
+    },
+    "title": "Blooming Breakfast Resto Bar & Cafe 20% off",
+    "description": "20% off with Mastercard Credit Cards at Blooming Breakfast Resto Bar & Cafe.",
+    "offer_details": {
+      "type": "percentage",
+      "value": 20.0,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": null,
+      "end_date": "2026-08-31",
+      "days": null
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": null,
+    "source_url": "https://www.nationstrust.com/promotions"
+  },
+  {
+    "id": "po-ntb-0028",
+    "bank": "Nations Trust Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Dining & Restaurants",
+    "merchant": {
+      "name": "Taj Samudra, Colombo",
+      "logo_url": null
+    },
+    "title": "Taj Samudra, Colombo 20% off",
+    "description": "20% off with Mastercard Credit Cards at Taj Samudra, Colombo.",
+    "offer_details": {
+      "type": "percentage",
+      "value": 20.0,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": null,
+      "end_date": "2026-08-31",
+      "days": null
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": null,
+    "source_url": "https://www.nationstrust.com/promotions"
+  },
+  {
+    "id": "po-ntb-0029",
+    "bank": "Nations Trust Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Dining & Restaurants",
+    "merchant": {
+      "name": "Colombo Kitchen – Sheraton Colombo Hotel",
+      "logo_url": null
+    },
+    "title": "Colombo Kitchen – Sheraton Colombo Hotel 20% off",
+    "description": "20% off with Mastercard Credit Cards at Colombo Kitchen, Sheraton Colombo Hotel.",
+    "offer_details": {
+      "type": "percentage",
+      "value": 20.0,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": null,
+      "end_date": "2026-08-31",
+      "days": null
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": null,
+    "source_url": "https://www.nationstrust.com/promotions"
+  },
+  {
+    "id": "po-ntb-0030",
+    "bank": "Nations Trust Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Dining & Restaurants",
+    "merchant": {
+      "name": "Yamato Japanese Restaurant",
+      "logo_url": null
+    },
+    "title": "Yamato Japanese Restaurant 15% off",
+    "description": "15% off with Mastercard Credit Cards at Yamato Japanese Restaurant.",
+    "offer_details": {
+      "type": "percentage",
+      "value": 15.0,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": null,
+      "end_date": "2026-08-31",
+      "days": null
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": null,
+    "source_url": "https://www.nationstrust.com/promotions"
+  },
+  {
+    "id": "po-ntb-0031",
+    "bank": "Nations Trust Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Dining & Restaurants",
+    "merchant": {
+      "name": "Full'r Burgers",
+      "logo_url": null
+    },
+    "title": "Full'r Burgers 20% off",
+    "description": "20% off with Mastercard Credit Cards at Full'r Burgers, valid every Wednesday.",
+    "offer_details": {
+      "type": "percentage",
+      "value": 20.0,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": null,
+      "end_date": "2026-08-31",
+      "days": null
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "Valid every Wednesday till 31st August 2026",
+    "source_url": "https://www.nationstrust.com/promotions"
+  },
+  {
+    "id": "po-ntb-0032",
+    "bank": "Nations Trust Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Dining & Restaurants",
+    "merchant": {
+      "name": "Indian Affair",
+      "logo_url": null
+    },
+    "title": "Indian Affair 20% off",
+    "description": "20% off with Mastercard Credit Cards at Indian Affair, valid every Saturday.",
+    "offer_details": {
+      "type": "percentage",
+      "value": 20.0,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": null,
+      "end_date": "2026-08-31",
+      "days": null
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "Valid every Saturday till 31st August 2026",
+    "source_url": "https://www.nationstrust.com/promotions"
+  },
+  {
+    "id": "po-ntb-0033",
+    "bank": "Nations Trust Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Dining & Restaurants",
+    "merchant": {
+      "name": "Solo Bowl",
+      "logo_url": null
+    },
+    "title": "Solo Bowl 20% off",
+    "description": "20% off with Mastercard Credit Cards at Solo Bowl, valid every Sunday.",
+    "offer_details": {
+      "type": "percentage",
+      "value": 20.0,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": null,
+      "end_date": "2026-08-31",
+      "days": null
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "Valid every Sunday till 31st August 2026",
+    "source_url": "https://www.nationstrust.com/promotions"
+  },
+  {
+    "id": "po-ntb-0034",
+    "bank": "Nations Trust Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Dining & Restaurants",
+    "merchant": {
+      "name": "Dine Restaurant – Radisson Hotel Kandy",
+      "logo_url": null
+    },
+    "title": "Dine Restaurant – Radisson Hotel Kandy 20% off",
+    "description": "20% off with Mastercard Credit Cards at Dine Restaurant, Radisson Hotel Kandy.",
+    "offer_details": {
+      "type": "percentage",
+      "value": 20.0,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": null,
+      "end_date": "2026-08-31",
+      "days": null
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": null,
+    "source_url": "https://www.nationstrust.com/promotions"
+  },
+  {
+    "id": "po-ntb-0035",
+    "bank": "Nations Trust Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Dining & Restaurants",
+    "merchant": {
+      "name": "Fusion Restaurant - Radisson Blu Resort Galle",
+      "logo_url": null
+    },
+    "title": "Fusion Restaurant - Radisson Blu Resort Galle 20% off",
+    "description": "20% off with Mastercard Credit Cards at Fusion Restaurant, Radisson Blu Resort Galle.",
+    "offer_details": {
+      "type": "percentage",
+      "value": 20.0,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": null,
+      "end_date": "2026-08-31",
+      "days": null
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": null,
+    "source_url": "https://www.nationstrust.com/promotions"
+  },
+  {
+    "id": "po-ntb-0036",
+    "bank": "Nations Trust Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Dining & Restaurants",
+    "merchant": {
+      "name": "Dine Restaurant – Radisson Hotel Colombo",
+      "logo_url": null
+    },
+    "title": "Dine Restaurant – Radisson Hotel Colombo 20% off",
+    "description": "20% off with Mastercard Credit Cards at Dine Restaurant, Radisson Hotel Colombo.",
+    "offer_details": {
+      "type": "percentage",
+      "value": 20.0,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": null,
+      "end_date": "2026-08-31",
+      "days": null
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": null,
+    "source_url": "https://www.nationstrust.com/promotions"
+  },
+  {
+    "id": "po-ntb-0037",
+    "bank": "Nations Trust Bank",
+    "card_types": [
+      "Credit Card",
+      "Debit Card"
+    ],
+    "category": "Travel & Lodging",
+    "merchant": {
+      "name": "The Swiss Residence",
+      "logo_url": null
+    },
+    "title": "The Swiss Residence 40% off",
+    "description": "40% off with Mastercard Credit & Debit Cards at The Swiss Residence.",
+    "offer_details": {
+      "type": "percentage",
+      "value": 40.0,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": null,
+      "end_date": "2026-12-31",
+      "days": null
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": null,
+    "source_url": "https://www.nationstrust.com/promotions"
+  },
+  {
+    "id": "po-ntb-0038",
+    "bank": "Nations Trust Bank",
+    "card_types": [
+      "Credit Card",
+      "Debit Card"
+    ],
+    "category": "Travel & Lodging",
+    "merchant": {
+      "name": "Laya Safari Army Welfare Holiday Resort",
+      "logo_url": null
+    },
+    "title": "Laya Safari Army Welfare Holiday Resort up to 25% off",
+    "description": "Up to 25% off with Mastercard Credit & Debit Cards at Laya Safari Army Welfare Holiday Resort, valid from 1st to 31st July and 1st September to 31st October 2026.",
+    "offer_details": {
+      "type": "percentage",
+      "value": 25.0,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": "2026-07-01",
+      "end_date": "2026-10-31",
+      "days": null
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "Valid from 1st to 31st July & 1st September to 31st October 2026",
+    "source_url": "https://www.nationstrust.com/promotions"
+  },
+  {
+    "id": "po-ntb-0039",
+    "bank": "Nations Trust Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Travel & Lodging",
+    "merchant": {
+      "name": "Uppuveli Beach By DSK",
+      "logo_url": null
+    },
+    "title": "Uppuveli Beach By DSK 15% off",
+    "description": "15% off with Mastercard Credit Cards at Uppuveli Beach By DSK.",
+    "offer_details": {
+      "type": "percentage",
+      "value": 15.0,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": "2026-10-01",
+      "end_date": "2027-03-31",
+      "days": null
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": null,
+    "source_url": "https://www.nationstrust.com/promotions"
+  },
+  {
+    "id": "po-ntb-0040",
+    "bank": "Nations Trust Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Travel & Lodging",
+    "merchant": {
+      "name": "Royal Beach Hotel, Hikkaduwa",
+      "logo_url": null
+    },
+    "title": "Royal Beach Hotel, Hikkaduwa 40% off",
+    "description": "40% off with Mastercard Credit Cards at Royal Beach Hotel, Hikkaduwa.",
+    "offer_details": {
+      "type": "percentage",
+      "value": 40.0,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": null,
+      "end_date": "2026-10-31",
+      "days": null
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": null,
+    "source_url": "https://www.nationstrust.com/promotions"
+  },
+  {
+    "id": "po-ntb-0041",
+    "bank": "Nations Trust Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Travel & Lodging",
+    "merchant": {
+      "name": "Hibiscus Beach Hotel & Villas",
+      "logo_url": null
+    },
+    "title": "Hibiscus Beach Hotel & Villas 20% off",
+    "description": "20% off with Mastercard Credit Cards at Hibiscus Beach Hotel & Villas.",
+    "offer_details": {
+      "type": "percentage",
+      "value": 20.0,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": null,
+      "end_date": "2026-10-31",
+      "days": null
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": null,
+    "source_url": "https://www.nationstrust.com/promotions"
+  },
+  {
+    "id": "po-ntb-0042",
+    "bank": "Nations Trust Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Travel & Lodging",
+    "merchant": {
+      "name": "Mount Lavinia Hotel",
+      "logo_url": null
+    },
+    "title": "Mount Lavinia Hotel 20% off",
+    "description": "20% off with Mastercard Credit Cards at Mount Lavinia Hotel.",
+    "offer_details": {
+      "type": "percentage",
+      "value": 20.0,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": null,
+      "end_date": "2026-08-31",
+      "days": null
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": null,
+    "source_url": "https://www.nationstrust.com/promotions"
+  },
+  {
+    "id": "po-ntb-0043",
+    "bank": "Nations Trust Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Travel & Lodging",
+    "merchant": {
+      "name": "Amaara Forest Hotel, Sigiriya",
+      "logo_url": null
+    },
+    "title": "Amaara Forest Hotel, Sigiriya 40% off",
+    "description": "40% off with Mastercard Credit Card at Amaara Forest Hotel, Sigiriya.",
+    "offer_details": {
+      "type": "percentage",
+      "value": 40.0,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": null,
+      "end_date": "2026-10-31",
+      "days": null
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": null,
+    "source_url": "https://www.nationstrust.com/promotions"
+  },
+  {
+    "id": "po-ntb-0044",
+    "bank": "Nations Trust Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Travel & Lodging",
+    "merchant": {
+      "name": "Amaara Sky Hotel, Kandy",
+      "logo_url": null
+    },
+    "title": "Amaara Sky Hotel, Kandy 40% off",
+    "description": "40% off with Mastercard Credit Cards at Amaara Sky Hotel, Kandy.",
+    "offer_details": {
+      "type": "percentage",
+      "value": 40.0,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": null,
+      "end_date": "2026-10-31",
+      "days": null
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": null,
+    "source_url": "https://www.nationstrust.com/promotions"
+  },
+  {
+    "id": "po-ntb-0045",
+    "bank": "Nations Trust Bank",
+    "card_types": [
+      "Credit Card",
+      "Debit Card"
+    ],
+    "category": "Travel & Lodging",
+    "merchant": {
+      "name": "Melheim Resort and Spa - Haputale",
+      "logo_url": null
+    },
+    "title": "Melheim Resort and Spa - Haputale up to 60% off",
+    "description": "Up to 60% off with Mastercard Credit & Debit Cards at Melheim Resort and Spa, Haputale.",
+    "offer_details": {
+      "type": "percentage",
+      "value": 60.0,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": null,
+      "end_date": "2026-09-30",
+      "days": null
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": null,
+    "source_url": "https://www.nationstrust.com/promotions"
+  },
+  {
+    "id": "po-ntb-0046",
+    "bank": "Nations Trust Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Travel & Lodging",
+    "merchant": {
+      "name": "Melheim Villas - Kandy",
+      "logo_url": null
+    },
+    "title": "Melheim Villas - Kandy up to 60% off",
+    "description": "Up to 60% off with Mastercard Credit Cards at Melheim Villas, Kandy.",
+    "offer_details": {
+      "type": "percentage",
+      "value": 60.0,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": null,
+      "end_date": "2026-09-30",
+      "days": null
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": null,
+    "source_url": "https://www.nationstrust.com/promotions"
+  },
+  {
+    "id": "po-ntb-0047",
+    "bank": "Nations Trust Bank",
+    "card_types": [
+      "Credit Card",
+      "Debit Card"
+    ],
+    "category": "Travel & Lodging",
+    "merchant": {
+      "name": "Tropical Life Resort & Spa Dambulla",
+      "logo_url": null
+    },
+    "title": "Tropical Life Resort & Spa Dambulla 35% off",
+    "description": "35% off with Mastercard Credit and Debit Cards at Tropical Life Resort & Spa Dambulla.",
+    "offer_details": {
+      "type": "percentage",
+      "value": 35.0,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": null,
+      "end_date": "2026-09-30",
+      "days": null
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": null,
+    "source_url": "https://www.nationstrust.com/promotions"
+  },
+  {
+    "id": "po-ntb-0048",
+    "bank": "Nations Trust Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Travel & Lodging",
+    "merchant": {
+      "name": "Weligama Bay Marriott Resort & Spa",
+      "logo_url": null
+    },
+    "title": "Weligama Bay Marriott Resort & Spa special rates",
+    "description": "Special rates with Mastercard Credit Cards at Weligama Bay Marriott Resort & Spa.",
+    "offer_details": {
+      "type": "percentage",
+      "value": null,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": null,
+      "end_date": "2026-08-31",
+      "days": null
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": null,
+    "source_url": "https://www.nationstrust.com/promotions"
+  },
+  {
+    "id": "po-ntb-0049",
+    "bank": "Nations Trust Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Travel & Lodging",
+    "merchant": {
+      "name": "Melheim Beach - Kalpitiya",
+      "logo_url": null
+    },
+    "title": "Melheim Beach - Kalpitiya up to 60% off",
+    "description": "Up to 60% off with Mastercard Credit Cards at Melheim Beach, Kalpitiya.",
+    "offer_details": {
+      "type": "percentage",
+      "value": 60.0,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": null,
+      "end_date": "2026-09-30",
+      "days": null
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": null,
+    "source_url": "https://www.nationstrust.com/promotions"
+  },
+  {
+    "id": "po-ntb-0050",
+    "bank": "Nations Trust Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Travel & Lodging",
+    "merchant": {
+      "name": "Uga Prava, Tangalle",
+      "logo_url": null
+    },
+    "title": "Uga Prava, Tangalle 20% off",
+    "description": "20% off with Mastercard Credit Cards at Uga Prava, Tangalle.",
+    "offer_details": {
+      "type": "percentage",
+      "value": 20.0,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": null,
+      "end_date": "2026-11-30",
+      "days": null
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": null,
+    "source_url": "https://www.nationstrust.com/promotions"
+  },
+  {
+    "id": "po-ntb-0051",
+    "bank": "Nations Trust Bank",
+    "card_types": [
+      "Credit Card",
+      "Debit Card"
+    ],
+    "category": "Travel & Lodging",
+    "merchant": {
+      "name": "Oasey Beach Hotel",
+      "logo_url": null
+    },
+    "title": "Oasey Beach Hotel 20% off",
+    "description": "20% off with Mastercard Credit Cards & 15% with Mastercard Debit Cards at Oasey Beach Hotel.",
+    "offer_details": {
+      "type": "percentage",
+      "value": 20.0,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": null,
+      "end_date": "2026-10-31",
+      "days": null
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "20% off Credit Cards, 15% off Debit Cards",
+    "source_url": "https://www.nationstrust.com/promotions"
+  },
+  {
+    "id": "po-ntb-0052",
+    "bank": "Nations Trust Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Travel & Lodging",
+    "merchant": {
+      "name": "Sigiriana Resort by Thilanka Dambulla",
+      "logo_url": null
+    },
+    "title": "Sigiriana Resort by Thilanka Dambulla 35% off",
+    "description": "35% off with Mastercard Credit Cards at Sigiriana Resort by Thilanka Dambulla.",
+    "offer_details": {
+      "type": "percentage",
+      "value": 35.0,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": null,
+      "end_date": "2026-10-31",
+      "days": null
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": null,
+    "source_url": "https://www.nationstrust.com/promotions"
+  },
+  {
+    "id": "po-ntb-0053",
+    "bank": "Nations Trust Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Travel & Lodging",
+    "merchant": {
+      "name": "Morven Hotel, Colombo",
+      "logo_url": null
+    },
+    "title": "Morven Hotel, Colombo 20% off",
+    "description": "20% off with Mastercard Credit Cards at Morven Hotel, Colombo.",
+    "offer_details": {
+      "type": "percentage",
+      "value": 20.0,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": null,
+      "end_date": "2026-10-31",
+      "days": null
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": null,
+    "source_url": "https://www.nationstrust.com/promotions"
+  },
+  {
+    "id": "po-ntb-0054",
+    "bank": "Nations Trust Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Travel & Lodging",
+    "merchant": {
+      "name": "The Flame Tree Estate, Galagedara",
+      "logo_url": null
+    },
+    "title": "The Flame Tree Estate, Galagedara 40% off",
+    "description": "40% off with Mastercard Credit Cards at The Flame Tree Estate, Galagedara.",
+    "offer_details": {
+      "type": "percentage",
+      "value": 40.0,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": null,
+      "end_date": "2026-09-30",
+      "days": null
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": null,
+    "source_url": "https://www.nationstrust.com/promotions"
+  },
+  {
+    "id": "po-ntb-0055",
+    "bank": "Nations Trust Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Travel & Lodging",
+    "merchant": {
+      "name": "Aarunya Nature Resort & Spa",
+      "logo_url": null
+    },
+    "title": "Aarunya Nature Resort & Spa special offers",
+    "description": "Special offers with Mastercard Credit Cards at Aarunya Nature Resort & Spa.",
+    "offer_details": {
+      "type": "percentage",
+      "value": null,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": null,
+      "end_date": "2026-10-31",
+      "days": null
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": null,
+    "source_url": "https://www.nationstrust.com/promotions"
+  },
+  {
+    "id": "po-ntb-0056",
+    "bank": "Nations Trust Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Travel & Lodging",
+    "merchant": {
+      "name": "Anantaya Resorts & Spa - Chilaw",
+      "logo_url": null
+    },
+    "title": "Anantaya Resorts & Spa - Chilaw up to 50% off",
+    "description": "Up to 50% off with Mastercard Credit Cards at Anantaya Resorts & Spa, Chilaw. Booking period till 31st July 2026, stay period till 31st October 2026.",
+    "offer_details": {
+      "type": "percentage",
+      "value": 50.0,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": null,
+      "end_date": "2026-10-31",
+      "days": null
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "Booking period - till 31st July 2026 | Stay period: till 31st October 2026",
+    "source_url": "https://www.nationstrust.com/promotions"
+  },
+  {
+    "id": "po-ntb-0057",
+    "bank": "Nations Trust Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Travel & Lodging",
+    "merchant": {
+      "name": "Wattura Resort & Spa",
+      "logo_url": null
+    },
+    "title": "Wattura Resort & Spa up to 35% off",
+    "description": "Up to 35% off with Mastercard Credit Cards at Wattura Resort & Spa.",
+    "offer_details": {
+      "type": "percentage",
+      "value": 35.0,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": null,
+      "end_date": "2026-12-15",
+      "days": null
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": null,
+    "source_url": "https://www.nationstrust.com/promotions"
+  },
+  {
+    "id": "po-ntb-0058",
+    "bank": "Nations Trust Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Travel & Lodging",
+    "merchant": {
+      "name": "Apa Villa Thalpe",
+      "logo_url": null
+    },
+    "title": "Apa Villa Thalpe 20% off",
+    "description": "20% off with Mastercard Credit Cards at Apa Villa Thalpe.",
+    "offer_details": {
+      "type": "percentage",
+      "value": 20.0,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": null,
+      "end_date": "2026-12-31",
+      "days": null
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": null,
+    "source_url": "https://www.nationstrust.com/promotions"
+  },
+  {
+    "id": "po-ntb-0059",
+    "bank": "Nations Trust Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Travel & Lodging",
+    "merchant": {
+      "name": "Era Beach Thalpe",
+      "logo_url": null
+    },
+    "title": "Era Beach Thalpe 20% off",
+    "description": "20% off with Mastercard Credit Cards at Era Beach Thalpe.",
+    "offer_details": {
+      "type": "percentage",
+      "value": 20.0,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": null,
+      "end_date": "2026-12-31",
+      "days": null
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": null,
+    "source_url": "https://www.nationstrust.com/promotions"
+  },
+  {
+    "id": "po-ntb-0060",
+    "bank": "Nations Trust Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Travel & Lodging",
+    "merchant": {
+      "name": "Lotus Estate Colombo",
+      "logo_url": null
+    },
+    "title": "Lotus Estate Colombo 20% off",
+    "description": "20% off with Mastercard Credit Cards at Lotus Estate Colombo.",
+    "offer_details": {
+      "type": "percentage",
+      "value": 20.0,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": null,
+      "end_date": "2026-12-31",
+      "days": null
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": null,
+    "source_url": "https://www.nationstrust.com/promotions"
+  },
+  {
+    "id": "po-ntb-0061",
+    "bank": "Nations Trust Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Travel & Lodging",
+    "merchant": {
+      "name": "Joes Resort Unawatuna",
+      "logo_url": null
+    },
+    "title": "Joes Resort Unawatuna 20% off",
+    "description": "20% off with Mastercard Credit Cards at Joes Resort Unawatuna.",
+    "offer_details": {
+      "type": "percentage",
+      "value": 20.0,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": null,
+      "end_date": "2026-12-31",
+      "days": null
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": null,
+    "source_url": "https://www.nationstrust.com/promotions"
+  },
+  {
+    "id": "po-ntb-0062",
+    "bank": "Nations Trust Bank",
+    "card_types": [
+      "Credit Card",
+      "Debit Card"
+    ],
+    "category": "Online Shopping",
+    "merchant": {
+      "name": "BuyMe.lk",
+      "logo_url": null
+    },
+    "title": "10% off with Mastercard Credit & Debit Cards",
+    "description": "Get 10% off for classified ad listings published via BuyMe.lk when paying with Mastercard Credit or Debit Cards.",
+    "offer_details": {
+      "type": "percentage",
+      "value": 10.0,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": null,
+      "end_date": "2026-09-04",
+      "days": null
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "Valid for classified ad listings published via BuyMe.lk. Shop via https://buyme.lk/",
+    "source_url": "https://www.nationstrust.com/promotions/10-off-with-mastercard-credit-debit-cards"
+  },
+  {
+    "id": "po-ntb-0063",
+    "bank": "Nations Trust Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Dining & Restaurants",
+    "merchant": {
+      "name": null,
+      "logo_url": null
+    },
+    "title": "15% off with Mastercard Credit Cards",
+    "description": "15% off dining, valid for dine-in.",
+    "offer_details": {
+      "type": "percentage",
+      "value": 15.0,
+      "max_discount_lkr": 3000.0
+    },
+    "validity": {
+      "start_date": null,
+      "end_date": "2026-10-31",
+      "days": null
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "Maximum savings LKR 3,000. Valid for dine-in.",
+    "source_url": "https://www.nationstrust.com/promotions/15-off-with-mastercard-credit-cards-10"
+  },
+  {
+    "id": "po-ntb-0064",
+    "bank": "Nations Trust Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Dining & Restaurants",
+    "merchant": {
+      "name": "Cuisine Colombo",
+      "logo_url": null
+    },
+    "title": "15% off with Mastercard Credit Cards",
+    "description": "15% off at Cuisine Colombo.",
+    "offer_details": {
+      "type": "percentage",
+      "value": 15.0,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": null,
+      "end_date": "2026-08-31",
+      "days": null
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": null,
+    "source_url": "https://www.nationstrust.com/promotions/15-off-with-mastercard-credit-cards-10"
+  },
+  {
+    "id": "po-ntb-0065",
+    "bank": "Nations Trust Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Travel & Lodging",
+    "merchant": {
+      "name": "Trio Lodge, Habarana",
+      "logo_url": null
+    },
+    "title": "35% off with Mastercard Credit Cards",
+    "description": "35% off at Trio Lodge, Habarana.",
+    "offer_details": {
+      "type": "percentage",
+      "value": 35.0,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": null,
+      "end_date": "2026-10-31",
+      "days": null
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": null,
+    "source_url": "https://www.nationstrust.com/promotions/15-off-with-mastercard-credit-cards-10"
+  },
+  {
+    "id": "po-ntb-0066",
+    "bank": "Nations Trust Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Travel & Lodging",
+    "merchant": {
+      "name": "Lotus Estate Colombo",
+      "logo_url": null
+    },
+    "title": "20% off with Mastercard Credit Cards",
+    "description": "20% off at Lotus Estate Colombo.",
+    "offer_details": {
+      "type": "percentage",
+      "value": 20.0,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": null,
+      "end_date": "2026-12-31",
+      "days": null
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": null,
+    "source_url": "https://www.nationstrust.com/promotions/15-off-with-mastercard-credit-cards-10"
+  },
+  {
+    "id": "po-ntb-0067",
+    "bank": "Nations Trust Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Travel & Lodging",
+    "merchant": {
+      "name": "Kahanda Kanda",
+      "logo_url": null
+    },
+    "title": "30% off with Mastercard Credit Cards",
+    "description": "30% off at Kahanda Kanda.",
+    "offer_details": {
+      "type": "percentage",
+      "value": 30.0,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": "2026-05-01",
+      "end_date": "2026-10-31",
+      "days": null
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": null,
+    "source_url": "https://www.nationstrust.com/promotions/15-off-with-mastercard-credit-cards-10"
+  },
+  {
+    "id": "po-ntb-0068",
+    "bank": "Nations Trust Bank",
+    "card_types": [
+      "Credit Card",
+      "Debit Card"
+    ],
+    "category": "Travel & Lodging",
+    "merchant": {
+      "name": "Melheim Resort and Spa - Haputale",
+      "logo_url": null
+    },
+    "title": "Up to 60% off with Mastercard Credit & Debit Cards",
+    "description": "Up to 60% off at Melheim Resort and Spa - Haputale.",
+    "offer_details": {
+      "type": "percentage",
+      "value": 60.0,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": null,
+      "end_date": "2026-09-30",
+      "days": null
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": null,
+    "source_url": "https://www.nationstrust.com/promotions/15-off-with-mastercard-credit-cards-10"
+  },
+  {
+    "id": "po-ntb-0069",
+    "bank": "Nations Trust Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Other",
+    "merchant": {
+      "name": "Sleep Makers by Valentino",
+      "logo_url": null
+    },
+    "title": "20% off with Mastercard Credit Cards",
+    "description": "20% off at Sleep Makers by Valentino.",
+    "offer_details": {
+      "type": "percentage",
+      "value": 20.0,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": null,
+      "end_date": "2026-09-15",
+      "days": null
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": null,
+    "source_url": "https://www.nationstrust.com/promotions/15-off-with-mastercard-credit-cards-10"
+  },
+  {
+    "id": "po-ntb-0070",
+    "bank": "Nations Trust Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Travel & Lodging",
+    "merchant": {
+      "name": "The Villa Bentota",
+      "logo_url": null
+    },
+    "title": "30% off with Mastercard Credit Cards",
+    "description": "30% off at The Villa Bentota.",
+    "offer_details": {
+      "type": "percentage",
+      "value": 30.0,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": "2026-05-01",
+      "end_date": "2026-10-31",
+      "days": null
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": null,
+    "source_url": "https://www.nationstrust.com/promotions/15-off-with-mastercard-credit-cards-10"
+  },
+  {
+    "id": "po-ntb-0071",
+    "bank": "Nations Trust Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Dining & Restaurants",
+    "merchant": {
+      "name": "Domino's",
+      "logo_url": null
+    },
+    "title": "25% off with Mastercard Credit Cards",
+    "description": "25% off at Domino's.",
+    "offer_details": {
+      "type": "percentage",
+      "value": 25.0,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": null,
+      "end_date": "2026-08-31",
+      "days": null
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": null,
+    "source_url": "https://www.nationstrust.com/promotions/15-off-with-mastercard-credit-cards-10"
+  },
+  {
+    "id": "po-ntb-0072",
+    "bank": "Nations Trust Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Dining & Restaurants",
+    "merchant": {
+      "name": null,
+      "logo_url": null
+    },
+    "title": "15% off with Mastercard Credit Cards",
+    "description": "Valid for dine-in & takeaway on À-la carte. Valid for bills above LKR 3,500. Maximum savings LKR 1,500. For reservations, call 0707007777.",
+    "offer_details": {
+      "type": "percentage",
+      "value": 15.0,
+      "max_discount_lkr": 1500.0
+    },
+    "validity": {
+      "start_date": null,
+      "end_date": null,
+      "days": null
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "This offer cannot be combined with any other discount/offer/promotion. This offer will not be applicable for commercial use, corporate events and functions.",
+    "source_url": "https://www.nationstrust.com/promotions/15-off-with-mastercard-credit-cards-11"
+  },
+  {
+    "id": "po-ntb-0073",
+    "bank": "Nations Trust Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Groceries & Supermarkets",
+    "merchant": {
+      "name": "Cargills Online",
+      "logo_url": null
+    },
+    "title": "15% off with Mastercard Credit Cards",
+    "description": "15% off on online purchases at Cargills Online for bills above LKR 2,500.",
+    "offer_details": {
+      "type": "percentage",
+      "value": 15.0,
+      "max_discount_lkr": 2000.0
+    },
+    "validity": {
+      "start_date": "2026-08-25",
+      "end_date": "2026-08-30",
+      "days": null
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "Applicable for online purchases at https://cargillsonline.com/. Valid for bills above LKR 2,500. Maximum savings: LKR 2,000. Maximum 2 transactions per card per month. Excludes milk powder, tobacco, commodities and discounted items.",
+    "source_url": "https://www.nationstrust.com/promotions/15-off-with-mastercard-credit-cards-3"
+  },
+  {
+    "id": "po-ntb-0074",
+    "bank": "Nations Trust Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Travel & Lodging",
+    "merchant": {
+      "name": null,
+      "logo_url": null
+    },
+    "title": "15% off with Mastercard Credit Cards",
+    "description": "15% off on hotel stays: Beach Bliss with Private Pool (Discounted Rate: LKR 89,250), Breeze Bliss (Discounted Rate: LKR 58,650), Garden Bliss (Discounted Rate: LKR 55,250). Valid on FB DBL basis. Additional Benefit: Complimentary room upgrade to the next category (Breeze Bliss & Garden Bliss) – subject to availability. For reservations, call 0262222488 / 0777140488 / 0744110823.",
+    "offer_details": {
+      "type": "percentage",
+      "value": 15.0,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": "2026-10-01",
+      "end_date": "2027-03-31",
+      "days": null
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "Valid on FB DBL basis. Additional Benefit: Complimentary room upgrade to the next category (Breeze Bliss & Garden Bliss) – subject to availability.",
+    "source_url": "https://www.nationstrust.com/promotions/15-off-with-mastercard-credit-cards-4"
+  },
+  {
+    "id": "po-ntb-0075",
+    "bank": "Nations Trust Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Dining & Restaurants",
+    "merchant": {
+      "name": null,
+      "logo_url": null
+    },
+    "title": "15% off with Mastercard Credit Cards",
+    "description": "15% off with Mastercard Credit Cards on dine-in orders only.",
+    "offer_details": {
+      "type": "percentage",
+      "value": 15.0,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": null,
+      "end_date": "2026-09-30",
+      "days": null
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "Offer valid for dine-in orders only. For reservations, call 077 833 7734.",
+    "source_url": "https://www.nationstrust.com/promotions/15-off-with-mastercard-credit-cards-6"
+  },
+  {
+    "id": "po-ntb-0076",
+    "bank": "Nations Trust Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Dining & Restaurants",
+    "merchant": {
+      "name": null,
+      "logo_url": null
+    },
+    "title": "15% off with Mastercard Credit Cards",
+    "description": "Offer valid for dine-in on food only. For reservations, call 0763 033 435.",
+    "offer_details": {
+      "type": "percentage",
+      "value": 15.0,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": null,
+      "end_date": "2026-08-31",
+      "days": null
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "Offer valid for dine-in on food only.",
+    "source_url": "https://www.nationstrust.com/promotions/15-off-with-mastercard-credit-cards-7"
+  },
+  {
+    "id": "po-ntb-0077",
+    "bank": "Nations Trust Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Travel & Lodging",
+    "merchant": {
+      "name": "Lotus Estate Colombo",
+      "logo_url": null
+    },
+    "title": "20% off with Mastercard Credit Cards - Lotus Estate Colombo",
+    "description": "20% off at Lotus Estate Colombo with Mastercard Credit Cards.",
+    "offer_details": {
+      "type": "percentage",
+      "value": 20.0,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": null,
+      "end_date": "2026-12-31",
+      "days": null
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": null,
+    "source_url": "https://www.nationstrust.com/promotions/15-off-with-mastercard-credit-cards-7"
+  },
+  {
+    "id": "po-ntb-0078",
+    "bank": "Nations Trust Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Online Shopping",
+    "merchant": {
+      "name": "Uber Eats",
+      "logo_url": null
+    },
+    "title": "25% off with Mastercard Credit Cards - Uber Eats",
+    "description": "25% off on Uber Eats with Mastercard Credit Cards, valid on 23rd June, 7th & 21st July, and 4th & 18th August 2026.",
+    "offer_details": {
+      "type": "percentage",
+      "value": 25.0,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": null,
+      "end_date": null,
+      "days": null
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "Valid only on 23rd June, 7th & 21st July, and 4th & 18th August 2026.",
+    "source_url": "https://www.nationstrust.com/promotions/15-off-with-mastercard-credit-cards-7"
+  },
+  {
+    "id": "po-ntb-0079",
+    "bank": "Nations Trust Bank",
+    "card_types": [
+      "Credit Card",
+      "Debit Card"
+    ],
+    "category": "Travel & Lodging",
+    "merchant": {
+      "name": "Simpson's Forest – Luxury Boutique Resort & Spa, Kandy",
+      "logo_url": null
+    },
+    "title": "25% off with Mastercard Credit & Debit Cards - Simpson's Forest",
+    "description": "25% off at Simpson's Forest – Luxury Boutique Resort & Spa, Kandy with Mastercard Credit & Debit Cards.",
+    "offer_details": {
+      "type": "percentage",
+      "value": 25.0,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": null,
+      "end_date": "2026-10-31",
+      "days": null
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": null,
+    "source_url": "https://www.nationstrust.com/promotions/15-off-with-mastercard-credit-cards-7"
+  },
+  {
+    "id": "po-ntb-0080",
+    "bank": "Nations Trust Bank",
+    "card_types": [
+      "Credit Card",
+      "Debit Card"
+    ],
+    "category": "Travel & Lodging",
+    "merchant": {
+      "name": "Amagi Aria, Negombo",
+      "logo_url": null
+    },
+    "title": "20% off with Mastercard Credit & Debit Cards - Amagi Aria, Negombo",
+    "description": "20% off at Amagi Aria, Negombo with Mastercard Credit & Debit Cards.",
+    "offer_details": {
+      "type": "percentage",
+      "value": 20.0,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": "2026-08-01",
+      "end_date": "2026-10-31",
+      "days": null
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": null,
+    "source_url": "https://www.nationstrust.com/promotions/15-off-with-mastercard-credit-cards-7"
+  },
+  {
+    "id": "po-ntb-0081",
+    "bank": "Nations Trust Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Groceries & Supermarkets",
+    "merchant": {
+      "name": "Keells",
+      "logo_url": null
+    },
+    "title": "25% off with Mastercard Credit Cards - Keells",
+    "description": "25% off at Keells with Mastercard Credit Cards, valid every Sunday till 31st August 2026.",
+    "offer_details": {
+      "type": "percentage",
+      "value": 25.0,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": null,
+      "end_date": "2026-08-31",
+      "days": null
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "Valid every Sunday till 31st August 2026.",
+    "source_url": "https://www.nationstrust.com/promotions/15-off-with-mastercard-credit-cards-7"
+  },
+  {
+    "id": "po-ntb-0082",
+    "bank": "Nations Trust Bank",
+    "card_types": [
+      "Credit Card",
+      "Debit Card"
+    ],
+    "category": "Health & Wellness",
+    "merchant": {
+      "name": "Siddhalepa Ayurveda Hospital",
+      "logo_url": null
+    },
+    "title": "20% off with Mastercard Credit & Debit Cards - Siddhalepa Ayurveda Hospital",
+    "description": "20% off at Siddhalepa Ayurveda Hospital with Mastercard Credit & Debit Cards.",
+    "offer_details": {
+      "type": "percentage",
+      "value": 20.0,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": "2026-01-01",
+      "end_date": "2026-12-31",
+      "days": null
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": null,
+    "source_url": "https://www.nationstrust.com/promotions/15-off-with-mastercard-credit-cards-7"
+  },
+  {
+    "id": "po-ntb-0083",
+    "bank": "Nations Trust Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Dining & Restaurants",
+    "merchant": {
+      "name": "Indian Affair",
+      "logo_url": null
+    },
+    "title": "20% off with Mastercard Credit Cards - Indian Affair",
+    "description": "20% off at Indian Affair with Mastercard Credit Cards, valid every Saturday till 31st August 2026.",
+    "offer_details": {
+      "type": "percentage",
+      "value": 20.0,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": null,
+      "end_date": "2026-08-31",
+      "days": null
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "Valid every Saturday till 31st August 2026.",
+    "source_url": "https://www.nationstrust.com/promotions/15-off-with-mastercard-credit-cards-7"
+  },
+  {
+    "id": "po-ntb-0084",
+    "bank": "Nations Trust Bank",
+    "card_types": [
+      "Credit Card",
+      "Debit Card"
+    ],
+    "category": "Travel & Lodging",
+    "merchant": {
+      "name": "Melheim Resort and Spa - Haputale",
+      "logo_url": null
+    },
+    "title": "Up to 60% off with Mastercard Credit & Debit Cards - Melheim Resort and Spa",
+    "description": "Up to 60% off at Melheim Resort and Spa - Haputale with Mastercard Credit & Debit Cards.",
+    "offer_details": {
+      "type": "percentage",
+      "value": 60.0,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": null,
+      "end_date": "2026-09-30",
+      "days": null
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": null,
+    "source_url": "https://www.nationstrust.com/promotions/15-off-with-mastercard-credit-cards-7"
+  },
+  {
+    "id": "po-ntb-0085",
+    "bank": "Nations Trust Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Dining & Restaurants",
+    "merchant": {
+      "name": null,
+      "logo_url": null
+    },
+    "title": "15% off with Mastercard Credit Cards",
+    "description": "15% off on food and non-alcoholic beverage purchases at participating dining outlets. Reservations must be made in advance.",
+    "offer_details": {
+      "type": "percentage",
+      "value": 15.0,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": null,
+      "end_date": "2026-10-31",
+      "days": null
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "Reservations must be made in advance. Applicable only for food and non-alcoholic beverage purchases at participating outlets. Valid till 31st October 2026.",
+    "source_url": "https://www.nationstrust.com/promotions/15-off-with-mastercard-credit-cards-9"
+  },
+  {
+    "id": "po-ntb-0086",
+    "bank": "Nations Trust Bank",
+    "card_types": [
+      "Credit Card",
+      "Debit Card"
+    ],
+    "category": "Health & Wellness",
+    "merchant": {
+      "name": "FOOTRUB",
+      "logo_url": null
+    },
+    "title": "15% off with Mastercard Credit & Debit Cards",
+    "description": "15% off on selected wellness services (FM 2, FM 3, CM 1, CM 2, HM 1, HM 2). Offer not valid on FOOTRUB gift vouchers.",
+    "offer_details": {
+      "type": "percentage",
+      "value": 15.0,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": null,
+      "end_date": "2026-12-31",
+      "days": null
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "Valid on selected services (FM 2, FM 3, CM 1, CM 2, HM 1, HM 2). Offer not valid on FOOTRUB gift vouchers. General terms and conditions apply.",
+    "source_url": "https://www.nationstrust.com/promotions/15-off-with-mastercard-credit-debit-cards"
+  },
+  {
+    "id": "po-ntb-0087",
+    "bank": "Nations Trust Bank",
+    "card_types": [
+      "Credit Card",
+      "Debit Card"
+    ],
+    "category": "Health & Wellness",
+    "merchant": {
+      "name": null,
+      "logo_url": null
+    },
+    "title": "15% off with Mastercard Credit & Debit Cards",
+    "description": "Get 15% off with Mastercard Credit & Debit Cards on bills above LKR 10,000.",
+    "offer_details": {
+      "type": "percentage",
+      "value": 15.0,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": null,
+      "end_date": "2026-12-31",
+      "days": null
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "Valid for bills above LKR 10,000. Outlet locations: Colombo - 0773357450 / 0112082535, Mt. Lavinia - 0773710139 / 0112738622, Battaramulla - 0766777933 / 0112777933, Negombo - 0312210211, Mirissa - 0412242477",
+    "source_url": "https://www.nationstrust.com/promotions/15-off-with-mastercard-credit-debit-cards-1"
+  },
+  {
+    "id": "po-ntb-0088",
+    "bank": "Nations Trust Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Travel & Lodging",
+    "merchant": {
+      "name": "Tree of Life Hotel",
+      "logo_url": null
+    },
+    "title": "20% off with Mastercard Credit Cards",
+    "description": "20% off at a hotel with discounted rates: Deluxe Double room FB basis – LKR 29,800; Triple FB basis – LKR 41,740; Deluxe Double room HB basis – LKR 23,800; Triple HB basis – LKR 32,800.",
+    "offer_details": {
+      "type": "percentage",
+      "value": 20.0,
+      "max_discount_lkr": null
+    },
+    "validity": {
+      "start_date": "2026-04-01",
+      "end_date": "2026-10-31",
+      "days": null
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "Prior reservations required and subject to availability. Discount applicable for direct bookings made via the provided contact details. Offer cannot be combined with other promotions or discounted prices. Discounts are not applicable for extras or meals outside the booked basis, child supplements or other supplements. Standard child and cancellation policies of the hotel apply. Offer valid for Sri Lankans. Offer not valid for online bookings. Offer not valid during Kandy Perahera dates. General credit card terms and conditions apply.",
+    "source_url": "https://www.nationstrust.com/promotions/20-off-with-mastercard-credit-cards-10"
+  },
+  {
+    "id": "po-ntb-0089",
+    "bank": "Nations Trust Bank",
+    "card_types": [
+      "Credit Card",
+      "Debit Card"
+    ],
+    "category": "Dining & Restaurants",
+    "merchant": {
+      "name": null,
+      "logo_url": null
+    },
+    "title": "20% off with Mastercard Credit Cards & 10% off with Debit Cards on total bills",
+    "description": "20% off with Mastercard Credit Cards and 10% off with Debit Cards on total bills. Valid on dine-in & takeaway only. Maximum savings LKR 8,000. Valid for bills above LKR 2,500. Valid every Sunday till 31st August 2026.",
+    "offer_details": {
+      "type": "percentage",
+      "value": 20.0,
+      "max_discount_lkr": 8000.0
+    },
+    "validity": {
+      "start_date": null,
+      "end_date": "2026-08-31",
+      "days": null
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "Valid on dine-in & takeaway only. Maximum savings LKR 8,000. Valid for bills above LKR 2,500. Valid every Sunday till 31st August 2026.",
+    "source_url": "https://www.nationstrust.com/promotions/20-off-with-mastercard-credit-cards-10-off-with-debit-cards-on-total-bills"
+  },
+  {
+    "id": "po-ntb-0090",
+    "bank": "Nations Trust Bank",
+    "card_types": [
+      "Credit Card"
+    ],
+    "category": "Dining & Restaurants",
+    "merchant": {
+      "name": null,
+      "logo_url": null
+    },
+    "title": "20% off with Mastercard Credit Cards on total bills",
+    "description": "Enjoy 20% off on total bills with Mastercard Credit Cards. Valid only on Sundays, for dine-in and takeaway only, on bills above LKR 2,500, with maximum savings of LKR 8,000.",
+    "offer_details": {
+      "type": "percentage",
+      "value": 20.0,
+      "max_discount_lkr": 8000.0
+    },
+    "validity": {
+      "start_date": null,
+      "end_date": "2026-08-31",
+      "days": null
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "Valid only on Sundays. Valid on dine-in & takeaway only. Maximum savings LKR 8,000. Valid for bills above LKR 2,500. Valid till 31st August 2026.",
+    "source_url": "https://www.nationstrust.com/promotions/20-off-with-mastercard-credit-cards-10-off-with-debit-cards-on-total-bills-1"
+  },
+  {
+    "id": "po-ntb-0091",
+    "bank": "Nations Trust Bank",
+    "card_types": [
+      "Debit Card"
+    ],
+    "category": "Dining & Restaurants",
+    "merchant": {
+      "name": null,
+      "logo_url": null
+    },
+    "title": "10% off with Mastercard Debit Cards on total bills",
+    "description": "Enjoy 10% off on total bills with Mastercard Debit Cards. Valid only on Sundays, for dine-in and takeaway only, on bills above LKR 2,500, with maximum savings of LKR 8,000.",
+    "offer_details": {
+      "type": "percentage",
+      "value": 10.0,
+      "max_discount_lkr": 8000.0
+    },
+    "validity": {
+      "start_date": null,
+      "end_date": "2026-08-31",
+      "days": null
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "Valid only on Sundays. Valid on dine-in & takeaway only. Maximum savings LKR 8,000. Valid for bills above LKR 2,500. Valid till 31st August 2026.",
+    "source_url": "https://www.nationstrust.com/promotions/20-off-with-mastercard-credit-cards-10-off-with-debit-cards-on-total-bills-1"
+  },
+  {
+    "id": "po-ntb-0092",
+    "bank": "Nations Trust Bank",
+    "card_types": [
+      "Credit Card",
+      "Debit Card"
+    ],
+    "category": "Dining & Restaurants",
+    "merchant": {
+      "name": null,
+      "logo_url": null
+    },
+    "title": "20% off with Mastercard Credit Cards & 10% off with Mastercard Debit Cards",
+    "description": "20% off with Mastercard Credit Cards & 10% off with Mastercard Debit Cards. Valid on dine-in & takeaway orders. Maximum savings LKR 8,000. Valid for bills above LKR 2,500. Valid every Sunday till 31st August 2026.",
+    "offer_details": {
+      "type": "percentage",
+      "value": 20.0,
+      "max_discount_lkr": 8000.0
+    },
+    "validity": {
+      "start_date": null,
+      "end_date": "2026-08-31",
+      "days": null
+    },
+    "location": {
+      "address": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "terms": "Valid on dine-in & takeaway orders. Maximum savings LKR 8,000. Valid for bills above LKR 2,500. Valid every Sunday till 31st August 2026.",
+    "source_url": "https://www.nationstrust.com/promotions/20-off-with-mastercard-credit-cards-10-off-with-mastercard-debit-cards"
   }
 ]
