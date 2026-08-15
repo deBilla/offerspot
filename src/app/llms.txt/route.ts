@@ -1,6 +1,8 @@
 import { allBanks, allCategories, getActiveOffers, getOffersByBank, slugify } from '@/lib/offers';
 import { absoluteUrl } from '@/lib/seo';
 import { bankCategoryRoutes, cardTypeHubs } from '@/lib/hub-routes';
+import { townRoutes } from '@/lib/locations';
+import { merchantRoutes } from '@/lib/merchants';
 
 /**
  * /llms.txt — a plain-markdown map of the site for AI answer engines.
@@ -66,6 +68,18 @@ export async function GET() {
     '## Browse by card type',
     '',
     ...cardTypeHubs.map((hub) => `- [${hub.cardType} offers](${absoluteUrl(`/${hub.slug}`)})`),
+    '',
+    '## Browse by town',
+    '',
+    ...townRoutes(offers).map(
+      (route) => `- [Card offers in ${route.town}](${absoluteUrl(`/locations/${route.slug}`)}): ${route.count} live offers`,
+    ),
+    '',
+    '## Browse by shop or restaurant',
+    '',
+    ...merchantRoutes(offers).map(
+      (route) => `- [${route.merchant} card offers](${absoluteUrl(`/merchants/${route.slug}`)}): ${route.count} live offers`,
+    ),
     '',
     '## Bank and category combined',
     '',

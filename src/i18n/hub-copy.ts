@@ -64,6 +64,9 @@ interface Phrases {
   locIntro: (a: { town: string; count: string; monthYear: string; banks: string }) => string;
   locCategories: (a: { town: string; categories: string }) => string;
   qLocBanks: (town: string) => string;
+  merIntro: (a: { merchant: string; count: string; monthYear: string; banks: string }) => string;
+  qMerBest: (merchant: string) => string;
+  aMerBest: (a: { merchant: string; banks: string; count: string }) => string;
   aLocBanks: (a: { town: string; banks: string; count: string }) => string;
   qBankCatCount: (a: { bank: string; category: string }) => string;
   aBankCatCount: (a: { bank: string; category: string; count: string; monthYear: string }) => string;
@@ -143,6 +146,11 @@ const en: Phrases = {
   qLocBanks: (town) => `Which banks have card offers in ${town}?`,
   aLocBanks: ({ town, banks, count }) =>
     `${banks} currently run card promotions redeemable in ${town} — ${count} live offers between them. Each offer below links to the bank page it came from.`,
+  merIntro: ({ merchant, count, monthYear, banks }) =>
+    `${banks} run ${count} card promotions at ${merchant} as of ${monthYear}. Where several apply, the discount can differ by card, so it is worth checking before you pay.`,
+  qMerBest: (merchant) => `Which card is best at ${merchant}?`,
+  aMerBest: ({ merchant, banks, count }) =>
+    `${count} offers are live at ${merchant}, from ${banks}. The largest discount is listed first above; each links back to the bank page stating its terms.`,
   qBankCatCount: ({ bank, category }) => `How many ${category.toLowerCase()} offers does ${bank} have?`,
   aBankCatCount: ({ bank, category, count, monthYear }) =>
     `${count} ${bank} ${category.toLowerCase()} promotions are listed for ${monthYear}.`,
@@ -228,6 +236,11 @@ const si: Phrases = {
   qLocBanks: (town) => `${town} හි කුමන බැංකුවලට කාඩ්පත් දීමනා තිබේද?`,
   aLocBanks: ({ town, banks, count }) =>
     `${banks} දැනට ${town} හි භාවිත කළ හැකි දීමනා ${count}ක් ලබා දෙයි.`,
+  merIntro: ({ merchant, count, monthYear, banks }) =>
+    `${monthYear} වන විට ${merchant} හි ${banks} විසින් කාඩ්පත් දීමනා ${count}ක් ලබා දේ.`,
+  qMerBest: (merchant) => `${merchant} හි හොඳම කාඩ්පත කුමක්ද?`,
+  aMerBest: ({ merchant, banks, count }) =>
+    `${merchant} හි ${banks} වෙතින් දීමනා ${count}ක් ක්‍රියාත්මකයි.`,
   qBankCatCount: ({ bank, category }) => `${bank} සතුව ${category} දීමනා කීයක් තිබේද?`,
   aBankCatCount: ({ bank, category, count, monthYear }) =>
     `${monthYear} සඳහා ${bank} ${category} ප්‍රවර්ධන ${count}ක් ලැයිස්තුගත කර ඇත.`,
@@ -313,6 +326,11 @@ const ta: Phrases = {
   qLocBanks: (town) => `${town} இல் எந்த வங்கிகளுக்கு அட்டை சலுகைகள் உள்ளன?`,
   aLocBanks: ({ town, banks, count }) =>
     `${banks} தற்போது ${town} இல் ${count} சலுகைகளை வழங்குகின்றன.`,
+  merIntro: ({ merchant, count, monthYear, banks }) =>
+    `${monthYear} நிலவரப்படி ${merchant} இல் ${banks} ${count} அட்டை சலுகைகளை வழங்குகின்றன.`,
+  qMerBest: (merchant) => `${merchant} இல் எந்த அட்டை சிறந்தது?`,
+  aMerBest: ({ merchant, banks, count }) =>
+    `${merchant} இல் ${banks} இடமிருந்து ${count} சலுகைகள் நடப்பில் உள்ளன.`,
   qBankCatCount: ({ bank, category }) => `${bank} இல் எத்தனை ${category} சலுகைகள் உள்ளன?`,
   aBankCatCount: ({ bank, category, count, monthYear }) =>
     `${monthYear} க்கு ${bank} ${category} சலுகைகள் ${count} பட்டியலிடப்பட்டுள்ளன.`,
@@ -680,6 +698,37 @@ export function locationHubCopy(locale: Locale, town: string, stats: HubStats, c
       question: p.qLocBanks(town),
       answer: p.aLocBanks({ town, banks, count: String(stats.count) }),
     });
+  }
+  faqs.push(...commonFaqs({ locale, stats }));
+
+  return { intro, faqs };
+}
+
+
+/** Copy for a merchant hub, reusing the shared best/expiring/undated phrases. */
+export function merchantHubCopy(locale: Locale, merchant: string, stats: HubStats): HubCopy {
+  const p = getPhrases(locale);
+  const banks = listJoin(locale, stats.topBanks);
+  const intro: string[] = [];
+
+  if (stats.count > 0 && banks) {
+    intro.push(p.merIntro({ merchant, count: String(stats.count), monthYear: stats.monthYear, banks }));
+  }
+  if (stats.best) {
+    intro.push(
+      p.catBest({
+        percentage: String(stats.best.percentage),
+        merchant: stats.best.merchant,
+        bank: stats.best.bank,
+      }),
+    );
+  }
+  if (stats.expiringSoon > 0) intro.push(p.catExpiring({ count: String(stats.expiringSoon), category: merchant }));
+  if (stats.undated > 0) intro.push(p.catUndated({ count: String(stats.undated) }));
+
+  const faqs: Faq[] = [];
+  if (banks) {
+    faqs.push({ question: p.qMerBest(merchant), answer: p.aMerBest({ merchant, banks, count: String(stats.count) }) });
   }
   faqs.push(...commonFaqs({ locale, stats }));
 

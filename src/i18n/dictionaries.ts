@@ -139,6 +139,10 @@ export interface Dictionary {
     locationsTitle: string;
     locationsDescription: string;
     locationPageTitle: (town: string) => string;
+    merchantsTitle: string;
+    merchantsDescription: string;
+    merchantPageTitle: (merchant: string) => string;
+    merchantPageDescription: (args: { merchant: string; count: number; banks: string }) => string;
     locationPageDescription: (args: { town: string; count: number; categories: string }) => string;
     bankClosedDescription: (args: { bank: string; successor: string }) => string;
     categoryPageTitle: (category: string) => string;
@@ -318,6 +322,11 @@ const en: Dictionary = {
     locationPageTitle: (town) => `Card Offers in ${town}`,
     locationPageDescription: ({ town, count, categories }) =>
       `${count} live credit and debit card offers you can use in ${town}, Sri Lanka — covering ${categories}. Updated from the banks' own promotion pages.`,
+    merchantsTitle: 'Card Offers by Shop and Restaurant',
+    merchantsDescription: 'Which card gets you a discount where you are shopping — bank promotions grouped by merchant across Sri Lanka.',
+    merchantPageTitle: (merchant) => `${merchant} Card Offers`,
+    merchantPageDescription: ({ merchant, count, banks }) =>
+      `${count} live card offers at ${merchant} in Sri Lanka, from ${banks}. Compare which card gives the bigger discount before you pay.`,
     categoryPageTitle: (category) => `${category} Card Offers in Sri Lanka`,
     categoryPageDescription: ({ category, count, banks }) =>
       `${count} current ${category.toLowerCase()} card promotions in Sri Lanka from ${banks}. Updated daily.`,
@@ -515,6 +524,11 @@ const si: Dictionary = {
     locationPageTitle: (town) => `${town} හි කාඩ්පත් දීමනා`,
     locationPageDescription: ({ town, count, categories }) =>
       `${town} හි භාවිත කළ හැකි ක්‍රියාත්මක කාඩ්පත් දීමනා ${count}ක් — ${categories} ඇතුළුව.`,
+    merchantsTitle: 'වෙළඳසැල් අනුව කාඩ්පත් දීමනා',
+    merchantsDescription: 'ඔබ සාප්පු යන තැන කුමන කාඩ්පතට වට්ටමක් ලැබේද — වෙළෙන්දා අනුව බැංකු දීමනා.',
+    merchantPageTitle: (merchant) => `${merchant} කාඩ්පත් දීමනා`,
+    merchantPageDescription: ({ merchant, count, banks }) =>
+      `${merchant} හි ක්‍රියාත්මක කාඩ්පත් දීමනා ${count}ක් — ${banks} වෙතින්.`,
     categoryPageTitle: (category) => `ශ්‍රී ලංකාවේ ${category} කාඩ්පත් දීමනා`,
     categoryPageDescription: ({ category, count, banks }) =>
       `${banks} වෙතින් ශ්‍රී ලංකාවේ වත්මන් ${category} කාඩ්පත් ප්‍රවර්ධන ${count}ක්. දිනපතා යාවත්කාලීන වේ.`,
@@ -712,6 +726,11 @@ const ta: Dictionary = {
     locationPageTitle: (town) => `${town} இல் அட்டை சலுகைகள்`,
     locationPageDescription: ({ town, count, categories }) =>
       `${town} இல் பயன்படுத்தக்கூடிய ${count} நேரடி அட்டை சலுகைகள் — ${categories} உட்பட.`,
+    merchantsTitle: 'கடை வாரியாக அட்டை சலுகைகள்',
+    merchantsDescription: 'நீங்கள் ஷாப்பிங் செய்யும் இடத்தில் எந்த அட்டைக்கு தள்ளுபடி — வணிகர் வாரியாக வங்கி சலுகைகள்.',
+    merchantPageTitle: (merchant) => `${merchant} அட்டை சலுகைகள்`,
+    merchantPageDescription: ({ merchant, count, banks }) =>
+      `${merchant} இல் ${count} நேரடி அட்டை சலுகைகள் — ${banks} இடமிருந்து.`,
     categoryPageTitle: (category) => `இலங்கையில் ${category} கார்டு சலுகைகள்`,
     categoryPageDescription: ({ category, count, banks }) =>
       `${banks} வழங்கும் இலங்கையின் தற்போதைய ${category} கார்டு சலுகைகள் ${count}. தினமும் புதுப்பிக்கப்படுகிறது.`,

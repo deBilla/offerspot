@@ -11,6 +11,7 @@ import {
 } from '@/lib/offers';
 import { bankCategoryRoutes, cardTypeHubs, getOffersByCardType } from '@/lib/hub-routes';
 import { getOffersByTown, townRoutes } from '@/lib/locations';
+import { getOffersByMerchant, merchantRoutes } from '@/lib/merchants';
 import { getAllPosts } from '@/lib/posts';
 import { parseDate } from '@/lib/offers';
 import type { Offer } from '@/types/offer';
@@ -91,6 +92,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     entry('/banks', { lastModified: now, changeFrequency: 'weekly', priority: 0.8 }),
     entry('/categories', { lastModified: now, changeFrequency: 'weekly', priority: 0.8 }),
     entry('/locations', { lastModified: lastChanged(offers, now), changeFrequency: 'weekly', priority: 0.8 }),
+    entry('/merchants', { lastModified: lastChanged(offers, now), changeFrequency: 'weekly', priority: 0.8 }),
     // English-only, like the posts it lists.
     entry('/blog', { lastModified: now, changeFrequency: 'monthly', priority: 0.4, localized: false }),
     entry('/privacy-policy', { lastModified: now, changeFrequency: 'yearly', priority: 0.2 }),
@@ -116,6 +118,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: lastChanged(getOffersByTown(route.town, offers), now),
       changeFrequency: 'daily',
       priority: 0.8,
+    }),
+  );
+
+  // Merchant hubs — "which card works at this shop". Gated in merchantRoutes().
+  const merchantEntries: MetadataRoute.Sitemap = merchantRoutes(offers).map((route) =>
+    entry(`/merchants/${route.slug}`, {
+      lastModified: lastChanged(getOffersByMerchant(route.merchant, offers), now),
+      changeFrequency: 'daily',
+      priority: 0.7,
     }),
   );
 
@@ -166,6 +177,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...staticEntries,
     ...cardTypeEntries,
     ...locationEntries,
+    ...merchantEntries,
     ...categoryEntries,
     ...bankEntries,
     ...bankCategoryEntries,
