@@ -61,6 +61,10 @@ interface Phrases {
 
   // Bank x category hub
   bankCatIntro: (a: { bank: string; category: string; count: string; monthYear: string }) => string;
+  locIntro: (a: { town: string; count: string; monthYear: string; banks: string }) => string;
+  locCategories: (a: { town: string; categories: string }) => string;
+  qLocBanks: (town: string) => string;
+  aLocBanks: (a: { town: string; banks: string; count: string }) => string;
   qBankCatCount: (a: { bank: string; category: string }) => string;
   aBankCatCount: (a: { bank: string; category: string; count: string; monthYear: string }) => string;
 
@@ -132,6 +136,13 @@ const en: Phrases = {
 
   bankCatIntro: ({ bank, category, count, monthYear }) =>
     `${bank} has ${count} ${category.toLowerCase()} card promotions running in ${monthYear}. Each is listed below with the card types it applies to and the dates the bank published.`,
+  locIntro: ({ town, count, monthYear, banks }) =>
+    `There are ${count} live credit and debit card offers you can use in ${town} as of ${monthYear}, from ${banks}.`,
+  locCategories: ({ town, categories }) =>
+    `Offers in ${town} cover ${categories}, so the same card can often be used across a whole trip rather than at a single merchant.`,
+  qLocBanks: (town) => `Which banks have card offers in ${town}?`,
+  aLocBanks: ({ town, banks, count }) =>
+    `${banks} currently run card promotions redeemable in ${town} — ${count} live offers between them. Each offer below links to the bank page it came from.`,
   qBankCatCount: ({ bank, category }) => `How many ${category.toLowerCase()} offers does ${bank} have?`,
   aBankCatCount: ({ bank, category, count, monthYear }) =>
     `${count} ${bank} ${category.toLowerCase()} promotions are listed for ${monthYear}.`,
@@ -210,6 +221,13 @@ const si: Phrases = {
 
   bankCatIntro: ({ bank, category, count, monthYear }) =>
     `${monthYear} හි ${bank} ${category} කාඩ්පත් ප්‍රවර්ධන ${count}ක් ක්‍රියාත්මක වේ. පහත සෑම එකක්ම අදාළ කාඩ්පත් වර්ග සහ බැංකුව ප්‍රකාශ කළ දින සමඟ ලැයිස්තුගත කර ඇත.`,
+  locIntro: ({ town, count, monthYear, banks }) =>
+    `${monthYear} වන විට ${town} හි භාවිත කළ හැකි ක්‍රියාත්මක කාඩ්පත් දීමනා ${count}ක් ඇත — ${banks} වෙතින්.`,
+  locCategories: ({ town, categories }) =>
+    `${town} හි දීමනා ${categories} ආවරණය කරයි.`,
+  qLocBanks: (town) => `${town} හි කුමන බැංකුවලට කාඩ්පත් දීමනා තිබේද?`,
+  aLocBanks: ({ town, banks, count }) =>
+    `${banks} දැනට ${town} හි භාවිත කළ හැකි දීමනා ${count}ක් ලබා දෙයි.`,
   qBankCatCount: ({ bank, category }) => `${bank} සතුව ${category} දීමනා කීයක් තිබේද?`,
   aBankCatCount: ({ bank, category, count, monthYear }) =>
     `${monthYear} සඳහා ${bank} ${category} ප්‍රවර්ධන ${count}ක් ලැයිස්තුගත කර ඇත.`,
@@ -288,6 +306,13 @@ const ta: Phrases = {
 
   bankCatIntro: ({ bank, category, count, monthYear }) =>
     `${monthYear} இல் ${bank} ${category} கார்டு சலுகைகள் ${count} செயல்பாட்டில் உள்ளன. கீழே உள்ள ஒவ்வொன்றும் பொருந்தக்கூடிய கார்டு வகைகள் மற்றும் வங்கி வெளியிட்ட தேதிகளுடன் பட்டியலிடப்பட்டுள்ளது.`,
+  locIntro: ({ town, count, monthYear, banks }) =>
+    `${monthYear} நிலவரப்படி ${town} இல் பயன்படுத்தக்கூடிய ${count} நேரடி அட்டை சலுகைகள் உள்ளன — ${banks} இடமிருந்து.`,
+  locCategories: ({ town, categories }) =>
+    `${town} இல் உள்ள சலுகைகள் ${categories} ஆகியவற்றை உள்ளடக்கும்.`,
+  qLocBanks: (town) => `${town} இல் எந்த வங்கிகளுக்கு அட்டை சலுகைகள் உள்ளன?`,
+  aLocBanks: ({ town, banks, count }) =>
+    `${banks} தற்போது ${town} இல் ${count} சலுகைகளை வழங்குகின்றன.`,
   qBankCatCount: ({ bank, category }) => `${bank} இல் எத்தனை ${category} சலுகைகள் உள்ளன?`,
   aBankCatCount: ({ bank, category, count, monthYear }) =>
     `${monthYear} க்கு ${bank} ${category} சலுகைகள் ${count} பட்டியலிடப்பட்டுள்ளன.`,
@@ -615,6 +640,47 @@ export function homeHubCopy(locale: Locale, stats: HubStats, topBank?: { name: s
         })
       : p.aBiggestNone,
   });
+  faqs.push(...commonFaqs({ locale, stats }));
+
+  return { intro, faqs };
+}
+
+
+/**
+ * Copy for a town hub. Reuses the generic best-offer, expiring and undated
+ * phrases rather than duplicating them per page type — only the framing
+ * sentences and the "which banks" FAQ are location-specific.
+ */
+export function locationHubCopy(locale: Locale, town: string, stats: HubStats, categories: string[]): HubCopy {
+  const p = getPhrases(locale);
+  const banks = listJoin(locale, stats.topBanks);
+  const intro: string[] = [];
+
+  if (stats.count > 0 && banks) {
+    intro.push(p.locIntro({ town, count: String(stats.count), monthYear: stats.monthYear, banks }));
+  }
+  if (categories.length > 0) {
+    intro.push(p.locCategories({ town, categories: listJoin(locale, categories) }));
+  }
+  if (stats.best) {
+    intro.push(
+      p.catBest({
+        percentage: String(stats.best.percentage),
+        merchant: stats.best.merchant,
+        bank: stats.best.bank,
+      }),
+    );
+  }
+  if (stats.expiringSoon > 0) intro.push(p.catExpiring({ count: String(stats.expiringSoon), category: town }));
+  if (stats.undated > 0) intro.push(p.catUndated({ count: String(stats.undated) }));
+
+  const faqs: Faq[] = [];
+  if (banks) {
+    faqs.push({
+      question: p.qLocBanks(town),
+      answer: p.aLocBanks({ town, banks, count: String(stats.count) }),
+    });
+  }
   faqs.push(...commonFaqs({ locale, stats }));
 
   return { intro, faqs };

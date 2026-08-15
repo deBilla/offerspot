@@ -81,6 +81,11 @@ export default function Footer({ locale }: { locale: Locale }) {
                 </Link>
               </li>
               <li>
+                <Link href={localizedPath(locale, '/locations')} className="hover:text-teal-600 hover:underline">
+                  {dict.pages.locationsTitle}
+                </Link>
+              </li>
+              <li>
                 <Link href={localizedPath(locale, '/blog')} className="hover:text-teal-600 hover:underline">
                   {dict.pages.blogTitle}
                 </Link>

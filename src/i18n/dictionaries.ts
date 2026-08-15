@@ -136,6 +136,10 @@ export interface Dictionary {
     bankClosedBody: (args: { bank: string; successor: string; date: string }) => string;
     bankClosedCta: (successor: string) => string;
     bankClosedTitle: (bank: string) => string;
+    locationsTitle: string;
+    locationsDescription: string;
+    locationPageTitle: (town: string) => string;
+    locationPageDescription: (args: { town: string; count: number; categories: string }) => string;
     bankClosedDescription: (args: { bank: string; successor: string }) => string;
     categoryPageTitle: (category: string) => string;
     categoryPageDescription: (args: { category: string; count: number; banks: string }) => string;
@@ -309,6 +313,11 @@ const en: Dictionary = {
     bankClosedTitle: (bank) => `${bank} Credit Card Offers in Sri Lanka — What Happened`,
     bankClosedDescription: ({ bank, successor }) =>
       `${bank} has stopped issuing personal credit and debit cards in Sri Lanka. Its retail banking business, including all card accounts, transferred to ${successor}. Here is what that means for cardholders and where to find current offers.`,
+    locationsTitle: 'Card Offers by Location in Sri Lanka',
+    locationsDescription: 'Find credit and debit card promotions near you — hotel, dining and shopping offers grouped by town across Sri Lanka.',
+    locationPageTitle: (town) => `Card Offers in ${town}`,
+    locationPageDescription: ({ town, count, categories }) =>
+      `${count} live credit and debit card offers you can use in ${town}, Sri Lanka — covering ${categories}. Updated from the banks' own promotion pages.`,
     categoryPageTitle: (category) => `${category} Card Offers in Sri Lanka`,
     categoryPageDescription: ({ category, count, banks }) =>
       `${count} current ${category.toLowerCase()} card promotions in Sri Lanka from ${banks}. Updated daily.`,
@@ -501,6 +510,11 @@ const si: Dictionary = {
     bankClosedTitle: (bank) => `${bank} ක්‍රෙඩිට් කාඩ් දීමනා — සිදු වූයේ කුමක්ද`,
     bankClosedDescription: ({ bank, successor }) =>
       `${bank} ශ්‍රී ලංකාවේ පුද්ගලික කාඩ්පත් නිකුත් කිරීම නවතා ඇත. එහි සිල්ලර බැංකු ව්‍යාපාරය ${successor} වෙත මාරු කර ඇත.`,
+    locationsTitle: 'ස්ථානය අනුව කාඩ්පත් දීමනා',
+    locationsDescription: 'ඔබ අසල ඇති ක්‍රෙඩිට් සහ ඩෙබිට් කාඩ්පත් දීමනා — නගරය අනුව හෝටල්, ආහාර සහ සාප්පු දීමනා.',
+    locationPageTitle: (town) => `${town} හි කාඩ්පත් දීමනා`,
+    locationPageDescription: ({ town, count, categories }) =>
+      `${town} හි භාවිත කළ හැකි ක්‍රියාත්මක කාඩ්පත් දීමනා ${count}ක් — ${categories} ඇතුළුව.`,
     categoryPageTitle: (category) => `ශ්‍රී ලංකාවේ ${category} කාඩ්පත් දීමනා`,
     categoryPageDescription: ({ category, count, banks }) =>
       `${banks} වෙතින් ශ්‍රී ලංකාවේ වත්මන් ${category} කාඩ්පත් ප්‍රවර්ධන ${count}ක්. දිනපතා යාවත්කාලීන වේ.`,
@@ -693,6 +707,11 @@ const ta: Dictionary = {
     bankClosedTitle: (bank) => `${bank} கடன் அட்டை சலுகைகள் — என்ன நடந்தது`,
     bankClosedDescription: ({ bank, successor }) =>
       `${bank} இலங்கையில் தனிநபர் அட்டைகளை வழங்குவதை நிறுத்தியுள்ளது. அதன் சில்லறை வங்கி வணிகம் ${successor} இற்கு மாற்றப்பட்டது.`,
+    locationsTitle: 'இடம் வாரியாக அட்டை சலுகைகள்',
+    locationsDescription: 'உங்களுக்கு அருகிலுள்ள கடன் மற்றும் பற்று அட்டை சலுகைகள் — நகரம் வாரியாக ஹோட்டல், உணவு மற்றும் ஷாப்பிங் சலுகைகள்.',
+    locationPageTitle: (town) => `${town} இல் அட்டை சலுகைகள்`,
+    locationPageDescription: ({ town, count, categories }) =>
+      `${town} இல் பயன்படுத்தக்கூடிய ${count} நேரடி அட்டை சலுகைகள் — ${categories} உட்பட.`,
     categoryPageTitle: (category) => `இலங்கையில் ${category} கார்டு சலுகைகள்`,
     categoryPageDescription: ({ category, count, banks }) =>
       `${banks} வழங்கும் இலங்கையின் தற்போதைய ${category} கார்டு சலுகைகள் ${count}. தினமும் புதுப்பிக்கப்படுகிறது.`,
