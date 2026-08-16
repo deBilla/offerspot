@@ -238,8 +238,16 @@ const OfferCard = ({
   const googleMapsUrl = lat && lng ? `https://www.google.com/maps/search/?api=1&query=${lat},${lng}` : null;
 
   return (
-    <article className="group flex flex-col overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-lg transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-2xl">
-      <div className="relative flex-grow p-6">
+    /*
+     * The whole card is a click target, via the "stretched link" pattern: the
+     * anchor stays on the title and an empty ::after pseudo-element covers the
+     * card. Wrapping the <article> in a Link instead would nest the terms
+     * toggle, the Maps link and the offer button inside an anchor, which is
+     * invalid HTML and breaks all three. This keeps one link per card for
+     * assistive tech, still titled by the heading.
+     */
+    <article className="group relative flex flex-col overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-lg transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-2xl focus-within:ring-2 focus-within:ring-teal-500 focus-within:ring-offset-2">
+      <div className="flex-grow p-6">
         <div className="mb-4 flex items-start justify-between gap-3">
           <div className="flex flex-col gap-2">
             <span
@@ -266,11 +274,14 @@ const OfferCard = ({
         </div>
 
         <p className="text-sm font-semibold uppercase tracking-wide text-gray-500">{merchant}</p>
-        <Link href={localizedPath(locale, `/offer/${id}`)} className="group/link mt-2 block">
+        <Link
+          href={localizedPath(locale, `/offer/${id}`)}
+          className="mt-2 block after:absolute after:inset-0 after:content-[''] focus:outline-none"
+        >
           {/* Source feed text is English whatever the page locale is. */}
           <h3
             lang="en"
-            className="mb-3 line-clamp-2 text-xl font-bold text-gray-900 transition-colors group-hover/link:text-teal-700"
+            className="mb-3 line-clamp-2 text-xl font-bold text-gray-900 transition-colors group-hover:text-teal-700"
           >
             {title || dict.browse.untitledOffer}
           </h3>
@@ -280,7 +291,9 @@ const OfferCard = ({
         </p>
       </div>
 
-      <div className="border-t border-gray-100 bg-gradient-to-br from-gray-50 to-white px-6 py-4">
+      {/* z-10 keeps this panel above the title link's stretched overlay; without
+          it the Maps link, terms toggle and offer button are unreachable. */}
+      <div className="relative z-10 border-t border-gray-100 bg-gradient-to-br from-gray-50 to-white px-6 py-4">
         <div className="space-y-3 text-sm">
           <div className="flex items-center text-gray-700">
             <TagIcon />
