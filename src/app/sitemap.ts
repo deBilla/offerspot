@@ -13,6 +13,7 @@ import { bankCategoryRoutes, cardTypeHubs, getOffersByCardType } from '@/lib/hub
 import { getOffersByTown, townRoutes } from '@/lib/locations';
 import { getOffersByMerchant, merchantRoutes } from '@/lib/merchants';
 import { getAllPosts } from '@/lib/posts';
+import { eligibilityCheckedOn } from '@/lib/card-eligibility';
 import { parseDate } from '@/lib/offers';
 import type { Offer } from '@/types/offer';
 
@@ -93,6 +94,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     entry('/categories', { lastModified: now, changeFrequency: 'weekly', priority: 0.8 }),
     entry('/locations', { lastModified: lastChanged(offers, now), changeFrequency: 'weekly', priority: 0.8 }),
     entry('/merchants', { lastModified: lastChanged(offers, now), changeFrequency: 'weekly', priority: 0.8 }),
+    // Hand-maintained, so its lastmod is the date the banks' pages were last
+    // read rather than anything derived from the offer feed.
+    entry('/credit-card-eligibility', {
+      lastModified: new Date(eligibilityCheckedOn),
+      changeFrequency: 'monthly',
+      priority: 0.9,
+    }),
     // English-only, like the posts it lists.
     entry('/blog', { lastModified: now, changeFrequency: 'monthly', priority: 0.4, localized: false }),
     entry('/privacy-policy', { lastModified: now, changeFrequency: 'yearly', priority: 0.2 }),

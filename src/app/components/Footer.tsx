@@ -91,6 +91,14 @@ export default function Footer({ locale }: { locale: Locale }) {
                 </Link>
               </li>
               <li>
+                <Link
+                  href={localizedPath(locale, '/credit-card-eligibility')}
+                  className="hover:text-teal-600 hover:underline"
+                >
+                  {dict.pages.eligibilityTitle}
+                </Link>
+              </li>
+              <li>
                 <Link href={localizedPath(locale, '/blog')} className="hover:text-teal-600 hover:underline">
                   {dict.pages.blogTitle}
                 </Link>

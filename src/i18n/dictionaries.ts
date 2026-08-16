@@ -142,6 +142,23 @@ export interface Dictionary {
     merchantsTitle: string;
     merchantsDescription: string;
     merchantPageTitle: (merchant: string) => string;
+    eligibilityTitle: string;
+    eligibilityDescription: string;
+    eligibilityIntro: (count: number) => string;
+    eligibilityPublishedHeading: string;
+    eligibilityUnpublishedHeading: string;
+    eligibilityNotPublished: string;
+    eligibilityDocumentsHeading: string;
+    eligibilitySelfEmployedHeading: string;
+    eligibilityTiersHeading: string;
+    eligibilityConditionsHeading: string;
+    eligibilityAge: string;
+    eligibilityResidency: string;
+    eligibilityMinIncome: string;
+    eligibilitySource: string;
+    eligibilityChecked: (date: string) => string;
+    eligibilityDisclaimer: string;
+    eligibilityViewOffers: (bank: string) => string;
     merchantPageDescription: (args: { merchant: string; count: number; banks: string }) => string;
     locationPageDescription: (args: { town: string; count: number; categories: string }) => string;
     bankClosedDescription: (args: { bank: string; successor: string }) => string;
@@ -327,6 +344,26 @@ const en: Dictionary = {
     merchantPageTitle: (merchant) => `${merchant} Card Offers`,
     merchantPageDescription: ({ merchant, count, banks }) =>
       `${count} live card offers at ${merchant} in Sri Lanka, from ${banks}. Compare which card gives the bigger discount before you pay.`,
+    eligibilityTitle: 'Credit Card Eligibility in Sri Lanka — Salary and Requirements by Bank',
+    eligibilityDescription:
+      'What each Sri Lankan bank actually requires for a credit card: minimum monthly salary, age limits and the documents to bring. Quoted from the banks\u2019 own pages, with sources.',
+    eligibilityIntro: (count) =>
+      `What ${count} Sri Lankan banks state you need before they will issue you a credit card \u2014 minimum income, age, and the paperwork to bring. Every figure below is quoted from the bank\u2019s own page and linked to it.`,
+    eligibilityPublishedHeading: 'Banks that publish a minimum income',
+    eligibilityUnpublishedHeading: 'Banks that do not publish a minimum income',
+    eligibilityNotPublished: 'Not published',
+    eligibilityDocumentsHeading: 'Documents required',
+    eligibilitySelfEmployedHeading: 'If you are self-employed',
+    eligibilityTiersHeading: 'Card tiers',
+    eligibilityConditionsHeading: 'Other conditions',
+    eligibilityAge: 'Age',
+    eligibilityResidency: 'Residency',
+    eligibilityMinIncome: 'Minimum monthly income',
+    eligibilitySource: 'Source',
+    eligibilityChecked: (date) => `Checked against the bank\u2019s own page on ${date}.`,
+    eligibilityDisclaimer:
+      'Banks change these criteria without notice, and approval always rests with the bank. Treat this as a starting point and confirm with the bank before applying \u2014 every entry links to the page it came from.',
+    eligibilityViewOffers: (bank) => `See current ${bank} card offers`,
     categoryPageTitle: (category) => `${category} Card Offers in Sri Lanka`,
     categoryPageDescription: ({ category, count, banks }) =>
       `${count} current ${category.toLowerCase()} card promotions in Sri Lanka from ${banks}. Updated daily.`,
@@ -529,6 +566,26 @@ const si: Dictionary = {
     merchantPageTitle: (merchant) => `${merchant} කාඩ්පත් දීමනා`,
     merchantPageDescription: ({ merchant, count, banks }) =>
       `${merchant} හි ක්‍රියාත්මක කාඩ්පත් දීමනා ${count}ක් — ${banks} වෙතින්.`,
+    eligibilityTitle: 'ශ්‍රී ලංකාවේ ක්‍රෙඩිට් කාඩ් සුදුසුකම් — බැංකුව අනුව වැටුප් සහ අවශ්‍යතා',
+    eligibilityDescription:
+      'ක්‍රෙඩිට් කාඩ්පතක් සඳහා එක් එක් බැංකුව අවශ්‍ය කරන දේ: අවම මාසික වැටුප, වයස් සීමා සහ අවශ්‍ය ලේඛන.',
+    eligibilityIntro: (count) =>
+      `ක්‍රෙඩිට් කාඩ්පතක් නිකුත් කිරීමට පෙර ශ්‍රී ලංකාවේ බැංකු ${count}ක් අවශ්‍ය කරන දේ.`,
+    eligibilityPublishedHeading: 'අවම ආදායමක් ප්‍රකාශ කරන බැංකු',
+    eligibilityUnpublishedHeading: 'අවම ආදායමක් ප්‍රකාශ නොකරන බැංකු',
+    eligibilityNotPublished: 'ප්‍රකාශ කර නැත',
+    eligibilityDocumentsHeading: 'අවශ්‍ය ලේඛන',
+    eligibilitySelfEmployedHeading: 'ස්වයං රැකියාවේ නියුතු නම්',
+    eligibilityTiersHeading: 'කාඩ්පත් වර්ග',
+    eligibilityConditionsHeading: 'වෙනත් කොන්දේසි',
+    eligibilityAge: 'වයස',
+    eligibilityResidency: 'පදිංචිය',
+    eligibilityMinIncome: 'අවම මාසික ආදායම',
+    eligibilitySource: 'මූලාශ්‍රය',
+    eligibilityChecked: (date) => `${date} දින බැංකුවේ පිටුවට එරෙහිව පරීක්ෂා කරන ලදී.`,
+    eligibilityDisclaimer:
+      'බැංකු මෙම නිර්ණායක දැනුම් දීමකින් තොරව වෙනස් කරයි. අයදුම් කිරීමට පෙර බැංකුව සමඟ තහවුරු කරගන්න.',
+    eligibilityViewOffers: (bank) => `වත්මන් ${bank} කාඩ්පත් දීමනා බලන්න`,
     categoryPageTitle: (category) => `ශ්‍රී ලංකාවේ ${category} කාඩ්පත් දීමනා`,
     categoryPageDescription: ({ category, count, banks }) =>
       `${banks} වෙතින් ශ්‍රී ලංකාවේ වත්මන් ${category} කාඩ්පත් ප්‍රවර්ධන ${count}ක්. දිනපතා යාවත්කාලීන වේ.`,
@@ -731,6 +788,26 @@ const ta: Dictionary = {
     merchantPageTitle: (merchant) => `${merchant} அட்டை சலுகைகள்`,
     merchantPageDescription: ({ merchant, count, banks }) =>
       `${merchant} இல் ${count} நேரடி அட்டை சலுகைகள் — ${banks} இடமிருந்து.`,
+    eligibilityTitle: 'இலங்கையில் கடன் அட்டை தகுதி — வங்கி வாரியாக சம்பளம் மற்றும் தேவைகள்',
+    eligibilityDescription:
+      'கடன் அட்டைக்கு ஒவ்வொரு வங்கியும் கோரும் விவரங்கள்: குறைந்தபட்ச மாத சம்பளம், வயது வரம்பு மற்றும் தேவையான ஆவணங்கள்.',
+    eligibilityIntro: (count) =>
+      `கடன் அட்டை வழங்குவதற்கு முன் இலங்கையின் ${count} வங்கிகள் கோரும் விவரங்கள்.`,
+    eligibilityPublishedHeading: 'குறைந்தபட்ச வருமானத்தை வெளியிடும் வங்கிகள்',
+    eligibilityUnpublishedHeading: 'குறைந்தபட்ச வருமானத்தை வெளியிடாத வங்கிகள்',
+    eligibilityNotPublished: 'வெளியிடப்படவில்லை',
+    eligibilityDocumentsHeading: 'தேவையான ஆவணங்கள்',
+    eligibilitySelfEmployedHeading: 'சுயதொழில் செய்பவர் எனில்',
+    eligibilityTiersHeading: 'அட்டை நிலைகள்',
+    eligibilityConditionsHeading: 'பிற நிபந்தனைகள்',
+    eligibilityAge: 'வயது',
+    eligibilityResidency: 'வதிவிடம்',
+    eligibilityMinIncome: 'குறைந்தபட்ச மாத வருமானம்',
+    eligibilitySource: 'ஆதாரம்',
+    eligibilityChecked: (date) => `${date} அன்று வங்கியின் சொந்தப் பக்கத்துடன் சரிபார்க்கப்பட்டது.`,
+    eligibilityDisclaimer:
+      'வங்கிகள் இந்த நிபந்தனைகளை அறிவிப்பின்றி மாற்றுகின்றன. விண்ணப்பிக்கும் முன் வங்கியுடன் உறுதிப்படுத்தவும்.',
+    eligibilityViewOffers: (bank) => `தற்போதைய ${bank} அட்டை சலுகைகளைப் பார்க்கவும்`,
     categoryPageTitle: (category) => `இலங்கையில் ${category} கார்டு சலுகைகள்`,
     categoryPageDescription: ({ category, count, banks }) =>
       `${banks} வழங்கும் இலங்கையின் தற்போதைய ${category} கார்டு சலுகைகள் ${count}. தினமும் புதுப்பிக்கப்படுகிறது.`,

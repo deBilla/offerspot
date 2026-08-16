@@ -69,6 +69,12 @@ export async function GET() {
     '',
     ...cardTypeHubs.map((hub) => `- [${hub.cardType} offers](${absoluteUrl(`/${hub.slug}`)})`),
     '',
+    '## Applying for a card',
+    '',
+    `- [Credit card eligibility by bank](${absoluteUrl('/credit-card-eligibility')}): minimum salary,`,
+    '  age limits and required documents, quoted from each bank\'s own page with a source link.',
+    '  Where a bank publishes no minimum, that is stated rather than estimated.',
+    '',
     '## Browse by town',
     '',
     ...townRoutes(offers).map(
