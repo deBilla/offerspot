@@ -12,6 +12,7 @@ import { absoluteUrl, breadcrumbJsonLd, buildMetadata, ogImageUrl, ogTextLocale 
 import { buildHubStats } from '@/lib/hub-stats';
 import { cardTypeHubCopy } from '@/i18n/hub-copy';
 import { cardTypeHubFromSlug, getOffersByCardType } from '@/lib/hub-routes';
+import { browserPropsFor } from '@/lib/offer-facets';
 import { clamp, getActiveOffers, merchantName, sortOffers } from '@/lib/offers';
 
 /**
@@ -109,7 +110,7 @@ export default async function CardTypeHubPage({ lang, slug }: { lang: string; sl
           </p>
         </div>
 
-        <OfferBrowser offers={offers} locale={locale} heading={heading} />
+        <OfferBrowser {...browserPropsFor(offers)} locale={locale} heading={heading} />
 
         <div className="container mx-auto px-4 pb-12">
           <OfferIndexList offers={offers} locale={locale} heading={heading} />

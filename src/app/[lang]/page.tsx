@@ -7,12 +7,11 @@ import HubContent from '@/app/components/HubContent';
 import { isLocale, localeHtmlLang, localizedPath, type Locale } from '@/i18n/config';
 import { getDictionary } from '@/i18n/dictionaries';
 import { absoluteUrl, buildMetadata, ogImageUrl, ogTextLocale } from '@/lib/seo';
+import { browserPropsFor } from '@/lib/offer-facets';
 import { getActiveOffers, merchantName, sortOffers } from '@/lib/offers';
 import { buildHubStats } from '@/lib/hub-stats';
 import { homeHubCopy } from '@/i18n/hub-copy';
 import { translateBank } from '@/i18n/dictionaries';
-
-export const revalidate = 86400;
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
   const { lang } = await params;
@@ -78,7 +77,7 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
         <h1 className="sr-only">
           {dict.siteName} — {dict.pages.homeTitle}
         </h1>
-        <OfferBrowser offers={offers} locale={locale} heading={dict.browse.latestOffers} />
+        <OfferBrowser {...browserPropsFor(offers)} locale={locale} heading={dict.browse.latestOffers} />
         <div className="container mx-auto px-4 pb-12">
           <HubContent locale={locale} copy={copy} />
         </div>

@@ -16,8 +16,6 @@ import {
 } from '@/lib/card-eligibility';
 import { getActiveOffers, getOffersByBank, slugify } from '@/lib/offers';
 
-export const revalidate = 86400;
-
 export function generateStaticParams() {
   return locales.map((lang) => ({ lang }));
 }

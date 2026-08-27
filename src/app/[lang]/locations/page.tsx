@@ -13,8 +13,6 @@ import { homeHubCopy } from '@/i18n/hub-copy';
 import { getOffersByTown, townRoutes } from '@/lib/locations';
 import { getActiveOffers } from '@/lib/offers';
 
-export const revalidate = 86400;
-
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
   const { lang } = await params;
   if (!isLocale(lang)) notFound();

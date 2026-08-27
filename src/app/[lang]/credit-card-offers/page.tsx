@@ -4,8 +4,6 @@ import { locales } from '@/i18n/config';
 
 const SLUG = 'credit-card-offers';
 
-export const revalidate = 86400;
-
 export function generateStaticParams() {
   return locales.map((lang) => ({ lang }));
 }

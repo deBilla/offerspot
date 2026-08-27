@@ -20,12 +20,14 @@ import {
   merchantName,
   sortOffers,
 } from '@/lib/offers';
-
-export const revalidate = 86400;
+import { browserPropsFor } from '@/lib/offer-facets';
 
 export function generateStaticParams() {
   return locales.flatMap((lang) => categorySlugList.map((id) => ({ lang, id })));
 }
+
+/** The slug set is derived from the feed and complete; see offer/[id]. */
+export const dynamicParams = false;
 
 export async function generateMetadata({
   params,
@@ -128,7 +130,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ lang:
           </p>
         </div>
 
-        <OfferBrowser offers={offers} locale={locale} heading={dict.browse.categoryOffers(categoryLabel)} />
+        <OfferBrowser {...browserPropsFor(offers)} locale={locale} heading={dict.browse.categoryOffers(categoryLabel)} />
 
         <div className="container mx-auto px-4 pb-12">
           <OfferIndexList offers={offers} locale={locale} heading={dict.browse.categoryOffers(categoryLabel)} />

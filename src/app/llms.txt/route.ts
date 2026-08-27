@@ -16,7 +16,14 @@ import { merchantRoutes } from '@/lib/merchants';
  * Generated from the live feed rather than hand-written, so it cannot drift
  * out of date the way a static file would.
  */
-export const revalidate = 86400;
+
+/*
+ * Route handlers are dynamic by default, so without this the file would be
+ * rebuilt by a function call on every fetch. Nothing in it reads the request —
+ * it is a pure function of the build-time feed — so it is written once at build
+ * time and served as a static asset, same as the sitemap.
+ */
+export const dynamic = 'force-static';
 
 export async function GET() {
   const offers = getActiveOffers();

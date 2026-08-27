@@ -16,8 +16,6 @@ import { getAllPosts } from '@/lib/posts';
  * in Search Console's "Crawled – currently not indexed" bucket.
  */
 
-export const revalidate = 86400;
-
 export function generateStaticParams() {
   return locales.map((lang) => ({ lang }));
 }

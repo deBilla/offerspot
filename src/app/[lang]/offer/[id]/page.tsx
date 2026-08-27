@@ -8,6 +8,7 @@ import { isLocale, localeHtmlLang, localizedPath, locales, type Locale } from '@
 import { getDictionary, translateBank, translateCardType, translateCategory } from '@/i18n/dictionaries';
 import { absoluteUrl, breadcrumbJsonLd, buildMetadata, ogImageUrl, ogTextLocale, siteUrl } from '@/lib/seo';
 import {
+  allOffers,
   clamp,
   daysUntilExpiry,
   endDateOf,
@@ -15,7 +16,6 @@ import {
   formatDiscount,
   formatEndDate,
   formatNumber,
-  getActiveOffers,
   getOfferById,
   getRelatedOffers,
   isExpired,
@@ -60,18 +60,33 @@ function offerOgImage(offer: Offer, imageLocale: Locale): string {
   });
 }
 
-// Offer data is a build-time JSON snapshot refreshed by the crawler pipeline;
-// re-render daily so "days left" badges and expiry states do not go stale.
-export const revalidate = 86400;
-
 /**
- * Only live offers are prerendered. The ~736 expired ones still resolve — they
- * are rendered on demand and cached — but paying to build them on every deploy
- * buys nothing, since they are noindex and reachable only from old links.
+ * Every offer is prerendered, expired ones included.
+ *
+ * Building only the live ones left the ~780 expired offers to render on demand,
+ * and each first request for one wrote a fresh entry to the ISR cache — 226
+ * writes across 288 paths in a single 12-hour window, which is most of what put
+ * the deployment over its quota. They are noindex and reachable only from stale
+ * links, but crawlers walk them anyway, so "rarely visited" never translated
+ * into "rarely rendered". Building them costs a bounded amount of time once per
+ * deploy instead of an unbounded number of writes forever.
+ *
+ * Placeholder rows stay out: the page 404s them anyway (see below), so with
+ * dynamicParams off, leaving them unbuilt produces that 404 from the route
+ * table for free.
  */
 export function generateStaticParams() {
-  return locales.flatMap((lang) => getActiveOffers().map((offer) => ({ lang, id: offer.id })));
+  return locales.flatMap((lang) =>
+    allOffers.filter((offer) => offer.id && !isPlaceholderOffer(offer)).map((offer) => ({ lang, id: offer.id })),
+  );
 }
+
+/**
+ * The feed is the complete universe of offer ids, so an id that is not in it
+ * cannot become valid later. 404 straight from the static route rather than
+ * rendering a miss on demand and caching it.
+ */
+export const dynamicParams = false;
 
 export async function generateMetadata({
   params,

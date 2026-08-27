@@ -8,8 +8,6 @@ import { getWalletCopy } from '@/i18n/wallet-copy';
 import { buildMetadata, ogImageUrl, ogTextLocale } from '@/lib/seo';
 import { getActiveOffers, isMeaningful } from '@/lib/offers';
 
-export const revalidate = 86400;
-
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
   const { lang } = await params;
   if (!isLocale(lang)) notFound();

@@ -44,6 +44,13 @@ export function generateStaticParams() {
   return locales.map((lang) => ({ lang }));
 }
 
+/**
+ * `locales` is a closed set, so no other value can be a real page. Refusing
+ * them here means an unknown prefix 404s from the static route table instead of
+ * being rendered on demand and cached.
+ */
+export const dynamicParams = false;
+
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
   const { lang } = await params;
   if (!isLocale(lang)) notFound();

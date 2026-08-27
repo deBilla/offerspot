@@ -15,6 +15,9 @@ export function generateStaticParams() {
   return locales.flatMap((lang) => postSlugs().map((slug) => ({ lang, slug })));
 }
 
+/** The slug set is derived from the posts on disk and complete; see offer/[id]. */
+export const dynamicParams = false;
+
 export async function generateMetadata({
   params,
 }: {
