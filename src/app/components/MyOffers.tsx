@@ -7,6 +7,7 @@ import { localizedPath, type Locale } from '@/i18n/config';
 import { getDictionary, translateBank, translateCategory } from '@/i18n/dictionaries';
 import { getWalletCopy } from '@/i18n/wallet-copy';
 import { useWallet, walletMatches } from '@/app/context/WalletContext';
+import { useCatalogue } from '@/lib/offer-catalogue';
 import { daysUntilExpiry, formatDiscount, formatEndDate, merchantName } from '@/lib/offers';
 
 function OfferRow({ offer, locale }: { offer: Offer; locale: Locale }) {
@@ -49,16 +50,22 @@ function OfferRow({ offer, locale }: { offer: Offer; locale: Locale }) {
 
 /**
  * Filters every live offer down to the ones the visitor's saved cards qualify
- * for. Runs entirely client-side against the prerendered offer list, so the
- * page itself stays static and cacheable while the result is personal.
+ * for. The page itself stays static and cacheable while the result is personal.
+ *
+ * The offers come from the shared catalogue rather than a prop. Nothing here
+ * can render before localStorage has been read anyway, so inlining ~400 KB of
+ * offers into the HTML only ever paid for a list the server could not have
+ * produced — every visitor downloaded the whole live set to see the handful
+ * their own cards match.
  */
-export default function MyOffers({ locale, offers }: { locale: Locale; offers: Offer[] }) {
+export default function MyOffers({ locale }: { locale: Locale }) {
   const copy = getWalletCopy(locale);
   const dict = getDictionary(locale);
   const { wallet, ready, hasSelection } = useWallet();
+  const offers = useCatalogue();
 
   const { expiring, rest } = useMemo(() => {
-    if (!hasSelection) return { expiring: [], rest: [] };
+    if (!hasSelection || !offers) return { expiring: [], rest: [] };
     const matches = offers.filter((offer) => walletMatches(wallet, offer));
     const expiring: Offer[] = [];
     const rest: Offer[] = [];
@@ -70,9 +77,10 @@ export default function MyOffers({ locale, offers }: { locale: Locale; offers: O
     return { expiring, rest };
   }, [offers, wallet, hasSelection]);
 
-  // Nothing is rendered until localStorage has been read, so the list never
-  // flashes "no cards saved" for a visitor who has some.
-  if (!ready) {
+  // Nothing is rendered until localStorage has been read and, for a visitor who
+  // has cards saved, the catalogue has arrived — so the list never flashes
+  // "no cards saved" or "no matches" at someone who has some.
+  if (!ready || (hasSelection && !offers)) {
     return <div className="h-40 animate-pulse rounded-2xl bg-slate-100" aria-hidden="true" />;
   }
 

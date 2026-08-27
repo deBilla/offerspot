@@ -13,6 +13,7 @@ import { buildHubStats } from '@/lib/hub-stats';
 import { bankCategoryHubCopy } from '@/i18n/hub-copy';
 import { bankCategoryRoute, bankCategoryRoutes, getOffersByBankAndCategory } from '@/lib/hub-routes';
 import { clamp, getActiveOffers, merchantName, sortOffers } from '@/lib/offers';
+import { browserPropsFor } from '@/lib/offer-facets';
 
 /**
  * "HSBC dining offers", "People's Bank travel offers" — the intersection people
@@ -24,13 +25,18 @@ import { clamp, getActiveOffers, merchantName, sortOffers } from '@/lib/offers';
  * of possible permutations.
  */
 
-export const revalidate = 86400;
-
 export function generateStaticParams() {
   return locales.flatMap((lang) =>
     bankCategoryRoutes().map((route) => ({ lang, id: route.bankSlug, category: route.categorySlug })),
   );
 }
+
+/**
+ * Intersections below the threshold are deliberately not routes (see above), so
+ * refusing unknown params is the same 404 the page already produced — just
+ * without rendering and caching a miss to get there.
+ */
+export const dynamicParams = false;
 
 export async function generateMetadata({
   params,
@@ -136,7 +142,7 @@ export default async function BankCategoryPage({
           </p>
         </div>
 
-        <OfferBrowser offers={offers} locale={locale} heading={heading} />
+        <OfferBrowser {...browserPropsFor(offers)} locale={locale} heading={heading} />
 
         <div className="container mx-auto px-4 pb-12">
           <OfferIndexList offers={offers} locale={locale} heading={heading} />

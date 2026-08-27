@@ -17,8 +17,6 @@ import { eligibilityCheckedOn } from '@/lib/card-eligibility';
 import { parseDate } from '@/lib/offers';
 import type { Offer } from '@/types/offer';
 
-export const revalidate = 86400;
-
 /**
  * A sitemap is a statement of what should be indexed, so it lists the
  * aggregation hubs only. Individual offer pages are noindex,follow (see the

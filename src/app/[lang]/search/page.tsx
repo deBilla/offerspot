@@ -7,8 +7,7 @@ import { isLocale, type Locale } from '@/i18n/config';
 import { getDictionary } from '@/i18n/dictionaries';
 import { buildMetadata, ogImageUrl, ogTextLocale } from '@/lib/seo';
 import { getActiveOffers, sortOffers } from '@/lib/offers';
-
-export const revalidate = 86400;
+import { browserPropsFor } from '@/lib/offer-facets';
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
   const { lang } = await params;
@@ -53,7 +52,7 @@ export default async function SearchPage({ params }: { params: Promise<{ lang: s
           <h1 className="text-2xl font-bold text-gray-900 sm:text-3xl">{dict.pages.searchTitle}</h1>
           <p className="mt-2 max-w-2xl leading-relaxed text-gray-600">{dict.pages.searchDescription}</p>
         </div>
-        <OfferBrowser offers={offers} locale={locale} heading={dict.browse.latestOffers} />
+        <OfferBrowser {...browserPropsFor(offers)} locale={locale} heading={dict.browse.latestOffers} />
       </main>
     </>
   );

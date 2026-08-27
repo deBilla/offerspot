@@ -1,0 +1,24 @@
+# The offer feed is a build-time JSON snapshot, so pages are prerendered once
+# and never revalidate — that is what keeps ISR writes at zero. But some of what
+# they render is a function of today's date rather than of the data: which
+# offers count as live, the "days left" badges, the counts on every hub page.
+#
+# A daily rebuild is what advances that clock. It costs one deployment a day
+# instead of a revalidation write per page per day.
+name: Daily rebuild
+
+on:
+  schedule:
+    # 18:30 UTC = midnight Asia/Colombo, so the site rolls over to the new day
+    # at the same moment its readers do.
+    - cron: '30 18 * * *'
+  workflow_dispatch:
+
+jobs:
+  redeploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Vercel deploy hook
+        run: curl -fsS -X POST "$DEPLOY_HOOK_URL"
+        env:
+          DEPLOY_HOOK_URL: ${{ secrets.VERCEL_DEPLOY_HOOK_URL }}

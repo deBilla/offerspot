@@ -6,9 +6,10 @@ import type { Offer } from '@/types/offer';
 import { useFilterContext } from '@/app/context/FilterContext';
 import { localizedPath, type Locale } from '@/i18n/config';
 import { getDictionary, translateBank, translateCategory } from '@/i18n/dictionaries';
+import { useCatalogue } from '@/lib/offer-catalogue';
+import { OFFERS_PER_PAGE, type BankInfo, type OfferFacets } from '@/lib/offer-facets';
 import {
   daysUntilExpiry,
-  discountWeight,
   formatDiscount,
   formatEndDate,
   isMeaningful,
@@ -206,11 +207,6 @@ const bankDetails: Record<string, { color: string; textColor: string; accent: st
 
 const getBankBadgeColor = (bank: string): string =>
   bankDetails[bank]?.accent || 'bg-gray-100 border-gray-200 text-gray-800';
-
-interface BankInfo {
-  name: string;
-  count: number;
-}
 
 const OfferCard = ({
   offer,
@@ -620,12 +616,22 @@ const Pagination = ({
 };
 
 export default function OfferBrowser({
-  offers,
+  offerIds,
+  initialOffers,
+  facets,
   locale,
   heading,
 }: {
-  /** Already scoped and sorted server-side (e.g. only one bank's offers). */
-  offers: Offer[];
+  /**
+   * The page's scope: every offer it covers, already filtered and sorted
+   * server-side, as ids. The records themselves come from the shared
+   * catalogue, so a page costs a few bytes per offer instead of a few hundred.
+   */
+  offerIds: string[];
+  /** The first page in full, so the grid renders before the catalogue lands. */
+  initialOffers: Offer[];
+  /** Filter options for the whole scope, computed server-side. */
+  facets: OfferFacets;
   locale: Locale;
   heading: string;
 }) {
@@ -643,26 +649,40 @@ export default function OfferBrowser({
   } = useFilterContext();
   const [expandedCards, setExpandedCards] = useState<Set<string>>(new Set());
   const [currentPage, setCurrentPage] = useState(1);
-  const offersPerPage = 9;
+  const catalogue = useCatalogue();
+  const offersPerPage = OFFERS_PER_PAGE;
   const isMobile = useIsMobile();
   const loaderRef = useRef<HTMLDivElement>(null);
 
-  const { banks, categories, sortedOffers, totalPages, displayedOffers } = useMemo(() => {
-    const bankCounts = offers.reduce<Record<string, number>>((acc, offer) => {
-      if (offer.bank) acc[offer.bank] = (acc[offer.bank] || 0) + 1;
-      return acc;
-    }, {});
-    const banks: BankInfo[] = Object.entries(bankCounts)
-      .map(([name, count]) => ({ name, count }))
-      .sort((a, b) => b.count - a.count);
+  const { banks, categories } = facets;
+  const hasActiveFilters = Boolean(searchTerm) || selectedCategory !== 'All' || selectedBanks.length > 0;
 
-    const categories = [
-      'All',
-      ...Array.from(new Set(offers.map((offer) => offer.category).filter(isMeaningful))).sort(),
-    ];
+  /** The scope as full records, in the order the server chose, once they land. */
+  const scopedOffers = useMemo(() => {
+    if (!catalogue) return null;
+    const byId = new Map(catalogue.map((offer) => [offer.id, offer]));
+    return offerIds.flatMap((id) => {
+      const offer = byId.get(id);
+      return offer ? [offer] : [];
+    });
+  }, [catalogue, offerIds]);
+
+  const { totalCount, totalPages, displayedOffers } = useMemo(() => {
+    /*
+     * Before the catalogue lands the page shows exactly what the server sent:
+     * the first page of an unfiltered scope. The count still reflects the whole
+     * scope, so the header does not jump when the rest arrives.
+     */
+    if (!scopedOffers) {
+      return {
+        totalCount: offerIds.length,
+        totalPages: Math.max(1, Math.ceil(offerIds.length / offersPerPage)),
+        displayedOffers: initialOffers,
+      };
+    }
 
     const term = searchTerm.trim().toLowerCase();
-    const filtered = offers.filter((offer) => {
+    const filtered = scopedOffers.filter((offer) => {
       const bankMatch = selectedBanks.length === 0 || selectedBanks.includes(offer.bank);
       const categoryMatch = selectedCategory === 'All' || offer.category === selectedCategory;
       const searchMatch =
@@ -681,32 +701,42 @@ export default function OfferBrowser({
       return bankMatch && categoryMatch && searchMatch;
     });
 
-    const sorted = [...filtered].sort((a, b) => {
-      const daysA = daysUntilExpiry(a);
-      const daysB = daysUntilExpiry(b);
-      if (daysA !== null && daysB !== null && daysA !== daysB) return daysA - daysB;
-      if (daysA !== null && daysB === null) return -1;
-      if (daysA === null && daysB !== null) return 1;
-      return discountWeight(b) - discountWeight(a);
-    });
-
-    const totalPages = Math.max(1, Math.ceil(sorted.length / offersPerPage));
+    /*
+     * No sort here: offerIds already arrives in the order the page wants, and
+     * filtering only removes entries, which cannot reorder what is left. The
+     * old client-side sort re-ranked several hundred offers on every keystroke
+     * to arrive back at the order it started from.
+     */
+    const totalPages = Math.max(1, Math.ceil(filtered.length / offersPerPage));
     const lastIndex = currentPage * offersPerPage;
-    const displayed = isMobile ? sorted.slice(0, lastIndex) : sorted.slice(lastIndex - offersPerPage, lastIndex);
+    const displayed = isMobile
+      ? filtered.slice(0, lastIndex)
+      : filtered.slice(lastIndex - offersPerPage, lastIndex);
 
-    return { banks, categories, sortedOffers: sorted, totalPages, displayedOffers: displayed };
-  }, [offers, selectedBanks, selectedCategory, searchTerm, currentPage, isMobile, locale]);
+    return { totalCount: filtered.length, totalPages, displayedOffers: displayed };
+  }, [
+    scopedOffers,
+    initialOffers,
+    offerIds,
+    offersPerPage,
+    selectedBanks,
+    selectedCategory,
+    searchTerm,
+    currentPage,
+    isMobile,
+    locale,
+  ]);
 
   useEffect(() => {
-    setMeta({ categories, banks, resultsCount: sortedOffers.length });
-  }, [categories, banks, sortedOffers.length, setMeta]);
+    setMeta({ categories, banks, resultsCount: totalCount });
+  }, [categories, banks, totalCount, setMeta]);
 
   useEffect(() => {
     setCurrentPage(1);
   }, [selectedBanks, selectedCategory, searchTerm, isMobile]);
 
   useEffect(() => {
-    if (!isMobile) return;
+    if (!isMobile || !scopedOffers) return;
     const observer = new IntersectionObserver(
       (entries) => {
         if (entries[0]?.isIntersecting && currentPage < totalPages) setCurrentPage((page) => page + 1);
@@ -718,7 +748,7 @@ export default function OfferBrowser({
     return () => {
       if (loader) observer.unobserve(loader);
     };
-  }, [isMobile, currentPage, totalPages]);
+  }, [isMobile, scopedOffers, currentPage, totalPages]);
 
   const handleBankSelect = (bankName: string) =>
     setSelectedBanks((prev) => (prev.includes(bankName) ? prev.filter((b) => b !== bankName) : [...prev, bankName]));
@@ -737,7 +767,6 @@ export default function OfferBrowser({
       ? dict.browse.categoryOffers(translateCategory(locale, selectedCategory))
       : heading;
 
-  const hasActiveFilters = Boolean(searchTerm) || selectedCategory !== 'All' || selectedBanks.length > 0;
   const clearAll = () => {
     setSearchTerm('');
     setSelectedCategory('All');
@@ -750,7 +779,7 @@ export default function OfferBrowser({
         <div className="container mx-auto flex flex-wrap items-center justify-center gap-4 px-4 text-sm text-white sm:gap-8">
           <div className="flex items-center gap-1.5">
             <SparkleIcon />
-            <span className="font-semibold">{sortedOffers.length}</span>
+            <span className="font-semibold">{totalCount}</span>
             <span className="text-blue-200">{dict.stats.offers}</span>
           </div>
           <div className="h-4 w-px bg-white/30" />

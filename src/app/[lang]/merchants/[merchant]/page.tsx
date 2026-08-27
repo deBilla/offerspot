@@ -13,12 +13,14 @@ import { buildHubStats } from '@/lib/hub-stats';
 import { merchantHubCopy } from '@/i18n/hub-copy';
 import { getOffersByMerchant, merchantFromSlug, merchantRoutes } from '@/lib/merchants';
 import { clamp, getActiveOffers, merchantName, sortOffers } from '@/lib/offers';
-
-export const revalidate = 86400;
+import { browserPropsFor } from '@/lib/offer-facets';
 
 export function generateStaticParams() {
   return locales.flatMap((lang) => merchantRoutes().map((route) => ({ lang, merchant: route.slug })));
 }
+
+/** The slug set is derived from the feed and complete; see offer/[id]. */
+export const dynamicParams = false;
 
 function bankList(locale: Locale, offers: ReturnType<typeof getOffersByMerchant>): string {
   return Array.from(new Set(offers.map((offer) => offer.bank)))
@@ -124,7 +126,7 @@ export default async function MerchantPage({
           </p>
         </div>
 
-        <OfferBrowser offers={offers} locale={locale} heading={dict.pages.merchantPageTitle(route.merchant)} />
+        <OfferBrowser {...browserPropsFor(offers)} locale={locale} heading={dict.pages.merchantPageTitle(route.merchant)} />
 
         <div className="container mx-auto px-4 pb-12">
           <OfferIndexList offers={offers} locale={locale} heading={dict.pages.merchantPageTitle(route.merchant)} />

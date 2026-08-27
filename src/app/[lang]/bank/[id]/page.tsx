@@ -25,12 +25,14 @@ import {
   slugify,
   sortOffers,
 } from '@/lib/offers';
-
-export const revalidate = 86400;
+import { browserPropsFor } from '@/lib/offer-facets';
 
 export function generateStaticParams() {
   return locales.flatMap((lang) => bankSlugList.map((id) => ({ lang, id })));
 }
+
+/** The slug set is derived from the feed and complete; see offer/[id]. */
+export const dynamicParams = false;
 
 export async function generateMetadata({
   params,
@@ -190,7 +192,7 @@ export default async function BankPage({ params }: { params: Promise<{ lang: str
         </div>
 
         {!closed && (
-          <OfferBrowser offers={offers} locale={locale} heading={dict.browse.bankOffers(bankLabel)} />
+          <OfferBrowser {...browserPropsFor(offers)} locale={locale} heading={dict.browse.bankOffers(bankLabel)} />
         )}
 
         <div className="container mx-auto px-4 pb-12">

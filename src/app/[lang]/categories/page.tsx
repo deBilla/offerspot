@@ -12,8 +12,6 @@ import { buildHubStats } from '@/lib/hub-stats';
 import { homeHubCopy } from '@/i18n/hub-copy';
 import { allCategories, getActiveOffers, getOffersByCategory, slugify } from '@/lib/offers';
 
-export const revalidate = 86400;
-
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
   const { lang } = await params;
   if (!isLocale(lang)) notFound();

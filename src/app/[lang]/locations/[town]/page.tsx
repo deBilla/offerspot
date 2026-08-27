@@ -13,12 +13,14 @@ import { buildHubStats } from '@/lib/hub-stats';
 import { locationHubCopy } from '@/i18n/hub-copy';
 import { getOffersByTown, townFromSlug, townRoutes } from '@/lib/locations';
 import { clamp, getActiveOffers, merchantName, sortOffers } from '@/lib/offers';
-
-export const revalidate = 86400;
+import { browserPropsFor } from '@/lib/offer-facets';
 
 export function generateStaticParams() {
   return locales.flatMap((lang) => townRoutes().map((route) => ({ lang, town: route.slug })));
 }
+
+/** The slug set is derived from the feed and complete; see offer/[id]. */
+export const dynamicParams = false;
 
 /** Categories present in a town's offers, most common first. */
 function townCategories(locale: Locale, offers: ReturnType<typeof getOffersByTown>): string[] {
@@ -129,7 +131,7 @@ export default async function LocationPage({
           </p>
         </div>
 
-        <OfferBrowser offers={offers} locale={locale} heading={dict.pages.locationPageTitle(route.town)} />
+        <OfferBrowser {...browserPropsFor(offers)} locale={locale} heading={dict.pages.locationPageTitle(route.town)} />
 
         <div className="container mx-auto px-4 pb-12">
           <OfferIndexList
